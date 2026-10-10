@@ -12,11 +12,13 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
 - **AI endpoints are protected:**
   - `app/api/ai-proposal/route.ts` - requires a Bearer session token, rejects
     anonymous calls with 401, plus per-user rate limiting.
-  - `app/api/smart-match/route.ts` - per-IP rate limiting (soft, in-memory).
+  - `app/api/smart-match/route.ts` - per-IP rate limiting.
+  - Both limits are shared across serverless instances: the counter lives in
+    Postgres (`07_rate_limit.sql`, `lib/rateLimit.ts`).
 - **Auth middleware** uses `@supabase/ssr` with real `getUser()` JWT validation
   (the old cookie-guessing redirect loop is gone).
 
-- **Database migrations are bundled** in `supabase/migrations/` (01-06), and they
+- **Database migrations are bundled** in `supabase/migrations/` (01-07), and they
   already include the post-audit security fixes (`03_security_fixes.sql`): a client
   can read only their own leads, a provider cannot self-set `verified`/`featured`,
   and referral codes are not publicly readable. Run them in order on your Supabase
@@ -35,14 +37,15 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
 
 ## Check before going live (not blockers for the repo, blockers for a real deploy)
 
-1. **Run the bundled migrations** (`supabase/migrations/01..06`, in order) on your
+1. **Run the bundled migrations** (`supabase/migrations/01..07`, in order) on your
    Supabase project, then smoke-test:
    - a provider **cannot** set their own `verified`/`featured` via a direct Supabase
      call (blocked by the trigger in `03_security_fixes.sql`);
    - the client dashboard shows a signed-in client's own leads.
-2. **Rate limiting** on the AI routes is in-memory (per serverless instance). Before
-   real traffic, move to a shared limiter (Upstash Ratelimit or a Supabase counter).
-   Noted inline in `smart-match/route.ts`.
+2. **Rate limiting** on the AI routes is Postgres-backed (`07_rate_limit.sql`). If the
+   RPC fails it falls back to a per-instance in-memory counter. Anyone with the anon
+   key can call `rate_limit_hit()` directly, so a determined attacker could burn
+   another IP's budget; move to a server-only key (service role) if that matters.
 3. **Env vars** - copy `.env.local.example` to `.env.local` and fill real values.
    Never commit `.env.local` (already gitignored). The anon key is safe client-side;
    RLS is what enforces access - so the migrations above must be correct.
