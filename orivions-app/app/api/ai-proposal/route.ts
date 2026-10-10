@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { allowRequest } from '@/lib/rateLimit';
 
 // SECURITY REDESIGN (per external audit finding 2.4):
 // 1. This is a provider-dashboard tool, so it now REQUIRES a valid Supabase
@@ -12,21 +13,9 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-const WINDOW_MS = 60_000;
+// Shared rate limit (Postgres-backed, see lib/rateLimit.ts): 4 requests per minute per user.
+const WINDOW_SECONDS = 60;
 const MAX_REQUESTS_PER_WINDOW = 4;
-const hits = new Map<string, number[]>();
-
-function rateLimited(key: string): boolean {
-  const now = Date.now();
-  const arr = (hits.get(key) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (arr.length >= MAX_REQUESTS_PER_WINDOW) {
-    hits.set(key, arr);
-    return true;
-  }
-  arr.push(now);
-  hits.set(key, arr);
-  return false;
-}
 
 export async function POST(request: Request) {
   if (!ANTHROPIC_API_KEY) {
@@ -51,7 +40,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid or expired session.' }, { status: 401 });
   }
 
-  if (rateLimited(userData.user.id)) {
+  if (!(await allowRequest(supabase, `ai-proposal:${userData.user.id}`, MAX_REQUESTS_PER_WINDOW, WINDOW_SECONDS))) {
     return NextResponse.json({ error: 'Too many requests — try again in a minute.' }, { status: 429 });
   }
 
