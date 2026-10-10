@@ -40,14 +40,21 @@ export default function DashboardClient() {
         router.push('/login');
         return;
       }
-      const [{ data: c }, { data: pf }, { data: sv }, { data: ld }] = await Promise.all([
-        supabase.from('companies').select('*').eq('id', user.id).single(),
+      // referral_code is not readable through the table (column grant in 06_referral_code_grants.sql),
+      // so the provider's own code comes from the my_referral_code() RPC instead of select('*').
+      const [{ data: c }, { data: referralCode }, { data: pf }, { data: sv }, { data: ld }] = await Promise.all([
+        supabase
+          .from('companies')
+          .select('id, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at')
+          .eq('id', user.id)
+          .single(),
+        supabase.rpc('my_referral_code'),
         supabase.from('portfolio_items').select('*').eq('company_id', user.id),
         supabase.from('services').select('*').eq('company_id', user.id),
         supabase.from('leads').select('*').eq('company_id', user.id).order('created_at', { ascending: false }),
       ]);
       if (!cancelled) {
-        setCompany(c as Company | null);
+        setCompany(c ? ({ ...c, referral_code: (referralCode as string | null) ?? null } as Company) : null);
         setPortfolio((pf ?? []) as PortfolioItem[]);
         setServices((sv ?? []) as Service[]);
         setLeads((ld ?? []) as Lead[]);
