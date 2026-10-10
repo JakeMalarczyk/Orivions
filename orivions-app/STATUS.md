@@ -16,7 +16,7 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
 - **Auth middleware** uses `@supabase/ssr` with real `getUser()` JWT validation
   (the old cookie-guessing redirect loop is gone).
 
-- **Database migrations are bundled** in `supabase/migrations/` (01-05), and they
+- **Database migrations are bundled** in `supabase/migrations/` (01-06), and they
   already include the post-audit security fixes (`03_security_fixes.sql`): a client
   can read only their own leads, a provider cannot self-set `verified`/`featured`,
   and referral codes are not publicly readable. Run them in order on your Supabase
@@ -35,7 +35,7 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
 
 ## Check before going live (not blockers for the repo, blockers for a real deploy)
 
-1. **Run the bundled migrations** (`supabase/migrations/01..05`, in order) on your
+1. **Run the bundled migrations** (`supabase/migrations/01..06`, in order) on your
    Supabase project, then smoke-test:
    - a provider **cannot** set their own `verified`/`featured` via a direct Supabase
      call (blocked by the trigger in `03_security_fixes.sql`);
