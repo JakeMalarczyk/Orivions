@@ -282,9 +282,9 @@ function ProfilePanel({
         <div className="rounded-2xl border border-line p-6">
           <h3 className="font-semibold">Referral program</h3>
           <div className="mt-3 flex gap-2.5">
-            <input readOnly value={`orivions.xyz/r/${company.referral_code}`} className="flex-1 rounded-lg border border-line bg-bg-soft px-3 py-2.5 text-sm font-semibold" />
+            <input readOnly value={`orivions.com/r/${company.referral_code}`} className="flex-1 rounded-lg border border-line bg-bg-soft px-3 py-2.5 text-sm font-semibold" />
             <button
-              onClick={() => navigator.clipboard.writeText(`orivions.xyz/r/${company.referral_code}`)}
+              onClick={() => navigator.clipboard.writeText(`orivions.com/r/${company.referral_code}`)}
               className="rounded-lg border border-line px-4 text-sm font-semibold"
             >
               Copy
