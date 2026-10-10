@@ -97,6 +97,8 @@ Respond with ONLY the proposal text, no preamble, no markdown formatting, no exp
     });
 
     if (!anthropicRes.ok) {
+      // Server log only (Vercel runtime logs); the client still gets a generic message.
+      console.error('Anthropic API error', anthropicRes.status, await anthropicRes.text().catch(() => ''));
       return NextResponse.json({ error: 'Proposal service temporarily unavailable.' }, { status: 502 });
     }
 
