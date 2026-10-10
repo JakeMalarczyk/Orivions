@@ -127,8 +127,8 @@ Respond ONLY with valid JSON in this exact shape, no other text, no markdown fen
 
     if (!anthropicRes.ok) {
       // Server log only (Vercel runtime logs); the client still gets a generic message.
-      // Key shape only (public prefix, length, stray whitespace/quotes) to tell a wrong kind of key from a typo.
-      const keyShape = `${ANTHROPIC_API_KEY.slice(0, 10)}… len=${ANTHROPIC_API_KEY.length} ws=${/\s/.test(ANTHROPIC_API_KEY)} quotes=${/["']/.test(ANTHROPIC_API_KEY)}`;
+      // Key shape only (no key characters) to tell a wrong kind of value from a revoked key.
+      const keyShape = `sk-ant-api=${ANTHROPIC_API_KEY.startsWith('sk-ant-api')} len=${ANTHROPIC_API_KEY.length}`;
       console.error('Anthropic API error', anthropicRes.status, keyShape, await anthropicRes.text().catch(() => ''));
       return NextResponse.json({ error: 'Matching service temporarily unavailable.' }, { status: 502 });
     }
