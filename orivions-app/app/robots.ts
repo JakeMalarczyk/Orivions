@@ -12,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Google-Extended', allow: '/' },
       { userAgent: 'Bingbot', allow: '/' },
     ],
-    sitemap: 'https://orivions.xyz/sitemap.xml',
+    sitemap: 'https://orivions.com/sitemap.xml',
   };
 }

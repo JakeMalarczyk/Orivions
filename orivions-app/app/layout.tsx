@@ -22,7 +22,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.xyz';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             "afterInteractive" strategy so it never blocks the page from rendering. */}
         <Script
           defer
-          data-domain="orivions.xyz"
+          data-domain="orivions.com"
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"
         />

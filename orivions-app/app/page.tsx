@@ -132,8 +132,8 @@ export default function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: 'Orivions',
-            url: 'https://orivions.xyz/',
-            logo: 'https://orivions.xyz/logo.png',
+            url: 'https://orivions.com/',
+            logo: 'https://orivions.com/logo.png',
             description:
               'Business infrastructure layer for the Solana ecosystem — a verified marketplace connecting companies with trusted service providers.',
           }),

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const base = 'https://orivions.xyz';
+const base = 'https://orivions.com';
 
 // English-only site: no language alternates by design.
 export default function sitemap(): MetadataRoute.Sitemap {
