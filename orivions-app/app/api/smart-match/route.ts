@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { allowRequest } from '@/lib/rateLimit';
 
 // SECURITY REDESIGN (per external audit finding 2.4):
 // Previously this endpoint accepted a fully-formed `prompt` from the client,
@@ -13,25 +14,9 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// --- Minimal in-memory rate limiter (per serverless instance). ---
-// Honest limitation: on serverless hosting each instance has its own memory,
-// so this is a soft brake, not a hard guarantee. For production-grade limits
-// use Upstash Ratelimit or a Supabase-backed counter (see README TODO).
-const WINDOW_MS = 60_000;
+// Shared rate limit (Postgres-backed, see lib/rateLimit.ts): 5 requests per minute per IP.
+const WINDOW_SECONDS = 60;
 const MAX_REQUESTS_PER_WINDOW = 5;
-const hits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const arr = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (arr.length >= MAX_REQUESTS_PER_WINDOW) {
-    hits.set(ip, arr);
-    return true;
-  }
-  arr.push(now);
-  hits.set(ip, arr);
-  return false;
-}
 
 interface ProviderRow {
   id: string;
@@ -55,8 +40,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Server misconfigured: Supabase env vars not set.' }, { status: 500 });
   }
 
+  // Server-side Supabase client (anon key is fine: companies are publicly readable via RLS).
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: false },
+  });
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  if (rateLimited(ip)) {
+  if (!(await allowRequest(supabase, `smart-match:${ip}`, MAX_REQUESTS_PER_WINDOW, WINDOW_SECONDS))) {
     return NextResponse.json({ error: 'Too many requests — try again in a minute.' }, { status: 429 });
   }
 
@@ -76,11 +66,6 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Server-side Supabase client (anon key is fine: companies are publicly readable via RLS).
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      auth: { persistSession: false },
-    });
-
     const { data: providersData, error: pErr } = await supabase
       .from('companies')
       .select('id, name, category, description, verified')
