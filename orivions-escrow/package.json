@@ -1,0 +1,17 @@
+{
+  "name": "orivions-escrow",
+  "version": "1.0.0",
+  "description": "Orivions escrow core - fee accounting, state machine, payments (TypeScript reference implementation).",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node tests/fees.test.mjs && node tests/stateMachine.test.mjs && node tests/payments.test.mjs && node tests/surface.test.mjs && node tests/parity.test.mjs"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

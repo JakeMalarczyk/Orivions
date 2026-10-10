@@ -1,0 +1,10 @@
+[package]
+name = "escrow-core"
+version = "0.1.0"
+edition = "2021"
+description = "Orivions Escrow - canonical state machine and fee accounting (V1). Seed of the V3 on-chain program."
+license = "UNLICENSED"
+
+# ZERO dependencies by design: `cargo test` must run offline, first try,
+# on the machine that gates this crate (see VERIFY.md).
+[dependencies]
