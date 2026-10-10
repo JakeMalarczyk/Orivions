@@ -13,9 +13,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: "Why we're building Orivions — and why the Solana services market is broken",
-  url: 'https://orivions.xyz/blog/why-we-are-building-orivions',
+  url: 'https://orivions.com/blog/why-we-are-building-orivions',
   author: { '@type': 'Person', name: 'Jakub Malarczyk' },
-  publisher: { '@type': 'Organization', name: 'Orivions', url: 'https://orivions.xyz' },
+  publisher: { '@type': 'Organization', name: 'Orivions', url: 'https://orivions.com' },
 };
 
 export default function PostPage() {
