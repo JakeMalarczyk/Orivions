@@ -61,8 +61,11 @@ export default function AuthForm() {
         setStatus('success');
         setMessage('Logged in — redirecting to your dashboard…');
         const userType = data.user?.user_metadata?.account_type as AccountType | undefined;
+        // Only same-site paths ("/admin"), never "//evil.com" or absolute URLs.
+        const redirectTo = searchParams.get('redirectTo');
+        const safeRedirect = redirectTo && redirectTo.startsWith('/') && !redirectTo.startsWith('//') ? redirectTo : null;
         setTimeout(() => {
-          router.push(userType === 'provider' ? '/provider-dashboard' : '/client-dashboard');
+          router.push(safeRedirect ?? (userType === 'provider' ? '/provider-dashboard' : '/client-dashboard'));
         }, 500);
       }
     } catch {
