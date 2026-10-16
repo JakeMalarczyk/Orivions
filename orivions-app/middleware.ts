@@ -11,7 +11,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 // createBrowserClient in lib/supabase.ts (which stores the session in cookies),
 // and validates the session for real via supabase.auth.getUser().
 
-const PROTECTED_PREFIXES = ['/provider-dashboard', '/client-dashboard'];
+const PROTECTED_PREFIXES = ['/provider-dashboard', '/client-dashboard', '/admin'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -55,5 +55,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/provider-dashboard/:path*', '/client-dashboard/:path*'],
+  matcher: ['/provider-dashboard/:path*', '/client-dashboard/:path*', '/admin/:path*'],
 };

@@ -18,7 +18,7 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
 - **Auth middleware** uses `@supabase/ssr` with real `getUser()` JWT validation
   (the old cookie-guessing redirect loop is gone).
 
-- **Database migrations are bundled** in `supabase/migrations/` (01-07), and they
+- **Database migrations are bundled** in `supabase/migrations/` (01-08), and they
   already include the post-audit security fixes (`03_security_fixes.sql`): a client
   can read only their own leads, a provider cannot self-set `verified`/`featured`,
   and referral codes are not publicly readable. Run them in order on your Supabase
@@ -37,7 +37,7 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
 
 ## Check before going live (not blockers for the repo, blockers for a real deploy)
 
-1. **Run the bundled migrations** (`supabase/migrations/01..07`, in order) on your
+1. **Run the bundled migrations** (`supabase/migrations/01..08`, in order) on your
    Supabase project, then smoke-test:
    - a provider **cannot** set their own `verified`/`featured` via a direct Supabase
      call (blocked by the trigger in `03_security_fixes.sql`);
@@ -51,6 +51,23 @@ The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supa
    RLS is what enforces access - so the migrations above must be correct.
 4. **Fonts** - build needs internet for Google Fonts, or self-host Inter/Poppins if
    you want fully offline/air-gapped builds.
+
+## Admin panel (`/admin`)
+
+- Access is enforced in Postgres (`08_admin.sql`): `public.admins` + `is_admin()`.
+  Admins can verify / feature / mark founding providers, read leads, concierge
+  requests, waitlist and newsletter, and change concierge status.
+- Granting admin is a manual SQL step after the person has an account:
+  `insert into public.admins (user_id) select id from auth.users where email = '...';`
+
+## SEO / GEO
+
+- Blog posts live in `lib/blog.ts` (one entry per post) and feed the blog index,
+  sitemap, RSS (`/blog/rss.xml`) and `/llms.txt`.
+- Structured data: Organization + WebSite (layout), FAQPage (home), BlogPosting +
+  BreadcrumbList + FAQPage (posts), FAQPage (category pages).
+- `robots.txt` welcomes search and AI crawlers and blocks `/admin`, `/api/`,
+  dashboards and `/login`.
 
 ## How to run locally
 
