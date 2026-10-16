@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next';
-
-const base = 'https://orivions.com';
+import { SITE_URL, sortedPosts } from '@/lib/blog';
 
 // English-only site: no language alternates by design.
+// Blog posts come from lib/blog.ts, so a new post is in the sitemap automatically.
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     { path: '/', priority: 1.0, changeFrequency: 'weekly' as const },
@@ -13,14 +13,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/solana-development-companies', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-marketing-growth-agencies', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
-    { path: '/blog/why-we-are-building-orivions', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/ai-proposal-generator', priority: 0.4, changeFrequency: 'monthly' as const },
   ];
 
-  return pages.map(({ path, priority, changeFrequency }) => ({
-    url: `${base}${path}`,
-    lastModified: new Date(),
+  const now = new Date();
+  const staticEntries = pages.map(({ path, priority, changeFrequency }) => ({
+    url: `${SITE_URL}${path}`,
+    lastModified: now,
     changeFrequency,
     priority,
   }));
+
+  const postEntries = sortedPosts().map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: new Date(`${p.dateModified}T00:00:00Z`),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...postEntries];
 }

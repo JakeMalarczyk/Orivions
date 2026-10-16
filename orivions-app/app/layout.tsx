@@ -32,9 +32,15 @@ export const metadata: Metadata = {
   },
   description:
     'The verified B2B marketplace for the Solana ecosystem — discover, verify, and hire trusted providers.',
+  applicationName: 'Orivions',
+  robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  alternates: {
+    types: { 'application/rss+xml': '/blog/rss.xml' },
+  },
   openGraph: {
     type: 'website',
     siteName: 'Orivions',
+    locale: 'en_US',
     images: ['/og-image.png'],
   },
   twitter: {
@@ -43,11 +49,43 @@ export const metadata: Metadata = {
   },
 };
 
+// Site-wide entities. Other pages reference these by @id
+// (e.g. a BlogPosting's publisher is { '@id': '…/#organization' }).
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Orivions',
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/logo.png`,
+      description:
+        'Verified B2B marketplace for the Solana ecosystem: AI matching with human-verified service providers (auditors, developers, marketing agencies). Free for clients; providers pay a flat 10% success fee on completed engagements.',
+      founder: { '@type': 'Person', name: 'Jakub Malarczyk' },
+      sameAs: ['https://github.com/JakeMalarczyk/Orivions'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: 'Orivions',
+      inLanguage: 'en',
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body className="font-body bg-white text-ink antialiased">
         {children}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
         {/* Plausible: no cookies, no consent banner needed, loaded with next/script's
             "afterInteractive" strategy so it never blocks the page from rendering. */}
         <Script

@@ -4,6 +4,30 @@ import Header from '@/components/Header';
 import HeroCtas from './HeroCtas';
 import WaitlistForm from './WaitlistForm';
 
+// Shown on the page and emitted as FAQPage JSON-LD, so answer engines can quote them.
+const FAQS: [string, string][] = [
+  [
+    'What is Orivions?',
+    'Orivions is a verified B2B marketplace for the Solana ecosystem. It helps companies discover, compare, and hire verified service providers instead of relying on Discord, X, or word-of-mouth.',
+  ],
+  [
+    'Is Orivions free?',
+    'Yes, for clients. Searching, comparing, and contacting providers costs nothing. Providers pay a flat 10% success fee only when a real engagement is completed through the platform - no subscriptions, no placement fees.',
+  ],
+  [
+    'How is Orivions different from Superteam Earn?',
+    'Superteam Earn is a bounty marketplace for individual builders. Orivions is built for verified companies and ongoing B2B engagements — a different unit of trust, not a replacement.',
+  ],
+  [
+    'How does Smart Match work?',
+    'You describe what you need in plain English. Orivions compares your request with verified provider profiles and services and returns the 1-3 best matches with a specific reason for each. No account or RFQ form is needed.',
+  ],
+  [
+    'What does "verified" mean on Orivions?',
+    'A person at Orivions has checked the provider: real company, real portfolio and services, transparent price ranges. Sponsored placements are always labeled and never mixed into organic results.',
+  ],
+];
+
 export const metadata: Metadata = {
   title: 'Orivions — Business Infrastructure Layer for Solana',
   description:
@@ -95,20 +119,7 @@ export default function HomePage() {
             Questions people actually ask.
           </h2>
           <div className="mt-10 space-y-3">
-            {[
-              [
-                'What is Orivions?',
-                'Orivions is a verified B2B marketplace for the Solana ecosystem. It helps companies discover, compare, and hire verified service providers instead of relying on Discord, X, or word-of-mouth.',
-              ],
-              [
-                'Is Orivions free?',
-                'Yes, for clients. Searching, comparing, and contacting providers costs nothing. Providers pay a flat 10% success fee only when a real engagement is completed through the platform - no subscriptions, no placement fees.',
-              ],
-              [
-                'How is Orivions different from Superteam Earn?',
-                'Superteam Earn is a bounty marketplace for individual builders. Orivions is built for verified companies and ongoing B2B engagements — a different unit of trust, not a replacement.',
-              ],
-            ].map(([q, a]) => (
+            {FAQS.map(([q, a]) => (
               <div key={q} className="rounded-2xl border border-line bg-white p-5">
                 <h3 className="font-semibold">{q}</h3>
                 <p className="mt-1.5 text-sm text-gray">{a}</p>
@@ -130,12 +141,12 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'Orivions',
-            url: 'https://orivions.com/',
-            logo: 'https://orivions.com/logo.png',
-            description:
-              'Business infrastructure layer for the Solana ecosystem — a verified marketplace connecting companies with trusted service providers.',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map(([q, a]) => ({
+              '@type': 'Question',
+              name: q,
+              acceptedAnswer: { '@type': 'Answer', text: a },
+            })),
           }),
         }}
       />
