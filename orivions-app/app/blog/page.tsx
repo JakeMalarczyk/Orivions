@@ -1,39 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import { SITE_URL, UPCOMING, formatPostDate, postUrl, sortedPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog — Building the business layer for Solana',
   description:
-    'Building in public: product updates with real numbers, market data, and practical guides for hiring (and being hired) in the Solana ecosystem.',
-  alternates: { canonical: '/blog' },
+    'Building in public: practical guides for hiring auditors and development teams in the Solana ecosystem, product updates with real numbers, and market data.',
+  alternates: {
+    canonical: '/blog',
+    types: { 'application/rss+xml': '/blog/rss.xml' },
+  },
 };
-
-// Post registry. Adding a post = one entry here + one folder under app/blog/.
-// Deliberately a plain array, not a CMS — at this stage simplicity beats tooling.
-const POSTS = [
-  {
-    slug: 'why-we-are-building-orivions',
-    meta: 'Building in public · 5 min read',
-    title: "Why we're building Orivions — and why the Solana services market is broken",
-    excerpt:
-      "Thousands of funded teams, thousands of service companies, and the main way they find each other is asking strangers on Discord. Here's the problem we're solving, how, and what we'll share along the way.",
-    tags: ['Building in public', 'Announcement'],
-  },
-];
-
-const UPCOMING = [
-  {
-    title: 'How to choose a Solana smart contract auditor (a practical checklist)',
-    excerpt: 'What actually matters when your mainnet date depends on it: Anchor experience, methodology, red flags in quotes, and realistic timelines.',
-    tags: ['Guides', 'Security'],
-  },
-  {
-    title: 'State of Solana Services — first data from the platform',
-    excerpt: 'Supply by category, indicative pricing, and what funded teams are actually looking for. Published when we have real numbers worth sharing.',
-    tags: ['Market data', 'Insights'],
-  },
-];
 
 function Tags({ tags }: { tags: string[] }) {
   return (
@@ -48,6 +26,23 @@ function Tags({ tags }: { tags: string[] }) {
 }
 
 export default function BlogIndexPage() {
+  const posts = sortedPosts();
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${SITE_URL}/blog#blog`,
+    name: 'Orivions Blog',
+    url: `${SITE_URL}/blog`,
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.title,
+      url: postUrl(p.slug),
+      datePublished: p.datePublished,
+      dateModified: p.dateModified,
+    })),
+  };
+
   return (
     <>
       <Header />
@@ -56,18 +51,26 @@ export default function BlogIndexPage() {
           Building the business layer for Solana — in public.
         </h1>
         <p className="mt-3 text-gray">
-          Product updates with real numbers, market data from the platform, and practical guides
-          for hiring (and being hired) in the Solana ecosystem. No hype, no filler.
+          Practical guides for hiring (and being hired) in the Solana ecosystem, product updates
+          with real numbers, and market data from the platform. No hype, no filler.
+        </p>
+        <p className="mt-2 text-sm">
+          <a href="/blog/rss.xml" className="text-blue-deep">
+            RSS feed
+          </a>
         </p>
 
         <div className="mt-10 flex flex-col gap-4">
-          {POSTS.map((p) => (
+          {posts.map((p) => (
             <Link
               key={p.slug}
               href={`/blog/${p.slug}`}
               className="block rounded-2xl border border-line p-6 transition hover:border-blue-deep hover:shadow-md"
             >
-              <div className="text-xs font-medium uppercase tracking-wide text-gray-soft">{p.meta}</div>
+              <div className="text-xs font-medium uppercase tracking-wide text-gray-soft">
+                {p.category} · <time dateTime={p.datePublished}>{formatPostDate(p.datePublished)}</time> ·{' '}
+                {p.readingMinutes} min read
+              </div>
               <h2 className="mt-2 font-heading text-xl font-semibold leading-snug">{p.title}</h2>
               <p className="mt-2 text-sm text-gray">{p.excerpt}</p>
               <Tags tags={p.tags} />
@@ -84,6 +87,11 @@ export default function BlogIndexPage() {
           ))}
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }
