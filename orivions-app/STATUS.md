@@ -84,3 +84,12 @@ npm run build                       # production build (needs internet for fonts
 The escrow lives in its own repo (`orivions-escrow`) - milestone state machine,
 fee accounting, Rust core, Postgres schema. It is attachable to this app via the
 single `PaymentProvider` seam. See that repo's README.
+
+## Content and GEO (2026-10-17)
+- Blog: 8 posts in `lib/blog.ts`, each with Key takeaways, FAQ (FAQPage JSON-LD) and automatic "Related reading".
+- New guides: audit cost, Anchor vs native Rust, pre-launch security checklist, choosing a marketing agency, cost of a Solana dApp.
+- `/solana-glossary`: 25 terms from `lib/glossary.ts` with DefinedTermSet JSON-LD.
+- `/og?title=&label=`: dynamic 1200x630 social cards (edge, next/og), used by every post.
+- `/llms-full.txt`: key facts, post summaries and FAQ answers, full glossary.
+- House style: no em dashes anywhere (copy, code comments, AI prompts; AI output is also filtered).
+
