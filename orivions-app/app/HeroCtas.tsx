@@ -24,7 +24,7 @@ export default function HeroCtas() {
   function trackAndGo(eventName: string, path: string) {
     window.plausible?.(eventName, { props: getUtmProps() });
     // Preserve the full query string (UTM params) across the navigation
-    // so attribution survives the click-through — the same fix we made on the
+    // so attribution survives the click-through, the same fix we made on the
     // original static site, now centralized in one place instead of duplicated
     // inline onclick handlers.
     const qs = searchParams.toString();

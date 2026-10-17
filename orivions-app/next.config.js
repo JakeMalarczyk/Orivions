@@ -16,9 +16,9 @@ const ContentSecurityPolicy = `
 
 const securityHeaders = [
   { key: 'Content-Security-Policy', value: ContentSecurityPolicy },
-  // Prevents the site from ever being embedded in an <iframe> elsewhere — kills clickjacking.
+  // Prevents the site from ever being embedded in an <iframe> elsewhere, kills clickjacking.
   { key: 'X-Frame-Options', value: 'DENY' },
-  // Stops the browser from guessing content-types — closes a class of MIME-sniffing attacks.
+  // Stops the browser from guessing content-types, closes a class of MIME-sniffing attacks.
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   // Don't leak the full referring URL (which can contain tokens/paths) to third parties.
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },

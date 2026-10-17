@@ -13,7 +13,7 @@ export default function InsightsClient() {
     async function load() {
       const [{ data: companies }, { data: svc }] = await Promise.all([
         // Explicit column list instead of '*': public pages never need referral_code
-        // (report finding 2.6 — select('*') publicly exposed semi-private fields).
+        // (report finding 2.6, select('*') publicly exposed semi-private fields).
         supabase.from('companies').select('id, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at').eq('account_type', 'provider').eq('verified', true),
         supabase.from('services').select('*'),
       ]);
@@ -59,7 +59,7 @@ export default function InsightsClient() {
     <div className="mx-auto max-w-5xl px-8 pb-20 pt-14">
       <div className="text-center">
         <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Solana Business Infrastructure — Market Insights
+          Solana Business Infrastructure: Market Insights
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-gray">
           Live data from the Orivions directory: verified provider supply by category and
@@ -83,7 +83,7 @@ export default function InsightsClient() {
         </div>
         {!activeCategories.length ? (
           <p className="p-8 text-center text-sm text-gray-soft">
-            Not enough data yet — check back as more providers join.
+            Not enough data yet. Check back as more providers join.
           </p>
         ) : (
           <table className="w-full">

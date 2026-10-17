@@ -2,21 +2,21 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Development Companies — Verified dApp & Smart Contract Developers',
+  title: 'Solana Development Companies: Verified dApp & Smart Contract Developers',
   description:
-    'Find verified Solana development companies — smart contract engineers, full-stack dApp builders, and Anchor specialists. Compare portfolios and indicative pricing, free to search and contact.',
+    'Find verified Solana development companies: smart contract engineers, full-stack dApp builders, and Anchor specialists. Compare portfolios and indicative pricing, free to search and contact.',
   alternates: { canonical: '/solana-development-companies' },
 };
 
 const content: CategoryContent = {
   breadcrumbLabel: 'Solana Development Companies',
   h1: 'Solana Development Companies',
-  lede: 'Verified development shops for Solana — from smart contract engineering to full-stack dApp builds. Compare portfolios, see indicative pricing, and contact them directly. Free to search.',
+  lede: 'Verified development shops for Solana, from smart contract engineering to full-stack dApp builds. Compare portfolios, see indicative pricing, and contact them directly. Free to search.',
   ctaPrimary: 'Describe your project (AI match)',
   sections: [
     {
       heading: 'Why hire a specialized Solana development company?',
-      body: "Building on Solana requires genuine expertise with Rust, the Anchor framework, and Solana's account model — meaningfully different from EVM-based development. A team with real Solana experience avoids costly mistakes around account validation, compute budgets, and PDA (Program Derived Address) design that a generalist blockchain shop might not catch.",
+      body: "Building on Solana requires genuine expertise with Rust, the Anchor framework, and Solana's account model, meaningfully different from EVM-based development. A team with real Solana experience avoids costly mistakes around account validation, compute budgets, and PDA (Program Derived Address) design that a generalist blockchain shop might not catch.",
     },
     {
       heading: 'What to look for in a Solana dev shop',
@@ -38,7 +38,7 @@ const content: CategoryContent = {
   faqs: [
     {
       q: 'How much does it cost to build a Solana dApp?',
-      a: 'Pricing varies widely by scope — a simple program might start around $2,000-5,000, while a full protocol with frontend, multiple programs, and integrations can run $20,000 or more. See live indicative pricing on Orivions Market Insights.',
+      a: 'Pricing varies widely by scope: a simple program might start around $2,000-5,000, while a full protocol with frontend, multiple programs, and integrations can run $20,000 or more. See live indicative pricing on Orivions Market Insights.',
     },
     {
       q: "What's the difference between Anchor and native Rust development?",
@@ -46,11 +46,11 @@ const content: CategoryContent = {
     },
     {
       q: 'Do I need a separate team for frontend and smart contracts?',
-      a: 'Not necessarily — many verified providers on Orivions offer full-stack development, covering both the on-chain program and the client-facing application.',
+      a: 'Not necessarily. Many verified providers on Orivions offer full-stack development, covering both the on-chain program and the client-facing application.',
     },
   ],
   ctaBoxTitle: 'Not sure which dev shop fits your project?',
-  ctaBoxText: 'Describe your project and requirements — AI matches you with the right verified developers in seconds.',
+  ctaBoxText: 'Describe your project and requirements, and AI matches you with the right verified developers in seconds.',
 };
 
 export default function Page() {

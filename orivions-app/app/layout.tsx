@@ -7,7 +7,7 @@ import './globals.css';
 // next/font downloads and self-hosts these at BUILD time, then serves them from
 // your own domain with automatic font-display: swap and zero layout shift.
 // The old site loaded these from fonts.googleapis.com/fonts.gstatic.com on every
-// visit — an extra DNS lookup + round trip before any text could render.
+// visit: an extra DNS lookup + round trip before any text could render.
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['500', '600', '700'],
@@ -27,11 +27,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.com';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Orivions — Business Infrastructure Layer for Solana',
+    default: 'Orivions: Business Infrastructure Layer for Solana',
     template: '%s | Orivions',
   },
   description:
-    'The verified B2B marketplace for the Solana ecosystem — discover, verify, and hire trusted providers.',
+    'The verified B2B marketplace for the Solana ecosystem. Discover, verify, and hire trusted providers.',
   applicationName: 'Orivions',
   robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   alternates: {
@@ -64,6 +64,15 @@ const siteJsonLd = {
         'Verified B2B marketplace for the Solana ecosystem: AI matching with human-verified service providers (auditors, developers, marketing agencies). Free for clients; providers pay a flat 10% success fee on completed engagements.',
       founder: { '@type': 'Person', name: 'Jakub Malarczyk' },
       sameAs: ['https://github.com/JakeMalarczyk/Orivions'],
+      knowsAbout: [
+        'Solana',
+        'Solana smart contract audits',
+        'Solana program development',
+        'Anchor framework',
+        'Web3 marketing',
+        'B2B service marketplaces',
+      ],
+      areaServed: 'Worldwide',
     },
     {
       '@type': 'WebSite',

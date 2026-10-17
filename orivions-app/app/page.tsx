@@ -16,7 +16,7 @@ const FAQS: [string, string][] = [
   ],
   [
     'How is Orivions different from Superteam Earn?',
-    'Superteam Earn is a bounty marketplace for individual builders. Orivions is built for verified companies and ongoing B2B engagements — a different unit of trust, not a replacement.',
+    'Superteam Earn is a bounty marketplace for individual builders. Orivions is built for verified companies and ongoing B2B engagements: a different unit of trust, not a replacement.',
   ],
   [
     'How does Smart Match work?',
@@ -29,9 +29,9 @@ const FAQS: [string, string][] = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Orivions — Business Infrastructure Layer for Solana',
+  title: 'Orivions: Business Infrastructure Layer for Solana',
   description:
-    'The verified B2B marketplace for the Solana ecosystem — discover, verify, and hire trusted providers. Free for clients.',
+    'The verified B2B marketplace for the Solana ecosystem. Discover, verify, and hire trusted providers. Free for clients.',
   alternates: {
     canonical: '/',
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 // This whole page is a Server Component by default: it renders to HTML on the
 // server (or at build time) and ships almost no JavaScript for the static parts.
 // Only HeroCtas and WaitlistForm (which need onClick
-// handlers or read the URL) are separately marked 'use client' — everything
+// handlers or read the URL) are separately marked 'use client'; everything
 // else here is plain, fast, zero-JS markup.
 export default function HomePage() {
   return (
@@ -62,7 +62,7 @@ export default function HomePage() {
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray">
             The professional home where Solana builders find, verify, and hire their next
-            partner — developers, auditors, marketers, and more.
+            partner: developers, auditors, marketers, and more.
           </p>
           <Suspense fallback={null}>
             <HeroCtas />
@@ -73,13 +73,13 @@ export default function HomePage() {
       <section id="problem" className="bg-bg-soft px-8 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">
-            01 — The problem
+            01 · The problem
           </div>
           <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight">
             The fastest blockchain still runs on the slowest business process.
           </h2>
           <p className="mt-4 max-w-2xl text-gray">
-            Solana has thousands of builders — but no trusted place where businesses can find
+            Solana has thousands of builders, but no trusted place where businesses can find
             each other. Today that happens through Discord, X, Telegram, and private referrals:
             fragmented, slow, and impossible to verify.
           </p>
@@ -89,7 +89,7 @@ export default function HomePage() {
       <section id="solution" className="px-8 py-20">
         <div className="mx-auto max-w-5xl">
           <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">
-            02 — The solution
+            02 · The solution
           </div>
           <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight">
             Introducing Orivions.
@@ -101,7 +101,7 @@ export default function HomePage() {
               ['Verify providers', "Admin verification and reputation, so trust isn't a guessing game."],
               ['Receive leads', 'Providers get inbound contact requests from qualified clients.'],
               ['Collaborate', 'Everything needed to move from first contact to signed work.'],
-              ['Grow', "Reputation compounds — the more you deliver, the more you're found."],
+              ['Grow', "Reputation compounds: the more you deliver, the more you're found."],
             ].map(([title, desc]) => (
               <div key={title} className="rounded-2xl border border-line p-6">
                 <h3 className="text-base font-semibold">{title}</h3>
@@ -114,7 +114,7 @@ export default function HomePage() {
 
       <section id="faq" className="bg-bg-soft px-8 py-20">
         <div className="mx-auto max-w-3xl">
-          <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">08 — FAQ</div>
+          <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">08 · FAQ</div>
           <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight">
             Questions people actually ask.
           </h2>

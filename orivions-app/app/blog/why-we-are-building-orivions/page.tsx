@@ -12,7 +12,7 @@ export default function PostPage() {
       breadcrumbLabel="Why we're building Orivions"
       cta={{
         title: 'See it working today',
-        text: 'Describe your project — get matched with verified Solana providers in 30 seconds. Free, no account needed.',
+        text: 'Describe your project and get matched with verified Solana providers in 30 seconds. Free, no account needed.',
         href: '/smart-match',
         label: 'Try Smart Match →',
       }}
@@ -34,7 +34,7 @@ export default function PostPage() {
         </p>
         <p className="mt-3 leading-relaxed text-[#27272E]">
           There&apos;s no place to verify who&apos;s actually good. Portfolios are unverifiable
-          claims. Reviews on generic B2B directories are gameable — and worse, most of those
+          claims. Reviews on generic B2B directories are gameable, and worse, most of those
           directories openly sell visibility, so the &quot;top&quot; providers are simply the
           ones who paid the most.
         </p>
@@ -49,17 +49,17 @@ export default function PostPage() {
         <h2 className="mt-10 font-heading text-[22px] font-semibold">What Orivions does about it</h2>
         <ul className="mt-3 list-disc space-y-2.5 pl-5 leading-relaxed text-[#27272E]">
           <li>
-            <b>Describe what you need in plain English</b> — AI matches you with relevant
+            <b>Describe what you need in plain English</b>: AI matches you with relevant
             verified providers in about 30 seconds, with a reason for every match. No category
             browsing, no RFQ forms, no waiting.
           </li>
           <li>
-            <b>Verification means a human checked</b> — real portfolio, real services,
+            <b>Verification means a human checked</b>: real portfolio, real services,
             transparent price ranges. Sponsored placements exist, but they&apos;re clearly
             labeled and never mixed into organic results.
           </li>
           <li>
-            <b>Free for clients. Entirely.</b> Searching, matching, contacting — $0, forever.
+            <b>Free for clients. Entirely.</b> Searching, matching, contacting: $0, forever.
             Providers pay a success fee only when a deal actually closes. Our incentives are
             aligned with deals happening, not with listing fees.
           </li>
@@ -67,7 +67,7 @@ export default function PostPage() {
 
         <h2 className="mt-10 font-heading text-[22px] font-semibold">Why Solana specifically</h2>
         <p className="mt-3 leading-relaxed text-[#27272E]">
-          Generic Web3 directories go wide and shallow — every chain, every category, no depth
+          Generic Web3 directories go wide and shallow: every chain, every category, no depth
           anywhere. We&apos;re going the opposite way: one ecosystem, deeply. Solana has the
           builder density, the funding pipeline (grants, hackathons, accelerators), and the
           culture of shipping fast that makes a dedicated services layer genuinely useful rather
@@ -78,7 +78,7 @@ export default function PostPage() {
           What &quot;building in public&quot; means here
         </h2>
         <p className="mt-3 leading-relaxed text-[#27272E]">
-          This blog will publish real numbers — providers onboarded, deals closed, what worked,
+          This blog will publish real numbers: providers onboarded, deals closed, what worked,
           what didn&apos;t. Including the failures, because a launch journal that only reports
           wins is marketing pretending to be transparency. Our first practical guide is out:{' '}
           <Link href="/blog/how-to-choose-a-solana-smart-contract-auditor" className="text-blue-deep">how to choose a Solana smart contract auditor</Link>. Next up: the first &quot;State of Solana Services&quot; data

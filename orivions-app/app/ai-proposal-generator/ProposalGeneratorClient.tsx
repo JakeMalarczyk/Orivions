@@ -26,7 +26,7 @@ export default function ProposalGeneratorClient() {
 
     try {
       // The endpoint requires a logged-in session and builds the prompt
-      // server-side — we send only the structured inputs (audit finding 2.4).
+      // server-side, we send only the structured inputs (audit finding 2.4).
       const { data: sessionData } = await supabase.auth.getSession();
       const token = sessionData.session?.access_token;
       if (!token) {
@@ -43,11 +43,11 @@ export default function ProposalGeneratorClient() {
         body: JSON.stringify({ brief: brief.trim(), services: services.trim(), tone: tone.trim() }),
       });
       if (res.status === 401) {
-        setErrorMsg('Session expired — please log in again.');
+        setErrorMsg('Session expired. Please log in again.');
         return;
       }
       if (res.status === 429) {
-        setErrorMsg('Too many requests — give it a minute and try again.');
+        setErrorMsg('Too many requests. Give it a minute and try again.');
         return;
       }
       if (!res.ok) throw new Error('API request failed');

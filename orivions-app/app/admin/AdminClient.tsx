@@ -101,7 +101,7 @@ export default function AdminClient() {
     setConcierge((conciergeRes.data ?? []) as ConciergeRequest[]);
 
     const nameById = new Map(providerRows.map((p) => [p.id, p.name]));
-    setLeads(((leadsRes.data ?? []) as Lead[]).map((l) => ({ ...l, providerName: nameById.get(l.company_id) ?? '—' })));
+    setLeads(((leadsRes.data ?? []) as Lead[]).map((l) => ({ ...l, providerName: nameById.get(l.company_id) ?? '-' })));
 
     const waitlist = ((waitlistRes.data ?? []) as { id: string; email: string; created_at: string }[]).map((w) => ({
       ...w,
@@ -312,7 +312,7 @@ export default function AdminClient() {
                           {c.client_email}
                         </a>
                       </div>
-                      <p className="mt-1 text-sm text-gray">{c.project_description || '—'}</p>
+                      <p className="mt-1 text-sm text-gray">{c.project_description || '-'}</p>
                       <div className="mt-1 text-xs text-gray-soft">
                         {[c.category, c.budget_range, c.timeline].filter(Boolean).join(' · ')} · {formatDate(c.created_at)}
                       </div>

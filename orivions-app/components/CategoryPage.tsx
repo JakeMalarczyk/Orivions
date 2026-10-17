@@ -96,7 +96,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-[15px] text-gray">
                   {s.bullets.map(([lead, rest]) => (
                     <li key={lead}>
-                      <b className="text-ink">{lead}</b> — {rest}
+                      <b className="text-ink">{lead}</b>: {rest}
                     </li>
                   ))}
                 </ul>

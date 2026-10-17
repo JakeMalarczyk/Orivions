@@ -33,7 +33,7 @@ export default function CategoryProviders({ category }: { category: string }) {
   if (!providers.length) {
     return (
       <p className="mt-4 text-sm text-gray-soft">
-        No verified auditors listed yet — check back soon, or browse the full directory.
+        No verified auditors listed yet. Check back soon, or browse the full directory.
       </p>
     );
   }

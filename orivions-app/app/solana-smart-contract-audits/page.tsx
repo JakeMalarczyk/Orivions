@@ -2,21 +2,21 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Smart Contract Audits — Verified Auditors',
+  title: 'Solana Smart Contract Audits: Verified Auditors',
   description:
-    'Find and compare verified Solana smart contract auditors. See what to look for, typical pricing, and browse vetted security firms — free to search and contact.',
+    'Find and compare verified Solana smart contract auditors. See what to look for, typical pricing, and browse vetted security firms, free to search and contact.',
   alternates: { canonical: '/solana-smart-contract-audits' },
 };
 
 const content: CategoryContent = {
   breadcrumbLabel: 'Solana Smart Contract Audits',
   h1: 'Solana Smart Contract Audits',
-  lede: 'Verified auditors for Solana programs — from small Anchor-based projects to large-scale DeFi protocols. Compare providers, see indicative pricing, and contact them directly. Free to search.',
+  lede: 'Verified auditors for Solana programs, from small Anchor-based projects to large-scale DeFi protocols. Compare providers, see indicative pricing, and contact them directly. Free to search.',
   ctaPrimary: 'Describe your audit needs (AI match)',
   sections: [
     {
       heading: 'Why get a smart contract audit before launching on Solana?',
-      body: 'Solana programs that handle user funds, token logic, or protocol governance carry real financial risk if they contain vulnerabilities. Unlike a typical web application, a bug in a deployed smart contract often cannot be quietly patched — it can mean an irreversible loss of funds. An independent audit catches logic errors, access-control issues, and Solana-specific pitfalls (account validation, PDA derivation, integer overflow) before they reach mainnet.',
+      body: 'Solana programs that handle user funds, token logic, or protocol governance carry real financial risk if they contain vulnerabilities. Unlike a typical web application, a bug in a deployed smart contract often cannot be quietly patched; it can mean an irreversible loss of funds. An independent audit catches logic errors, access-control issues, and Solana-specific pitfalls (account validation, PDA derivation, integer overflow) before they reach mainnet.',
     },
     {
       heading: 'What to look for in a Solana auditor',
@@ -46,7 +46,7 @@ const content: CategoryContent = {
     },
   ],
   ctaBoxTitle: 'Not sure which auditor fits your project?',
-  ctaBoxText: 'Describe your protocol and timeline — AI matches you with the right verified auditors in seconds.',
+  ctaBoxText: 'Describe your protocol and timeline, and AI matches you with the right verified auditors in seconds.',
 };
 
 export default function Page() {

@@ -3,7 +3,7 @@
 import { useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
 
-// Shape returned by /api/smart-match — a public subset of the Company row
+// Shape returned by /api/smart-match, a public subset of the Company row
 // (the server deliberately never exposes fields like referral_code here).
 interface MatchProvider {
   id: string;
@@ -40,7 +40,7 @@ export default function SmartMatchClient() {
 
     setLoading(true);
     try {
-      // The server builds the prompt and fetches providers itself — the client
+      // The server builds the prompt and fetches providers itself; the client
       // sends only the raw project description (audit finding 2.4).
       const res = await fetch('/api/smart-match', {
         method: 'POST',
@@ -48,14 +48,14 @@ export default function SmartMatchClient() {
         body: JSON.stringify({ need: need.trim() }),
       });
       if (res.status === 429) {
-        setErrorMsg('Too many requests — give it a minute and try again.');
+        setErrorMsg('Too many requests. Give it a minute and try again.');
         return;
       }
       if (!res.ok) throw new Error('API request failed');
       const data = (await res.json()) as { matches: { provider: Match['provider']; reason: string }[] };
 
       if (!data.matches?.length) {
-        setErrorMsg('No strong matches found for that description yet — try being more specific, or browse the full directory.');
+        setErrorMsg('No strong matches found for that description yet. Try being more specific, or browse the full directory.');
       } else {
         setMatches(data.matches);
       }
@@ -75,7 +75,7 @@ export default function SmartMatchClient() {
         Describe what you need. <span className="text-blue-deep">We&apos;ll find your match.</span>
       </h1>
       <p className="mx-auto mt-4 max-w-lg text-gray">
-        No browsing categories. Tell us about your project in plain English — AI recommends the
+        No browsing categories. Tell us about your project in plain English and AI recommends the
         right verified providers from our directory.
       </p>
 
@@ -88,7 +88,7 @@ export default function SmartMatchClient() {
           className="w-full resize-none rounded-xl border-none p-4 text-sm outline-none"
         />
         <div className="flex items-center justify-between px-3 pb-2 pt-1">
-          <span className="text-xs text-gray-soft">Be specific — budget, timeline, and scope help a lot.</span>
+          <span className="text-xs text-gray-soft">Be specific: budget, timeline, and scope help a lot.</span>
           <button
             onClick={runMatch}
             disabled={loading}
@@ -152,7 +152,7 @@ export default function SmartMatchClient() {
       )}
 
       <p className="mt-8 text-xs text-gray-soft">
-        Matches are AI-generated suggestions based on provider profiles — always review a
+        Matches are AI-generated suggestions based on provider profiles. Always review a
         provider&apos;s portfolio before hiring.
       </p>
     </div>

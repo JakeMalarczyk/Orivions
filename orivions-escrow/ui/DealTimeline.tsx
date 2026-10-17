@@ -1,11 +1,11 @@
 'use client';
 
 /**
- * Orivions Escrow — drop-in UI (React/Tailwind, same tokens as the host app).
+ * Orivions Escrow, drop-in UI (React/Tailwind, same tokens as the host app).
  *
  * ATTACH: copy to `components/escrow/DealTimeline.tsx`; render inside the
  * provider or client dashboard with the viewer role and data fetched by the
- * host (this component does no fetching — it renders and calls back).
+ * host (this component does no fetching, it renders and calls back).
  * Visual language follows the Orivions brandbook: ink/blue-deep/line/bg-soft.
  */
 
@@ -22,7 +22,7 @@ const DEAL_BADGE: Record<Deal['state'], { label: string; cls: string }> = {
 
 const MS_BADGE: Record<Milestone['state'], { label: string; cls: string }> = {
   pending: { label: 'In progress', cls: 'bg-bg-soft text-gray' },
-  delivered: { label: 'Delivered — review', cls: 'bg-[#FEF3E8] text-[#B45309]' },
+  delivered: { label: 'Delivered: review', cls: 'bg-[#FEF3E8] text-[#B45309]' },
   approved: { label: '✓ Approved', cls: 'bg-[#E8F5EE] text-[#1FA971]' },
   rejected: { label: 'Changes requested', cls: 'bg-[#FDEBE9] text-[#E4574C]' },
 };
@@ -105,7 +105,7 @@ export default function DealTimeline({
         })}
       </ol>
 
-      {/* Fee summary — mirrors escrow_deal_fees view */}
+      {/* Fee summary, mirrors escrow_deal_fees view */}
       <div className="mt-5 flex flex-wrap gap-6 rounded-xl bg-bg-soft p-4 text-sm">
         <div><span className="text-gray-soft">Total</span>{' '}
           <b>{fees.totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</b></div>

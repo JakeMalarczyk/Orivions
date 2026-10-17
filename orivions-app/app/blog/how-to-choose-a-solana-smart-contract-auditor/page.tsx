@@ -42,12 +42,12 @@ export default function PostPage() {
       <P>A good Solana auditor should be fluent in issues like:</P>
       <BulletList
         items={[
-          ['Missing signer and owner checks', '— accepting an account without verifying who signed or which program owns it.'],
-          ['Account substitution', '— passing a different account of the same shape (sometimes called type cosplay) where the program does not check the discriminator or address.'],
-          ['PDA mistakes', '— non-canonical bumps, seeds that collide, or authorities derived in a way an attacker can reproduce.'],
-          ['Arbitrary CPI', '— invoking a program whose ID was supplied by the caller and never checked.'],
-          ['Arithmetic and precision', '— overflow, rounding direction and unit mismatches in token amounts and decimals.'],
-          ['Account lifecycle bugs', '— re-initialisation, improperly closed accounts and duplicate mutable accounts in one instruction.'],
+          ['Missing signer and owner checks:', 'accepting an account without verifying who signed or which program owns it.'],
+          ['Account substitution:', 'passing a different account of the same shape (sometimes called type cosplay) where the program does not check the discriminator or address.'],
+          ['PDA mistakes:', 'non-canonical bumps, seeds that collide, or authorities derived in a way an attacker can reproduce.'],
+          ['Arbitrary CPI:', 'invoking a program whose ID was supplied by the caller and never checked.'],
+          ['Arithmetic and precision:', 'overflow, rounding direction and unit mismatches in token amounts and decimals.'],
+          ['Account lifecycle bugs:', 're-initialisation, improperly closed accounts and duplicate mutable accounts in one instruction.'],
         ]}
       />
 
@@ -72,11 +72,11 @@ export default function PostPage() {
       <H2>4. Agree the scope in writing</H2>
       <BulletList
         items={[
-          ['Programs and commit', '— which programs, at which exact commit hash. Anything merged after that commit is not audited.'],
-          ['Out of scope', '— frontend, off-chain keepers, oracles, deployment scripts and admin key management are often excluded. Know what is not covered.'],
-          ['Design and economics', '— a code audit may not review whether your incentive or liquidation design can be gamed. Ask explicitly if that matters for you.'],
-          ['Fix review', '— confirm that reviewing your fixes is included, and at which commit the final report will be issued.'],
-          ['Publication', '— agree whether and when the report will be published. Users and partners will ask for it.'],
+          ['Programs and commit:', 'which programs, at which exact commit hash. Anything merged after that commit is not audited.'],
+          ['Out of scope:', 'frontend, off-chain keepers, oracles, deployment scripts and admin key management are often excluded. Know what is not covered.'],
+          ['Design and economics:', 'a code audit may not review whether your incentive or liquidation design can be gamed. Ask explicitly if that matters for you.'],
+          ['Fix review:', 'confirm that reviewing your fixes is included, and at which commit the final report will be issued.'],
+          ['Publication:', 'agree whether and when the report will be published. Users and partners will ask for it.'],
         ]}
       />
 

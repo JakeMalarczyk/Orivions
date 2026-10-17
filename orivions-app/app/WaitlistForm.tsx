@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-// Basic client-side shape check only — this is a UX nicety, not a security
+// Basic client-side shape check only; this is a UX nicety, not a security
 // boundary. The real validation that matters happens server-side via Supabase's
 // column constraints and Row Level Security, which cannot be bypassed by
 // tampering with client-side JS the way a client-only check can be.
@@ -56,7 +56,7 @@ export default function WaitlistForm() {
     <div className="mx-auto max-w-lg rounded-2xl bg-bg-soft p-10 text-center">
       <h2 className="font-heading text-2xl font-semibold">Not ready to browse yet?</h2>
       <p className="mt-2 text-sm text-gray">
-        Leave your email and we&apos;ll send you the highlights — new verified providers, new
+        Leave your email and we&apos;ll send you the highlights: new verified providers, new
         categories, no spam.
       </p>
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-2 sm:flex-row">
@@ -77,7 +77,7 @@ export default function WaitlistForm() {
         </button>
       </form>
       {status === 'success' && (
-        <p className="mt-3 text-sm font-medium text-ok">You&apos;re on the list — we&apos;ll be in touch. ✓</p>
+        <p className="mt-3 text-sm font-medium text-ok">You&apos;re on the list. We&apos;ll be in touch. ✓</p>
       )}
       {status === 'error' && <p className="mt-3 text-sm font-medium text-danger">{errorMsg}</p>}
     </div>

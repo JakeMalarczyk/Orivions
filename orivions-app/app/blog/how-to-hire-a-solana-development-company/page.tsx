@@ -11,7 +11,7 @@ const QUESTIONS: { q: string; why: string }[] = [
     why: 'Ask for program addresses, repositories or live products, not logos. Mainnet experience with real users is different from hackathon demos and devnet prototypes.',
   },
   {
-    q: 'Anchor or native Rust — and why for our project?',
+    q: 'Anchor or native Rust, and why for our project?',
     why: 'Anchor removes a lot of boilerplate and many classes of account-validation mistakes; native Rust gives more control over compute and account layout. A good team explains the trade-off for your case instead of defaulting to whatever they always use.',
   },
   {

@@ -3,7 +3,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 // AUTH ARCHITECTURE FIX (per external audit finding 2.1):
 // The previous middleware guessed session state by looking for a cookie named
-// sb-*-auth-token — a cookie the plain supabase-js client never sets (it uses
+// sb-*-auth-token, a cookie the plain supabase-js client never sets (it uses
 // localStorage). Result: a redirect loop that locked every logged-in user out
 // of both dashboards.
 //
@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  // getUser() actually validates the JWT against Supabase — unlike checking
+  // getUser() actually validates the JWT against Supabase, unlike checking
   // for a cookie's mere existence, this can't be fooled by a stale/forged cookie.
   const {
     data: { user },

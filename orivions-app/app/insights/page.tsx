@@ -6,7 +6,7 @@ import InsightsClient from './InsightsClient';
 export const metadata: Metadata = {
   title: 'Solana Services Market Insights',
   description:
-    "Live data on the Solana ecosystem's business infrastructure: verified provider counts by category, indicative pricing ranges — updated automatically.",
+    "Live data on the Solana ecosystem's business infrastructure: verified provider counts by category, indicative pricing ranges, updated automatically.",
   alternates: {
     canonical: '/insights',
   },

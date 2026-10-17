@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import { SITE_URL, UPCOMING, formatPostDate, postUrl, sortedPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
-  title: 'Blog — Building the business layer for Solana',
+  title: 'Blog: Building the business layer for Solana',
   description:
     'Building in public: practical guides for hiring auditors and development teams in the Solana ecosystem, product updates with real numbers, and market data.',
   alternates: {
@@ -48,7 +48,7 @@ export default function BlogIndexPage() {
       <Header />
       <div className="mx-auto max-w-2xl px-6 pb-20 pt-14">
         <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Building the business layer for Solana — in public.
+          Building the business layer for Solana, in public.
         </h1>
         <p className="mt-3 text-gray">
           Practical guides for hiring (and being hired) in the Solana ecosystem, product updates
@@ -58,6 +58,10 @@ export default function BlogIndexPage() {
           <a href="/blog/rss.xml" className="text-blue-deep">
             RSS feed
           </a>
+          {' · '}
+          <Link href="/solana-glossary" className="text-blue-deep">
+            Solana glossary
+          </Link>
         </p>
 
         <div className="mt-10 flex flex-col gap-4">

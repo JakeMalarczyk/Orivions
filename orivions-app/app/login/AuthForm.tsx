@@ -50,7 +50,7 @@ export default function AuthForm() {
         });
         if (error) throw error;
         setStatus('success');
-        setMessage('Account created — check your email to confirm, then log in.');
+        setMessage('Account created. Check your email to confirm, then log in.');
         setTimeout(() => setMode('login'), 1600);
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({
@@ -59,7 +59,7 @@ export default function AuthForm() {
         });
         if (error) throw error;
         setStatus('success');
-        setMessage('Logged in — redirecting to your dashboard…');
+        setMessage('Logged in, redirecting to your dashboard…');
         const userType = data.user?.user_metadata?.account_type as AccountType | undefined;
         // Only same-site paths ("/admin"), never "//evil.com" or absolute URLs.
         const redirectTo = searchParams.get('redirectTo');
@@ -87,7 +87,7 @@ export default function AuthForm() {
         <h1 className="mt-10 font-heading text-3xl font-semibold leading-tight">
           The <span className="text-blue-light">business infrastructure layer</span> for the Solana ecosystem.
         </h1>
-        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted partners across the entire Solana ecosystem — or get found by the clients who need you.</p>
+        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted partners across the entire Solana ecosystem, or get found by the clients who need you.</p>
         <div className="mt-12 flex gap-8 text-sm">
           <div>
             <div className="font-heading text-2xl font-semibold">1,200+</div>

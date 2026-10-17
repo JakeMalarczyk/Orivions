@@ -144,7 +144,7 @@ export default function ClientDashboardClient() {
 
         <p className="mt-5 rounded-xl bg-blue-deep/5 p-4 text-xs text-gray">
           Showing inquiries sent using <b>{email}</b>. If you contacted a provider using a
-          different email, it won&apos;t appear here yet — this view matches by email, not by
+          different email, it won&apos;t appear here yet: this view matches by email, not by
           account.
         </p>
       </div>

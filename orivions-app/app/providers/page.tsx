@@ -6,7 +6,7 @@ import ProvidersCatalog from './ProvidersCatalog';
 export const metadata: Metadata = {
   title: 'Find Providers',
   description:
-    'Browse verified companies across the Solana ecosystem — developers, auditors, marketing agencies, and more. Free to search and contact.',
+    'Browse verified companies across the Solana ecosystem: developers, auditors, marketing agencies, and more. Free to search and contact.',
   alternates: {
     canonical: '/providers',
   },

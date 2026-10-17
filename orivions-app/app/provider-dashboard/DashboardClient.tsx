@@ -264,7 +264,7 @@ function ProfilePanel({
           {company.verified
             ? '✓ Verified provider'
             : company.verification_requested
-              ? "Verification requested — we'll follow up by email."
+              ? "Verification requested. We'll follow up by email."
               : 'Not verified yet.'}
         </p>
         {!company.verified && (

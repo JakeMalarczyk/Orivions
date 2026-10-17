@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
-import { AUTHOR, SITE_URL, formatPostDate, getPost, postUrl, type Post } from '@/lib/blog';
+import { AUTHOR, SITE_URL, formatPostDate, getPost, ogImageUrl, postUrl, relatedPosts, type Post } from '@/lib/blog';
 
 // Shared layout for every blog post: breadcrumb, byline with dates, FAQ block,
 // closing CTA and the structured data (BlogPosting, BreadcrumbList, FAQPage)
@@ -24,9 +24,14 @@ export function postMetadata(slug: string): Metadata {
       modifiedTime: post.dateModified,
       authors: [AUTHOR.name],
       tags: post.tags,
-      images: ['/og-image.png'],
+      images: [{ url: ogImageUrl(post.title, post.category), width: 1200, height: 630, alt: post.title }],
     },
-    twitter: { card: 'summary_large_image', title: post.title, description: post.description },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [ogImageUrl(post.title, post.category)],
+    },
   };
 }
 
@@ -45,7 +50,7 @@ function jsonLd(post: Post) {
       inLanguage: 'en',
       keywords: post.tags.join(', '),
       articleSection: post.category,
-      image: `${SITE_URL}/og-image.png`,
+      image: ogImageUrl(post.title, post.category),
       author: { '@type': 'Person', name: AUTHOR.name, jobTitle: AUTHOR.role, url: AUTHOR.url },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
@@ -96,6 +101,26 @@ export function BulletList({ items }: { items: [string, ReactNode][] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+function RelatedPosts({ slug }: { slug: string }) {
+  const related = relatedPosts(slug);
+  if (!related.length) return null;
+  return (
+    <section className="mt-12">
+      <h2 className="font-heading text-[22px] font-semibold">Related reading</h2>
+      <ul className="mt-4 space-y-3">
+        {related.map((p) => (
+          <li key={p.slug}>
+            <Link href={`/blog/${p.slug}`} className="block rounded-2xl border border-line p-5 hover:border-blue-deep">
+              <span className="font-semibold">{p.title}</span>
+              <span className="mt-1 block text-sm text-gray">{p.description}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
@@ -174,6 +199,8 @@ export default function BlogPost({
             </Link>
           </div>
         )}
+
+        <RelatedPosts slug={post.slug} />
 
         <p className="mt-10 text-sm">
           <Link href="/blog" className="text-blue-deep">← All posts</Link>

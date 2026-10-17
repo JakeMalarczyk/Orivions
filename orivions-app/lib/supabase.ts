@@ -2,7 +2,7 @@ import { createBrowserClient } from '@supabase/ssr';
 
 // AUTH ARCHITECTURE FIX (per external audit finding 2.1):
 // The previous version used plain createClient from @supabase/supabase-js,
-// which stores the session in localStorage — invisible to Next.js middleware.
+// which stores the session in localStorage, invisible to Next.js middleware.
 // createBrowserClient from @supabase/ssr stores the session in COOKIES, which
 // the middleware can actually read. Without this, every logged-in user hit a
 // redirect loop on /provider-dashboard and /client-dashboard.
@@ -12,7 +12,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   // Fail loudly and early at build/runtime instead of silently breaking every
-  // Supabase call later — this is the #1 cause of confusing "it just doesn't work"
+  // Supabase call later; this is the #1 cause of confusing "it just doesn't work"
   // bugs in the original site, where a missing/placeholder key failed deep inside
   // unrelated code paths.
   throw new Error(

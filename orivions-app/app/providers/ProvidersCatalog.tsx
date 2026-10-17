@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState, type ChangeEvent, type KeyboardEvent, typ
 import { useSearchParams } from 'next/navigation';
 import { supabase, PROVIDER_CATEGORIES, type Company, type PortfolioItem, type Service } from '@/lib/supabase';
 
-// UI strings for this page. The site is English-only by design — these were
+// UI strings for this page. The site is English-only by design; these were
 // previously routed through a locale dictionary and prop-drilled three levels
 // deep; a single module-level constant is simpler and equally type-safe.
 const t = {
@@ -17,7 +17,7 @@ const t = {
   sponsored: 'Sponsored',
   viewProfile: 'View profile →',
   noDesc: 'No description yet.',
-  emptyResults: 'No providers here yet — check back soon, or try another category.',
+  emptyResults: 'No providers here yet. Check back soon, or try another category.',
   foundOne: 'provider found',
   foundMany: 'providers found',
   contact: 'Contact',
@@ -27,7 +27,7 @@ const t = {
   needLabel: 'What do you need?',
   needPh: 'Briefly describe your project...',
   send: 'Send message',
-  sentPrefix: '✓ Sent —',
+  sentPrefix: '✓ Sent:',
   sentSuffix: 'will get back to you directly.',
   formError: 'Something went wrong. Please try again.',
   fillRequired: 'Please fill in your name, email, and message.',
