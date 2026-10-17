@@ -55,10 +55,6 @@ export default function BlogIndexPage() {
           with real numbers, and market data from the platform. No hype, no filler.
         </p>
         <p className="mt-2 text-sm">
-          <a href="/blog/rss.xml" className="text-blue-deep">
-            RSS feed
-          </a>
-          {' · '}
           <Link href="/solana-glossary" className="text-blue-deep">
             Solana glossary
           </Link>
