@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 const content: CategoryContent = {
+  path: '/solana-smart-contract-audits',
+  guideTags: ['Audits', 'Security'],
   breadcrumbLabel: 'Solana Smart Contract Audits',
   h1: 'Solana Smart Contract Audits',
   lede: 'Verified auditors for Solana programs, from small Anchor-based projects to large-scale DeFi protocols. Compare providers, see indicative pricing, and contact them directly. Free to search.',

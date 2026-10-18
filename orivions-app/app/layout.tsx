@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Poppins, Inter } from 'next/font/google';
 import Script from 'next/script';
+import Footer from '@/components/Footer';
 import './globals.css';
 
 // next/font downloads and self-hosts these at BUILD time, then serves them from
@@ -62,7 +63,7 @@ const siteJsonLd = {
       logo: `${siteUrl}/logo.png`,
       description:
         'Verified B2B marketplace for the Solana ecosystem: AI matching with human-verified service providers (auditors, developers, marketing agencies). Free for clients; providers pay a flat 10% success fee on completed engagements.',
-      founder: { '@type': 'Person', name: 'Jakub Malarczyk' },
+      founder: { '@id': `${siteUrl}/about#founder` },
       sameAs: ['https://github.com/JakeMalarczyk/Orivions'],
       knowsAbout: [
         'Solana',
@@ -73,6 +74,15 @@ const siteJsonLd = {
         'B2B service marketplaces',
       ],
       areaServed: 'Worldwide',
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/about#founder`,
+      name: 'Jakub Malarczyk',
+      jobTitle: 'Founder',
+      url: `${siteUrl}/about`,
+      worksFor: { '@id': `${siteUrl}/#organization` },
+      sameAs: ['https://github.com/JakeMalarczyk'],
     },
     {
       '@type': 'WebSite',
@@ -90,6 +100,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body className="font-body bg-white text-ink antialiased">
         {children}
+        <Footer />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

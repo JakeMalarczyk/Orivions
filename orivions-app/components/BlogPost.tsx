@@ -51,7 +51,7 @@ function jsonLd(post: Post) {
       keywords: post.tags.join(', '),
       articleSection: post.category,
       image: ogImageUrl(post.title, post.category),
-      author: { '@type': 'Person', name: AUTHOR.name, jobTitle: AUTHOR.role, url: AUTHOR.url },
+      author: { '@type': 'Person', '@id': `${SITE_URL}/about#founder`, name: AUTHOR.name, jobTitle: AUTHOR.role, url: `${SITE_URL}/about` },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
     {
@@ -154,7 +154,11 @@ export default function BlogPost({
           {post.title}
         </h1>
         <p className="mt-4 text-sm text-gray-soft">
-          By <span className="font-semibold text-gray">{AUTHOR.name}</span>, {AUTHOR.role} ·{' '}
+          By{' '}
+          <Link href="/about" className="font-semibold text-gray hover:text-ink">
+            {AUTHOR.name}
+          </Link>
+          , {AUTHOR.role} ·{' '}
           <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>
           {post.dateModified !== post.datePublished && (
             <>

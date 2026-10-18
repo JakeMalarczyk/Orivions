@@ -23,6 +23,7 @@ Key facts:
 
 ## Product
 
+- [About Orivions](${SITE_URL}/about): who builds Orivions, how provider verification works and how Orivions makes money.
 - [Smart Match](${SITE_URL}/smart-match): describe your project and get matched with verified Solana providers, no account needed.
 - [Find providers](${SITE_URL}/providers): browse verified companies by category.
 - [Insights](${SITE_URL}/insights): live provider counts and indicative pricing by category.

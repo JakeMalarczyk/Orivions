@@ -34,6 +34,114 @@ export const AUTHOR = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'solana-project-brief-template',
+    title: 'How to write a project brief for a Solana development team (free template)',
+    description:
+      'A one-page brief that gets you accurate quotes from Solana development teams: goals, scope, on-chain and off-chain parts, constraints, budget and timeline, with a copyable template.',
+    excerpt:
+      'Vague briefs get vague quotes. A one-page structure that lets any Solana team estimate your project properly, and makes their quotes comparable.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    tags: ['Guides', 'Development', 'Hiring'],
+    faqs: [
+      {
+        q: 'What should a brief for a Solana development project include?',
+        a: 'The problem and the outcome you want, who the users are, what must happen on-chain versus off-chain, integrations with other protocols, constraints such as deadlines and audits, a budget range, and what you already have (designs, code, a specification).',
+      },
+      {
+        q: 'Should I share my budget in a project brief?',
+        a: 'Yes, a range. It lets teams propose a scope that fits instead of guessing, and it filters out teams that are far outside your budget before anyone spends time on a detailed estimate.',
+      },
+      {
+        q: 'How long should a project brief be?',
+        a: 'One to two pages is usually enough to get a first estimate. Detailed specifications come later, ideally in a short paid discovery phase with the team you choose.',
+      },
+    ],
+  },
+  {
+    slug: 'milestone-payments-web3-service-contracts',
+    title: 'Milestone payments and escrow for Web3 service contracts: how to structure them',
+    description:
+      'How to pay Web3 agencies, developers and auditors safely: milestones with acceptance criteria, deposits, escrow options, payment in stablecoins, and what to do when a milestone is disputed.',
+    excerpt:
+      'Paying a whole project upfront puts all the risk on you; paying everything at the end puts it on the provider. Milestones split the risk fairly. How to set them up for Web3 work.',
+    category: 'Guides',
+    readingMinutes: 7,
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    tags: ['Guides', 'Hiring', 'Payments'],
+    faqs: [
+      {
+        q: 'How should I pay a Web3 development agency?',
+        a: 'Split the work into milestones with written acceptance criteria and pay per accepted milestone. A modest deposit for the first milestone is common; paying the full project upfront is not.',
+      },
+      {
+        q: 'What is a milestone escrow?',
+        a: 'An arrangement where the client deposits funds for a milestone with a neutral party or smart contract, and the funds are released to the provider when the milestone is accepted, or handled by an agreed dispute process if it is not.',
+      },
+      {
+        q: 'What makes a good acceptance criterion?',
+        a: 'Something both sides can check without arguing: a deployed program at a given address passing listed tests, a report delivered at a stated commit, or a feature working on devnet as described in the specification.',
+      },
+    ],
+  },
+  {
+    slug: 'red-flags-hiring-web3-service-providers',
+    title: '15 red flags when hiring a Web3 agency, developer or auditor',
+    description:
+      'Warning signs to watch for when hiring Web3 service providers: unverifiable portfolios, guaranteed results, upfront payment, key custody, anonymous teams and contract tricks.',
+    excerpt:
+      'Most bad Web3 hires announce themselves early. Fifteen warning signs, grouped by stage, that are worth walking away from, or at least asking hard questions about.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    tags: ['Guides', 'Hiring', 'Security'],
+    faqs: [
+      {
+        q: 'What is the biggest red flag when hiring a Web3 developer?',
+        a: 'Asking to hold your program upgrade authority, treasury keys or deployment keys. Your team, ideally through a multisig, should control every key that can change or move what you own.',
+      },
+      {
+        q: 'Is an anonymous Web3 team always a red flag?',
+        a: 'Not always; some reputable contributors are pseudonymous with long public track records. It is a red flag when a team is anonymous and also has no verifiable history, no references and wants large payments upfront.',
+      },
+      {
+        q: 'How can I check a Web3 provider before hiring?',
+        a: 'Verify their work on-chain or in public repositories, speak to past clients, check that the people on the call are the people doing the work, and prefer providers whose identity and portfolio were verified by a third party.',
+      },
+    ],
+  },
+  {
+    slug: 'how-to-verify-a-web3-agency',
+    title: 'How to verify a Web3 agency or development company in 30 minutes',
+    description:
+      'A practical 30-minute due-diligence routine for Web3 service providers: checking on-chain work, repositories, audit reports, references, company details and the people behind it.',
+    excerpt:
+      'Logos on a landing page prove nothing. A fast, repeatable routine to check whether a Web3 agency really did the work it shows, using public, verifiable sources.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    tags: ['Guides', 'Hiring', 'Verification'],
+    faqs: [
+      {
+        q: 'How do I check if a Web3 agency actually built what it claims?',
+        a: 'Ask for program addresses, repositories and named contacts at past clients. Check deployments in an explorer, commit history in the repositories, and confirm with the client that the agency did the work.',
+      },
+      {
+        q: 'How can I verify a smart contract auditor?',
+        a: 'Read their published reports, confirm the reports appear on the audited project’s own site or repository, and check that the findings are specific and technical rather than generic.',
+      },
+      {
+        q: 'What does "verified" mean on Orivions?',
+        a: 'A person at Orivions checked that the provider is a real company, that its portfolio and services hold up, and that its price ranges are specific, before the Verified badge was granted. It lowers risk but does not replace your own checks.',
+      },
+    ],
+  },
+  {
     slug: 'solana-smart-contract-audit-cost',
     title: 'How much does a Solana smart contract audit cost? What drives the price',
     description:

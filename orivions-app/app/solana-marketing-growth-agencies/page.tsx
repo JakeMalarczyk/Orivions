@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 const content: CategoryContent = {
+  path: '/solana-marketing-growth-agencies',
+  guideTags: ['Marketing'],
   breadcrumbLabel: 'Solana Marketing & Growth Agencies',
   h1: 'Solana Marketing & Growth Agencies',
   lede: 'Verified marketing agencies for Solana projects, from community growth to full go-to-market campaigns. Compare providers, see indicative pricing, and contact them directly. Free to search.',

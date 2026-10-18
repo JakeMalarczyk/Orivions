@@ -57,6 +57,13 @@ export const GLOSSARY: GlossaryTerm[] = [
       'A short prefix stored at the start of an account or instruction that identifies its type. Anchor adds discriminators automatically to prevent one account type from being passed in place of another.',
   },
   {
+    term: 'Escrow',
+    id: 'escrow',
+    definition:
+      'An arrangement where funds for a piece of work are held by a neutral party or smart contract and released to the provider when the work is accepted, with an agreed process if it is disputed.',
+    link: { href: '/blog/milestone-payments-web3-service-contracts', label: 'Milestone payments and escrow' },
+  },
+  {
     term: 'Freeze authority',
     id: 'freeze-authority',
     definition:
@@ -85,6 +92,13 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: 'Lamport',
     id: 'lamport',
     definition: 'The smallest unit of SOL. One SOL equals one billion lamports.',
+  },
+  {
+    term: 'Milestone payment',
+    id: 'milestone-payment',
+    definition:
+      'Paying for a service engagement in parts, each released when a defined deliverable is accepted against written criteria, instead of paying everything upfront or at the end.',
+    link: { href: '/blog/milestone-payments-web3-service-contracts', label: 'How to structure milestones' },
   },
   {
     term: 'Mint authority',

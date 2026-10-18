@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/solana-development-companies', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-marketing-growth-agencies', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/about', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/solana-glossary', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/ai-proposal-generator', priority: 0.4, changeFrequency: 'monthly' as const },
   ];

@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 const content: CategoryContent = {
+  path: '/solana-development-companies',
+  guideTags: ['Development'],
   breadcrumbLabel: 'Solana Development Companies',
   h1: 'Solana Development Companies',
   lede: 'Verified development shops for Solana, from smart contract engineering to full-stack dApp builds. Compare portfolios, see indicative pricing, and contact them directly. Free to search.',

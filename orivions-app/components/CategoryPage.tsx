@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import CategoryProviders from '@/components/CategoryProviders';
+import { SITE_URL, sortedPosts } from '@/lib/blog';
 
 // One shared template for every SEO category page.
 // Each category route (e.g. /solana-smart-contract-audits) is a thin page that
@@ -35,25 +36,66 @@ export interface CategoryContent {
   faqs: CategoryFaq[];
   ctaBoxTitle: string;
   ctaBoxText: string;
+  /** Canonical path of the page, e.g. '/solana-smart-contract-audits'. */
+  path: string;
+  /** Blog tags whose guides are listed under "Guides" on this page. */
+  guideTags: string[];
 }
 
-export function buildFaqJsonLd(faqs: CategoryFaq[]) {
+// FAQPage + BreadcrumbList + Service: lets search engines and AI answer
+// engines read the page as "Orivions connects you with verified providers of
+// <service> on Solana", with the FAQ answers attached.
+export function buildJsonLd(content: CategoryContent) {
+  const url = `${SITE_URL}${content.path}`;
   return {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        mainEntity: content.faqs.map(({ q, a }) => ({
+          '@type': 'Question',
+          name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Orivions', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Providers', item: `${SITE_URL}/providers` },
+          { '@type': 'ListItem', position: 3, name: content.breadcrumbLabel, item: url },
+        ],
+      },
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: content.h1,
+        description: content.lede,
+        serviceType: content.category,
+        url,
+        areaServed: 'Worldwide',
+        audience: { '@type': 'BusinessAudience', name: 'Solana projects and Web3 companies' },
+        provider: { '@id': `${SITE_URL}/#organization` },
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+          description: 'Free for clients to search, match and contact verified providers.',
+        },
+      },
+    ],
   };
 }
 
 export default function CategoryPage({ content }: { content: CategoryContent }) {
   const {
     breadcrumbLabel, h1, lede, ctaPrimary, sections,
-    providersHeading, category, faqs, ctaBoxTitle, ctaBoxText,
+    providersHeading, category, faqs, ctaBoxTitle, ctaBoxText, guideTags,
   } = content;
+  const guides = sortedPosts()
+    .filter((p) => p.tags.some((t) => guideTags.includes(t)))
+    .slice(0, 4);
 
   return (
     <>
@@ -111,6 +153,22 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
             </Suspense>
           </section>
 
+          {guides.length > 0 && (
+            <section>
+              <h2 className="text-xl font-semibold">Guides</h2>
+              <ul className="mt-3 space-y-2.5">
+                {guides.map((p) => (
+                  <li key={p.slug}>
+                    <Link href={`/blog/${p.slug}`} className="block rounded-xl border border-line p-4 hover:border-blue-deep">
+                      <span className="text-[15px] font-semibold">{p.title}</span>
+                      <span className="mt-1 block text-sm text-gray">{p.description}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section>
             <h2 className="text-xl font-semibold">Frequently asked questions</h2>
             <div className="mt-3 divide-y divide-line border-t border-line">
@@ -135,7 +193,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(faqs)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(content)) }}
       />
     </>
   );
