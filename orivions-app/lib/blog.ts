@@ -34,6 +34,60 @@ export const AUTHOR = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'solana-token-launch-checklist',
+    title: 'Solana token launch checklist: authorities, metadata, liquidity and legal',
+    description:
+      'A practical Solana token launch checklist: mint and freeze authority, metadata, Token-2022 extensions, supply and vesting, liquidity, audits, legal review and launch-day communication.',
+    excerpt:
+      'Most token launch problems are decided before launch day. A step-by-step checklist for the on-chain settings, liquidity, legal and communication work that has to be done first.',
+    category: 'Guides',
+    readingMinutes: 7,
+    datePublished: '2026-10-19',
+    dateModified: '2026-10-19',
+    tags: ['Guides', 'Launch', 'Security', 'Marketing'],
+    faqs: [
+      {
+        q: 'Should I revoke the mint authority on my Solana token?',
+        a: 'If the supply is meant to be fixed, yes: revoking the mint authority proves no more tokens can be created, and many buyers and listing tools check for it. If you need to mint later, for example for emissions, keep it under a multisig and say so publicly.',
+      },
+      {
+        q: 'What is the freeze authority and should I keep it?',
+        a: 'The freeze authority can freeze any token account for that mint. Unless you have a clear compliance reason, revoke it before launch. Many traders and tools treat an active freeze authority as a red flag.',
+      },
+      {
+        q: 'Do I need an audit to launch a token on Solana?',
+        a: 'A plain SPL token created with the standard token program does not need its own audit. Any custom program around it, such as staking, vesting, a launchpad or a bonding curve, should be audited before real money touches it.',
+      },
+    ],
+  },
+  {
+    slug: 'smart-contract-audit-vs-bug-bounty',
+    title: 'Smart contract audit vs bug bounty: which do you need, and when?',
+    description:
+      'Audits and bug bounties catch different bugs at different times. How each works on Solana, what they cost, and how to combine them before and after mainnet launch.',
+    excerpt:
+      'An audit is a focused review before launch; a bug bounty is a standing reward for anyone who finds a bug later. Most protocols holding real value need both, in that order.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-19',
+    dateModified: '2026-10-19',
+    tags: ['Guides', 'Security', 'Audits'],
+    faqs: [
+      {
+        q: 'Can a bug bounty replace a smart contract audit?',
+        a: 'No. A bounty only pays when someone chooses to look, usually after launch when funds are already at risk. An audit is a guaranteed, structured review of a fixed scope before launch. A bounty complements an audit; it does not replace it.',
+      },
+      {
+        q: 'How big should a bug bounty reward be?',
+        a: 'Large enough that reporting is clearly better than exploiting. A common approach is to scale critical rewards with the value at risk, often a percentage of funds that could be lost, with a fixed maximum. Smaller rewards apply to high and medium findings.',
+      },
+      {
+        q: 'When should a Solana project launch a bug bounty?',
+        a: 'After the audit and fix review, at or shortly after mainnet launch, and before total value locked grows. Keep it running for as long as the programs hold value, and update the scope when the code changes.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-read-a-smart-contract-audit-report',
     title: 'How to read a smart contract audit report (without being an auditor)',
     description:

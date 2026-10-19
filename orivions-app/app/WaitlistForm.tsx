@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, type FormEvent, type ChangeEvent } from 'react';
+import { useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 
 declare global {
   interface Window {
@@ -11,9 +11,8 @@ declare global {
 }
 
 // Basic client-side shape check only; this is a UX nicety, not a security
-// boundary. The real validation that matters happens server-side via Supabase's
-// column constraints and Row Level Security, which cannot be bypassed by
-// tampering with client-side JS the way a client-only check can be.
+// boundary. /api/waitlist validates the email again, checks the captcha and
+// rate-limits by IP before writing to Supabase.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function WaitlistForm() {
@@ -21,6 +20,8 @@ export default function WaitlistForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+  const captcha = useRef<TurnstileHandle>(null);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -31,11 +32,19 @@ export default function WaitlistForm() {
       setErrorMsg('Enter a valid email address.');
       return;
     }
+    if (TURNSTILE_ENABLED && !captchaToken) {
+      setErrorMsg('Checking that you are human, try again in a moment.');
+      return;
+    }
 
     setStatus('loading');
     try {
-      const { error } = await supabase.from('waitlist').insert({ email: trimmed });
-      if (error) throw error;
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trimmed, captchaToken }),
+      });
+      if (!res.ok) throw new Error('Waitlist request failed');
 
       const utmProps: Record<string, string> = {};
       (['utm_source', 'utm_medium', 'utm_campaign'] as const).forEach((k) => {
@@ -49,6 +58,8 @@ export default function WaitlistForm() {
     } catch {
       setStatus('error');
       setErrorMsg('Something went wrong. Please try again.');
+    } finally {
+      captcha.current?.reset();
     }
   }
 
@@ -76,6 +87,7 @@ export default function WaitlistForm() {
           {status === 'loading' ? 'Sending…' : 'Notify me'}
         </button>
       </form>
+      <Turnstile ref={captcha} onToken={setCaptchaToken} action="waitlist" className="mt-3 flex justify-center" />
       {status === 'success' && (
         <p className="mt-3 text-sm font-medium text-ok">You&apos;re on the list. We&apos;ll be in touch. ✓</p>
       )}

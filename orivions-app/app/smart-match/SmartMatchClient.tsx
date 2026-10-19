@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, type ChangeEvent } from 'react';
+import { useRef, useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
+import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 
 // Shape returned by /api/smart-match, a public subset of the Company row
 // (the server deliberately never exposes fields like referral_code here).
@@ -29,12 +30,18 @@ export default function SmartMatchClient() {
   const [loading, setLoading] = useState(false);
   const [matches, setMatches] = useState<Match[] | null>(null);
   const [errorMsg, setErrorMsg] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+  const captcha = useRef<TurnstileHandle>(null);
 
   async function runMatch() {
     setErrorMsg('');
     setMatches(null);
     if (!need.trim()) {
       setErrorMsg('Tell us a bit about what you need first.');
+      return;
+    }
+    if (TURNSTILE_ENABLED && !captchaToken) {
+      setErrorMsg('Checking that you are human, try again in a moment.');
       return;
     }
 
@@ -45,8 +52,12 @@ export default function SmartMatchClient() {
       const res = await fetch('/api/smart-match', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ need: need.trim() }),
+        body: JSON.stringify({ need: need.trim(), captchaToken }),
       });
+      if (res.status === 403) {
+        setErrorMsg('We could not confirm you are human. Please try again.');
+        return;
+      }
       if (res.status === 429) {
         setErrorMsg('Too many requests. Give it a minute and try again.');
         return;
@@ -63,6 +74,7 @@ export default function SmartMatchClient() {
       setErrorMsg('Something went wrong finding your match. Please try again, or browse the full directory.');
     } finally {
       setLoading(false);
+      captcha.current?.reset();
     }
   }
 
@@ -98,6 +110,8 @@ export default function SmartMatchClient() {
           </button>
         </div>
       </div>
+
+      <Turnstile ref={captcha} onToken={setCaptchaToken} action="smart-match" className="mt-3 flex justify-center" />
 
       <div className="mt-4 flex flex-wrap justify-center gap-2">
         {EXAMPLES.map((ex) => (

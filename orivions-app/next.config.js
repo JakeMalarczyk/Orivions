@@ -4,11 +4,12 @@
 // This is the single biggest lever against XSS/injection and malicious third-party scripts.
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' https://plausible.io https://cdn.jsdelivr.net;
+  script-src 'self' 'unsafe-inline' https://plausible.io https://cdn.jsdelivr.net https://challenges.cloudflare.com;
+  frame-src https://challenges.cloudflare.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   font-src 'self' https://fonts.gstatic.com;
   img-src 'self' data: https:;
-  connect-src 'self' https://*.supabase.co https://api.anthropic.com https://plausible.io;
+  connect-src 'self' https://*.supabase.co https://api.anthropic.com https://plausible.io https://challenges.cloudflare.com;
   frame-ancestors 'none';
   base-uri 'self';
   form-action 'self';

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { allowRequest } from '@/lib/rateLimit';
+import { verifyTurnstile } from '@/lib/turnstile';
 
 // SECURITY REDESIGN (per external audit finding 2.4):
 // Previously this endpoint accepted a fully-formed `prompt` from the client,
@@ -50,11 +51,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Too many requests. Try again in a minute.' }, { status: 429 });
   }
 
-  let body: { need?: unknown };
+  let body: { need?: unknown; captchaToken?: unknown };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 });
+  }
+
+  // Bot check before any paid AI call (Cloudflare Turnstile, see lib/turnstile.ts).
+  if (!(await verifyTurnstile(body.captchaToken, ip))) {
+    return NextResponse.json({ error: 'Captcha check failed.' }, { status: 403 });
   }
 
   if (typeof body.need !== 'string' || !body.need.trim()) {

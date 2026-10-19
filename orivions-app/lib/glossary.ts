@@ -37,6 +37,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'bug-bounty',
     definition:
       'A public program that pays security researchers for responsibly reporting vulnerabilities in deployed code. It complements, rather than replaces, an audit.',
+    link: { href: '/blog/smart-contract-audit-vs-bug-bounty', label: 'Audit vs bug bounty' },
   },
   {
     term: 'Compute units (CU)',
@@ -68,6 +69,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'freeze-authority',
     definition:
       'The key that can freeze token accounts of a given mint, preventing transfers. Projects that do not need it usually revoke it so users can trust their balances cannot be frozen.',
+    link: { href: '/blog/solana-token-launch-checklist', label: 'Solana token launch checklist' },
   },
   {
     term: 'IDL (interface description language)',
@@ -105,6 +107,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'mint-authority',
     definition:
       'The key allowed to create new tokens of a given mint. Revoking it fixes the token supply permanently.',
+    link: { href: '/blog/solana-token-launch-checklist', label: 'Solana token launch checklist' },
   },
   {
     term: 'Multisig',
@@ -153,6 +156,13 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'spl-token',
     definition:
       'A fungible or non-fungible token created with the Solana Program Library Token Program or its successor, Token-2022, which adds extensions such as transfer fees and confidential transfers.',
+  },
+  {
+    term: 'Token-2022 (Token Extensions)',
+    id: 'token-2022',
+    definition:
+      'The newer Solana token program. It keeps the SPL token model and adds optional extensions such as transfer fees, transfer hooks, on-mint metadata and confidential transfers. Wallet and exchange support for each extension varies.',
+    link: { href: '/blog/solana-token-launch-checklist', label: 'Solana token launch checklist' },
   },
   {
     term: 'Success fee',

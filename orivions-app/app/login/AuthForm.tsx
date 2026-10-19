@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, type FormEvent, type ReactNode, type ChangeEvent } from 'react';
+import { useRef, useState, type FormEvent, type ReactNode, type ChangeEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import { supabase } from '@/lib/supabase';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,12 +23,15 @@ export default function AuthForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+  const captcha = useRef<TurnstileHandle>(null);
 
   function validate(): string | null {
     if (mode === 'signup' && fullName.trim().length < 2) return 'Enter your full name.';
     if (!EMAIL_RE.test(email.trim())) return 'Enter a valid email address.';
     if (password.length < 8) return 'Password must be at least 8 characters.';
     if (mode === 'signup' && password !== confirmPassword) return "Passwords don't match.";
+    if (TURNSTILE_ENABLED && !captchaToken) return 'Checking that you are human, try again in a moment.';
     return null;
   }
 
@@ -46,7 +50,7 @@ export default function AuthForm() {
         const { error } = await supabase.auth.signUp({
           email: email.trim(),
           password,
-          options: { data: { full_name: fullName.trim(), account_type: accountType } },
+          options: { data: { full_name: fullName.trim(), account_type: accountType }, captchaToken: captchaToken || undefined },
         });
         if (error) throw error;
         setStatus('success');
@@ -56,6 +60,7 @@ export default function AuthForm() {
         const { data, error } = await supabase.auth.signInWithPassword({
           email: email.trim(),
           password,
+          options: { captchaToken: captchaToken || undefined },
         });
         if (error) throw error;
         setStatus('success');
@@ -74,6 +79,9 @@ export default function AuthForm() {
       // password" lets an attacker enumerate which emails have accounts.
       // Supabase Auth also rate-limits repeated attempts server-side.
       setMessage('Something went wrong. Check your details and try again.');
+    } finally {
+      // Captcha tokens are single-use: get a fresh one for the next attempt.
+      captcha.current?.reset();
     }
   }
 
@@ -173,6 +181,8 @@ export default function AuthForm() {
                 />
               </Field>
             )}
+
+            <Turnstile ref={captcha} onToken={setCaptchaToken} action={mode} />
 
             <button
               type="submit"
