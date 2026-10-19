@@ -62,8 +62,6 @@ const VERIFICATION: [string, string][] = [
 const FAQS: [string, string][] = [
   ['Is Orivions free?', 'Yes, for clients. Teams search, use Smart Match and contact providers for free. Providers pay a flat 10% success fee only when an engagement found through Orivions is completed.'],
   ['What does "Verified" mean on Orivions?', 'A person at Orivions checked that the provider is a real company, that its portfolio holds up and that its services and price ranges are specific. It lowers risk but does not replace your own checks and references.'],
-  ['Does Orivions hold or process payments?', 'No. Clients and providers agree terms and pay each other directly. We recommend milestone-based payments with written acceptance criteria.'],
-  ['Can providers pay to rank higher?', 'Providers can buy clearly labeled sponsored placement in listings. It never affects the Verified badge or the order of Smart Match results, which are ranked by fit.'],
   ['Why only Solana?', 'Hiring well on Solana needs specific knowledge: Rust and Anchor, the account model, Solana audit practices and the community. Focusing on one ecosystem lets us verify providers properly.'],
 ];
 
