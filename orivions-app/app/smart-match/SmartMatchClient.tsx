@@ -3,6 +3,7 @@
 import { useRef, useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
+import ConciergeForm from '@/components/ConciergeForm';
 
 // Shape returned by /api/smart-match, a public subset of the Company row
 // (the server deliberately never exposes fields like referral_code here).
@@ -32,10 +33,13 @@ export default function SmartMatchClient() {
   const [errorMsg, setErrorMsg] = useState('');
   const [captchaToken, setCaptchaToken] = useState('');
   const captcha = useRef<TurnstileHandle>(null);
+  // Shown when matching finds nothing or fails, or when the visitor asks for a person.
+  const [showConcierge, setShowConcierge] = useState(false);
 
   async function runMatch() {
     setErrorMsg('');
     setMatches(null);
+    setShowConcierge(false);
     if (!need.trim()) {
       setErrorMsg('Tell us a bit about what you need first.');
       return;
@@ -66,12 +70,14 @@ export default function SmartMatchClient() {
       const data = (await res.json()) as { matches: { provider: Match['provider']; reason: string }[] };
 
       if (!data.matches?.length) {
-        setErrorMsg('No strong matches found for that description yet. Try being more specific, or browse the full directory.');
+        setErrorMsg('No strong automatic match for that yet. Send us the brief below and a person will hand-pick providers for you.');
+        setShowConcierge(true);
       } else {
         setMatches(data.matches);
       }
     } catch {
-      setErrorMsg('Something went wrong finding your match. Please try again, or browse the full directory.');
+      setErrorMsg('Automatic matching is unavailable right now. Send us the brief below and a person will hand-pick providers for you.');
+      setShowConcierge(true);
     } finally {
       setLoading(false);
       captcha.current?.reset();
@@ -163,6 +169,19 @@ export default function SmartMatchClient() {
             </div>
           ))}
         </div>
+      )}
+
+      {showConcierge ? (
+        <div className="mt-8">
+          <ConciergeForm need={need.trim()} source="smart-match" />
+        </div>
+      ) : (
+        <p className="mt-8 text-sm text-gray">
+          Prefer a person to pick for you?{' '}
+          <button onClick={() => setShowConcierge(true)} className="font-semibold text-blue-deep">
+            Get a hand-picked shortlist
+          </button>
+        </p>
       )}
 
       <p className="mt-8 text-xs text-gray-soft">

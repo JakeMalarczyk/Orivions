@@ -3,6 +3,7 @@
 import { useEffect, useState, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase, type Company } from '@/lib/supabase';
+import ConciergeForm from '@/components/ConciergeForm';
 
 export default function CategoryProviders({ category }: { category: string }) {
   const router = useRouter();
@@ -32,9 +33,13 @@ export default function CategoryProviders({ category }: { category: string }) {
   if (loading) return <p className="mt-4 text-sm text-gray-soft">Loading providers…</p>;
   if (!providers.length) {
     return (
-      <p className="mt-4 text-sm text-gray-soft">
-        No verified auditors listed yet. Check back soon, or browse the full directory.
-      </p>
+      <div className="mt-4">
+        <p className="mb-4 text-sm text-gray-soft">
+          We are onboarding verified {category.toLowerCase()} providers right now. Send your brief and
+          we will hand-pick a shortlist for you in the meantime.
+        </p>
+        <ConciergeForm need="" source={`category:${category}`} />
+      </div>
     );
   }
 
