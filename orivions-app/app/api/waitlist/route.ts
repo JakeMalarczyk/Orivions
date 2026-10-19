@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { allowRequest } from '@/lib/rateLimit';
 import { verifyTurnstile } from '@/lib/turnstile';
+import { notifyAdmin } from '@/lib/notify';
 
 // Waitlist signups go through the server so we can check the captcha and
 // rate-limit by IP before anything is written to Supabase.
@@ -41,5 +42,6 @@ export async function POST(request: Request) {
   if (error) {
     return NextResponse.json({ error: 'Could not save your email.' }, { status: 500 });
   }
+  await notifyAdmin(['📬 New waitlist signup', email]);
   return NextResponse.json({ ok: true });
 }

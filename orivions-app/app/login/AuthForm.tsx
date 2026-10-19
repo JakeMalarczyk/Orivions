@@ -55,6 +55,12 @@ export default function AuthForm() {
         if (error) throw error;
         setStatus('success');
         if (data.session) {
+          // Best-effort admin ping (Telegram), see app/api/notify.
+          fetch('/api/notify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${data.session.access_token}` },
+            body: JSON.stringify({ event: 'signup' }),
+          }).catch(() => {});
           // Email confirmation is off: the account is live and signed in.
           setMessage('Account created, opening your dashboard…');
           setTimeout(() => router.push(accountType === 'provider' ? '/provider-dashboard' : '/client-dashboard'), 500);

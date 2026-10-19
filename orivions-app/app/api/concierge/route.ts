@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { allowRequest } from '@/lib/rateLimit';
 import { verifyTurnstile } from '@/lib/turnstile';
+import { notifyAdmin } from '@/lib/notify';
 
 // Concierge requests: a team asks for a hand-picked shortlist instead of (or
 // after) an automatic Smart Match. Rows land in concierge_requests and show up
@@ -44,17 +45,31 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Captcha check failed.' }, { status: 403 });
   }
 
+  const company = field(body.company, 120);
+  const budget = field(body.budget, 60);
+  const timeline = field(body.timeline, 60);
+  const source = field(body.source, 60);
   const { error } = await supabase.from('concierge_requests').insert({
     client_name: name,
     client_email: email,
-    client_company: field(body.company, 120),
+    client_company: company,
     project_description: need,
-    budget_range: field(body.budget, 60),
-    timeline: field(body.timeline, 60),
-    category: field(body.source, 60),
+    budget_range: budget,
+    timeline,
+    category: source,
   });
   if (error) {
     return NextResponse.json({ error: 'Could not save your request.' }, { status: 500 });
   }
+  await notifyAdmin([
+    '🔥 New shortlist request (concierge)',
+    `${name}${company ? ` · ${company}` : ''} <${email}>`,
+    (budget || timeline) && [budget, timeline].filter(Boolean).join(' · '),
+    source && `Source: ${source}`,
+    '',
+    need.slice(0, 800),
+    '',
+    'https://orivions.com/admin',
+  ]);
   return NextResponse.json({ ok: true });
 }

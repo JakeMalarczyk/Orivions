@@ -269,6 +269,12 @@ function ProviderDetailModal({
         status: 'new',
       });
       if (error) throw error;
+      // Best-effort admin ping; never blocks the client.
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'lead', companyId: provider.id }),
+      }).catch(() => {});
       setSendState('success');
       setForm({ name: '', company: '', email: '', message: '' });
     } catch {

@@ -301,6 +301,16 @@ function ProfilePanel({
     }
     setCompany({ ...company, verification_requested: true });
     showToast('Verification requested');
+    // Best-effort admin ping (Telegram), see app/api/notify.
+    const { data: sessionData } = await supabase.auth.getSession();
+    const token = sessionData.session?.access_token;
+    if (token) {
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ event: 'verification' }),
+      }).catch(() => {});
+    }
   }
 
   return (
