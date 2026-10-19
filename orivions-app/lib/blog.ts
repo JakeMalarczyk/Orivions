@@ -27,12 +27,66 @@ export interface Post {
 }
 
 export const AUTHOR = {
-  name: 'Jakub Malarczyk',
-  role: 'Founder, Orivions',
-  url: 'https://github.com/JakeMalarczyk',
+  name: 'Orivions Team',
+  role: 'Editorial team',
+  url: `${SITE_URL}/about`,
 };
 
 export const POSTS: Post[] = [
+  {
+    slug: 'how-to-read-a-smart-contract-audit-report',
+    title: 'How to read a smart contract audit report (without being an auditor)',
+    description:
+      'What the parts of a Solana smart contract audit report mean: scope and commit, severity levels, finding statuses, the fix review, and the questions to ask before you call the code audited.',
+    excerpt:
+      'An audit report is only useful if you can read it. A plain-English walkthrough of scope, severities, statuses and the small print that decides what "audited" really means.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    tags: ['Guides', 'Security', 'Audits'],
+    faqs: [
+      {
+        q: 'What do critical, high, medium and low mean in an audit report?',
+        a: 'They rank findings by impact and likelihood. Critical and high usually mean funds can be stolen or locked, or the protocol broken; medium means real but limited damage; low and informational are hardening and code-quality notes. Each auditor defines the levels in the report, so read their definitions.',
+      },
+      {
+        q: 'What does "acknowledged" mean on an audit finding?',
+        a: 'The team saw the finding and chose not to fix it, usually with an explanation. It is not the same as "resolved". Acknowledged critical or high findings deserve a careful look before you rely on the code.',
+      },
+      {
+        q: 'How do I know the deployed program is the audited code?',
+        a: 'Check that the report names the commit, that every finding is resolved or explained in a fix review, and that the deployed program has a verifiable build pointing at that commit or a later reviewed one.',
+      },
+    ],
+  },
+  {
+    slug: 'freelancer-vs-agency-solana-development',
+    title: 'Freelancer or agency for Solana development? How to decide',
+    description:
+      'When to hire a Solana freelancer and when an agency or development company is the better choice: scope, risk, cost, speed, continuity and how to combine both.',
+    excerpt:
+      'Freelancers can be faster and cheaper; agencies bring more roles and continuity. The right choice depends on your scope and risk, not on price alone. A practical comparison.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    tags: ['Guides', 'Development', 'Hiring'],
+    faqs: [
+      {
+        q: 'Is it cheaper to hire a Solana freelancer than an agency?',
+        a: 'Per hour, usually yes. Per finished outcome, not always: on larger projects you also need design, frontend, DevOps and project management, which an agency includes and you would otherwise coordinate yourself.',
+      },
+      {
+        q: 'When is a freelancer the better choice?',
+        a: 'For a well-scoped task one person can own: a single program or feature, a code review, a prototype, or extra capacity next to your own engineers who can review the work.',
+      },
+      {
+        q: 'When should I hire an agency instead?',
+        a: 'When you need several roles at once, a fixed deadline, one accountable contract, and continuity if someone leaves, for example a full dApp with programs, frontend and infrastructure.',
+      },
+    ],
+  },
   {
     slug: 'solana-project-brief-template',
     title: 'How to write a project brief for a Solana development team (free template)',

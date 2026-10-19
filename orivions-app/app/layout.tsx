@@ -63,8 +63,6 @@ const siteJsonLd = {
       logo: `${siteUrl}/logo.png`,
       description:
         'Verified B2B marketplace for the Solana ecosystem: AI matching with human-verified service providers (auditors, developers, marketing agencies). Free for clients; providers pay a flat 10% success fee on completed engagements.',
-      founder: { '@id': `${siteUrl}/about#founder` },
-      sameAs: ['https://github.com/JakeMalarczyk/Orivions'],
       knowsAbout: [
         'Solana',
         'Solana smart contract audits',
@@ -74,15 +72,6 @@ const siteJsonLd = {
         'B2B service marketplaces',
       ],
       areaServed: 'Worldwide',
-    },
-    {
-      '@type': 'Person',
-      '@id': `${siteUrl}/about#founder`,
-      name: 'Jakub Malarczyk',
-      jobTitle: 'Founder',
-      url: `${siteUrl}/about`,
-      worksFor: { '@id': `${siteUrl}/#organization` },
-      sameAs: ['https://github.com/JakeMalarczyk'],
     },
     {
       '@type': 'WebSite',

@@ -42,9 +42,7 @@ export function GET() {
 - Verification: a person at Orivions checks each provider (real company, portfolio, services and price ranges) before it is marked Verified.
 - Smart Match: describe your project in plain English, no account needed, and get 1-3 suggested providers with a reason for each.
 - Ecosystem: Solana only, by design.
-- Founder: Jakub Malarczyk.
 - Ranking: Smart Match ranks providers by fit to the stated need, not by payment. Sponsored placements are labeled and never affect the Verified badge.
-- Source code: https://github.com/JakeMalarczyk/Orivions
 
 ## Main pages
 

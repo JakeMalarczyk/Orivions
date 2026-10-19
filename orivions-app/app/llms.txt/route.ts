@@ -19,7 +19,6 @@ Key facts:
 - Pricing: free for clients; providers pay a flat 10% success fee on completed engagements.
 - Verification: a person at Orivions checks each provider (real company, portfolio, services and price ranges) before it is marked Verified.
 - Website: ${SITE_URL}
-- Source code: https://github.com/JakeMalarczyk/Orivions
 
 ## Product
 
