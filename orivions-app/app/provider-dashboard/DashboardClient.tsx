@@ -124,7 +124,9 @@ export default function DashboardClient() {
       <main className="flex-1 p-6 md:p-10">
         <h1 className="mb-7 font-heading text-xl font-semibold capitalize">{panel}</h1>
 
-        {panel === 'overview' && <OverviewPanel company={company} leads={leads} services={services} />}
+        {panel === 'overview' && (
+          <OverviewPanel company={company} leads={leads} services={services} portfolioCount={portfolio.length} goTo={setPanel} />
+        )}
         {panel === 'profile' && (
           <ProfilePanel company={company} setCompany={setCompany} showToast={showToast} />
         )}
@@ -146,10 +148,72 @@ export default function DashboardClient() {
   );
 }
 
-function OverviewPanel({ company, leads, services }: { company: Company; leads: Lead[]; services: Service[] }) {
+function OverviewPanel({
+  company,
+  leads,
+  services,
+  portfolioCount,
+  goTo,
+}: {
+  company: Company;
+  leads: Lead[];
+  services: Service[];
+  portfolioCount: number;
+  goTo: (panel: Panel) => void;
+}) {
   const newLeads = leads.filter((l) => l.status === 'new').length;
+  // What a person at Orivions checks before granting the Verified badge (see /about).
+  const steps: { done: boolean; label: string; hint: string; panel: Panel }[] = [
+    {
+      done: (company.description ?? '').trim().length >= 40 && !!company.website,
+      label: 'Complete your company profile',
+      hint: 'Company name, category, website and a short description of what you do on Solana.',
+      panel: 'profile',
+    },
+    { done: services.length > 0, label: 'Add your services with price ranges', hint: 'Specific services and indicative prices help clients compare.', panel: 'services' },
+    { done: portfolioCount > 0, label: 'Add at least one portfolio item', hint: 'A shipped project, audit report or campaign we can check.', panel: 'portfolio' },
+    {
+      done: company.verification_requested || company.verified,
+      label: 'Request verification',
+      hint: 'A person at Orivions reviews your profile and grants the Verified badge.',
+      panel: 'profile',
+    },
+  ];
+  const doneCount = steps.filter((st) => st.done).length;
   return (
     <div className="space-y-6">
+      {!company.verified && (
+        <div className="rounded-2xl border border-blue-light/40 bg-blue-light/5 p-5">
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold">Get verified</h3>
+            <span className="text-xs font-semibold text-blue-deep">
+              {doneCount}/{steps.length} done
+            </span>
+          </div>
+          <p className="mt-0.5 text-xs text-gray-soft">
+            Verified providers get the badge and are listed first in the directory. The first 20 also get the Founding Provider badge.
+          </p>
+          <ol className="mt-4 space-y-2.5">
+            {steps.map((st, i) => (
+              <li key={st.label} className="flex items-start gap-3 text-sm">
+                <span
+                  className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${
+                    st.done ? 'bg-ok text-white' : 'bg-white text-gray-soft ring-1 ring-line'
+                  }`}
+                >
+                  {st.done ? '✓' : i + 1}
+                </span>
+                <div>
+                  <button onClick={() => goTo(st.panel)} className={`font-semibold ${st.done ? 'text-gray-soft line-through' : 'text-ink hover:text-blue-deep'}`}>
+                    {st.label}
+                  </button>
+                  {!st.done && <p className="text-xs text-gray-soft">{st.hint}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
       <div className="grid gap-3.5 sm:grid-cols-3">
         <Stat label="New leads" value={newLeads} />
         <Stat label="Active services" value={services.length} />

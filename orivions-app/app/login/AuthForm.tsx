@@ -27,7 +27,7 @@ export default function AuthForm() {
   const captcha = useRef<TurnstileHandle>(null);
 
   function validate(): string | null {
-    if (mode === 'signup' && fullName.trim().length < 2) return 'Enter your full name.';
+    if (mode === 'signup' && fullName.trim().length < 2) return accountType === 'provider' ? 'Enter your company name.' : 'Enter your full name.';
     if (!EMAIL_RE.test(email.trim())) return 'Enter a valid email address.';
     if (password.length < 8) return 'Password must be at least 8 characters.';
     if (mode === 'signup' && password !== confirmPassword) return "Passwords don't match.";
@@ -47,15 +47,21 @@ export default function AuthForm() {
     setStatus('loading');
     try {
       if (mode === 'signup') {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: email.trim(),
           password,
           options: { data: { full_name: fullName.trim(), account_type: accountType }, captchaToken: captchaToken || undefined },
         });
         if (error) throw error;
         setStatus('success');
-        setMessage('Account created. Check your email to confirm, then log in.');
-        setTimeout(() => setMode('login'), 1600);
+        if (data.session) {
+          // Email confirmation is off: the account is live and signed in.
+          setMessage('Account created, opening your dashboard…');
+          setTimeout(() => router.push(accountType === 'provider' ? '/provider-dashboard' : '/client-dashboard'), 500);
+        } else {
+          setMessage('Account created. Check your email to confirm, then log in.');
+          setTimeout(() => setMode('login'), 1600);
+        }
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({
           email: email.trim(),
@@ -93,21 +99,21 @@ export default function AuthForm() {
           <span className="font-heading text-lg font-semibold">ORIVIONS</span>
         </div>
         <h1 className="mt-10 font-heading text-3xl font-semibold leading-tight">
-          The <span className="text-blue-light">business infrastructure layer</span> for the Solana ecosystem.
+          The <span className="text-blue-light">verified marketplace</span> for Solana services.
         </h1>
-        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted partners across the entire Solana ecosystem, or get found by the clients who need you.</p>
+        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted partners across the Solana ecosystem, or get found by the clients who need you.</p>
         <div className="mt-12 flex gap-8 text-sm">
           <div>
-            <div className="font-heading text-2xl font-semibold">1,200+</div>
-            <div className="text-white/60">Verified providers</div>
+            <div className="font-heading text-2xl font-semibold">Free</div>
+            <div className="text-white/60">For client teams</div>
           </div>
           <div>
-            <div className="font-heading text-2xl font-semibold">340+</div>
-            <div className="text-white/60">Categories</div>
+            <div className="font-heading text-2xl font-semibold">10%</div>
+            <div className="text-white/60">Success fee, no subscription</div>
           </div>
           <div>
-            <div className="font-heading text-2xl font-semibold">Beta</div>
-            <div className="text-white/60">Now onboarding</div>
+            <div className="font-heading text-2xl font-semibold">Top 20</div>
+            <div className="text-white/60">Founding Provider badges</div>
           </div>
         </div>
       </div>
@@ -142,12 +148,12 @@ export default function AuthForm() {
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
             {mode === 'signup' && (
-              <Field label="Full name">
+              <Field label={accountType === 'provider' ? 'Company name' : 'Full name'}>
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
-                  autoComplete="name"
+                  autoComplete={accountType === 'provider' ? 'organization' : 'name'}
                   className="input"
                 />
               </Field>
