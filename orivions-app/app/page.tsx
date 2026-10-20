@@ -20,7 +20,7 @@ const FAQS: [string, string][] = [
   ],
   [
     'How does Smart Match work?',
-    'You describe what you need in plain English. Orivions compares your request with verified provider profiles and services and returns the 1-3 best matches with a specific reason for each. No account or RFQ form is needed.',
+    'You describe what you need in plain English and get up to three verified providers that fit, with a specific reason for each. During early access, our team hand-picks every shortlist; automatic matching switches on as the verified network grows. No account or RFQ form is needed.',
   ],
   [
     'What does "verified" mean on Orivions?',

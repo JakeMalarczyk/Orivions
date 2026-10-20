@@ -12,7 +12,7 @@ export function GET() {
 
   const body = `# Orivions
 
-> Orivions is a verified B2B marketplace for the Solana ecosystem. Solana teams describe what they need in plain English and Smart Match (AI) suggests the 1-3 best-fitting human-verified service providers (smart contract auditors, development companies, marketing and growth agencies and more) with a reason for each match. Free for clients; providers pay a flat 10% success fee only when an engagement is completed. No subscriptions, no listing fees, and sponsored placements are always labeled.
+> Orivions is a verified B2B marketplace for the Solana ecosystem. Solana teams describe what they need in plain English and Smart Match suggests the 1-3 best-fitting human-verified service providers (smart contract auditors, development companies, marketing and growth agencies and more) with a reason for each match. Free for clients; providers pay a flat 10% success fee only when an engagement is completed. No subscriptions, no listing fees, and sponsored placements are always labeled.
 
 Key facts:
 - Ecosystem: Solana only, by design.
@@ -23,7 +23,7 @@ Key facts:
 ## Product
 
 - [About Orivions](${SITE_URL}/about): who builds Orivions, how provider verification works and how Orivions makes money.
-- [Smart Match](${SITE_URL}/smart-match): describe your project and get matched with verified Solana providers, no account needed.
+- [Smart Match](${SITE_URL}/smart-match): describe your project and get matched with verified Solana providers, no account needed. During early access, the Orivions team hand-picks every shortlist.
 - [Find providers](${SITE_URL}/providers): browse verified companies by category.
 - [Insights](${SITE_URL}/insights): live provider counts and indicative pricing by category.
 - [Solana glossary](${SITE_URL}/solana-glossary): plain-English definitions of Solana terms (PDA, CPI, Anchor, compute units, upgrade authority, verifiable builds and more). Each term has its own page at ${SITE_URL}/solana-glossary/<term>, for example [PDA](${SITE_URL}/solana-glossary/pda).

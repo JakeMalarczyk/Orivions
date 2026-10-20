@@ -80,10 +80,10 @@ export default function ConciergeForm({ need: initialNeed, source, title, text }
           'Tell us what you need and a person at Orivions will email you up to three verified providers that fit. Free for teams.'}
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <textarea value={need} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setNeed(e.target.value)} placeholder="What do you need? Scope, stage, anything that matters." rows={4} className="cf-input resize-none sm:col-span-2" />
         <input value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} placeholder="Your name" autoComplete="name" className="cf-input" />
         <input type="email" value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} placeholder="you@company.com" autoComplete="email" className="cf-input" />
         <input value={company} onChange={(e: ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)} placeholder="Project or company (optional)" autoComplete="organization" className="cf-input sm:col-span-2" />
-        <textarea value={need} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setNeed(e.target.value)} placeholder="What do you need? Scope, stage, anything that matters." rows={3} className="cf-input resize-none sm:col-span-2" />
         <select value={budget} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBudget(e.target.value)} className="cf-input bg-white">
           {BUDGETS.map((b) => (
             <option key={b} value={b}>{b || 'Budget (optional)'}</option>

@@ -15,8 +15,10 @@ export default function AuthForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [mode, setMode] = useState<Mode>('login');
-  const [accountType, setAccountType] = useState<AccountType>('client');
+  // /login?signup=provider (or =client) opens the signup form for that account type.
+  const signupParam = searchParams.get('signup');
+  const [mode, setMode] = useState<Mode>(signupParam ? 'signup' : 'login');
+  const [accountType, setAccountType] = useState<AccountType>(signupParam === 'provider' ? 'provider' : 'client');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

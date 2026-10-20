@@ -3,6 +3,9 @@
 import { useEffect, useMemo, useState, type ChangeEvent, type KeyboardEvent, type MouseEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { supabase, PROVIDER_CATEGORIES, type Company, type PortfolioItem, type Service } from '@/lib/supabase';
+import { isDirectoryOpen } from '@/lib/directory';
+import ConciergeForm from '@/components/ConciergeForm';
+import { EarlyAccessBadge, FoundingProviderCard } from '@/components/EarlyAccess';
 
 // UI strings for this page. The site is English-only by design; these were
 // previously routed through a locale dictionary and prop-drilled three levels
@@ -94,6 +97,31 @@ export default function ProvidersCatalog() {
   );
 
   const openProvider = providers.find((p) => p.id === openId) ?? null;
+  const directoryOpen = isDirectoryOpen(providers.filter((p) => p.verified).length);
+
+  if (loading) return <div className="px-8 py-20 text-center text-gray-soft">Loading…</div>;
+
+  // Early access: no empty grid or zero counts; teams get a hand-picked
+  // shortlist and providers can apply for the founding cohort.
+  if (!directoryOpen) {
+    return (
+      <section className="mx-auto max-w-5xl px-8 pb-20 pt-14">
+        <div className="text-center">
+          <EarlyAccessBadge />
+          <h1 className="mt-5 font-heading text-3xl font-semibold tracking-tight md:text-4xl">{t.title}</h1>
+          <p className="mx-auto mt-3 max-w-2xl text-gray">
+            We are verifying our founding cohort of Solana service companies one by one: real team,
+            real portfolio, transparent pricing. The public directory opens with that cohort. Until
+            then, our team matches you by hand.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-5 md:grid-cols-[1.4fr_1fr]">
+          <ConciergeForm need="" source="providers" />
+          <FoundingProviderCard />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>

@@ -4,6 +4,8 @@ import { useEffect, useState, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase, type Company } from '@/lib/supabase';
 import ConciergeForm from '@/components/ConciergeForm';
+import { FoundingProviderCard } from '@/components/EarlyAccess';
+import { isDirectoryOpen } from '@/lib/directory';
 
 export default function CategoryProviders({ category }: { category: string }) {
   const router = useRouter();
@@ -31,21 +33,24 @@ export default function CategoryProviders({ category }: { category: string }) {
   }, [category]);
 
   if (loading) return <p className="mt-4 text-sm text-gray-soft">Loading providers…</p>;
-  if (!providers.length) {
+  // Early access (or a category still being onboarded): hand-picked shortlist instead of a short list.
+  const verified = providers.filter((p) => p.verified);
+  if (!isDirectoryOpen(verified.length) || !verified.length) {
     return (
-      <div className="mt-4">
-        <p className="mb-4 text-sm text-gray-soft">
-          We are onboarding verified {category.toLowerCase()} providers right now. Send your brief and
-          we will hand-pick a shortlist for you in the meantime.
+      <div className="mt-4 space-y-4">
+        <p className="text-sm text-gray">
+          Our founding cohort of verified {category.toLowerCase()} providers is being onboarded. Send
+          your brief and our team will hand-pick a shortlist for you, usually within two business days.
         </p>
         <ConciergeForm need="" source={`category:${category}`} />
+        <FoundingProviderCard compact />
       </div>
     );
   }
 
   return (
     <div className="mt-4 grid gap-3.5 sm:grid-cols-2">
-      {providers.map((p) => (
+      {verified.map((p) => (
         <div
           key={p.id}
           role="button"

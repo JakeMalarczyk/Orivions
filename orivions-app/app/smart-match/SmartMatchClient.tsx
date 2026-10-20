@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import ConciergeForm from '@/components/ConciergeForm';
+import { EarlyAccessBadge } from '@/components/EarlyAccess';
 
 // Shape returned by /api/smart-match, a public subset of the Company row
 // (the server deliberately never exposes fields like referral_code here).
@@ -27,7 +28,7 @@ const EXAMPLES = [
   { label: 'Legal / DAO structuring', text: 'Need a legal advisor to help structure our DAO and token launch, based in the EU.' },
 ];
 
-export default function SmartMatchClient() {
+export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) {
   // Tools such as the audit cost calculator link here with ?need= prefilled.
   const searchParams = useSearchParams();
   const [need, setNeed] = useState(() => (searchParams.get('need') ?? '').slice(0, 1000));
@@ -38,6 +39,44 @@ export default function SmartMatchClient() {
   const captcha = useRef<TurnstileHandle>(null);
   // Shown when matching finds nothing or fails, or when the visitor asks for a person.
   const [showConcierge, setShowConcierge] = useState(false);
+
+  // Early access: every shortlist is hand-picked by the Orivions team.
+  if (!autoMatch) {
+    return (
+      <div className="mx-auto max-w-2xl px-8 pb-20 pt-14 text-center">
+        <EarlyAccessBadge className="mb-6" />
+        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+          Describe what you need. <span className="text-blue-deep">We&apos;ll find your match.</span>
+        </h1>
+        <p className="mx-auto mt-4 max-w-lg text-gray">
+          During early access, every shortlist is hand-picked by our team: up to three verified
+          Solana providers that fit your scope, budget and timeline, with a reason for each pick.
+        </p>
+        <div className="mt-8">
+          <ConciergeForm
+            need={need.trim()}
+            source="smart-match"
+            title="Tell us about your project"
+            text="Scope, stage, budget and timeline help us pick well. You will get your shortlist by email, usually within two business days. Free for teams, no obligation."
+          />
+        </div>
+        <ol className="mx-auto mt-8 grid max-w-xl gap-3 text-left text-sm text-gray sm:grid-cols-3">
+          <li className="rounded-xl border border-line p-4">
+            <b className="block text-ink">1. Send your brief</b>
+            Two minutes, no account needed.
+          </li>
+          <li className="rounded-xl border border-line p-4">
+            <b className="block text-ink">2. We pick</b>
+            A person checks fit, availability and price range.
+          </li>
+          <li className="rounded-xl border border-line p-4">
+            <b className="block text-ink">3. You choose</b>
+            Talk to the providers you like. Free for teams.
+          </li>
+        </ol>
+      </div>
+    );
+  }
 
   async function runMatch() {
     setErrorMsg('');

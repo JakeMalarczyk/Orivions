@@ -1,7 +1,10 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { supabase, PROVIDER_CATEGORIES, type Company, type Service } from '@/lib/supabase';
+import { isDirectoryOpen } from '@/lib/directory';
+import { EarlyAccessBadge } from '@/components/EarlyAccess';
 
 export default function InsightsClient() {
   const [providers, setProviders] = useState<Company[]>([]);
@@ -54,6 +57,44 @@ export default function InsightsClient() {
   }, [services]);
 
   const priceCategories = Object.keys(priceByCategory);
+
+  if (loading) return <div className="px-8 py-20 text-center text-gray-soft">Loading…</div>;
+
+  // Early access: publish market data only once there is a real verified cohort.
+  if (!isDirectoryOpen(providers.length)) {
+    return (
+      <div className="mx-auto max-w-3xl px-8 pb-20 pt-14 text-center">
+        <EarlyAccessBadge />
+        <h1 className="mt-5 font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+          Solana Business Infrastructure: Market Insights
+        </h1>
+        <p className="mx-auto mt-3 max-w-xl text-gray">
+          Live supply and pricing data from verified providers is published once our founding cohort
+          is listed, so every number reflects real, checked companies. Until then, plan your budget
+          with our free calculators.
+        </p>
+        <div className="mt-8 grid gap-3 text-left sm:grid-cols-2">
+          <Link href="/tools/solana-audit-cost-calculator" className="block rounded-2xl border border-line p-5 hover:border-blue-deep">
+            <span className="font-semibold">Solana audit cost calculator →</span>
+            <span className="mt-1 block text-sm text-gray">Price range and timeline for auditing your programs.</span>
+          </Link>
+          <Link href="/tools/solana-dapp-cost-calculator" className="block rounded-2xl border border-line p-5 hover:border-blue-deep">
+            <span className="font-semibold">Solana dApp cost calculator →</span>
+            <span className="mt-1 block text-sm text-gray">Build cost, timeline and maintenance for your dApp.</span>
+          </Link>
+        </div>
+        <div className="mt-8 rounded-2xl bg-ink p-7 text-white">
+          <h3 className="font-heading text-lg font-semibold">Need data for a report or program?</h3>
+          <p className="mt-2 text-sm text-white/70">
+            We can put together a tailored market view for accelerators, VCs and grant programs.
+          </p>
+          <a href="/#ask" className="mt-3.5 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-ink">
+            Get in touch
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-5xl px-8 pb-20 pt-14">
