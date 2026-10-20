@@ -26,6 +26,10 @@ const inter = Inter({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.com';
 
+// Official profiles. Listed as sameAs on the Organization so search engines and
+// AI answer engines connect them to orivions.com as one entity.
+const SOCIAL_PROFILES = ['https://x.com/Orivions'];
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -47,6 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@Orivions',
     images: ['/og-image.png'],
   },
 };
@@ -61,6 +66,7 @@ const siteJsonLd = {
       '@id': `${siteUrl}/#organization`,
       name: 'Orivions',
       url: `${siteUrl}/`,
+      sameAs: SOCIAL_PROFILES,
       logo: `${siteUrl}/logo.png`,
       description:
         'Verified B2B marketplace for the Solana ecosystem: AI matching with human-verified service providers (auditors, developers, marketing agencies). Free for clients; providers pay a flat 10% success fee on completed engagements.',

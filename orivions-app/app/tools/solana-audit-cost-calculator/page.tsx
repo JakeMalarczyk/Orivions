@@ -107,7 +107,7 @@ export default function AuditCostCalculatorPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Orivions', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Solana smart contract audits', item: `${SITE_URL}/solana-smart-contract-audits` },
+          { '@type': 'ListItem', position: 2, name: 'Free tools', item: `${SITE_URL}/tools` },
           { '@type': 'ListItem', position: 3, name: 'Audit cost calculator', item: url },
         ],
       },
@@ -120,7 +120,7 @@ export default function AuditCostCalculatorPage() {
       <div className="mx-auto max-w-5xl px-6 pb-20 pt-12">
         <p className="text-xs text-gray-soft">
           <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/solana-smart-contract-audits" className="text-blue-deep">Solana smart contract audits</Link> / Audit cost calculator
+          <Link href="/tools" className="text-blue-deep">Free tools</Link> / Audit cost calculator
         </p>
         <div className="mt-5 text-xs font-medium uppercase tracking-wide text-gray-soft">Free tool</div>
         <h1 className="mt-3 max-w-3xl font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[38px]">
@@ -178,7 +178,7 @@ export default function AuditCostCalculatorPage() {
             </li>
             <li>
               <b>Complexity:</b>{' '}
-              {COMPLEXITY.map((c) => `${c.label.toLowerCase()} ×${c.factor}`).join(', ')}.
+              {COMPLEXITY.map((c) => `${c.label} ×${c.factor}`).join(', ')}.
             </li>
             <li>
               <b>Framework:</b> {FRAMEWORK.map((f) => `${f.label} ×${f.factor}`).join(', ')}, because native

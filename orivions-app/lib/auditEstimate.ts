@@ -5,7 +5,7 @@
 export const LINES_PER_ENGINEER_DAY = 300;
 export const MIN_ENGINEER_DAYS = 3;
 export const EXTRA_PROGRAM_DAYS = 1;
-export const DAY_RATE_LOW = 1200;
+export const DAY_RATE_LOW = 1600;
 export const DAY_RATE_HIGH = 2800;
 export const ENGINEERS = 2;
 

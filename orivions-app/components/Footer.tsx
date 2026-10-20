@@ -10,6 +10,7 @@ const PRODUCT = [
   { href: '/providers', label: 'Find providers' },
   { href: '/insights', label: 'Market insights' },
   { href: '/tools/solana-audit-cost-calculator', label: 'Audit cost calculator' },
+  { href: '/tools/solana-dapp-cost-calculator', label: 'dApp cost calculator' },
   { href: '/ai-proposal-generator', label: 'AI proposal generator' },
 ];
 
@@ -69,7 +70,10 @@ export default function Footer() {
       </div>
       <div className="border-t border-line">
         <p className="mx-auto max-w-6xl px-8 py-5 text-xs text-gray-soft">
-          © {new Date().getFullYear()} Orivions. Built for the Solana ecosystem.
+          © {new Date().getFullYear()} Orivions. Built for the Solana ecosystem.{' '}
+          <a href="https://x.com/Orivions" target="_blank" rel="noopener me" className="hover:text-ink">
+            Follow @Orivions on X
+          </a>
         </p>
       </div>
     </footer>

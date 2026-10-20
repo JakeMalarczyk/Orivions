@@ -1,0 +1,97 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Header from '@/components/Header';
+import { SITE_URL, ogImageUrl } from '@/lib/blog';
+
+// Hub for the free calculators. Each tool also links back here via its breadcrumb.
+
+const DESCRIPTION =
+  'Free tools for Solana teams: estimate what an audit costs, what building a dApp costs, and how long each takes. Transparent methods, no signup.';
+
+const TOOLS = [
+  {
+    href: '/tools/solana-audit-cost-calculator',
+    title: 'Solana audit cost calculator',
+    text: 'Price range, engineer-days and calendar time for auditing your Solana programs, from lines of code, complexity, framework and integrations.',
+  },
+  {
+    href: '/tools/solana-dapp-cost-calculator',
+    title: 'Solana dApp cost calculator',
+    text: 'Build cost and timeline for your dApp: programs, frontend, backend, extras, and whether a freelancer or an agency builds it.',
+  },
+  {
+    href: '/ai-proposal-generator',
+    title: 'AI proposal generator',
+    text: 'For providers: turn a client brief into a structured proposal with scope, milestones and pricing.',
+  },
+];
+
+export const metadata: Metadata = {
+  title: 'Free Tools for Solana Teams',
+  description: DESCRIPTION,
+  alternates: { canonical: '/tools' },
+  openGraph: {
+    title: 'Free tools for Solana teams',
+    description: DESCRIPTION,
+    url: '/tools',
+    images: [{ url: ogImageUrl('Free tools for Solana teams', 'Tools'), width: 1200, height: 630 }],
+  },
+};
+
+export default function ToolsPage() {
+  const url = `${SITE_URL}/tools`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${url}#page`,
+        name: 'Free tools for Solana teams',
+        description: DESCRIPTION,
+        url,
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        hasPart: TOOLS.map((t) => ({ '@type': 'WebApplication', name: t.title, url: `${SITE_URL}${t.href}` })),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Orivions', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Free tools', item: url },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Header />
+      <div className="mx-auto max-w-3xl px-6 pb-20 pt-12">
+        <p className="text-xs text-gray-soft">
+          <Link href="/" className="text-blue-deep">Orivions</Link> / Free tools
+        </p>
+        <h1 className="mt-5 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[34px]">
+          Free tools for Solana teams
+        </h1>
+        <p className="mt-3 text-gray">
+          Plan your budget before you talk to providers. Every calculator shows its method and
+          assumptions, so you can check the numbers against real quotes.
+        </p>
+        <ul className="mt-8 space-y-3">
+          {TOOLS.map((t) => (
+            <li key={t.href}>
+              <Link href={t.href} className="block rounded-2xl border border-line p-6 hover:border-blue-deep">
+                <span className="font-heading text-lg font-semibold">{t.title} →</span>
+                <span className="mt-1.5 block text-sm text-gray">{t.text}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </>
+  );
+}

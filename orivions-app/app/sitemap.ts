@@ -16,7 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/about', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/solana-glossary', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/tools', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-audit-cost-calculator', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/tools/solana-dapp-cost-calculator', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/ai-proposal-generator', priority: 0.4, changeFrequency: 'monthly' as const },
   ];
 

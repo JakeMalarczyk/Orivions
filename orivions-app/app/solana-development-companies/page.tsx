@@ -33,6 +33,7 @@ const content: CategoryContent = {
       heading: 'Typical development pricing',
       body: 'Pricing depends heavily on scope. Small, single-purpose programs can start in the low thousands of dollars, while full protocol builds with multiple interacting programs and a frontend often run into the tens of thousands.',
       linkToInsights: true,
+      link: { text: 'For a range based on your own scope, use the free', href: '/tools/solana-dapp-cost-calculator', label: 'Solana dApp cost calculator' },
     },
   ],
   providersHeading: 'Verified Development providers',

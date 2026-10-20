@@ -58,7 +58,9 @@ export default function PostPage() {
         A simple program, such as a vesting contract or a straightforward staking program with a
         basic interface, might start around $2,000-5,000. A full protocol with several programs, a
         production frontend and integrations with other protocols commonly runs $20,000 or more,
-        before the audit. Live, indicative pricing from verified providers is on the{' '}
+        before the audit. For a range based on your own scope, try our free{' '}
+        <Link href="/tools/solana-dapp-cost-calculator" className="text-blue-deep">Solana dApp cost calculator</Link>;
+        live, indicative pricing from verified providers is on the{' '}
         <Link href="/insights" className="text-blue-deep">insights page</Link>.
       </P>
 

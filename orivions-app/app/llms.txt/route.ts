@@ -31,6 +31,8 @@ Key facts:
 ## Tools
 
 - [Solana smart contract audit cost calculator](${SITE_URL}/tools/solana-audit-cost-calculator): free estimate of audit cost and duration from lines of code, complexity, framework and integrations, with the full method and worked examples.
+- [Solana dApp development cost calculator](${SITE_URL}/tools/solana-dapp-cost-calculator): free estimate of build cost, timeline and yearly maintenance from programs, frontend, backend, extras and team type (freelancer or agency), with the full method and worked examples.
+- [All free tools](${SITE_URL}/tools)
 
 ## Categories
 
