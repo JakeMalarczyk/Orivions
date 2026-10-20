@@ -1,5 +1,5 @@
 import { SITE_URL, postUrl, sortedPosts } from '@/lib/blog';
-import { GLOSSARY } from '@/lib/glossary';
+import { GLOSSARY, termPath } from '@/lib/glossary';
 
 // llms-full.txt: the long companion to llms.txt. Everything an LLM or AI answer
 // engine needs to answer questions about Orivions and our guides without
@@ -26,7 +26,7 @@ export function GET() {
 
   const glossary = [...GLOSSARY]
     .sort((a, b) => a.term.localeCompare(b.term))
-    .map((t) => `- **${t.term}**: ${t.definition} (${SITE_URL}/solana-glossary#${t.id})`)
+    .map((t) => `- **${t.term}**: ${t.definition} (${SITE_URL}${termPath(t.id)})`)
     .join('\n');
 
   const body = `# Orivions: full reference for LLMs

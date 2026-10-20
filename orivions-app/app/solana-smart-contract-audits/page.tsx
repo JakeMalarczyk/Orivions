@@ -33,6 +33,7 @@ const content: CategoryContent = {
       heading: 'Typical audit pricing',
       body: 'Pricing depends heavily on codebase size and complexity. Small, single-purpose programs often start in the low thousands of dollars, while larger DeFi protocols with multiple interacting programs can run into the tens of thousands.',
       linkToInsights: true,
+      link: { text: 'For a range based on your own code size and complexity, use the free', href: '/tools/solana-audit-cost-calculator', label: 'Solana audit cost calculator' },
     },
   ],
   providersHeading: 'Verified Security & Audit providers',

@@ -9,6 +9,7 @@ const PRODUCT = [
   { href: '/smart-match', label: 'Smart Match' },
   { href: '/providers', label: 'Find providers' },
   { href: '/insights', label: 'Market insights' },
+  { href: '/tools/solana-audit-cost-calculator', label: 'Audit cost calculator' },
   { href: '/ai-proposal-generator', label: 'AI proposal generator' },
 ];
 

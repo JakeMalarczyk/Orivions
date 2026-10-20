@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, sortedPosts } from '@/lib/blog';
+import { GLOSSARY, termPath } from '@/lib/glossary';
 
 // English-only site: no language alternates by design.
 // Blog posts come from lib/blog.ts, so a new post is in the sitemap automatically.
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/about', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/solana-glossary', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/tools/solana-audit-cost-calculator', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/ai-proposal-generator', priority: 0.4, changeFrequency: 'monthly' as const },
   ];
 
@@ -33,5 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...postEntries];
+  const termEntries = GLOSSARY.map((t) => ({
+    url: `${SITE_URL}${termPath(t.id)}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }));
+
+  return [...staticEntries, ...postEntries, ...termEntries];
 }

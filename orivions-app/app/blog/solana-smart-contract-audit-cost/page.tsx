@@ -36,7 +36,9 @@ export default function PostPage() {
         Small, single-purpose programs (a vesting contract, a simple staking program, an NFT
         mint with custom logic) often start in the low thousands of dollars. Larger DeFi protocols
         with several interacting programs, oracles and complex math can run into the tens of
-        thousands. Live, indicative ranges from verified providers are on our{' '}
+        thousands. For a range based on your own code, try our free{' '}
+        <Link href="/tools/solana-audit-cost-calculator" className="text-blue-deep">Solana audit cost calculator</Link>;
+        live, indicative ranges from verified providers are on our{' '}
         <Link href="/insights" className="text-blue-deep">insights page</Link>.
       </P>
       <P>

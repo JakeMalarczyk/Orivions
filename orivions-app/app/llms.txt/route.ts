@@ -26,7 +26,11 @@ Key facts:
 - [Smart Match](${SITE_URL}/smart-match): describe your project and get matched with verified Solana providers, no account needed.
 - [Find providers](${SITE_URL}/providers): browse verified companies by category.
 - [Insights](${SITE_URL}/insights): live provider counts and indicative pricing by category.
-- [Solana glossary](${SITE_URL}/solana-glossary): plain-English definitions of Solana terms (PDA, CPI, Anchor, compute units, upgrade authority, verifiable builds and more).
+- [Solana glossary](${SITE_URL}/solana-glossary): plain-English definitions of Solana terms (PDA, CPI, Anchor, compute units, upgrade authority, verifiable builds and more). Each term has its own page at ${SITE_URL}/solana-glossary/<term>, for example [PDA](${SITE_URL}/solana-glossary/pda).
+
+## Tools
+
+- [Solana smart contract audit cost calculator](${SITE_URL}/tools/solana-audit-cost-calculator): free estimate of audit cost and duration from lines of code, complexity, framework and integrations, with the full method and worked examples.
 
 ## Categories
 

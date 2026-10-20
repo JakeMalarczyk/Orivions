@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import ConciergeForm from '@/components/ConciergeForm';
 
@@ -27,7 +28,9 @@ const EXAMPLES = [
 ];
 
 export default function SmartMatchClient() {
-  const [need, setNeed] = useState('');
+  // Tools such as the audit cost calculator link here with ?need= prefilled.
+  const searchParams = useSearchParams();
+  const [need, setNeed] = useState(() => (searchParams.get('need') ?? '').slice(0, 1000));
   const [loading, setLoading] = useState(false);
   const [matches, setMatches] = useState<Match[] | null>(null);
   const [errorMsg, setErrorMsg] = useState('');

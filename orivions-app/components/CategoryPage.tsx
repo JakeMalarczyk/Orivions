@@ -17,6 +17,8 @@ export interface CategorySection {
   bullets?: [string, string][];
   /** Append a link to /insights at the end of the body paragraph. */
   linkToInsights?: boolean;
+  /** Optional sentence ending in an internal link, e.g. to a free tool. */
+  link?: { text: string; href: string; label: string };
 }
 
 export interface CategoryFaq {
@@ -130,6 +132,12 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
                     <>
                       {' '}See live, aggregated indicative pricing on the{' '}
                       <Link href="/insights" className="text-blue-deep">Orivions Market Insights</Link> page.
+                    </>
+                  )}
+                  {s.link && (
+                    <>
+                      {' '}{s.link.text}{' '}
+                      <Link href={s.link.href} className="text-blue-deep">{s.link.label}</Link>.
                     </>
                   )}
                 </p>

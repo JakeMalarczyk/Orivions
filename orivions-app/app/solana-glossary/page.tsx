@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
-import { GLOSSARY } from '@/lib/glossary';
+import { GLOSSARY, shortTerm, termPath } from '@/lib/glossary';
 
 const TITLE = 'Solana glossary: plain-English definitions for teams hiring in the ecosystem';
 const DESCRIPTION =
@@ -40,7 +40,7 @@ export default function GlossaryPage() {
           '@id': `${url}#${t.id}`,
           name: t.term,
           description: t.definition,
-          url: `${url}#${t.id}`,
+          url: `${SITE_URL}${termPath(t.id)}`,
           inDefinedTermSet: `${url}#set`,
         })),
       },
@@ -76,7 +76,7 @@ export default function GlossaryPage() {
               href={`#${t.id}`}
               className="rounded-full border border-line bg-bg-soft px-2.5 py-0.5 text-[12px] font-semibold text-gray hover:text-ink"
             >
-              {t.term.replace(/ \(.*\)$/, '')}
+              {shortTerm(t)}
             </a>
           ))}
         </nav>
@@ -84,17 +84,17 @@ export default function GlossaryPage() {
         <dl className="mt-8 space-y-3">
           {terms.map((t) => (
             <div key={t.id} id={t.id} className="scroll-mt-24 rounded-2xl border border-line p-5">
-              <dt className="font-heading text-lg font-semibold">{t.term}</dt>
+              <dt className="font-heading text-lg font-semibold">
+                <Link href={termPath(t.id)} className="hover:text-blue-deep">
+                  {t.term}
+                </Link>
+              </dt>
               <dd className="mt-1.5 text-[15px] leading-relaxed text-[#27272E]">
                 {t.definition}
-                {t.link && (
-                  <>
-                    {' '}
-                    <Link href={t.link.href} className="text-blue-deep">
-                      {t.link.label} →
-                    </Link>
-                  </>
-                )}
+                {' '}
+                <Link href={termPath(t.id)} className="text-blue-deep">
+                  Why it matters →
+                </Link>
               </dd>
             </div>
           ))}

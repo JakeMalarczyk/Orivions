@@ -190,3 +190,17 @@ export const GLOSSARY: GlossaryTerm[] = [
       'A service company on Orivions whose identity, portfolio, services and price ranges were checked by a person at Orivions before it was marked Verified.',
   },
 ];
+
+export function getTerm(id: string): GlossaryTerm | undefined {
+  return GLOSSARY.find((t) => t.id === id);
+}
+
+/** "PDA (program derived address)" -> "PDA". */
+export function shortTerm(t: GlossaryTerm): string {
+  return t.term.replace(/ \(.*\)$/, '');
+}
+
+/** Each term has its own page; the glossary index keeps an anchor per term too. */
+export function termPath(id: string): string {
+  return `/solana-glossary/${id}`;
+}
