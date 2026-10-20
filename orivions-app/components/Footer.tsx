@@ -22,6 +22,7 @@ const CATEGORIES = [
 
 const COMPANY = [
   { href: '/about', label: 'About Orivions' },
+  { href: '/founding-providers', label: 'Founding Providers' },
   { href: '/blog', label: 'Blog' },
   { href: '/solana-glossary', label: 'Solana glossary' },
   { href: '/login', label: 'Log in' },

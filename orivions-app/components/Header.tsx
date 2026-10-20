@@ -26,7 +26,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/login?signup=provider"
+            href="/founding-providers"
             className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:opacity-90"
           >
             List your company

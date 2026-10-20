@@ -27,3 +27,23 @@ export async function verifiedProviderCount(): Promise<number> {
     return 0;
   }
 }
+
+export const FOUNDING_SPOTS = 20;
+
+/** Server-side count of Founding Provider badges already granted. */
+export async function foundingProviderCount(): Promise<number> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return 0;
+  try {
+    const supabase = createClient(url, key, { auth: { persistSession: false } });
+    const { count, error } = await supabase
+      .from('companies')
+      .select('id', { count: 'exact', head: true })
+      .eq('account_type', 'provider')
+      .eq('founding_provider', true);
+    return error ? 0 : count ?? 0;
+  } catch {
+    return 0;
+  }
+}

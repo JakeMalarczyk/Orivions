@@ -25,6 +25,7 @@ Key facts:
 - [About Orivions](${SITE_URL}/about): who builds Orivions, how provider verification works and how Orivions makes money.
 - [Smart Match](${SITE_URL}/smart-match): describe your project and get matched with verified Solana providers, no account needed. During early access, the Orivions team hand-picks every shortlist.
 - [Find providers](${SITE_URL}/providers): browse verified companies by category.
+- [Founding Providers](${SITE_URL}/founding-providers): how Solana service companies join the first 20 verified providers on Orivions, what verification checks and what it costs (free profile, 10% success fee on completed work).
 - [Insights](${SITE_URL}/insights): live provider counts and indicative pricing by category.
 - [Solana glossary](${SITE_URL}/solana-glossary): plain-English definitions of Solana terms (PDA, CPI, Anchor, compute units, upgrade authority, verifiable builds and more). Each term has its own page at ${SITE_URL}/solana-glossary/<term>, for example [PDA](${SITE_URL}/solana-glossary/pda).
 

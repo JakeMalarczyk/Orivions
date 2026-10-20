@@ -28,12 +28,17 @@ export function FoundingProviderCard({ compact = false }: { compact?: boolean })
           <li>→ First access to the briefs teams send us during early access</li>
         </ul>
       )}
-      <Link
-        href="/login?signup=provider"
-        className="mt-4 inline-block rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white"
-      >
-        Apply as a provider →
-      </Link>
+      <div className="mt-4 flex flex-wrap items-center gap-4">
+        <Link
+          href="/login?signup=provider"
+          className="inline-block rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white"
+        >
+          Apply as a provider →
+        </Link>
+        <Link href="/founding-providers" className="text-sm font-semibold text-blue-deep">
+          Learn more
+        </Link>
+      </div>
     </div>
   );
 }

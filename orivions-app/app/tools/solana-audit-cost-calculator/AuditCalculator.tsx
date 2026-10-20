@@ -28,6 +28,11 @@ declare global {
   }
 }
 
+function shareOnX(text: string, path: string): string {
+  const url = `https://orivions.com${path}?ref=x-share`;
+  return `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+}
+
 export default function AuditCalculator() {
   const [input, setInput] = useState<AuditInput>(DEFAULTS);
   const [tracked, setTracked] = useState(false);
@@ -150,6 +155,18 @@ export default function AuditCalculator() {
           >
             Get quotes from verified auditors →
           </Link>
+          <a
+            href={shareOnX(
+              `My Solana audit estimate: ${formatUsd(result.costLow)} to ${formatUsd(result.costHigh)}, ${result.engineerDays} engineer-days. Free calculator with a transparent method by @Orivions:`,
+              '/tools/solana-audit-cost-calculator',
+            )}
+            target="_blank"
+            rel="noopener"
+            onClick={() => window.plausible?.('Calculator Shared', { props: { tool: 'audit' } })}
+            className="mt-3 block text-center text-xs font-semibold text-white/70 hover:text-white"
+          >
+            Share this estimate on X ↗
+          </a>
         </div>
       </div>
     </div>

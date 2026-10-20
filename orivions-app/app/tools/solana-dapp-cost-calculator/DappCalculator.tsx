@@ -26,6 +26,11 @@ const DEFAULTS: DappInput = {
   team: 'agency',
 };
 
+function shareOnX(text: string, path: string): string {
+  const url = `https://orivions.com${path}?ref=x-share`;
+  return `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+}
+
 export default function DappCalculator() {
   const [input, setInput] = useState<DappInput>(DEFAULTS);
   const [tracked, setTracked] = useState(false);
@@ -182,6 +187,18 @@ export default function DappCalculator() {
           >
             Get quotes from verified teams →
           </Link>
+          <a
+            href={shareOnX(
+              `Building on Solana? My dApp estimate: ${formatUsd(result.costLow)} to ${formatUsd(result.costHigh)}, ${result.weeks[0]} to ${result.weeks[1]} weeks. Free calculator by @Orivions:`,
+              '/tools/solana-dapp-cost-calculator',
+            )}
+            target="_blank"
+            rel="noopener"
+            onClick={() => window.plausible?.('Calculator Shared', { props: { tool: 'dapp' } })}
+            className="mt-3 block text-center text-xs font-semibold text-white/70 hover:text-white"
+          >
+            Share this estimate on X ↗
+          </a>
         </div>
       </div>
     </div>
