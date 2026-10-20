@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Poppins, Inter } from 'next/font/google';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
+import PageViewTracker from '@/components/PageViewTracker';
 import './globals.css';
 
 // next/font downloads and self-hosts these at BUILD time, then serves them from
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="font-body bg-white text-ink antialiased">
         {children}
         <Footer />
+        <PageViewTracker />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

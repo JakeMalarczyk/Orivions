@@ -10,7 +10,7 @@ import { supabase, type Company, type Lead } from '@/lib/supabase';
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'providers' | 'concierge' | 'leads' | 'signups';
+type Tab = 'overview' | 'traffic' | 'providers' | 'concierge' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -23,6 +23,23 @@ interface Stats {
   concierge_open: number;
   waitlist: number;
   newsletter: number;
+}
+
+interface Counts {
+  visitors: number;
+  views: number;
+}
+
+interface Traffic {
+  live: number;
+  today: Counts;
+  last7: Counts;
+  last30: Counts;
+  total: Counts;
+  daily: ({ day: string } & Counts)[];
+  pages: ({ path: string } & Counts)[];
+  sources: { source: string; visitors: number }[];
+  countries: { country: string; visitors: number }[];
 }
 
 type ProviderRow = Pick<
@@ -55,6 +72,7 @@ interface Signup {
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: 'Overview' },
+  { id: 'traffic', label: 'Traffic' },
   { id: 'providers', label: 'Providers' },
   { id: 'concierge', label: 'Concierge' },
   { id: 'leads', label: 'Leads' },
@@ -71,6 +89,7 @@ export default function AdminClient() {
   const [email, setEmail] = useState('');
   const [tab, setTab] = useState<Tab>('overview');
   const [stats, setStats] = useState<Stats | null>(null);
+  const [traffic, setTraffic] = useState<Traffic | null>(null);
   const [providers, setProviders] = useState<ProviderRow[]>([]);
   const [concierge, setConcierge] = useState<ConciergeRequest[]>([]);
   const [leads, setLeads] = useState<(Lead & { providerName: string })[]>([]);
@@ -78,8 +97,9 @@ export default function AdminClient() {
   const [error, setError] = useState('');
 
   const loadAll = useCallback(async () => {
-    const [statsRes, providersRes, conciergeRes, leadsRes, waitlistRes, newsletterRes] = await Promise.all([
+    const [statsRes, trafficRes, providersRes, conciergeRes, leadsRes, waitlistRes, newsletterRes] = await Promise.all([
       supabase.rpc('admin_stats'),
+      supabase.rpc('admin_traffic'),
       supabase
         .from('companies')
         .select('id, name, category, website, verified, featured, founding_provider, verification_requested, created_at')
@@ -92,6 +112,7 @@ export default function AdminClient() {
     ]);
 
     setStats((statsRes.data as Stats | null) ?? null);
+    setTraffic((trafficRes.data as Traffic | null) ?? null);
 
     const providerRows = (providersRes.data ?? []) as ProviderRow[];
     // Pending verification requests first, then newest.
@@ -232,6 +253,12 @@ export default function AdminClient() {
 
         {tab === 'overview' && stats && (
           <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-5">
+            {traffic && (
+              <>
+                <StatCard label="Visitors today" value={traffic.today.visitors} />
+                <StatCard label="Visitors, 7 days" value={traffic.last7.visitors} />
+              </>
+            )}
             <StatCard label="Providers" value={stats.providers} />
             <StatCard label="Verified" value={stats.providers_verified} />
             <StatCard label="Awaiting verification" value={stats.verification_requested} highlight={stats.verification_requested > 0} />
@@ -243,6 +270,10 @@ export default function AdminClient() {
             <StatCard label="Waitlist" value={stats.waitlist} />
             <StatCard label="Newsletter" value={stats.newsletter} />
           </div>
+        )}
+
+        {tab === 'traffic' && (
+          <TrafficPanel traffic={traffic} />
         )}
 
         {tab === 'providers' && (
@@ -410,11 +441,102 @@ export default function AdminClient() {
   );
 }
 
-function StatCard({ label, value, highlight }: { label: string; value: number; highlight?: boolean }) {
+function TrafficPanel({ traffic }: { traffic: Traffic | null }) {
+  if (!traffic) {
+    return (
+      <Panel title="Traffic" subtitle="Visits counted on orivions.com.">
+        <Empty>Traffic stats are not available yet (migration 09 not applied?).</Empty>
+      </Panel>
+    );
+  }
+  const max = Math.max(1, ...traffic.daily.map((d) => d.visitors));
+  const dayLabel = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+  return (
+    <div className="space-y-5">
+      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-5">
+        <StatCard label="On site now" value={traffic.live} highlight={traffic.live > 0} />
+        <StatCard label="Visitors today" value={traffic.today.visitors} sub={`${traffic.today.views} page views`} />
+        <StatCard label="Visitors, 7 days" value={traffic.last7.visitors} sub={`${traffic.last7.views} page views`} />
+        <StatCard label="Visitors, 30 days" value={traffic.last30.visitors} sub={`${traffic.last30.views} page views`} />
+        <StatCard label="Visitors, all time" value={traffic.total.visitors} sub={`${traffic.total.views} page views`} />
+      </div>
+
+      <Panel title="Daily visitors" subtitle="Last 30 days, Polish time. Hover a bar for the numbers.">
+        <div className="px-5 pb-4 pt-6">
+          <div className="flex h-40 items-end gap-[2px]">
+            {traffic.daily.map((d) => (
+              <div key={d.day} className="group relative flex h-full flex-1 items-end">
+                <div
+                  className="w-full rounded-t-[4px] bg-blue-deep transition group-hover:bg-blue-light"
+                  style={{ height: `${Math.max(d.visitors ? 3 : 0, (d.visitors / max) * 100)}%` }}
+                />
+                <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-lg bg-ink px-2.5 py-1.5 text-xs text-white group-hover:block">
+                  <div className="font-semibold">{dayLabel(d.day)}</div>
+                  <div>
+                    {d.visitors} visitors · {d.views} views
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 flex justify-between border-t border-line pt-2 text-xs text-gray-soft">
+            <span>{traffic.daily[0] ? dayLabel(traffic.daily[0].day) : ''}</span>
+            <span>Today</span>
+          </div>
+        </div>
+      </Panel>
+
+      <div className="grid gap-5 lg:grid-cols-3">
+        <RankList
+          title="Top pages"
+          subtitle="Last 30 days, by page views"
+          rows={traffic.pages.map((p) => ({ key: p.path, label: p.path, value: p.views }))}
+        />
+        <RankList
+          title="Sources"
+          subtitle="Last 30 days, by visitors (referrer or utm_source)"
+          rows={traffic.sources.map((s) => ({ key: s.source, label: s.source, value: s.visitors }))}
+        />
+        <RankList
+          title="Countries"
+          subtitle="Last 30 days, by visitors"
+          rows={traffic.countries.map((c) => ({ key: c.country, label: c.country, value: c.visitors }))}
+        />
+      </div>
+    </div>
+  );
+}
+
+function RankList({ title, subtitle, rows }: { title: string; subtitle: string; rows: { key: string; label: string; value: number }[] }) {
+  const max = Math.max(1, ...rows.map((r) => r.value));
+  return (
+    <Panel title={title} subtitle={subtitle}>
+      {!rows.length ? (
+        <Empty>No visits yet.</Empty>
+      ) : (
+        <ul className="space-y-2 p-5">
+          {rows.map((r) => (
+            <li key={r.key} className="relative overflow-hidden rounded-lg px-3 py-1.5 text-sm">
+              <div className="absolute inset-y-0 left-0 rounded-lg bg-blue-light/15" style={{ width: `${(r.value / max) * 100}%` }} />
+              <div className="relative flex justify-between gap-3">
+                <span className="truncate">{r.label}</span>
+                <span className="font-semibold tabular-nums">{r.value}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Panel>
+  );
+}
+
+function StatCard({ label, value, highlight, sub }: { label: string; value: number; highlight?: boolean; sub?: string }) {
   return (
     <div className={`rounded-2xl border bg-white p-5 ${highlight ? 'border-warn' : 'border-line'}`}>
       <div className="text-xs font-semibold uppercase tracking-wide text-gray-soft">{label}</div>
       <div className="mt-2 font-heading text-2xl font-semibold">{value}</div>
+      {sub && <div className="mt-0.5 text-xs text-gray-soft">{sub}</div>}
     </div>
   );
 }
