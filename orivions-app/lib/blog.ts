@@ -34,6 +34,68 @@ export const AUTHOR = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'how-long-does-a-solana-audit-take',
+    title: 'How long does a Solana audit take? Timeline from first call to final report',
+    description:
+      'How long a Solana smart contract audit takes: booking, waiting for a slot, the review, fixes and the fix review. Typical timelines and how to get audited sooner.',
+    excerpt:
+      'The review itself takes one to four weeks, but the whole process usually takes six to twelve. Where the time goes, what makes it longer, and how to plan an audit around a launch date.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-10-20',
+    dateModified: '2026-10-20',
+    tags: ['Guides', 'Audits', 'Security', 'Launch'],
+    faqs: [
+      {
+        q: 'How long does a Solana smart contract audit take?',
+        a: 'The review of a single Anchor program of a few thousand lines typically takes one to three weeks with two engineers; large DeFi protocols can take a month or more. Including booking, waiting for a slot and the fix review, plan six to twelve weeks from first call to final report.',
+      },
+      {
+        q: 'How far in advance should I book a Solana auditor?',
+        a: 'Contact auditors four to eight weeks before you need the report, as soon as the scope is stable. Established Solana security firms are often booked several weeks ahead.',
+      },
+      {
+        q: 'Can a Solana audit be done in a week?',
+        a: 'For a small, simple program with a clear spec and tests, sometimes. For complex protocols, a one-week review usually means less engineer time on your code; ask how many engineers, for how many days, and what is out of scope.',
+      },
+      {
+        q: 'How long does the fix review take?',
+        a: 'Usually three to ten days after your team has fixed the findings. Include it in the quote and the schedule; the first report is not the end of the audit.',
+      },
+    ],
+  },
+  {
+    slug: 'anchor-security-checklist',
+    title: 'Anchor security checklist: 16 checks before your Solana audit',
+    description:
+      'A practical Anchor security checklist: signers, has_one, UncheckedAccount, PDA seeds, init_if_needed, closing accounts, token constraints, CPIs, math and remaining_accounts.',
+    excerpt:
+      'Anchor prevents many Solana bugs, but only the checks you declare. Sixteen checks on signers, PDAs, tokens, CPIs and math to run on any Anchor program before it goes to an auditor.',
+    category: 'Guides',
+    readingMinutes: 7,
+    datePublished: '2026-10-20',
+    dateModified: '2026-10-20',
+    tags: ['Guides', 'Security', 'Audits', 'Development', 'Anchor'],
+    faqs: [
+      {
+        q: 'Is Anchor secure by default?',
+        a: 'Anchor removes whole classes of bugs, such as missing owner checks on typed accounts and type confusion through discriminators, but only for what you declare. Missing signer, authority and token constraints are still the most common critical findings in Anchor programs.',
+      },
+      {
+        q: 'What is the most common vulnerability in Anchor programs?',
+        a: 'Missing authorization: an authority that is not a Signer, or a signer that is never compared to the authority stored in the state account. has_one or an explicit constraint fixes it.',
+      },
+      {
+        q: 'Is init_if_needed dangerous?',
+        a: 'It can be. If the instruction can run on an account that already exists, make sure it cannot reset state such as balances or owners. Anchor puts it behind a feature flag for this reason.',
+      },
+      {
+        q: 'Does Anchor validate remaining_accounts?',
+        a: 'No. Accounts in ctx.remaining_accounts are not validated at all; check owner, key and type for each one you use.',
+      },
+    ],
+  },
+  {
     slug: 'solana-token-launch-checklist',
     title: 'Solana token launch checklist: authorities, metadata, liquidity and legal',
     description:
