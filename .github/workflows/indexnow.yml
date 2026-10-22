@@ -1,0 +1,15 @@
+# After every successful production deploy on Vercel, submit the URLs that
+# changed (per the sitemap's lastModified) to IndexNow via orivions.com/api/indexnow.
+name: IndexNow after production deploy
+
+on: deployment_status
+
+jobs:
+  indexnow:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping IndexNow
+        run: |
+          sleep 30
+          curl -fsS --retry 3 --retry-delay 20 "https://orivions.com/api/indexnow"
