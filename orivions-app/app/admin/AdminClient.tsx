@@ -44,7 +44,7 @@ interface Traffic {
 
 type ProviderRow = Pick<
   Company,
-  'id' | 'name' | 'category' | 'website' | 'verified' | 'featured' | 'founding_provider' | 'verification_requested' | 'created_at'
+  'id' | 'slug' | 'name' | 'category' | 'website' | 'verified' | 'featured' | 'founding_provider' | 'verification_requested' | 'created_at'
 >;
 
 type ConciergeStatus = 'new' | 'in_progress' | 'matched' | 'closed';
@@ -102,7 +102,7 @@ export default function AdminClient() {
       supabase.rpc('admin_traffic'),
       supabase
         .from('companies')
-        .select('id, name, category, website, verified, featured, founding_provider, verification_requested, created_at')
+        .select('id, slug, name, category, website, verified, featured, founding_provider, verification_requested, created_at')
         .eq('account_type', 'provider')
         .order('created_at', { ascending: false }),
       supabase.from('concierge_requests').select('*').order('created_at', { ascending: false }),
@@ -168,6 +168,9 @@ export default function AdminClient() {
       return;
     }
     setProviders((rows) => rows.map((r) => (r.id === id ? { ...r, ...update } : r)));
+    // A newly verified provider gets a public profile page: tell search engines now.
+    const slug = providers.find((r) => r.id === id)?.slug;
+    if (patch.verified === true && slug) fetch(`/api/indexnow?provider=${slug}`).catch(() => {});
     const { data } = await supabase.rpc('admin_stats');
     if (data) setStats(data as Stats);
   }
