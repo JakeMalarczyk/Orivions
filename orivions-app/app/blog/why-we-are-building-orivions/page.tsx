@@ -55,8 +55,8 @@ export default function PostPage() {
           </li>
           <li>
             <b>Verification means a human checked</b>: real portfolio, real services,
-            transparent price ranges. Sponsored placements exist, but they&apos;re clearly
-            labeled and never mixed into organic results.
+            transparent price ranges. No paid placements: ranking and matches are
+            never for sale.
           </li>
           <li>
             <b>Free for clients. Entirely.</b> Searching, matching, contacting: $0, forever.

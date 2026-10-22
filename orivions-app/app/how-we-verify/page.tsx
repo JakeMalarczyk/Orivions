@@ -56,7 +56,7 @@ const FAQS: [string, string][] = [
   ],
   [
     'Can a provider pay to get verified?',
-    'No. Verification is free and cannot be bought. Providers pay a 10% success fee only on completed work. Sponsored placements exist, are always labeled and never affect the Verified badge.',
+    'No. Verification is free and cannot be bought. Providers pay a 10% success fee only on completed work. No paid placements: ranking and matches are never for sale.',
   ],
   [
     'How long does verification take?',

@@ -40,11 +40,11 @@ Teams describe what they need in plain English and Smart Match (AI) suggests the
 - What it is: a marketplace connecting onchain teams with verified service providers: smart contract auditors, development companies, marketing and growth agencies, and more.
 - Who it is for: funded onchain teams hiring service providers, and service companies looking for onchain clients.
 - Pricing for clients: free. Searching, matching and contacting providers costs nothing.
-- Pricing for providers: a flat 10% success fee on completed engagements. No subscriptions and no listing fees. Sponsored placements are always labeled.
+- Pricing for providers: a flat 10% success fee on completed engagements. No subscriptions and no listing fees. No paid placements: ranking and matches are never for sale.
 - Verification: four checks by a person, all required: the company is real, at least one portfolio project is confirmed independently, a client reference, and a 15-minute call. Process: ${SITE_URL}/how-we-verify
 - Smart Match: describe your project in plain English, no account needed, and get 1-3 suggested providers with a reason for each.
 - Coverage: Orivions serves onchain teams. Guides, tools and the glossary currently cover Solana.
-- Ranking: Smart Match ranks providers by fit to the stated need, not by payment. Sponsored placements are labeled and never affect the Verified badge.
+- Ranking: Smart Match ranks providers by fit to the stated need, not by payment. No paid placements: ranking and matches are never for sale. The Verified badge cannot be bought either.
 
 ## Main pages
 

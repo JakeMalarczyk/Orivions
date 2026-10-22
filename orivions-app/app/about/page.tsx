@@ -33,11 +33,11 @@ const FACTS: [string, string][] = [
 ];
 
 const PRINCIPLES: [string, string][] = [
-  ['Verified by people, not by payment', 'A person checks every provider before the Verified badge appears. Money can buy a labeled sponsored slot, never the badge.'],
+  ['Verified by people, not by payment', 'A person checks every provider before the Verified badge appears. There are no paid placements: the badge, ranking and matches are never for sale.'],
   ['Ranked by fit', 'Smart Match orders providers by how well they fit the need you describe, not by who pays.'],
   ['Free for the teams that hire', 'Clients never pay to search, match or contact. Providers pay only when work is completed.'],
   ['Depth over breadth', 'One ecosystem, understood properly. Solana programs, audits and launches have their own pitfalls, and generic directories miss them.'],
-  ['Transparent by default', 'Pricing is public, sponsored placements are labeled, and progress and market data are published on the blog.'],
+  ['Transparent by default', 'Pricing is public, there are no paid placements, and progress and market data are published on the blog.'],
 ];
 
 const CLIENT_STEPS: [string, string][] = [
@@ -226,9 +226,8 @@ export default function AboutPage() {
         <H2>How Orivions makes money</H2>
         <p className="mt-4 leading-relaxed text-[#27272E]">
           Providers pay a flat 10% success fee when an engagement found through Orivions is
-          completed. Clients never pay. Providers can also buy clearly labeled sponsored placement in
-          listings; it never buys the Verified badge and never changes the order of Smart Match
-          results.
+          completed. Clients never pay. That is the only way we earn: no subscriptions, no listing
+          fees and no paid placements. Ranking and matches are never for sale.
         </p>
 
         <H2>Frequently asked questions</H2>

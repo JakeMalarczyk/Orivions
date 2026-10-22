@@ -34,6 +34,37 @@ export const AUTHOR = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'how-to-evaluate-a-crypto-market-maker',
+    title: 'How to evaluate a crypto market maker before you sign',
+    description:
+      'How to evaluate a crypto market maker: loan and option vs retainer deals, spread, depth and uptime commitments, end-of-loan terms, verifiable reporting and red flags.',
+    excerpt:
+      'The costly terms in a market making deal hide in the option schedule and the end-of-loan clause. What to check, what to put in the contract, and the pitches to walk away from.',
+    category: 'Guides',
+    readingMinutes: 7,
+    datePublished: '2026-10-22',
+    dateModified: '2026-10-22',
+    tags: ['Guides', 'Market making', 'Launch', 'Hiring'],
+    faqs: [
+      {
+        q: 'What does a crypto market maker do?',
+        a: 'A market maker quotes buy and sell orders for your token continuously, so people can trade it without moving the price too much. Good market making shows up as a tighter spread and more depth near the mid price, not as price support or high volume.',
+      },
+      {
+        q: 'What is the difference between a loan and option deal and a retainer?',
+        a: 'In a loan and option deal you lend tokens to the market maker, who gets the option to buy them later at agreed strike prices. In a retainer you pay a fee and usually keep the inventory in accounts you control. The first ties the market maker to your token price; the second keeps control with you but costs cash.',
+      },
+      {
+        q: 'What should be in a market making contract?',
+        a: 'The venues and pairs covered, the maximum spread, the depth on each side of the book, the uptime for those commitments, reporting you can verify, consequences when commitments are missed, and clear terms for the end of any token loan.',
+      },
+      {
+        q: 'How do I spot a bad market maker?',
+        a: 'Walk away from anyone who guarantees a price, a volume number or a listing, offers "volume support", will not name the legal entity that signs, or sends reports you cannot check against exchange or onchain data.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-compare-solana-audit-firms',
     title: 'How to compare Solana audit firms: a neutral framework',
     description:
@@ -568,7 +599,7 @@ export const POSTS: Post[] = [
     category: 'Building in public',
     readingMinutes: 5,
     datePublished: '2026-10-10',
-    dateModified: '2026-10-10',
+    dateModified: '2026-10-22',
     tags: ['Building in public', 'Announcement'],
   },
 ];

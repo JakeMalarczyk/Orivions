@@ -18,7 +18,6 @@ const t = {
   category: 'Category',
   allProviders: 'All providers',
   emptyCategory: 'Categories will appear here as providers join.',
-  sponsored: 'Sponsored',
   viewProfile: 'View profile →',
   noDesc: 'No description yet.',
   emptyResults: 'No providers here yet. Check back soon, or try another category.',
@@ -57,11 +56,6 @@ export default function ProvidersCatalog({ providers }: { providers: Company[] }
       return matchCat && matchSearch;
     });
   }, [providers, activeCategory, search]);
-
-  const featured = useMemo(
-    () => (activeCategory === 'all' && !search ? providers.filter((p) => p.featured) : []),
-    [providers, activeCategory, search]
-  );
 
   const openProvider = providers.find((p) => p.id === openId) ?? null;
   const directoryOpen = isDirectoryOpen(providers.filter((p) => p.verified).length);
@@ -134,19 +128,6 @@ export default function ProvidersCatalog({ providers }: { providers: Company[] }
         </aside>
 
         <div>
-          {featured.length > 0 && (
-            <div className="mb-7">
-              <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gray-soft">
-                {t.sponsored}
-                <span className="h-px flex-1 bg-line" />
-              </div>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {featured.map((p) => (
-                  <ProviderCard key={p.id} provider={p} onOpen={() => setOpenId(p.id)} sponsored />
-                ))}
-              </div>
-            </div>
-          )}
 
           <div className="mb-4 text-sm text-gray">
             {`${filtered.length} ${filtered.length === 1 ? t.foundOne : t.foundMany}`}
@@ -176,11 +157,9 @@ export default function ProvidersCatalog({ providers }: { providers: Company[] }
 function ProviderCard({
   provider,
   onOpen,
-  sponsored,
 }: {
   provider: Company;
   onOpen: () => void;
-  sponsored?: boolean;
 }) {
   return (
     <div
@@ -188,15 +167,8 @@ function ProviderCard({
       role="button"
       tabIndex={0}
       onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => e.key === 'Enter' && onOpen()}
-      className={`cursor-pointer rounded-2xl border p-5 transition hover:shadow-md ${
-        sponsored ? 'border-warn/40 bg-gradient-to-b from-warn/5 to-transparent' : 'border-line'
-      }`}
+      className="cursor-pointer rounded-2xl border border-line p-5 transition hover:shadow-md"
     >
-      {sponsored && (
-        <span className="mb-2 inline-block rounded-full bg-warn/15 px-2 py-0.5 text-[10px] font-bold text-warn">
-          {t.sponsored}
-        </span>
-      )}
       <div className="flex items-start justify-between gap-2">
         <div className="text-sm font-semibold">{provider.name}</div>
         {provider.verified && (

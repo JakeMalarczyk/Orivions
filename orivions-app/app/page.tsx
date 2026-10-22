@@ -24,7 +24,7 @@ const FAQS: [string, string][] = [
   ],
   [
     'What does "verified" mean on Orivions?',
-    'A person at Orivions has checked the provider: real company, real portfolio and services, transparent price ranges. Sponsored placements are always labeled and never mixed into organic results.',
+    'A person at Orivions has checked the provider: real company, real portfolio and services, transparent price ranges. No paid placements: ranking and matches are never for sale.',
   ],
 ];
 

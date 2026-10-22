@@ -19,7 +19,7 @@ export async function GET() {
 
 > Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work.
 
-Teams describe what they need in plain English and Smart Match suggests the 1-3 best-fitting human-verified service providers (smart contract auditors, development companies, marketing and growth agencies and more) with a reason for each match. No subscriptions, no listing fees, and sponsored placements are always labeled.
+Teams describe what they need in plain English and Smart Match suggests the 1-3 best-fitting human-verified service providers (smart contract auditors, development companies, marketing and growth agencies and more) with a reason for each match. No subscriptions, no listing fees. No paid placements: ranking and matches are never for sale.
 
 Key facts:
 - Who it is for: onchain teams hiring service providers. Guides and tools currently cover Solana.

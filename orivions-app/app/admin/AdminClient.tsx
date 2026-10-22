@@ -291,7 +291,6 @@ export default function AdminClient() {
                     <th className="px-5 py-3 font-semibold">Category</th>
                     <th className="px-5 py-3 font-semibold">Joined</th>
                     <th className="px-5 py-3 font-semibold">Verified</th>
-                    <th className="px-5 py-3 font-semibold">Featured</th>
                     <th className="px-5 py-3 font-semibold">Founding</th>
                   </tr>
                 </thead>
@@ -315,9 +314,6 @@ export default function AdminClient() {
                       <td className="px-5 py-3.5 text-xs text-gray-soft">{formatDate(p.created_at)}</td>
                       <td className="px-5 py-3.5">
                         <Toggle on={p.verified} onChange={(v) => updateProvider(p.id, { verified: v })} />
-                      </td>
-                      <td className="px-5 py-3.5">
-                        <Toggle on={p.featured} onChange={(v) => updateProvider(p.id, { featured: v })} />
                       </td>
                       <td className="px-5 py-3.5">
                         <Toggle on={p.founding_provider} onChange={(v) => updateProvider(p.id, { founding_provider: v })} />
