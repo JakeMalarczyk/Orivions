@@ -107,9 +107,9 @@ export default function AuthForm() {
           <span className="font-heading text-lg font-semibold">ORIVIONS</span>
         </div>
         <h1 className="mt-10 font-heading text-3xl font-semibold leading-tight">
-          The <span className="text-blue-light">verified marketplace</span> for Solana services.
+          The <span className="text-blue-light">verified B2B marketplace</span> for onchain teams.
         </h1>
-        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted partners for onchain teams, or get found by the clients who need you.</p>
+        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted auditors, developers and agencies, or get found by the clients who need you.</p>
         <div className="mt-12 flex gap-8 text-sm">
           <div>
             <div className="font-heading text-2xl font-semibold">Free</div>
