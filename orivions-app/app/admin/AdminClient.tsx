@@ -5,12 +5,13 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 import { supabase, type Company, type Lead } from '@/lib/supabase';
+import LeadInbox, { type ConciergeRequest, type LeadEvent, type ProviderLead } from './LeadInbox';
 
 // Admin panel. Access is enforced in the database, not here: every query below
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'traffic' | 'providers' | 'concierge' | 'leads' | 'signups';
+type Tab = 'overview' | 'traffic' | 'providers' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -47,22 +48,6 @@ type ProviderRow = Pick<
   'id' | 'slug' | 'name' | 'category' | 'website' | 'verified' | 'featured' | 'founding_provider' | 'verification_requested' | 'created_at'
 >;
 
-type ConciergeStatus = 'new' | 'in_progress' | 'matched' | 'closed';
-const CONCIERGE_STATUSES: ConciergeStatus[] = ['new', 'in_progress', 'matched', 'closed'];
-
-interface ConciergeRequest {
-  id: string;
-  client_name: string;
-  client_email: string;
-  client_company: string | null;
-  project_description: string | null;
-  budget_range: string | null;
-  timeline: string | null;
-  category: string | null;
-  status: ConciergeStatus;
-  created_at: string;
-}
-
 interface Signup {
   id: string;
   email: string;
@@ -74,7 +59,6 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'traffic', label: 'Traffic' },
   { id: 'providers', label: 'Providers' },
-  { id: 'concierge', label: 'Concierge' },
   { id: 'leads', label: 'Leads' },
   { id: 'signups', label: 'Signups' },
 ];
@@ -92,12 +76,13 @@ export default function AdminClient() {
   const [traffic, setTraffic] = useState<Traffic | null>(null);
   const [providers, setProviders] = useState<ProviderRow[]>([]);
   const [concierge, setConcierge] = useState<ConciergeRequest[]>([]);
-  const [leads, setLeads] = useState<(Lead & { providerName: string })[]>([]);
+  const [leads, setLeads] = useState<ProviderLead[]>([]);
+  const [leadEvents, setLeadEvents] = useState<LeadEvent[] | null>([]);
   const [signups, setSignups] = useState<Signup[]>([]);
   const [error, setError] = useState('');
 
   const loadAll = useCallback(async () => {
-    const [statsRes, trafficRes, providersRes, conciergeRes, leadsRes, waitlistRes, newsletterRes] = await Promise.all([
+    const [statsRes, trafficRes, providersRes, conciergeRes, leadsRes, waitlistRes, newsletterRes, eventsRes] = await Promise.all([
       supabase.rpc('admin_stats'),
       supabase.rpc('admin_traffic'),
       supabase
@@ -109,6 +94,7 @@ export default function AdminClient() {
       supabase.from('leads').select('*').order('created_at', { ascending: false }).limit(200),
       supabase.from('waitlist').select('id, email, created_at').order('created_at', { ascending: false }),
       supabase.from('newsletter_subscribers').select('id, email, role, source, created_at').eq('status', 'active').order('created_at', { ascending: false }),
+      supabase.from('admin_lead_events').select('id, source, record_id, kind, body, created_at').order('created_at', { ascending: true }).limit(2000),
     ]);
 
     setStats((statsRes.data as Stats | null) ?? null);
@@ -123,6 +109,8 @@ export default function AdminClient() {
 
     const nameById = new Map(providerRows.map((p) => [p.id, p.name]));
     setLeads(((leadsRes.data ?? []) as Lead[]).map((l) => ({ ...l, providerName: nameById.get(l.company_id) ?? '-' })));
+    // null = admin_lead_events is missing (migration 11 not applied): notes are hidden, statuses still work.
+    setLeadEvents(eventsRes.error ? null : ((eventsRes.data ?? []) as LeadEvent[]));
 
     const waitlist = ((waitlistRes.data ?? []) as { id: string; email: string; created_at: string }[]).map((w) => ({
       ...w,
@@ -173,16 +161,6 @@ export default function AdminClient() {
     if (patch.verified === true && slug) fetch(`/api/indexnow?provider=${slug}`).catch(() => {});
     const { data } = await supabase.rpc('admin_stats');
     if (data) setStats(data as Stats);
-  }
-
-  async function updateConcierge(id: string, status: ConciergeStatus) {
-    setError('');
-    const { error: err } = await supabase.from('concierge_requests').update({ status }).eq('id', id);
-    if (err) {
-      setError(err.message);
-      return;
-    }
-    setConcierge((rows) => rows.map((r) => (r.id === id ? { ...r, status } : r)));
   }
 
   function exportSignups() {
@@ -326,77 +304,19 @@ export default function AdminClient() {
           </Panel>
         )}
 
-        {tab === 'concierge' && (
-          <Panel title="Concierge requests" subtitle="Teams that asked for a hand-picked shortlist.">
-            {!concierge.length ? (
-              <Empty>No concierge requests yet.</Empty>
-            ) : (
-              <div className="divide-y divide-line">
-                {concierge.map((c) => (
-                  <div key={c.id} className="flex flex-col gap-2 p-5 md:flex-row md:items-start md:justify-between">
-                    <div className="max-w-2xl">
-                      <div className="text-sm font-semibold">
-                        {c.client_name}
-                        {c.client_company ? ` · ${c.client_company}` : ''}{' '}
-                        <a href={`mailto:${c.client_email}`} className="font-normal text-blue-deep">
-                          {c.client_email}
-                        </a>
-                      </div>
-                      <p className="mt-1 text-sm text-gray">{c.project_description || '-'}</p>
-                      <div className="mt-1 text-xs text-gray-soft">
-                        {[c.category, c.budget_range, c.timeline].filter(Boolean).join(' · ')} · {formatDate(c.created_at)}
-                      </div>
-                    </div>
-                    <select
-                      value={c.status}
-                      onChange={(e) => updateConcierge(c.id, e.target.value as ConciergeStatus)}
-                      className="rounded-lg border border-line bg-white px-3 py-1.5 text-sm"
-                    >
-                      {CONCIERGE_STATUSES.map((s) => (
-                        <option key={s} value={s}>
-                          {s.replace('_', ' ')}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                ))}
-              </div>
-            )}
-          </Panel>
-        )}
-
         {tab === 'leads' && (
-          <Panel title="Leads" subtitle="Contact requests sent to providers (latest 200). Providers manage their own status.">
-            {!leads.length ? (
-              <Empty>No leads yet.</Empty>
-            ) : (
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-line text-left text-xs uppercase text-gray-soft">
-                    <th className="px-5 py-3 font-semibold">From</th>
-                    <th className="px-5 py-3 font-semibold">To provider</th>
-                    <th className="px-5 py-3 font-semibold">Message</th>
-                    <th className="px-5 py-3 font-semibold">Sent</th>
-                    <th className="px-5 py-3 font-semibold">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {leads.map((l) => (
-                    <tr key={l.id} className="border-b border-line last:border-0">
-                      <td className="px-5 py-3.5 text-sm">
-                        <div className="font-semibold">{l.client_name}</div>
-                        <div className="text-xs text-gray-soft">{l.client_email}</div>
-                      </td>
-                      <td className="px-5 py-3.5 text-sm">{l.providerName}</td>
-                      <td className="max-w-xs truncate px-5 py-3.5 text-sm text-gray">{l.message}</td>
-                      <td className="px-5 py-3.5 text-xs text-gray-soft">{formatDate(l.created_at)}</td>
-                      <td className="px-5 py-3.5 text-xs font-bold uppercase text-gray">{l.status}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </Panel>
+          <LeadInbox
+            concierge={concierge}
+            leads={leads}
+            events={leadEvents}
+            setConcierge={setConcierge}
+            setLeads={setLeads}
+            setEvents={setLeadEvents}
+            onChanged={async () => {
+              const { data } = await supabase.rpc('admin_stats');
+              if (data) setStats(data as Stats);
+            }}
+          />
         )}
 
         {tab === 'signups' && (
