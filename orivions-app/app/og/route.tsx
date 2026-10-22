@@ -46,7 +46,7 @@ export function GET(request: Request) {
           </div>
         </div>
         <div style={{ fontSize: 24, color: 'rgba(255,255,255,0.7)' }}>
-          Verified B2B marketplace for the Solana ecosystem · orivions.com
+          Verified B2B marketplace for onchain teams · orivions.com
         </div>
       </div>
     ),

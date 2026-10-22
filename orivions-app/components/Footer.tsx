@@ -22,6 +22,7 @@ const CATEGORIES = [
 
 const COMPANY = [
   { href: '/about', label: 'About Orivions' },
+  { href: '/how-we-verify', label: 'How we verify' },
   { href: '/founding-providers', label: 'Founding Providers' },
   { href: '/blog', label: 'Blog' },
   { href: '/solana-glossary', label: 'Solana glossary' },
@@ -60,8 +61,8 @@ export default function Footer() {
             <span className="font-heading font-semibold tracking-tight">ORIVIONS</span>
           </Link>
           <p className="mt-3 max-w-xs text-sm text-gray">
-            The verified B2B marketplace for the Solana ecosystem. Free for clients; providers pay a
-            flat 10% success fee only on completed engagements.
+            The verified B2B marketplace for onchain teams. Free for clients; providers pay a 10%
+            success fee only on completed work.
           </p>
         </div>
         <Column title="Product" links={PRODUCT} />
@@ -71,7 +72,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-line">
         <p className="mx-auto max-w-6xl px-8 py-5 text-xs text-gray-soft">
-          © {new Date().getFullYear()} Orivions. Built for the Solana ecosystem.{' '}
+          © {new Date().getFullYear()} Orivions. Built for onchain teams.{' '}
           <a href="https://x.com/Orivions" target="_blank" rel="noopener me" className="hover:text-ink">
             Follow @Orivions on X
           </a>

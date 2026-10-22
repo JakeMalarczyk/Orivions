@@ -8,7 +8,7 @@ import WaitlistForm from './WaitlistForm';
 const FAQS: [string, string][] = [
   [
     'What is Orivions?',
-    'Orivions is a verified B2B marketplace for the Solana ecosystem. It helps companies discover, compare, and hire verified service providers instead of relying on Discord, X, or word-of-mouth.',
+    'Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work. It replaces hiring through Discord, X, or word-of-mouth.',
   ],
   [
     'Is Orivions free?',
@@ -29,9 +29,9 @@ const FAQS: [string, string][] = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Orivions: Business Infrastructure Layer for Solana',
+  title: 'Orivions: Verified B2B Marketplace for Onchain Teams',
   description:
-    'The verified B2B marketplace for the Solana ecosystem. Discover, verify, and hire trusted providers. Free for clients.',
+    'The verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients.',
   alternates: {
     canonical: '/',
   },
@@ -51,18 +51,18 @@ export default function HomePage() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-sm text-gray">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-light" />
-            Solana ecosystem
+            Onchain teams
           </div>
           <h1 className="font-heading text-4xl font-semibold tracking-tight md:text-5xl">
             The{' '}
             <span className="bg-gradient-to-r from-blue-deep to-blue-light bg-clip-text text-transparent">
-              business infrastructure layer
+              verified B2B marketplace
             </span>{' '}
-            for the Solana ecosystem.
+            for onchain teams.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray">
-            The professional home where Solana builders find, verify, and hire their next
-            partner: developers, auditors, marketers, and more.
+            Describe what you need, get matched with human-verified auditors, developers and
+            agencies. Free for clients; providers pay a 10% success fee only on completed work.
           </p>
           <Suspense fallback={null}>
             <HeroCtas />

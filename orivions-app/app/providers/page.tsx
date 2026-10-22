@@ -1,24 +1,27 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
+import { listProviders } from '@/lib/providers';
 import ProvidersCatalog from './ProvidersCatalog';
 
 export const metadata: Metadata = {
   title: 'Find Providers',
   description:
-    'Browse verified companies across the Solana ecosystem: developers, auditors, marketing agencies, and more. Free to search and contact.',
+    'Browse human-verified auditors, developers and agencies for onchain teams. Free to search and contact.',
   alternates: {
     canonical: '/providers',
   },
 };
 
-export default function ProvidersPage() {
+// Rendered on the server and refreshed every 5 minutes, so crawlers and AI
+// agents see the directory in the HTML.
+export const revalidate = 300;
+
+export default async function ProvidersPage() {
+  const providers = await listProviders();
   return (
     <>
       <Header />
-      <Suspense fallback={<div className="px-8 py-20 text-center text-gray-soft">Loading…</div>}>
-        <ProvidersCatalog />
-      </Suspense>
+      <ProvidersCatalog providers={providers} />
     </>
   );
 }

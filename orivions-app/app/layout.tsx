@@ -33,11 +33,11 @@ const SOCIAL_PROFILES = ['https://x.com/Orivions'];
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Orivions: Business Infrastructure Layer for Solana',
+    default: 'Orivions: Verified B2B Marketplace for Onchain Teams',
     template: '%s | Orivions',
   },
   description:
-    'The verified B2B marketplace for the Solana ecosystem. Discover, verify, and hire trusted providers.',
+    'The verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients.',
   applicationName: 'Orivions',
   robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   alternates: {
@@ -69,7 +69,7 @@ const siteJsonLd = {
       sameAs: SOCIAL_PROFILES,
       logo: `${siteUrl}/logo.png`,
       description:
-        'Verified B2B marketplace for the Solana ecosystem: AI matching with human-verified service providers (auditors, developers, marketing agencies). Free for clients; providers pay a flat 10% success fee on completed engagements.',
+        'Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work.',
       knowsAbout: [
         'Solana',
         'Solana smart contract audits',

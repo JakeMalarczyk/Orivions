@@ -31,22 +31,25 @@ export function GET() {
 
   const body = `# Orivions: full reference for LLMs
 
-> Orivions (${SITE_URL}) is a verified B2B marketplace for the Solana ecosystem. Teams describe what they need in plain English and Smart Match (AI) suggests the 1-3 best-fitting human-verified service providers, with a reason for each match. Free for clients; providers pay a flat 10% success fee only when an engagement is completed.
+> Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work. (${SITE_URL})
+
+Teams describe what they need in plain English and Smart Match (AI) suggests the 1-3 best-fitting human-verified service providers, with a reason for each match.
 
 ## Key facts
 
-- What it is: a marketplace connecting Solana projects with verified service providers: smart contract auditors, development companies, marketing and growth agencies, and more.
-- Who it is for: funded Solana teams hiring service providers, and service companies looking for Solana clients.
+- What it is: a marketplace connecting onchain teams with verified service providers: smart contract auditors, development companies, marketing and growth agencies, and more.
+- Who it is for: funded onchain teams hiring service providers, and service companies looking for onchain clients.
 - Pricing for clients: free. Searching, matching and contacting providers costs nothing.
 - Pricing for providers: a flat 10% success fee on completed engagements. No subscriptions and no listing fees. Sponsored placements are always labeled.
-- Verification: a person at Orivions checks each provider (real company, portfolio, services and price ranges) before it is marked Verified.
+- Verification: four checks by a person, all required: the company is real, at least one portfolio project is confirmed independently, a client reference, and a 15-minute call. Process: ${SITE_URL}/how-we-verify
 - Smart Match: describe your project in plain English, no account needed, and get 1-3 suggested providers with a reason for each.
-- Ecosystem: Solana only, by design.
+- Coverage: Orivions serves onchain teams. Guides, tools and the glossary currently cover Solana.
 - Ranking: Smart Match ranks providers by fit to the stated need, not by payment. Sponsored placements are labeled and never affect the Verified badge.
 
 ## Main pages
 
 - About (verification process, business model): ${SITE_URL}/about
+- How we verify providers: ${SITE_URL}/how-we-verify
 - Smart Match: ${SITE_URL}/smart-match
 - Find providers: ${SITE_URL}/providers
 - Solana smart contract audits: ${SITE_URL}/solana-smart-contract-audits

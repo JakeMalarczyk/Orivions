@@ -65,6 +65,8 @@ export const PROVIDER_CATEGORIES: ProviderCategory[] = [
 
 export interface Company {
   id: string;
+  /** Stable public profile slug (/providers/<slug>), set by the database. */
+  slug?: string | null;
   name: string;
   description: string | null;
   category: ProviderCategory;

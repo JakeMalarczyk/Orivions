@@ -1,17 +1,18 @@
 'use client';
 
 import { useEffect, useMemo, useState, type ChangeEvent, type KeyboardEvent, type MouseEvent } from 'react';
-import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { supabase, PROVIDER_CATEGORIES, type Company, type PortfolioItem, type Service } from '@/lib/supabase';
 import { isDirectoryOpen } from '@/lib/directory';
 import ConciergeForm from '@/components/ConciergeForm';
+import ProviderContactForm from '@/components/ProviderContactForm';
 import { EarlyAccessBadge, FoundingProviderCard } from '@/components/EarlyAccess';
 
 // UI strings for this page. The site is English-only by design; these were
 // previously routed through a locale dictionary and prop-drilled three levels
 // deep; a single module-level constant is simpler and equally type-safe.
 const t = {
-  title: 'Find your next partner in the Solana ecosystem.',
+  title: 'Find verified partners for your onchain project.',
   sub: 'Verified companies, real portfolios. Free to search and contact.',
   searchPh: 'Search by name or keyword…',
   category: 'Category',
@@ -23,58 +24,24 @@ const t = {
   emptyResults: 'No providers here yet. Check back soon, or try another category.',
   foundOne: 'provider found',
   foundMany: 'providers found',
-  contact: 'Contact',
-  yourName: 'Your name',
-  company: 'Company',
-  email: 'Email',
-  needLabel: 'What do you need?',
-  needPh: 'Briefly describe your project...',
-  send: 'Send message',
-  sentPrefix: '✓ Sent:',
-  sentSuffix: 'will get back to you directly.',
-  formError: 'Something went wrong. Please try again.',
-  fillRequired: 'Please fill in your name, email, and message.',
   verified: '✓ Verified',
   portfolio: 'Portfolio',
   services: 'Services',
 } as const;
 
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export default function ProvidersCatalog() {
-  const searchParams = useSearchParams();
-
-  const [providers, setProviders] = useState<Company[]>([]);
-  const [loading, setLoading] = useState(true);
+// Providers are fetched on the server (page.tsx) and passed in, so the first
+// HTML already contains the directory; search and filters run in the browser.
+export default function ProvidersCatalog({ providers }: { providers: Company[] }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [openId, setOpenId] = useState<string | null>(null);
 
+  // Deep-link support: /providers?open=<id> (used by Smart Match "view full profile").
+  // Read from window instead of useSearchParams so the page stays statically rendered.
   useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      const { data, error } = await supabase
-        .from('companies')
-        .select('id, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at')
-        .eq('account_type', 'provider')
-        .order('verified', { ascending: false });
-      if (!cancelled) {
-        if (!error && data) setProviders(data as unknown as Company[]);
-        setLoading(false);
-      }
-    }
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  // Deep-link support: /providers?open=<id> (used by Smart Match "view full profile")
-  useEffect(() => {
-    const id = searchParams.get('open');
+    const id = new URLSearchParams(window.location.search).get('open');
     if (id && providers.some((p) => p.id === id)) setOpenId(id);
-  }, [searchParams, providers]);
+  }, [providers]);
 
   const populatedCategories = useMemo(
     () => PROVIDER_CATEGORIES.filter((cat) => providers.some((p) => p.category === cat)),
@@ -99,8 +66,6 @@ export default function ProvidersCatalog() {
   const openProvider = providers.find((p) => p.id === openId) ?? null;
   const directoryOpen = isDirectoryOpen(providers.filter((p) => p.verified).length);
 
-  if (loading) return <div className="px-8 py-20 text-center text-gray-soft">Loading…</div>;
-
   // Early access: no empty grid or zero counts; teams get a hand-picked
   // shortlist and providers can apply for the founding cohort.
   if (!directoryOpen) {
@@ -110,8 +75,8 @@ export default function ProvidersCatalog() {
           <EarlyAccessBadge />
           <h1 className="mt-5 font-heading text-3xl font-semibold tracking-tight md:text-4xl">{t.title}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-gray">
-            We are verifying our founding cohort of Solana service companies one by one: real team,
-            real portfolio, transparent pricing. The public directory opens with that cohort. Until
+            We are verifying our founding cohort of service companies one by one: real company,
+            confirmed portfolio, a client reference and a call. The public directory opens with that cohort. Until
             then, our team matches you by hand.
           </p>
         </div>
@@ -163,7 +128,7 @@ export default function ProvidersCatalog() {
               {cat} <span className="text-xs text-gray-soft">{providers.filter((p) => p.category === cat).length}</span>
             </button>
           ))}
-          {!populatedCategories.length && !loading && (
+          {!populatedCategories.length && (
             <p className="text-xs text-gray-soft">{t.emptyCategory}</p>
           )}
         </aside>
@@ -184,12 +149,10 @@ export default function ProvidersCatalog() {
           )}
 
           <div className="mb-4 text-sm text-gray">
-            {loading
-              ? '…'
-              : `${filtered.length} ${filtered.length === 1 ? t.foundOne : t.foundMany}`}
+            {`${filtered.length} ${filtered.length === 1 ? t.foundOne : t.foundMany}`}
           </div>
 
-          {!loading && filtered.length === 0 && (
+          {filtered.length === 0 && (
             <div className="rounded-2xl border border-dashed border-line py-16 text-center text-sm text-gray-soft">
               {t.emptyResults}
             </div>
@@ -245,6 +208,15 @@ function ProviderCard({
       </div>
       <div className="mt-1.5 text-xs font-semibold text-blue-deep">{provider.category}</div>
       <p className="mt-2.5 line-clamp-3 text-[13px] text-gray">{provider.description || t.noDesc}</p>
+      {provider.verified && provider.slug && (
+        <Link
+          href={`/providers/${provider.slug}`}
+          onClick={(e: MouseEvent<HTMLAnchorElement>) => e.stopPropagation()}
+          className="mt-3 inline-block text-xs font-semibold text-blue-deep"
+        >
+          {t.viewProfile}
+        </Link>
+      )}
     </div>
   );
 }
@@ -258,59 +230,6 @@ function ProviderDetailModal({
 }) {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>([]);
   const [services, setServices] = useState<Service[]>([]);
-  const [form, setForm] = useState({ name: '', company: '', email: '', message: '' });
-  const [sendState, setSendState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
-
-  useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      const [{ data: pf }, { data: sv }] = await Promise.all([
-        supabase.from('portfolio_items').select('*').eq('company_id', provider.id),
-        supabase.from('services').select('*').eq('company_id', provider.id),
-      ]);
-      if (!cancelled) {
-        setPortfolio((pf ?? []) as PortfolioItem[]);
-        setServices((sv ?? []) as Service[]);
-      }
-    }
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [provider.id]);
-
-  async function handleSend() {
-    setErrorMsg('');
-    if (!form.name.trim() || !EMAIL_RE.test(form.email.trim()) || !form.message.trim()) {
-      setErrorMsg(t.fillRequired);
-      return;
-    }
-    setSendState('loading');
-    try {
-      const { error } = await supabase.from('leads').insert({
-        company_id: provider.id,
-        client_name: form.name.trim(),
-        client_company: form.company.trim(),
-        client_email: form.email.trim(),
-        message: form.message.trim(),
-        status: 'new',
-      });
-      if (error) throw error;
-      // Best-effort admin ping; never blocks the client.
-      fetch('/api/notify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event: 'lead', companyId: provider.id }),
-      }).catch(() => {});
-      setSendState('success');
-      setForm({ name: '', company: '', email: '', message: '' });
-    } catch {
-      setSendState('error');
-      setErrorMsg(t.formError);
-    }
-  }
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/45 p-10"
@@ -379,53 +298,14 @@ function ProviderDetailModal({
           </div>
         )}
 
+        {provider.verified && provider.slug && (
+          <Link href={`/providers/${provider.slug}`} className="mt-5 inline-block text-sm font-semibold text-blue-deep">
+            Full profile →
+          </Link>
+        )}
+
         <div className="mt-6 border-t border-line pt-5">
-          <h4 className="mb-3.5 text-sm font-semibold">
-            {t.contact} {provider.name}
-          </h4>
-          <div className="grid grid-cols-2 gap-2.5">
-            <input
-              placeholder={t.yourName}
-              value={form.name}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setForm({ ...form, name: e.target.value })}
-              className="rounded-lg border border-line px-3 py-2.5 text-sm outline-none focus:border-blue-deep"
-            />
-            <input
-              placeholder={t.company}
-              value={form.company}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setForm({ ...form, company: e.target.value })}
-              className="rounded-lg border border-line px-3 py-2.5 text-sm outline-none focus:border-blue-deep"
-            />
-          </div>
-          <input
-            type="email"
-            placeholder={t.email}
-            value={form.email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setForm({ ...form, email: e.target.value })}
-            className="mt-2.5 w-full rounded-lg border border-line px-3 py-2.5 text-sm outline-none focus:border-blue-deep"
-          />
-          <textarea
-            placeholder={t.needPh}
-            value={form.message}
-            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setForm({ ...form, message: e.target.value })}
-            rows={3}
-            className="mt-2.5 w-full rounded-lg border border-line px-3 py-2.5 text-sm outline-none focus:border-blue-deep"
-          />
-          <button
-            onClick={handleSend}
-            disabled={sendState === 'loading'}
-            className="mt-3 w-full rounded-lg bg-ink py-3 text-sm font-semibold text-white disabled:opacity-60"
-          >
-            {t.send}
-          </button>
-          {sendState === 'success' && (
-            <p className="mt-2.5 rounded-lg bg-ok/10 p-3 text-sm text-ok">
-              {t.sentPrefix} {provider.name} {t.sentSuffix}
-            </p>
-          )}
-          {sendState === 'error' && (
-            <p className="mt-2.5 rounded-lg bg-danger/10 p-3 text-sm text-danger">{errorMsg}</p>
-          )}
+          <ProviderContactForm providerId={provider.id} providerName={provider.name} />
         </div>
       </div>
     </div>

@@ -34,6 +34,64 @@ export const AUTHOR = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'how-to-compare-solana-audit-firms',
+    title: 'How to compare Solana audit firms: a neutral framework',
+    description:
+      'Compare Solana smart contract audit firms on evidence you can check yourself: public Solana reports, Anchor or native Rust experience, engineer-days, fix review and timing.',
+    excerpt:
+      'Most "best audit firm" lists are written by firms with a stake in the order. Six criteria, a portfolio check you can do in an afternoon, and the questions to put in every scoping call.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-22',
+    dateModified: '2026-10-22',
+    tags: ['Guides', 'Audits', 'Security'],
+    faqs: [
+      {
+        q: 'What is the best Solana smart contract audit firm?',
+        a: 'There is no single best firm for every project. The right auditor is one with recent public reports for Solana programs similar to yours, experience with your framework (Anchor or native Rust), named engineers and enough engineer-days in the quote, a fix review included, and a start date that fits your launch.',
+      },
+      {
+        q: 'How do I check a Solana auditor\'s experience?',
+        a: 'Open three of their published reports for Solana programs. Check the date, commit and scope, and look for Solana-specific findings such as missing signer or owner checks, unvalidated PDAs or unsafe CPIs. Confirm that the audited project links the same report, and ask for one client reference.',
+      },
+      {
+        q: 'How do I compare audit quotes?',
+        a: 'Make every firm quote the same commit, programs and exclusions, convert each quote to engineer-days, then compare price per engineer-day, start date and whether the fix review is included.',
+      },
+      {
+        q: 'Are audit firm rankings trustworthy?',
+        a: 'Treat them with care. Many rankings are published by audit firms, infrastructure providers or agencies with commercial relationships. Ask how the order was chosen and verify the evidence yourself.',
+      },
+    ],
+  },
+  {
+    slug: 'breakpoint-2026-pre-launch-checklist',
+    title: 'Breakpoint 2026: what Solana teams should sort out before launch',
+    description:
+      'Launching around Solana Breakpoint 2026 (15-17 November, Olympia London)? A checklist for security, authorities, token launch, legal and growth, and what to book before the event.',
+    excerpt:
+      'Breakpoint is a deadline for many Solana teams. The work that decides whether a launch goes well happens weeks before and depends on outside teams. What to sort out now.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-10-22',
+    dateModified: '2026-10-22',
+    tags: ['Guides', 'Launch', 'Security', 'Audits'],
+    faqs: [
+      {
+        q: 'When and where is Solana Breakpoint 2026?',
+        a: 'Breakpoint 2026 takes place on 15-17 November 2026 at Olympia London, with official side events around the main conference.',
+      },
+      {
+        q: 'Can I get a Solana audit done before Breakpoint?',
+        a: 'Only if you book now. Established Solana auditors are often booked weeks ahead, and the full process including fixes and the fix review usually takes longer than the review itself. If the dates do not fit, cut scope or launch after the event with audited code.',
+      },
+      {
+        q: 'What should a Solana team check before a mainnet launch?',
+        a: 'An audit with a completed fix review on a frozen commit, upgrade authority in a multisig or removed on purpose, a verifiable build, token authorities set deliberately, an incident plan, a legal view on the token or product, and one clear launch message.',
+      },
+    ],
+  },
+  {
     slug: 'how-long-does-a-solana-audit-take',
     title: 'How long does a Solana audit take? Timeline from first call to final report',
     description:

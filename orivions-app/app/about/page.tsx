@@ -5,10 +5,10 @@ import Header from '@/components/Header';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 
 const DESCRIPTION =
-  'Orivions is the verified B2B marketplace for the Solana ecosystem. How it works for teams and providers, how verification works, how Orivions makes money, and the principles behind it.';
+  'Orivions is the verified B2B marketplace for onchain teams. How it works for teams and providers, how verification works, how Orivions makes money, and the principles behind it.';
 
 export const metadata: Metadata = {
-  title: 'About Orivions: the verified marketplace for Solana services',
+  title: 'About Orivions: the verified B2B marketplace for onchain teams',
   description: DESCRIPTION,
   alternates: { canonical: '/about' },
   openGraph: {
@@ -16,20 +16,20 @@ export const metadata: Metadata = {
     title: 'About Orivions',
     description: DESCRIPTION,
     url: '/about',
-    images: [{ url: ogImageUrl('The verified marketplace for Solana services', 'About Orivions'), width: 1200, height: 630 }],
+    images: [{ url: ogImageUrl('The verified B2B marketplace for onchain teams', 'About Orivions'), width: 1200, height: 630 }],
   },
 };
 
 // Answer-first facts. Short, self-contained sentences are what AI answer
 // engines quote, so each line must be true on its own.
 const FACTS: [string, string][] = [
-  ['What it is', 'A B2B marketplace where Solana teams find and hire human-verified service providers.'],
+  ['What it is', 'A B2B marketplace where onchain teams find and hire human-verified auditors, developers and agencies.'],
   ['Categories', 'Smart contract audits, development, marketing and growth, and more.'],
   ['Who it is for', 'Funded Solana projects hiring outside help, and service companies looking for Solana clients.'],
   ['Price for clients', 'Free. Searching, matching and contacting providers costs nothing.'],
   ['Price for providers', 'A flat 10% success fee on completed engagements. No subscriptions, no listing fees.'],
   ['Matching', 'Smart Match (AI) suggests the 1 to 3 best-fitting verified providers, with a reason for each.'],
-  ['Scope', 'Solana only, by design.'],
+  ['Scope', 'Onchain teams. Our guides and tools currently cover Solana.'],
 ];
 
 const PRINCIPLES: [string, string][] = [
@@ -54,15 +54,15 @@ const PROVIDER_STEPS: [string, string][] = [
 
 const VERIFICATION: [string, string][] = [
   ['Real company', 'A real, reachable business with a working website and identifiable people behind it.'],
-  ['Relevant work', 'A portfolio with Solana-specific delivery we can check: programs, audits, launches or campaigns.'],
-  ['Clear offer', 'Services and indicative price ranges specific enough for a client to compare.'],
-  ['Human decision', 'A person at Orivions makes the call, and can remove the badge if the facts change.'],
+  ['Portfolio confirmed', 'At least one portfolio project confirmed independently: a public report, a shipped product or the client itself.'],
+  ['Client reference', 'A past client confirms the work and how the engagement went.'],
+  ['A 15-minute call', 'A person at Orivions talks to the team. Development and security firms also answer a technical Solana question.'],
 ];
 
 const FAQS: [string, string][] = [
   ['Is Orivions free?', 'Yes, for clients. Teams search, use Smart Match and contact providers for free. Providers pay a flat 10% success fee only when an engagement found through Orivions is completed.'],
   ['What does "Verified" mean on Orivions?', 'A person at Orivions checked that the provider is a real company, that its portfolio holds up and that its services and price ranges are specific. It lowers risk but does not replace your own checks and references.'],
-  ['Why only Solana?', 'Hiring well on Solana needs specific knowledge: Rust and Anchor, the account model, Solana audit practices and the community. Focusing on one ecosystem lets us verify providers properly.'],
+  ['Which ecosystems does Orivions cover?', 'Orivions is built for onchain teams. Our guides, calculators and glossary currently cover Solana, where hiring well needs specific knowledge: Rust and Anchor, the account model and Solana audit practices.'],
 ];
 
 function Steps({ items }: { items: [string, string][] }) {
@@ -132,10 +132,10 @@ export default function AboutPage() {
 
         <div className="mt-5 text-xs font-bold uppercase tracking-wide text-blue-deep">About Orivions</div>
         <h1 className="mt-3 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[42px]">
-          The verified marketplace for Solana services.
+          The verified B2B marketplace for onchain teams.
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-gray">
-          Orivions helps Solana teams find auditors, developers and growth partners they can actually
+          Orivions helps onchain teams find auditors, developers and growth partners they can actually
           trust. Describe what you need in plain English, and Smart Match suggests the one to three
           best-fitting providers, each checked by a person before being marked Verified.
         </p>
@@ -206,7 +206,12 @@ export default function AboutPage() {
           ))}
         </div>
         <p className="mt-4 text-sm text-gray">
-          Verification lowers risk; it is not a guarantee. For any significant engagement, review the
+          All four checks must pass.{' '}
+          <Link href="/how-we-verify" className="text-blue-deep">
+            How we verify providers
+          </Link>{' '}
+          has the full process and the red flags that lead to a rejection. Verification lowers risk; it
+          is not a guarantee. For any significant engagement, review the
           provider&apos;s work and agree scope, milestones and ownership in writing. Our guides on{' '}
           <Link href="/blog/how-to-verify-a-web3-agency" className="text-blue-deep">
             verifying a Web3 agency

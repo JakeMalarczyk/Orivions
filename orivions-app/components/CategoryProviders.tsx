@@ -7,6 +7,10 @@ import ConciergeForm from '@/components/ConciergeForm';
 import { FoundingProviderCard } from '@/components/EarlyAccess';
 import { isDirectoryOpen } from '@/lib/directory';
 
+function providerHref(p: Company): string {
+  return p.slug ? `/providers/${p.slug}` : `/providers?open=${p.id}`;
+}
+
 export default function CategoryProviders({ category }: { category: string }) {
   const router = useRouter();
   const [providers, setProviders] = useState<Company[]>([]);
@@ -17,7 +21,7 @@ export default function CategoryProviders({ category }: { category: string }) {
     async function load() {
       const { data } = await supabase
         .from('companies')
-        .select('id, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at')
+        .select('id, slug, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at')
         .eq('account_type', 'provider')
         .eq('category', category)
         .order('verified', { ascending: false });
@@ -55,8 +59,8 @@ export default function CategoryProviders({ category }: { category: string }) {
           key={p.id}
           role="button"
           tabIndex={0}
-          onClick={() => router.push(`/providers?open=${p.id}`)}
-          onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => e.key === 'Enter' && router.push(`/providers?open=${p.id}`)}
+          onClick={() => router.push(providerHref(p))}
+          onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => e.key === 'Enter' && router.push(providerHref(p))}
           className="cursor-pointer rounded-xl border border-line p-4 transition hover:shadow-md"
         >
           <div className="text-sm font-semibold">

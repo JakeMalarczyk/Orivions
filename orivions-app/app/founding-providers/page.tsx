@@ -105,7 +105,7 @@ export default async function FoundingProvidersPage() {
             Only 20 Founding Providers. <span className="text-blue-light">Ever.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">
-            Orivions is the verified B2B marketplace for the Solana ecosystem. We are hand-picking the
+            Orivions is the verified B2B marketplace for onchain teams. We are hand-picking the
             first twenty service companies that teams will meet here.
           </p>
           <div className="mx-auto mt-8 max-w-md">
