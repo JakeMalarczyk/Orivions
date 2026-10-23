@@ -35,7 +35,7 @@ export default function PostPage() {
       breadcrumbLabel="Cost of a Solana dApp"
       summary={[
         'A Solana dApp is several products to price: programs, frontend, off-chain infrastructure, audit and maintenance.',
-        'A simple program with a basic interface might start around $2,000-5,000; a full protocol commonly runs $20,000 or more before the audit.',
+        'A simple program with a basic interface might start around $3,000-5,500; a full protocol commonly runs $20,000 or more before the audit.',
         'Scope decisions move the budget far more than the choice of chain or framework.',
         'A short paid discovery phase is the cheapest way to turn a guess into a reliable quote.',
         'Teams most often forget the audit, infrastructure, monitoring and post-launch maintenance.',
@@ -56,7 +56,7 @@ export default function PostPage() {
       <H2>Indicative ranges</H2>
       <P>
         A simple program, such as a vesting contract or a straightforward staking program with a
-        basic interface, might start around $2,000-5,000. A full protocol with several programs, a
+        basic interface, might start around $3,000-5,500. A full protocol with several programs, a
         production frontend and integrations with other protocols commonly runs $20,000 or more,
         before the audit. For a range based on your own scope, try our free{' '}
         <Link href="/tools/solana-dapp-cost-calculator" className="text-blue-deep">Solana dApp cost calculator</Link>;

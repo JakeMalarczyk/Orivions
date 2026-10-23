@@ -31,7 +31,7 @@ const content: CategoryContent = {
     },
     {
       heading: 'Typical development pricing',
-      body: 'Pricing depends heavily on scope. Small, single-purpose programs can start in the low thousands of dollars, while full protocol builds with multiple interacting programs and a frontend often run into the tens of thousands.',
+      body: 'Pricing depends heavily on scope. A simple program with a basic interface can start around $3,000-5,500, while full protocol builds with multiple interacting programs and a frontend often run into the tens of thousands.',
       linkToInsights: true,
       link: { text: 'For a range based on your own scope, use the free', href: '/tools/solana-dapp-cost-calculator', label: 'Solana dApp cost calculator' },
     },
@@ -41,7 +41,7 @@ const content: CategoryContent = {
   faqs: [
     {
       q: 'How much does it cost to build a Solana dApp?',
-      a: 'Pricing varies widely by scope: a simple program might start around $2,000-5,000, while a full protocol with frontend, multiple programs, and integrations can run $20,000 or more. See live indicative pricing on Orivions Market Insights.',
+      a: 'Pricing varies widely by scope: a simple program with a basic interface might start around $3,000-5,500, while a full protocol with frontend, multiple programs, and integrations can run $20,000 or more. See live indicative pricing on Orivions Market Insights.',
     },
     {
       q: "What's the difference between Anchor and native Rust development?",

@@ -141,7 +141,7 @@ export default function DappCostCalculatorPage() {
         </div>
 
         <div className="mx-auto mt-14 max-w-3xl">
-          <h2 className="font-heading text-[22px] font-semibold">Example estimates</h2>
+          <h2 className="font-heading text-[22px] font-semibold">Solana dApp cost examples</h2>
           <p className="mt-2 text-sm text-gray">Build cost only, before the audit.</p>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
             <table className="w-full text-sm">

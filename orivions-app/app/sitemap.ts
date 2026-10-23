@@ -23,8 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/providers', updated: '2026-10-22', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/smart-match', updated: '2026-10-20', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/insights', updated: '2026-10-20', priority: 0.7, changeFrequency: 'daily' as const },
-    { path: '/solana-smart-contract-audits', updated: '2026-10-20', priority: 0.85, changeFrequency: 'weekly' as const },
-    { path: '/solana-development-companies', updated: '2026-10-20', priority: 0.85, changeFrequency: 'weekly' as const },
+    { path: '/solana-smart-contract-audits', updated: '2026-10-23', priority: 0.85, changeFrequency: 'weekly' as const },
+    { path: '/solana-development-companies', updated: '2026-10-23', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-marketing-growth-agencies', updated: '2026-10-18', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/blog', updated: newestPost, priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/about', updated: '2026-10-22', priority: 0.6, changeFrequency: 'monthly' as const },
@@ -32,8 +32,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/solana-glossary', updated: GLOSSARY_UPDATED, priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/founding-providers', updated: '2026-10-22', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/tools', updated: '2026-10-20', priority: 0.6, changeFrequency: 'monthly' as const },
-    { path: '/tools/solana-audit-cost-calculator', updated: '2026-10-20', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/tools/solana-dapp-cost-calculator', updated: '2026-10-20', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/tools/solana-audit-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/tools/solana-dapp-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/ai-proposal-generator', updated: '2026-10-17', priority: 0.4, changeFrequency: 'monthly' as const },
   ];
 

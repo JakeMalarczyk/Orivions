@@ -410,12 +410,12 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-10-17',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Security', 'Audits', 'Pricing'],
     faqs: [
       {
         q: 'How much does a Solana smart contract audit cost?',
-        a: 'It depends mostly on the size and complexity of the code in scope. Small, single-purpose programs often start in the low thousands of dollars, while large DeFi protocols with several interacting programs can cost tens of thousands. Ask several verified auditors for a quote against the same frozen commit.',
+        a: 'It depends mostly on the size and complexity of the code in scope. Small, single-purpose programs start at around $5,000, while large DeFi protocols with several interacting programs can cost tens of thousands. Ask several verified auditors for a quote against the same frozen commit.',
       },
       {
         q: 'Why do audit quotes for the same project differ so much?',
@@ -518,12 +518,12 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-10-17',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Development', 'Pricing'],
     faqs: [
       {
         q: 'How much does it cost to build a Solana dApp?',
-        a: 'A simple program with a basic interface might start around $2,000-5,000, while a full protocol with several programs, a production frontend and integrations commonly runs $20,000 or more, before the audit. Scope, not the blockchain, is what moves the number.',
+        a: 'A simple program with a basic interface might start around $3,000-5,500, while a full protocol with several programs, a production frontend and integrations commonly runs $20,000 or more, before the audit. Scope, not the blockchain, is what moves the number.',
       },
       {
         q: 'How long does it take to build a Solana dApp?',

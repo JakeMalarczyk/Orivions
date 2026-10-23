@@ -66,7 +66,7 @@ const examples = EXAMPLES.map((e) => ({ ...e, result: estimateAudit(e.input) }))
 const FAQS = [
   {
     q: 'How much does a Solana smart contract audit cost?',
-    a: `Small single-purpose programs often start at a few thousand dollars, and large DeFi protocols can cost tens of thousands. With our method, a 1,500-line Anchor staking program comes out at about ${formatUsd(examples[1]!.result.costLow)} to ${formatUsd(examples[1]!.result.costHigh)}. The size and complexity of the code in scope drive most of the price.`,
+    a: `Small single-purpose programs start at around $5,000, and large DeFi protocols can cost tens of thousands. With our method, a 1,500-line Anchor staking program comes out at about ${formatUsd(examples[1]!.result.costLow)} to ${formatUsd(examples[1]!.result.costHigh)}. The size and complexity of the code in scope drive most of the price.`,
   },
   {
     q: 'How long does a Solana audit take?',
@@ -137,7 +137,7 @@ export default function AuditCostCalculatorPage() {
         </div>
 
         <div className="mx-auto mt-14 max-w-3xl">
-          <h2 className="font-heading text-[22px] font-semibold">Example estimates</h2>
+          <h2 className="font-heading text-[22px] font-semibold">Solana audit cost examples</h2>
           <p className="mt-2 text-sm text-gray">Anchor unless noted, fix review included, no rush.</p>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
             <table className="w-full text-sm">

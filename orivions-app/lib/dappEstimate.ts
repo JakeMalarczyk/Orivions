@@ -2,7 +2,7 @@
 // The page prints these same constants in its methodology section, so the
 // numbers a visitor (or an AI answer engine) reads always match the maths.
 // Calibrated against our guide: a simple program with a basic interface starts
-// around $2,000-5,000; a full protocol commonly runs $20,000 or more.
+// around $3,000-5,500; a full protocol commonly runs $20,000 or more.
 
 export const PROGRAM_TYPES = [
   { id: 'none', label: 'No custom program', examples: 'frontend on existing protocols', days: 0 },

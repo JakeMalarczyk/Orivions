@@ -12,7 +12,7 @@ export default function PostPage() {
       breadcrumbLabel="Solana audit cost"
       summary={[
         'The size and complexity of the code in scope drive most of the price, not the brand of the auditor.',
-        'Small single-purpose programs often start in the low thousands of dollars; large DeFi protocols can cost tens of thousands.',
+        'Small single-purpose programs start at around $5,000; large DeFi protocols can cost tens of thousands.',
         'Compare quotes by scope, engineer-days and deliverables against the same frozen commit, not by the total alone.',
         'Rush timelines, unclear scope and missing tests make audits more expensive and less useful.',
         'Budget for the fix review and for re-audits of later upgrades, not only for the first report.',
@@ -34,7 +34,7 @@ export default function PostPage() {
       <H2>The short answer</H2>
       <P>
         Small, single-purpose programs (a vesting contract, a simple staking program, an NFT
-        mint with custom logic) often start in the low thousands of dollars. Larger DeFi protocols
+        mint with custom logic) start at around $5,000. Larger DeFi protocols
         with several interacting programs, oracles and complex math can run into the tens of
         thousands. For a range based on your own code, try our free{' '}
         <Link href="/tools/solana-audit-cost-calculator" className="text-blue-deep">Solana audit cost calculator</Link>;

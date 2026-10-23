@@ -31,7 +31,7 @@ const content: CategoryContent = {
     },
     {
       heading: 'Typical audit pricing',
-      body: 'Pricing depends heavily on codebase size and complexity. Small, single-purpose programs often start in the low thousands of dollars, while larger DeFi protocols with multiple interacting programs can run into the tens of thousands.',
+      body: 'Pricing depends heavily on codebase size and complexity. Small, single-purpose programs start at around $5,000, while larger DeFi protocols with multiple interacting programs can run into the tens of thousands.',
       linkToInsights: true,
       link: { text: 'For a range based on your own code size and complexity, use the free', href: '/tools/solana-audit-cost-calculator', label: 'Solana audit cost calculator' },
     },
@@ -41,7 +41,7 @@ const content: CategoryContent = {
   faqs: [
     {
       q: 'How much does a Solana smart contract audit cost?',
-      a: 'Pricing varies with scope and codebase size, but indicative ranges typically run from a few thousand dollars for small programs to tens of thousands for larger, higher-stakes protocols.',
+      a: 'Pricing varies with scope and codebase size, but indicative ranges typically run from around $5,000 for small programs to tens of thousands for larger, higher-stakes protocols.',
     },
     {
       q: 'How long does an audit take?',
