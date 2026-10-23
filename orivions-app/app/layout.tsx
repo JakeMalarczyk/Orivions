@@ -5,6 +5,7 @@ import Script from 'next/script';
 import Footer from '@/components/Footer';
 import PageViewTracker from '@/components/PageViewTracker';
 import { FOUNDER_JSONLD } from '@/lib/blog';
+import { CONTACT_EMAIL } from '@/lib/contact';
 import './globals.css';
 
 // next/font downloads and self-hosts these at BUILD time, then serves them from
@@ -82,6 +83,14 @@ const siteJsonLd = {
       },
       image: { '@id': `${siteUrl}/#logo` },
       founder: FOUNDER_JSONLD,
+      email: CONTACT_EMAIL,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: CONTACT_EMAIL,
+        url: `${siteUrl}/contact`,
+        availableLanguage: 'English',
+      },
       description:
         'Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work.',
       knowsAbout: [

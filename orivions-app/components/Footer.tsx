@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Logo from './Logo';
 import { sortedPosts } from '@/lib/blog';
+import { CONTACT_EMAIL } from '@/lib/contact';
 
 // Sitewide footer. Besides navigation it is the main internal-linking hub:
 // every page links to the category pages, the newest guides and the glossary,
@@ -26,6 +27,7 @@ const COMPANY = [
   { href: '/founding-providers', label: 'Founding Providers' },
   { href: '/blog', label: 'Blog' },
   { href: '/solana-glossary', label: 'Solana glossary' },
+  { href: '/contact', label: 'Contact' },
   { href: '/login', label: 'Log in' },
 ];
 
@@ -75,6 +77,10 @@ export default function Footer() {
           © {new Date().getFullYear()} Orivions. Built for onchain teams.{' '}
           <a href="https://x.com/Orivions" target="_blank" rel="noopener me" className="hover:text-ink">
             Follow @Orivions on X
+          </a>
+          {' '}·{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-ink">
+            {CONTACT_EMAIL}
           </a>
         </p>
       </div>

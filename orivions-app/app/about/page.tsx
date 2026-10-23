@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { FOUNDER_JSONLD, SITE_URL, ogImageUrl } from '@/lib/blog';
+import { CONTACT_EMAIL } from '@/lib/contact';
 
 const DESCRIPTION =
   'Orivions is the verified B2B marketplace for onchain teams. How it works for teams and providers, how verification works, how Orivions makes money, and the principles behind it.';
@@ -188,6 +189,14 @@ export default function AboutPage() {
               <a href="https://x.com/Orivions" className="text-blue-deep" rel="me">
                 X (@Orivions)
               </a>
+              . Email:{' '}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-deep">
+                {CONTACT_EMAIL}
+              </a>
+              {' '}or see{' '}
+              <Link href="/contact" className="text-blue-deep">
+                Contact
+              </Link>
               .
             </p>
           </div>

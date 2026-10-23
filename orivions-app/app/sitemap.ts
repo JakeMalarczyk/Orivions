@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/solana-marketing-growth-agencies', updated: '2026-10-18', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/blog', updated: newestPost, priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/about', updated: '2026-10-23', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/contact', updated: '2026-10-23', priority: 0.5, changeFrequency: 'monthly' as const },
     { path: '/how-we-verify', updated: '2026-10-22', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/solana-glossary', updated: GLOSSARY_UPDATED, priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/founding-providers', updated: '2026-10-22', priority: 0.7, changeFrequency: 'weekly' as const },
