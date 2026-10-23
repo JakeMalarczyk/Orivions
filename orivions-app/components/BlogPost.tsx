@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
-import { AUTHOR, SITE_URL, formatPostDate, getPost, ogImageUrl, postUrl, relatedPosts, type Post } from '@/lib/blog';
+import { AUTHOR, FOUNDER_JSONLD, SITE_URL, isoDate, formatPostDate, getPost, ogImageUrl, postUrl, relatedPosts, type Post } from '@/lib/blog';
 
 // Shared layout for every blog post: breadcrumb, byline with dates, FAQ block,
 // closing CTA and the structured data (BlogPosting, BreadcrumbList, FAQPage)
@@ -45,20 +45,13 @@ function jsonLd(post: Post) {
       description: post.description,
       url,
       mainEntityOfPage: url,
-      datePublished: post.datePublished,
-      dateModified: post.dateModified,
+      datePublished: isoDate(post.datePublished),
+      dateModified: isoDate(post.dateModified),
       inLanguage: 'en',
       keywords: post.tags.join(', '),
       articleSection: post.category,
       image: ogImageUrl(post.title, post.category),
-      author: {
-        '@type': 'Person',
-        '@id': AUTHOR.id,
-        name: AUTHOR.name,
-        jobTitle: AUTHOR.role,
-        url: AUTHOR.url,
-        worksFor: { '@id': `${SITE_URL}/#organization` },
-      },
+      author: FOUNDER_JSONLD,
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
     {

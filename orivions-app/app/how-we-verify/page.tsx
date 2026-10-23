@@ -90,7 +90,7 @@ export default function HowWeVerifyPage() {
         inLanguage: 'en',
         isPartOf: { '@id': `${SITE_URL}/#website` },
         publisher: { '@id': `${SITE_URL}/#organization` },
-        dateModified: '2026-10-22',
+        dateModified: '2026-10-22T00:00:00+00:00',
       },
       {
         '@type': 'HowTo',

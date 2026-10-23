@@ -4,6 +4,7 @@ import { Poppins, Inter } from 'next/font/google';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import PageViewTracker from '@/components/PageViewTracker';
+import { FOUNDER_JSONLD } from '@/lib/blog';
 import './globals.css';
 
 // next/font downloads and self-hosts these at BUILD time, then serves them from
@@ -80,14 +81,7 @@ const siteJsonLd = {
         caption: 'Orivions',
       },
       image: { '@id': `${siteUrl}/#logo` },
-      founder: {
-        '@type': 'Person',
-        '@id': `${siteUrl}/about#kuba-malarczyk`,
-        name: 'Jakub (Kuba) Malarczyk',
-        alternateName: 'Kuba Malarczyk',
-        jobTitle: 'Founder',
-        url: `${siteUrl}/about`,
-      },
+      founder: FOUNDER_JSONLD,
       description:
         'Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work.',
       knowsAbout: [

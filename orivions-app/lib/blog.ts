@@ -27,13 +27,26 @@ export interface Post {
 }
 
 // Articles are written by the founder. The Person entity lives on /about
-// (section #kuba-malarczyk) and is referenced by @id from every BlogPosting.
+// (section #kuba-malarczyk). Every page emits the same node under the same @id,
+// so search engines merge it into one person instead of two conflicting ones.
 export const AUTHOR = {
   name: 'Kuba Malarczyk',
   role: 'Founder',
   url: `${SITE_URL}/about#kuba-malarczyk`,
-  id: `${SITE_URL}/about#kuba-malarczyk`,
 };
+
+export const FOUNDER_JSONLD = {
+  '@type': 'Person',
+  '@id': `${SITE_URL}/about#kuba-malarczyk`,
+  name: 'Kuba Malarczyk',
+  alternateName: ['Jakub (Kuba) Malarczyk', 'Jakub Malarczyk'],
+  jobTitle: 'Founder',
+  url: `${SITE_URL}/about`,
+  worksFor: { '@id': `${SITE_URL}/#organization` },
+};
+
+/** Schema.org wants a full date-time with a time zone; posts store plain dates. */
+export const isoDate = (d: string) => (d.includes('T') ? d : `${d}T00:00:00+00:00`);
 
 export const POSTS: Post[] = [
   {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
-import { SITE_URL, UPCOMING, formatPostDate, postUrl, sortedPosts } from '@/lib/blog';
+import { SITE_URL, UPCOMING, formatPostDate, isoDate, postUrl, sortedPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog: Building the business layer for Solana',
@@ -38,8 +38,8 @@ export default function BlogIndexPage() {
       '@type': 'BlogPosting',
       headline: p.title,
       url: postUrl(p.slug),
-      datePublished: p.datePublished,
-      dateModified: p.dateModified,
+      datePublished: isoDate(p.datePublished),
+      dateModified: isoDate(p.dateModified),
     })),
   };
 

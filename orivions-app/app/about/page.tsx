@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
-import { SITE_URL, ogImageUrl } from '@/lib/blog';
+import { FOUNDER_JSONLD, SITE_URL, ogImageUrl } from '@/lib/blog';
 
 const DESCRIPTION =
   'Orivions is the verified B2B marketplace for onchain teams. How it works for teams and providers, how verification works, how Orivions makes money, and the principles behind it.';
@@ -103,15 +103,7 @@ export default function AboutPage() {
         about: { '@id': `${SITE_URL}/#organization` },
         mainEntity: { '@id': `${SITE_URL}/#organization` },
       },
-      {
-        '@type': 'Person',
-        '@id': `${url}#kuba-malarczyk`,
-        name: 'Jakub (Kuba) Malarczyk',
-        alternateName: 'Kuba Malarczyk',
-        jobTitle: 'Founder',
-        url: `${url}#kuba-malarczyk`,
-        worksFor: { '@id': `${SITE_URL}/#organization` },
-      },
+      FOUNDER_JSONLD,
       {
         '@type': 'FAQPage',
         '@id': `${url}#faq`,
