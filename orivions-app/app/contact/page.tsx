@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
-import { CALENDLY_URL, CONTACT_EMAIL } from '@/lib/contact';
+import { BOOKING_URL, CONTACT_EMAIL } from '@/lib/contact';
 
 const DESCRIPTION =
-  'Contact Orivions: email Kuba Malarczyk, the founder, or book a call to talk about hiring verified auditors, developers and agencies, or about listing your company.';
+  'Contact the Orivions team by email or book a 20-minute call to talk about hiring verified auditors, developers and agencies, or about listing your company.';
 
 export const metadata: Metadata = {
   title: 'Contact Orivions',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Contact Orivions',
     description: DESCRIPTION,
     url: '/contact',
-    images: [{ url: ogImageUrl('Talk to the founder', 'Contact Orivions'), width: 1200, height: 630 }],
+    images: [{ url: ogImageUrl('Talk to the Orivions team', 'Contact Orivions'), width: 1200, height: 630 }],
   },
 };
 
@@ -57,8 +57,8 @@ export default function ContactPage() {
           Contact Orivions
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-gray">
-          Questions about hiring through Orivions, listing your company or verification go straight to
-          Kuba Malarczyk, the founder.
+          Questions about hiring through Orivions, listing your company or verification? Write to the
+          Orivions team at {CONTACT_EMAIL}.
         </p>
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -78,25 +78,18 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {CALENDLY_URL ? (
+        {BOOKING_URL ? (
           <section className="mt-12">
             <h2 className="font-heading text-[24px] font-semibold tracking-tight">Book a call</h2>
-            <p className="mt-2 text-gray">Pick a time that suits you for a short call with Kuba.</p>
-            <div className="mt-5 overflow-hidden rounded-2xl border border-line">
-              <iframe
-                src={`${CALENDLY_URL}?hide_gdpr_banner=1`}
-                title="Book a call with Orivions"
-                className="h-[700px] w-full"
-                loading="lazy"
-              />
-            </div>
-            <p className="mt-2 text-xs text-gray-soft">
-              Calendar not loading?{' '}
-              <a href={CALENDLY_URL} target="_blank" rel="noopener" className="text-blue-deep">
-                Open it on Calendly
-              </a>
-              .
-            </p>
+            <p className="mt-2 text-gray">Pick a time that suits you for a short call with the Orivions team.</p>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener"
+              className="mt-5 inline-block rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Book a 20-minute call
+            </a>
           </section>
         ) : null}
       </div>

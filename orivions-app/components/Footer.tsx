@@ -79,6 +79,7 @@ export default function Footer() {
             Follow @Orivions on X
           </a>
           {' '}·{' '}
+          Write to the Orivions team:{' '}
           <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-ink">
             {CONTACT_EMAIL}
           </a>

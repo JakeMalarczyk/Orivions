@@ -3,6 +3,6 @@
 
 export const CONTACT_EMAIL = 'jakub@orivions.com';
 
-// Calendly booking page for a call with the founder. Empty until the page
-// exists; while empty, the booking widget and "Book a call" links are hidden.
-export const CALENDLY_URL = '';
+// Google Calendar appointment page for a 20-minute call. Opened in a new tab
+// (no iframe, so the CSP needs no change). Empty hides the "Book a call" section.
+export const BOOKING_URL = 'https://calendar.app.google/hFdaS5z9igWQZ46AA';

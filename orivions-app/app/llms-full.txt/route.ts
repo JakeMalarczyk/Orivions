@@ -46,7 +46,7 @@ Teams describe what they need in plain English and Smart Match (AI) suggests the
 - Smart Match: describe your project in plain English, no account needed, and get 1-3 suggested providers with a reason for each.
 - Coverage: Orivions serves onchain teams. Guides, tools and the glossary currently cover Solana.
 - Ranking: Smart Match ranks providers by fit to the stated need, not by payment. No paid placements: ranking and matches are never for sale. The Verified badge cannot be bought either.
-- Contact: ${CONTACT_EMAIL} (Kuba Malarczyk, founder). Contact page: ${SITE_URL}/contact
+- Contact: ${CONTACT_EMAIL} (Orivions team). Contact page: ${SITE_URL}/contact
 
 ## Main pages
 

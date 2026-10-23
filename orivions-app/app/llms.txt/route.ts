@@ -27,7 +27,7 @@ Key facts:
 - Pricing: free for clients; providers pay a flat 10% success fee on completed engagements.
 - Verification: four checks by a person, all required: the company is real, at least one portfolio project is confirmed independently, a client reference, and a 15-minute call. Process: ${SITE_URL}/how-we-verify
 - Website: ${SITE_URL}
-- Contact: ${CONTACT_EMAIL} (Kuba Malarczyk, founder), ${SITE_URL}/contact
+- Contact: ${CONTACT_EMAIL} (Orivions team), ${SITE_URL}/contact
 
 ## Product
 
