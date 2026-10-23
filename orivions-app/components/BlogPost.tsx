@@ -51,7 +51,14 @@ function jsonLd(post: Post) {
       keywords: post.tags.join(', '),
       articleSection: post.category,
       image: ogImageUrl(post.title, post.category),
-      author: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Orivions', url: SITE_URL },
+      author: {
+        '@type': 'Person',
+        '@id': AUTHOR.id,
+        name: AUTHOR.name,
+        jobTitle: AUTHOR.role,
+        url: AUTHOR.url,
+        worksFor: { '@id': `${SITE_URL}/#organization` },
+      },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
     {
@@ -128,6 +135,8 @@ export default function BlogPost({
   slug,
   breadcrumbLabel,
   summary,
+  answer,
+  glance,
   children,
   cta,
 }: {
@@ -135,6 +144,10 @@ export default function BlogPost({
   breadcrumbLabel: string;
   /** "Key takeaways" box at the top: short, answer-first, quotable. */
   summary?: string[];
+  /** Answer-first paragraph right under the H1: 40-60 words, starts with the query. */
+  answer?: string;
+  /** Small "at a glance" table under the answer. */
+  glance?: { caption: string; head: string[]; rows: string[][]; note?: string };
   children: ReactNode;
   cta?: { title: string; text: string; href: string; label: string };
 }) {
@@ -155,9 +168,10 @@ export default function BlogPost({
         </h1>
         <p className="mt-4 text-sm text-gray-soft">
           By{' '}
-          <Link href="/about" className="font-semibold text-gray hover:text-ink">
+          <Link href="/about#kuba-malarczyk" className="font-semibold text-gray hover:text-ink">
             {AUTHOR.name}
           </Link>
+          , {AUTHOR.role}
           {' '}·{' '}
           <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>
           {post.dateModified !== post.datePublished && (
@@ -166,6 +180,39 @@ export default function BlogPost({
             </>
           )}
         </p>
+
+        {answer ? (
+          <p className="mt-6 text-[17px] leading-relaxed text-ink">{answer}</p>
+        ) : null}
+
+        {glance ? (
+          <div className="mt-6">
+            <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">{glance.caption}</div>
+            <div className="mt-3 overflow-x-auto rounded-2xl border border-line">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-line bg-bg-soft text-left text-xs uppercase text-gray-soft">
+                    {glance.head.map((h) => (
+                      <th key={h} className="px-4 py-3 font-semibold">{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glance.rows.map((row) => (
+                    <tr key={row[0]} className="border-b border-line last:border-0">
+                      {row.map((cell, i) => (
+                        <td key={i} className={i === 0 ? 'px-4 py-3 font-semibold' : 'px-4 py-3 tabular-nums text-gray'}>
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {glance.note ? <p className="mt-2 text-xs text-gray-soft">{glance.note}</p> : null}
+          </div>
+        ) : null}
 
         {summary?.length ? (
           <div className="mt-8 rounded-2xl border border-line bg-bg-soft p-6">

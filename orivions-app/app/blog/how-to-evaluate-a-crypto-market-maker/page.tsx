@@ -39,6 +39,18 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="How to evaluate a crypto market maker"
+      answer="To evaluate a crypto market maker, check four things before you sign: the deal model (token loan with call options or a retainer) and the incentives it creates, written commitments per venue and pair for spread, depth and uptime, reporting you can verify against exchange or onchain data, and a named legal entity with references you contact yourself."
+      glance={{
+        caption: 'Market maker due diligence at a glance',
+        head: ['Check', 'Good answer', 'Red flag'],
+        rows: [
+          ['Deal model', 'Clear loan, option or fee terms in writing', 'Vague terms, verbal promises'],
+          ['Commitments', 'Spread, depth and uptime per venue and pair', '"We provide liquidity"'],
+          ['End of loan', 'One-paragraph answer for every price scenario', 'No clear answer'],
+          ['Reporting', 'Raw data and read-only access you can check', 'Screenshots and charts only'],
+          ['The firm', 'Named legal entity, references you contact', 'Guaranteed price, volume or listing'],
+        ],
+      }}
       summary={[
         'A market maker should give your token tighter spreads and real depth, not price support or volume. Anyone selling "volume" is selling wash trading.',
         'First understand the deal model: a token loan with call options and a retainer create very different incentives.',

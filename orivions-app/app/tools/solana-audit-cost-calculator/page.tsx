@@ -80,6 +80,14 @@ const FAQS = [
     q: 'How can I lower the cost of an audit?',
     a: 'Freeze the code at a tagged commit, write a short specification of each instruction and its invariants, ship a good test suite, remove dead code from scope, and book early instead of paying for a rush slot.',
   },
+  {
+    q: 'How many lines of code can an auditor review per day?',
+    a: `Our method assumes about ${LINES_PER_ENGINEER_DAY} lines of straightforward Anchor code per engineer-day, then adjusts for complexity, framework and integrations. Complex DeFi logic is reviewed much more slowly per line, which is why effort is multiplied by up to 2.1 for novel or cross-chain designs.`,
+  },
+  {
+    q: 'How accurate is this Solana audit cost calculator?',
+    a: 'It gives an indicative range, not a quote. Real quotes depend on the firm, its calendar, your code quality, tests and documentation. Use the range to sanity-check quotes and to plan budget and dates before you contact auditors.',
+  },
 ];
 
 export default function AuditCostCalculatorPage() {
@@ -127,9 +135,7 @@ export default function AuditCostCalculatorPage() {
           {TITLE}
         </h1>
         <p className="mt-4 max-w-3xl text-gray">
-          Estimate what an independent security audit of your Solana programs will cost and how long it
-          will take. Move the inputs and the range updates instantly. No signup, and nothing you enter
-          leaves your browser.
+          {`This Solana audit cost calculator estimates the price and calendar time of an independent security audit from lines of code, number of programs, complexity, framework (Anchor or native Rust) and integrations. It uses ${formatUsd(DAY_RATE_LOW)}-${formatUsd(DAY_RATE_HIGH)} per engineer-day and about ${LINES_PER_ENGINEER_DAY} lines of Anchor code per engineer-day. Free, no signup, and nothing you enter leaves your browser.`}
         </p>
 
         <div className="mt-8">

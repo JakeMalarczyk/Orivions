@@ -33,6 +33,18 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Cost of a Solana dApp"
+      answer="Building a Solana dApp costs about $3,000-5,500 for a vesting program with a basic interface built by a freelancer, $28,500-57,500 for an NFT marketplace with a production app built by an agency, and $73,500-147,000 for a lending protocol with an oracle, by our calculator method. All before the audit. Scope, not the chain, moves the number."
+      glance={{
+        caption: 'Solana dApp cost at a glance',
+        head: ['Project', 'Team', 'Build time', 'Indicative cost'],
+        rows: [
+          ['Vesting program, basic interface', 'Freelancer', '2-3 weeks', '$3,000-5,500'],
+          ['NFT marketplace, production app', 'Agency', '3-4 weeks', '$28,500-57,500'],
+          ['Consumer app on existing protocols, web and mobile', 'Agency', '5-7 weeks', '$48,500-96,500'],
+          ['Lending protocol, 2 programs, oracle', 'Agency', '7-10 weeks', '$73,500-147,000'],
+        ],
+        note: 'From our dApp cost calculator: freelancer $350-700 per day, agency $700-1,400 per day with 3 people, testing and project management included. Audit and maintenance not included.',
+      }}
       summary={[
         'A Solana dApp is several products to price: programs, frontend, off-chain infrastructure, audit and maintenance.',
         'A simple program with a basic interface might start around $3,000-5,500; a full protocol commonly runs $20,000 or more before the audit.',

@@ -10,6 +10,18 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Solana audit cost"
+      answer="A Solana smart contract audit costs about $5,500-10,000 for a small 500-line program, $12,000-21,000 for a 1,500-line staking program and $37,000-64,500 for a 3,000-line DeFi protocol, by our calculator method. Large multi-program protocols can pass $90,000. Price follows engineer-days: code size, complexity, framework, integrations and whether the fix review is included."
+      glance={{
+        caption: 'Solana audit cost at a glance',
+        head: ['Project', 'Code in scope', 'Engineer-days', 'Indicative cost'],
+        rows: [
+          ['Token vesting (simple)', '500 lines', '3.5', '$5,500-10,000'],
+          ['Staking (standard)', '1,500 lines', '7.5', '$12,000-21,000'],
+          ['Lending, 2 programs, oracle (DeFi)', '3,000 lines', '23', '$37,000-64,500'],
+          ['Perps DEX, native Rust, 3 programs', '6,000 lines', '56.5', '$90,500-158,000'],
+        ],
+        note: 'From our audit cost calculator: $1,600-2,800 per engineer-day, Anchor unless noted, fix review included, no rush. Indicative, not a quote.',
+      }}
       summary={[
         'The size and complexity of the code in scope drive most of the price, not the brand of the auditor.',
         'Small single-purpose programs start at around $5,000; large DeFi protocols can cost tens of thousands.',

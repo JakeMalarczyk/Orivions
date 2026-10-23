@@ -26,10 +26,13 @@ export interface Post {
   faqs?: PostFaq[];
 }
 
+// Articles are written by the founder. The Person entity lives on /about
+// (section #kuba-malarczyk) and is referenced by @id from every BlogPosting.
 export const AUTHOR = {
-  name: 'Orivions Team',
-  role: 'Editorial team',
-  url: `${SITE_URL}/about`,
+  name: 'Kuba Malarczyk',
+  role: 'Founder',
+  url: `${SITE_URL}/about#kuba-malarczyk`,
+  id: `${SITE_URL}/about#kuba-malarczyk`,
 };
 
 export const POSTS: Post[] = [
@@ -43,7 +46,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-22',
-    dateModified: '2026-10-22',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Market making', 'Launch', 'Hiring'],
     faqs: [
       {
@@ -62,6 +65,14 @@ export const POSTS: Post[] = [
         q: 'How do I spot a bad market maker?',
         a: 'Walk away from anyone who guarantees a price, a volume number or a listing, offers "volume support", will not name the legal entity that signs, or sends reports you cannot check against exchange or onchain data.',
       },
+      {
+        q: 'How much does a crypto market maker cost?',
+        a: 'It depends on the model. In a retainer you pay a fee and usually provide the inventory. In a loan and option deal, most of the cost is the value of the options you grant. Compare the total value you transfer, options included, not only the monthly fee.',
+      },
+      {
+        q: 'Is it legal to pay a market maker for trading volume?',
+        a: 'Paying for artificial volume is wash trading, a form of market manipulation that is illegal in many jurisdictions. In October 2024 the US Department of Justice charged several crypto market makers with wash trading for clients, and MiCA includes market abuse rules for crypto-assets in the EU.',
+      },
     ],
   },
   {
@@ -74,7 +85,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 6,
     datePublished: '2026-10-22',
-    dateModified: '2026-10-22',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Audits', 'Security'],
     faqs: [
       {
@@ -92,6 +103,14 @@ export const POSTS: Post[] = [
       {
         q: 'Are audit firm rankings trustworthy?',
         a: 'Treat them with care. Many rankings are published by audit firms, infrastructure providers or agencies with commercial relationships. Ask how the order was chosen and verify the evidence yourself.',
+      },
+      {
+        q: 'Should I choose the cheapest Solana audit quote?',
+        a: 'Not on price alone. A cheaper quote usually means fewer engineer-days or a smaller scope. Convert every quote to engineer-days and price per engineer-day, check that the fix review is included, then decide on the people and their past Solana reports.',
+      },
+      {
+        q: 'How many audit firms should I ask for a quote?',
+        a: 'A short list of firms with recent public reports on Solana code similar to yours, not every firm you can find. Each should quote the same commit, programs and exclusions, so that you can compare the quotes line by line.',
       },
     ],
   },
@@ -132,7 +151,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 5,
     datePublished: '2026-10-20',
-    dateModified: '2026-10-20',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Audits', 'Security', 'Launch'],
     faqs: [
       {
@@ -151,6 +170,14 @@ export const POSTS: Post[] = [
         q: 'How long does the fix review take?',
         a: 'Usually three to ten days after your team has fixed the findings. Include it in the quote and the schedule; the first report is not the end of the audit.',
       },
+      {
+        q: 'How many days does a Solana audit take?',
+        a: 'Measured in engineer-days, from about 3.5 for a 500-line simple Anchor program to about 23 for a 3,000-line lending protocol with an oracle, by our calculator method with the fix review included. Two engineers working in parallel roughly halve the calendar time, so a small audit can finish in 1-2 weeks.',
+      },
+      {
+        q: 'Why does it take so long to start a Solana audit?',
+        a: 'Because established Solana auditors are booked ahead. The wait for a start date is typically 2 to 8 weeks, longer before big launches, and it is often longer than the review itself. Contact auditors when the scope is stable, typically 4 to 8 weeks before you need the report.',
+      },
     ],
   },
   {
@@ -163,7 +190,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-20',
-    dateModified: '2026-10-20',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Security', 'Audits', 'Development', 'Anchor'],
     faqs: [
       {
@@ -181,6 +208,14 @@ export const POSTS: Post[] = [
       {
         q: 'Does Anchor validate remaining_accounts?',
         a: 'No. Accounts in ctx.remaining_accounts are not validated at all; check owner, key and type for each one you use.',
+      },
+      {
+        q: 'What does Anchor check automatically?',
+        a: 'For typed accounts, Anchor checks the owner program and the account discriminator, and it enforces the constraints you declare, such as Signer, has_one, seeds with bump, token mint and authority, and Program types for CPIs. Anything you do not declare, and every UncheckedAccount or remaining_accounts entry, is not checked.',
+      },
+      {
+        q: 'Do I still need an audit if I use Anchor?',
+        a: 'Yes, for any program that holds user funds. Anchor removes whole classes of bugs, but logic errors, missing constraints and economic issues remain. Use this checklist to prepare, so the audit time goes into your logic instead of basic findings.',
       },
     ],
   },
@@ -425,6 +460,14 @@ export const POSTS: Post[] = [
         q: 'How can I reduce the cost of an audit?',
         a: 'Freeze the code before the audit starts, cut unnecessary code from scope, write a short specification, ship good tests and fix the obvious issues yourself first. Auditors then spend their time on the hard problems instead of on understanding the code.',
       },
+      {
+        q: 'How much does a Solana auditor charge per day?',
+        a: 'Our calculator uses $1,600 to $2,800 per engineer-day as an indicative range for Solana security engineers. Most quotes are engineer-days multiplied by a day rate, so ask every firm for both numbers and compare them against the same frozen commit and scope.',
+      },
+      {
+        q: 'Is a Solana audit cheaper for Anchor than for native Rust?',
+        a: 'Usually, for the same features. Anchor generates much of the account validation that auditors otherwise have to review by hand. Our calculator adds 15% to the review effort for native Rust programs.',
+      },
     ],
   },
   {
@@ -464,7 +507,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 8,
     datePublished: '2026-10-17',
-    dateModified: '2026-10-17',
+    dateModified: '2026-10-23',
     tags: ['Guides', 'Security', 'Launch'],
     faqs: [
       {
@@ -478,6 +521,14 @@ export const POSTS: Post[] = [
       {
         q: 'Do I still need a bug bounty after an audit?',
         a: 'For anything holding meaningful user funds, yes. An audit covers one commit at one point in time; a bug bounty gives independent researchers a reason to report issues to you instead of exploiting them.',
+      },
+      {
+        q: 'What should I check before deploying a Solana program to mainnet?',
+        a: 'That the upgrade authority and admin roles are in a multisig, the deployed code is exactly the audited commit with reviewed fixes, a verifiable build is published, token authorities are set on purpose, and monitoring, a second RPC provider and an incident plan are ready before users arrive.',
+      },
+      {
+        q: 'How do I check that a deployed Solana program matches the audited code?',
+        a: 'Build the audited commit and compare it with the program onchain, using solana-verify get-program-hash and solana-verify verify-from-repo. Once a remote verification succeeds, explorers such as Solana Explorer, SolanaFM and Solscan show the program as verified.',
       },
     ],
   },
@@ -532,6 +583,14 @@ export const POSTS: Post[] = [
       {
         q: 'What costs do teams forget when budgeting a Solana dApp?',
         a: 'The independent audit and fix review, RPC and indexing infrastructure, monitoring, post-launch maintenance, and the time your own team spends on reviews and decisions.',
+      },
+      {
+        q: 'How much does it cost to maintain a Solana dApp?',
+        a: 'Plan for 15-25% of the build cost per year as a rule of thumb, which is what our dApp cost calculator uses. It covers dependency upgrades, network changes, new wallets, bug fixes and support after launch. Re-audits of meaningful upgrades come on top.',
+      },
+      {
+        q: 'Is a freelancer or an agency cheaper for a Solana dApp?',
+        a: 'Per day, usually a freelancer: our calculator uses $350-700 per day for a freelancer and $700-1,400 for an agency. An agency brings several people working in parallel, plus design, QA and project management, so it often ships sooner.',
       },
     ],
   },

@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const newestPost = posts.reduce((max, p) => (p.dateModified > max ? p.dateModified : max), '2026-01-01');
 
   const pages = [
-    { path: '/', updated: '2026-10-22', priority: 1.0, changeFrequency: 'weekly' as const },
+    { path: '/', updated: '2026-10-23', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/providers', updated: '2026-10-22', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/smart-match', updated: '2026-10-20', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/insights', updated: '2026-10-20', priority: 0.7, changeFrequency: 'daily' as const },
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/solana-development-companies', updated: '2026-10-23', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-marketing-growth-agencies', updated: '2026-10-18', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/blog', updated: newestPost, priority: 0.8, changeFrequency: 'weekly' as const },
-    { path: '/about', updated: '2026-10-22', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/about', updated: '2026-10-23', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/how-we-verify', updated: '2026-10-22', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/solana-glossary', updated: GLOSSARY_UPDATED, priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/founding-providers', updated: '2026-10-22', priority: 0.7, changeFrequency: 'weekly' as const },

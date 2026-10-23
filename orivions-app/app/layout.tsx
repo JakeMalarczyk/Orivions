@@ -28,7 +28,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.com';
 
 // Official profiles. Listed as sameAs on the Organization so search engines and
 // AI answer engines connect them to orivions.com as one entity.
-const SOCIAL_PROFILES = ['https://x.com/Orivions'];
+const SOCIAL_PROFILES = ['https://x.com/Orivions', 'https://github.com/JakeMalarczyk/Orivions'];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,9 +65,29 @@ const siteJsonLd = {
       '@type': 'Organization',
       '@id': `${siteUrl}/#organization`,
       name: 'Orivions',
+      alternateName: ['Orivions marketplace', 'orivions.com'],
       url: `${siteUrl}/`,
       sameAs: SOCIAL_PROFILES,
-      logo: `${siteUrl}/logo.png`,
+      // Square logo, the same mark as the favicon. Google uses it for the brand
+      // logo in results and the knowledge panel (min. 112x112).
+      logo: {
+        '@type': 'ImageObject',
+        '@id': `${siteUrl}/#logo`,
+        url: `${siteUrl}/logo.png`,
+        contentUrl: `${siteUrl}/logo.png`,
+        width: 512,
+        height: 512,
+        caption: 'Orivions',
+      },
+      image: { '@id': `${siteUrl}/#logo` },
+      founder: {
+        '@type': 'Person',
+        '@id': `${siteUrl}/about#kuba-malarczyk`,
+        name: 'Jakub (Kuba) Malarczyk',
+        alternateName: 'Kuba Malarczyk',
+        jobTitle: 'Founder',
+        url: `${siteUrl}/about`,
+      },
       description:
         'Orivions is the verified B2B marketplace for onchain teams: describe what you need, get matched with human-verified auditors, developers and agencies. Free for clients; providers pay a 10% success fee only on completed work.',
       knowsAbout: [
@@ -85,6 +105,7 @@ const siteJsonLd = {
       '@id': `${siteUrl}/#website`,
       url: `${siteUrl}/`,
       name: 'Orivions',
+      alternateName: ['Orivions marketplace', 'orivions.com'],
       inLanguage: 'en',
       publisher: { '@id': `${siteUrl}/#organization` },
     },

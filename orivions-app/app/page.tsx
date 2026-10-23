@@ -61,8 +61,9 @@ export default function HomePage() {
             for onchain teams.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray">
-            Describe what you need, get matched with human-verified auditors, developers and
-            agencies. Free for clients; providers pay a 10% success fee only on completed work.
+            Orivions is where onchain teams describe what they need and get matched with
+            human-verified auditors, developers and agencies. Free for clients; providers pay a
+            10% success fee only on completed work.
           </p>
           <Suspense fallback={null}>
             <HeroCtas />

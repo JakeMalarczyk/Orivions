@@ -97,6 +97,17 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Anchor security checklist"
+      answer="An Anchor security checklist covers what Anchor does not check for you: Signer and has_one on every authority, a reason for each UncheckedAccount, seeds and bump on PDAs, careful init_if_needed, the close constraint, mint and authority constraints on token accounts, typed program accounts for CPIs, checked math and hand-validated remaining_accounts. Run all 16 checks before your audit."
+      glance={{
+        caption: 'Anchor security checklist at a glance',
+        head: ['Area', 'Checks', 'Most common miss'],
+        rows: [
+          ['Accounts and signers', '4', 'Authority not a Signer, or not tied to state with has_one'],
+          ['PDAs and initialization', '4', 'PDA without seeds and bump, init_if_needed resetting state'],
+          ['Tokens and CPIs', '4', 'Token account not constrained by mint and authority'],
+          ['Math, upgrades and testing', '4', 'Unchecked arithmetic, unvalidated remaining_accounts'],
+        ],
+      }}
       summary={[
         'Anchor prevents many classic Solana bugs, but only for the checks you actually declare in account constraints.',
         'Most critical findings in Anchor programs are still missing signer, owner or authority checks.',

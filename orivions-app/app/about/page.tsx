@@ -104,6 +104,15 @@ export default function AboutPage() {
         mainEntity: { '@id': `${SITE_URL}/#organization` },
       },
       {
+        '@type': 'Person',
+        '@id': `${url}#kuba-malarczyk`,
+        name: 'Jakub (Kuba) Malarczyk',
+        alternateName: 'Kuba Malarczyk',
+        jobTitle: 'Founder',
+        url: `${url}#kuba-malarczyk`,
+        worksFor: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
         '@type': 'FAQPage',
         '@id': `${url}#faq`,
         mainEntity: FAQS.map(([q, a]) => ({
@@ -172,6 +181,25 @@ export default function AboutPage() {
           </Link>
           .
         </p>
+
+        <section id="kuba-malarczyk" className="scroll-mt-24">
+          <H2>Who builds Orivions</H2>
+          <div className="mt-5 rounded-2xl border border-line p-5">
+            <div className="font-semibold">Jakub (Kuba) Malarczyk</div>
+            <div className="text-sm text-gray-soft">Founder, Orivions</div>
+            <p className="mt-3 text-sm leading-relaxed text-gray">
+              Kuba founded Orivions and writes the guides on the{' '}
+              <Link href="/blog" className="text-blue-deep">
+                Orivions blog
+              </Link>
+              . Updates are posted on{' '}
+              <a href="https://x.com/Orivions" className="text-blue-deep" rel="me">
+                X (@Orivions)
+              </a>
+              .
+            </p>
+          </div>
+        </section>
 
         <H2>Our principles</H2>
         <div className="mt-5 grid gap-3 sm:grid-cols-2">

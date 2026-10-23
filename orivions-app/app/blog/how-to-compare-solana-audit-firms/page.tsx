@@ -19,6 +19,20 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="How to compare Solana audit firms"
+      answer="To compare Solana audit firms, check six things you can verify yourself: recent public reports for Solana programs similar to yours, Anchor or native Rust experience, the methodology, the named engineers and engineer-days in the quote, whether the fix review is included, and a written start date. Ask every firm to quote the same frozen commit."
+      glance={{
+        caption: 'Audit quote comparison at a glance',
+        head: ['Ask each firm for', 'Why it matters'],
+        rows: [
+          ['Links to recent Solana reports', 'Proves Solana experience; logos do not'],
+          ['Engineers and engineer-days', 'This is what you are paying for'],
+          ['Price per engineer-day', 'Makes quotes of different sizes comparable'],
+          ['Scope: programs, commit, exclusions', 'A cheaper quote often covers less'],
+          ['Fix review included?', 'Without it the audit is not finished'],
+          ['Written start date', 'Good firms are often booked weeks ahead'],
+        ],
+        note: 'Fill one row per firm. No ranking: Orivions does not rank auditors.',
+      }}
       summary={[
         'Most "best audit firm" lists are written by audit firms or by companies that sell to them. Compare firms on evidence you can check yourself.',
         'The strongest evidence is public: past reports for Solana programs similar to yours, and Solana-specific findings in them.',

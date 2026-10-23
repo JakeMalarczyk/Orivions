@@ -89,6 +89,16 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Pre-launch security checklist"
+      answer="A Solana pre-launch security checklist has 15 checks in three groups. Keys and authorities: upgrade authority in a multisig, mint and freeze authorities, every admin instruction. Code and deployment: deploy the audited commit, publish a verifiable build, test failure paths, rehearse on devnet. Operations: monitoring, more than one RPC provider, an incident plan, a bug bounty and capped risk."
+      glance={{
+        caption: 'Solana pre-launch checklist at a glance',
+        head: ['Group', 'Checks', 'Done when'],
+        rows: [
+          ['Keys and authorities', '4', 'Upgrade authority and admin roles sit in a multisig; token authorities set on purpose'],
+          ['Code and deployment', '5', 'The deployed program matches the audited commit and a verifiable build'],
+          ['Operations', '6', 'Monitoring, RPC redundancy, incident plan, bug bounty and deposit caps are live'],
+        ],
+      }}
       summary={[
         'Put the upgrade authority and every admin role behind a multisig, never a single hot wallet.',
         'Deploy exactly the audited commit and publish a verifiable build.',

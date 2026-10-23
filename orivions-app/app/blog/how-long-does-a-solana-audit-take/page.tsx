@@ -18,6 +18,18 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="How long a Solana audit takes"
+      answer="A Solana audit takes about 1-2 weeks of review for a simple or standard program of up to 1,500 lines, 3-5 weeks for a 3,000-line DeFi protocol, and 6-12 weeks for a large multi-program protocol in native Rust. Including booking, the wait for a slot, fixes and the fix review, plan 6-12 weeks from first call to final report."
+      glance={{
+        caption: 'Solana audit timeline at a glance',
+        head: ['Project', 'Code in scope', 'Engineer-days', 'Review time'],
+        rows: [
+          ['Simple (token vesting)', '500 lines', '3.5', '1-2 weeks'],
+          ['Standard (staking)', '1,500 lines', '7.5', '1-2 weeks'],
+          ['DeFi (lending, 2 programs, oracle)', '3,000 lines', '23', '3-5 weeks'],
+          ['Large DeFi (perps DEX, native Rust, 3 programs)', '6,000 lines', '56.5', '6-12 weeks'],
+        ],
+        note: 'From our audit cost calculator method: Anchor unless noted, fix review included, no rush. Short end: two engineers in parallel; long end: one engineer. Booking and waiting for a start date come on top.',
+      }}
       summary={[
         'The review itself usually takes one to four weeks; the whole process, from first call to final report, more often takes six to twelve.',
         'The longest wait is often the queue: established Solana auditors are commonly booked several weeks ahead.',
