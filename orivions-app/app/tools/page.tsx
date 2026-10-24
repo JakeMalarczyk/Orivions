@@ -86,6 +86,17 @@ export default function ToolsPage() {
             </li>
           ))}
         </ul>
+
+        <h2 className="mt-12 font-heading text-[22px] font-semibold">How to use these tools</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-[#27272E]">
+          Start with the dApp cost calculator to size the whole build, then use the audit cost
+          calculator to add security review to the plan. Both give a range, not a quote: use it to
+          sanity-check offers and to decide how much runway a launch needs. When you are ready to
+          talk to people, describe the project in{' '}
+          <Link href="/smart-match" className="text-blue-deep">Smart Match</Link> or browse{' '}
+          <Link href="/solana-smart-contract-audits" className="text-blue-deep">verified Solana auditors</Link> and{' '}
+          <Link href="/solana-development-companies" className="text-blue-deep">development companies</Link>.
+        </p>
       </div>
       <script
         type="application/ld+json"

@@ -58,7 +58,17 @@ export default function InsightsClient() {
 
   const priceCategories = Object.keys(priceByCategory);
 
-  if (loading) return <div className="px-8 py-20 text-center text-gray-soft">Loading…</div>;
+  if (loading) {
+    // Same heading as the loaded page, so the server-rendered HTML has an h1.
+    return (
+      <div className="mx-auto max-w-3xl px-8 pb-10 pt-14 text-center">
+        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+          Solana Business Infrastructure: Market Insights
+        </h1>
+        <p className="mx-auto mt-3 max-w-xl text-gray">Loading the latest numbers…</p>
+      </div>
+    );
+  }
 
   // Early access: publish market data only once there is a real verified cohort.
   if (!isDirectoryOpen(providers.length)) {

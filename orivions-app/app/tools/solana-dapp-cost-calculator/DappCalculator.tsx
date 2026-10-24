@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Check, Choice, Field } from '@/components/CalculatorControls';
+import { trackEvent } from '@/lib/analytics';
 import { formatUsd } from '@/lib/auditEstimate';
 import {
   BACKEND,
@@ -41,6 +42,7 @@ export default function DappCalculator() {
     setInput((prev) => ({ ...prev, [key]: value }));
     if (!tracked) {
       window.plausible?.('Dapp Calculator Used');
+      trackEvent('calculator_used', { label: 'dapp' });
       setTracked(true);
     }
   }
@@ -194,6 +196,7 @@ export default function DappCalculator() {
             )}
             target="_blank"
             rel="noopener"
+            data-cta="dapp-share-x"
             onClick={() => window.plausible?.('Calculator Shared', { props: { tool: 'dapp' } })}
             className="mt-3 block text-center text-xs font-semibold text-white/70 hover:text-white"
           >

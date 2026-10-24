@@ -10,7 +10,7 @@ import { FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
 
 const TITLE = 'Become a Founding Provider on Orivions';
 const DESCRIPTION =
-  'Orivions is hand-picking its first 20 verified Solana service companies. Free profile, briefs from funded teams, a flat 10% success fee only on completed work, and a permanent Founding Provider badge.';
+  'Orivions is hand-picking its first 20 verified Solana service companies. Free profile, briefs from funded teams, 10% fee only on completed work, lasting badge.';
 
 export const metadata: Metadata = {
   title: 'Founding Providers: Join the First 20',

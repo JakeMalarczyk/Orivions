@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
+import { trackEvent } from '@/lib/analytics';
 
 declare global {
   interface Window {
@@ -52,6 +53,7 @@ export default function WaitlistForm() {
         if (v) utmProps[k.replace('utm_', '')] = v;
       });
       window.plausible?.('Waitlist Signup', { props: utmProps });
+      trackEvent('waitlist_signup');
 
       setStatus('success');
       setEmail('');

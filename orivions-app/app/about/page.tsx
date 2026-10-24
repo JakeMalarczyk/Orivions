@@ -6,10 +6,10 @@ import { FOUNDER_JSONLD, SITE_URL, ogImageUrl } from '@/lib/blog';
 import { CONTACT_EMAIL } from '@/lib/contact';
 
 const DESCRIPTION =
-  'Orivions is the verified B2B marketplace for onchain teams. How it works for teams and providers, how verification works, how Orivions makes money, and the principles behind it.';
+  'Orivions is the verified B2B marketplace for onchain teams. How it works for teams and providers, how verification works and how Orivions makes money.';
 
 export const metadata: Metadata = {
-  title: 'About Orivions: the verified B2B marketplace for onchain teams',
+  title: 'About Orivions: verified onchain B2B marketplace',
   description: DESCRIPTION,
   alternates: { canonical: '/about' },
   openGraph: {

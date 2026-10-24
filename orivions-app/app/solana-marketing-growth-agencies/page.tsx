@@ -4,7 +4,7 @@ import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 export const metadata: Metadata = {
   title: 'Solana Marketing & Growth Agencies: Verified Providers',
   description:
-    'Find verified marketing and growth agencies for Solana projects: community building, KOL marketing, growth campaigns. Compare providers, free to search and contact.',
+    'Find verified marketing and growth agencies for Solana projects: community, KOL marketing and growth campaigns. Compare providers, free to contact.',
   alternates: { canonical: '/solana-marketing-growth-agencies' },
 };
 

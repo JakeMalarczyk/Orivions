@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Logo from '@/components/Logo';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import { supabase } from '@/lib/supabase';
+import { trackEvent } from '@/lib/analytics';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 type AccountType = 'client' | 'provider';
@@ -56,6 +57,7 @@ export default function AuthForm() {
         });
         if (error) throw error;
         setStatus('success');
+        trackEvent('signup', { label: accountType });
         if (data.session) {
           // Best-effort admin ping (Telegram), see app/api/notify.
           fetch('/api/notify', {

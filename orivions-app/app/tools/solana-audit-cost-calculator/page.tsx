@@ -26,7 +26,7 @@ import AuditCalculator from './AuditCalculator';
 const PATH = '/tools/solana-audit-cost-calculator';
 const TITLE = 'Solana smart contract audit cost calculator';
 const DESCRIPTION =
-  'Free calculator: estimate what a Solana smart contract audit costs and how long it takes, from lines of code, complexity, framework and integrations. Transparent method, no signup.';
+  'Free calculator: estimate Solana audit cost and duration from lines of code, complexity, framework and integrations. Transparent method, no signup.';
 
 export const metadata: Metadata = {
   title: 'Solana Audit Cost Calculator (free)',

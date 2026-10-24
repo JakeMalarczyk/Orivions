@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent } from 'react';
 import { supabase } from '@/lib/supabase';
+import { trackEvent } from '@/lib/analytics';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -37,6 +38,7 @@ export default function ProviderContactForm({ providerId, providerName }: { prov
         body: JSON.stringify({ event: 'lead', companyId: providerId }),
       }).catch(() => {});
       setSendState('success');
+      trackEvent('lead_sent', { label: providerName });
       setForm({ name: '', company: '', email: '', message: '' });
     } catch {
       setSendState('error');

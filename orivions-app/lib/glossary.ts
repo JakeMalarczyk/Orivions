@@ -93,7 +93,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: 'Lamport',
     id: 'lamport',
-    definition: 'The smallest unit of SOL. One SOL equals one billion lamports.',
+    definition: 'The smallest unit of SOL. One SOL equals one billion (1,000,000,000) lamports, and fees, rent and balances are counted in lamports.',
   },
   {
     term: 'Milestone payment',

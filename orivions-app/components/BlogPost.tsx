@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { AUTHOR, FOUNDER_JSONLD, SITE_URL, isoDate, formatPostDate, getPost, ogImageUrl, postUrl, relatedPosts, type Post } from '@/lib/blog';
+import { POST_SEO } from '@/lib/seoMeta';
 
 // Shared layout for every blog post: breadcrumb, byline with dates, FAQ block,
 // closing CTA and the structured data (BlogPosting, BreadcrumbList, FAQPage)
@@ -10,9 +11,10 @@ import { AUTHOR, FOUNDER_JSONLD, SITE_URL, isoDate, formatPostDate, getPost, ogI
 
 export function postMetadata(slug: string): Metadata {
   const post = getPost(slug);
+  const seo = POST_SEO[slug];
   return {
-    title: post.title,
-    description: post.description,
+    title: seo?.title ?? post.title,
+    description: seo?.description ?? post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
     openGraph: {

@@ -25,7 +25,7 @@ import DappCalculator from './DappCalculator';
 const PATH = '/tools/solana-dapp-cost-calculator';
 const TITLE = 'Solana dApp development cost calculator';
 const DESCRIPTION =
-  'Free calculator: estimate what it costs to build a Solana dApp and how long it takes, from programs, frontend, backend and team type. Transparent method, no signup.';
+  'Free calculator: estimate what a Solana dApp costs to build and how long it takes, from programs, frontend, backend and team type. No signup.';
 const OG_TITLE = 'How much will your Solana dApp cost to build?';
 
 export const metadata: Metadata = {

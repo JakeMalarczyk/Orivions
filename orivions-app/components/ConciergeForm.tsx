@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
+import { trackEvent } from '@/lib/analytics';
 
 // "Get a hand-picked shortlist": a person at Orivions reads the brief and
 // replies by email with suitable verified providers. Posts to /api/concierge.
@@ -47,6 +48,7 @@ export default function ConciergeForm({ need: initialNeed, source, title, text }
       if (res.status === 429) return fail('Too many requests. Try again later.');
       if (!res.ok) throw new Error('Concierge request failed');
       window.plausible?.('Concierge Request', { props: { source } });
+      trackEvent('concierge_submit', { label: source });
       setStatus('success');
     } catch {
       fail('Something went wrong. Please try again.');

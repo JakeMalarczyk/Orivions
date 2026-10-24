@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Check, Choice, Field } from '@/components/CalculatorControls';
+import { trackEvent } from '@/lib/analytics';
 import {
   COMPLEXITY,
   FRAMEWORK,
@@ -42,6 +43,7 @@ export default function AuditCalculator() {
     setInput((prev) => ({ ...prev, [key]: value }));
     if (!tracked) {
       window.plausible?.('Audit Calculator Used');
+      trackEvent('calculator_used', { label: 'audit' });
       setTracked(true);
     }
   }
@@ -162,6 +164,7 @@ export default function AuditCalculator() {
             )}
             target="_blank"
             rel="noopener"
+            data-cta="audit-share-x"
             onClick={() => window.plausible?.('Calculator Shared', { props: { tool: 'audit' } })}
             className="mt-3 block text-center text-xs font-semibold text-white/70 hover:text-white"
           >

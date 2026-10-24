@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Development Companies: Verified dApp & Smart Contract Developers',
+  title: 'Solana Development Companies: Verified Developers',
   description:
-    'Find verified Solana development companies: smart contract engineers, full-stack dApp builders, and Anchor specialists. Compare portfolios and indicative pricing, free to search and contact.',
+    'Find verified Solana development companies: smart contract engineers, full-stack dApp builders and Anchor specialists. Compare portfolios, free to contact.',
   alternates: { canonical: '/solana-development-companies' },
 };
 

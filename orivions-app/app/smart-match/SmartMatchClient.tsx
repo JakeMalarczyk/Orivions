@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import ConciergeForm from '@/components/ConciergeForm';
+import { trackEvent } from '@/lib/analytics';
 import { EarlyAccessBadge } from '@/components/EarlyAccess';
 
 // Shape returned by /api/smart-match, a public subset of the Company row
@@ -109,6 +110,7 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
         return;
       }
       if (!res.ok) throw new Error('API request failed');
+      trackEvent('smart_match_submit');
       const data = (await res.json()) as { matches: { provider: Match['provider']; reason: string }[] };
 
       if (!data.matches?.length) {

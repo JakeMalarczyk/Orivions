@@ -8,7 +8,7 @@ import { SITE_URL, ogImageUrl } from '@/lib/blog';
 // profile, the About page and llms.txt, so "Verified" has one checkable meaning.
 
 const DESCRIPTION =
-  'How Orivions verifies providers: four checks by a person, all required. A real company, an independently confirmed portfolio project, a client reference and a 15-minute call.';
+  'How Orivions verifies providers: four checks by a person, all required. A real company, a confirmed portfolio project, a client reference and a 15-minute call.';
 
 export const metadata: Metadata = {
   title: 'How We Verify Providers',

@@ -1,17 +1,20 @@
 'use client';
 
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 import { supabase, type Company, type Lead } from '@/lib/supabase';
 import LeadInbox, { type ConciergeRequest, type LeadEvent, type ProviderLead } from './LeadInbox';
+import CampaignsPanel from './CampaignsPanel';
+import SeoPanel from './SeoPanel';
+import { Empty, Panel, RankList, StatCard, Toggle } from './ui';
 
 // Admin panel. Access is enforced in the database, not here: every query below
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'traffic' | 'providers' | 'leads' | 'signups';
+type Tab = 'overview' | 'traffic' | 'campaigns' | 'seo' | 'providers' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -58,6 +61,8 @@ interface Signup {
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'traffic', label: 'Traffic' },
+  { id: 'campaigns', label: 'Campaigns' },
+  { id: 'seo', label: 'SEO & GEO' },
   { id: 'providers', label: 'Providers' },
   { id: 'leads', label: 'Leads' },
   { id: 'signups', label: 'Signups' },
@@ -257,6 +262,10 @@ export default function AdminClient() {
           <TrafficPanel traffic={traffic} />
         )}
 
+        {tab === 'campaigns' && <CampaignsPanel />}
+
+        {tab === 'seo' && <SeoPanel />}
+
         {tab === 'providers' && (
           <Panel title="Providers" subtitle="Pending verification requests are listed first. Verifying clears the request.">
             {!providers.length ? (
@@ -424,80 +433,5 @@ function TrafficPanel({ traffic }: { traffic: Traffic | null }) {
         />
       </div>
     </div>
-  );
-}
-
-function RankList({ title, subtitle, rows }: { title: string; subtitle: string; rows: { key: string; label: string; value: number }[] }) {
-  const max = Math.max(1, ...rows.map((r) => r.value));
-  return (
-    <Panel title={title} subtitle={subtitle}>
-      {!rows.length ? (
-        <Empty>No visits yet.</Empty>
-      ) : (
-        <ul className="space-y-2 p-5">
-          {rows.map((r) => (
-            <li key={r.key} className="relative overflow-hidden rounded-lg px-3 py-1.5 text-sm">
-              <div className="absolute inset-y-0 left-0 rounded-lg bg-blue-light/15" style={{ width: `${(r.value / max) * 100}%` }} />
-              <div className="relative flex justify-between gap-3">
-                <span className="truncate">{r.label}</span>
-                <span className="font-semibold tabular-nums">{r.value}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Panel>
-  );
-}
-
-function StatCard({ label, value, highlight, sub }: { label: string; value: number; highlight?: boolean; sub?: string }) {
-  return (
-    <div className={`rounded-2xl border bg-white p-5 ${highlight ? 'border-warn' : 'border-line'}`}>
-      <div className="text-xs font-semibold uppercase tracking-wide text-gray-soft">{label}</div>
-      <div className="mt-2 font-heading text-2xl font-semibold">{value}</div>
-      {sub && <div className="mt-0.5 text-xs text-gray-soft">{sub}</div>}
-    </div>
-  );
-}
-
-function Panel({
-  title,
-  subtitle,
-  action,
-  children,
-}: {
-  title: string;
-  subtitle: string;
-  action?: ReactNode;
-  children: ReactNode;
-}) {
-  return (
-    <div className="overflow-x-auto rounded-2xl border border-line bg-white">
-      <div className="flex items-start justify-between border-b border-line p-5">
-        <div>
-          <h3 className="font-semibold">{title}</h3>
-          <p className="mt-0.5 text-xs text-gray-soft">{subtitle}</p>
-        </div>
-        {action}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function Empty({ children }: { children: ReactNode }) {
-  return <div className="p-10 text-center text-sm text-gray-soft">{children}</div>;
-}
-
-function Toggle({ on, onChange }: { on: boolean; onChange: (value: boolean) => void }) {
-  return (
-    <button
-      role="switch"
-      aria-checked={on}
-      onClick={() => onChange(!on)}
-      className={`relative h-5 w-9 rounded-full transition ${on ? 'bg-ok' : 'bg-line'}`}
-    >
-      <span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition ${on ? 'left-4' : 'left-0.5'}`} />
-    </button>
   );
 }

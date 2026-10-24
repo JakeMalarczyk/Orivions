@@ -6,7 +6,7 @@ import { GLOSSARY, shortTerm, termPath } from '@/lib/glossary';
 
 const TITLE = 'Solana glossary: plain-English definitions for teams hiring in the ecosystem';
 const DESCRIPTION =
-  'Short, plain-English definitions of Solana terms that come up when building, auditing and launching: PDA, CPI, Anchor, compute units, upgrade authority, verifiable builds and more.';
+  'Plain-English definitions of Solana terms for building, auditing and launching: PDA, CPI, Anchor, compute units, upgrade authority, verifiable builds and more.';
 
 export const metadata: Metadata = {
   title: 'Solana Glossary',
