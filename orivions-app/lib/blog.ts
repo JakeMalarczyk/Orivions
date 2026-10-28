@@ -50,6 +50,37 @@ export const isoDate = (d: string) => (d.includes('T') ? d : `${d}T00:00:00+00:0
 
 export const POSTS: Post[] = [
   {
+    slug: 'where-to-find-solana-service-providers',
+    title: 'Where to find Solana auditors, developers and agencies: marketplaces compared',
+    description:
+      'Is there a marketplace for Solana service providers? The main options compared: ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces.',
+    excerpt:
+      'Solana has no single dominant marketplace for hiring auditors, developers or marketing agencies. Where teams look today, what each option is good for, and how to check any provider you find.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-10-25',
+    dateModified: '2026-10-25',
+    tags: ['Guides', 'Hiring', 'Marketplace', 'Audits', 'Development'],
+    faqs: [
+      {
+        q: 'Is there a marketplace for Solana service providers?',
+        a: 'Yes, several, but none dominates. Teams combine ecosystem directories, bounty boards, audit contest platforms and general freelance sites, plus a few vetted marketplaces such as Orivions. Which one fits depends on whether you need an auditor, a development team or a marketing agency.',
+      },
+      {
+        q: 'Where do Solana projects find auditors?',
+        a: 'Mostly through referrals from other teams, the audit firms own sites and public report archives. Competitive audit platforms such as Code4rena, Sherlock and Cantina suit well-documented programs. A vetted marketplace saves the time of checking firms one by one.',
+      },
+      {
+        q: 'Are freelance marketplaces good for Solana development?',
+        a: 'General freelance sites have the largest pool but few people with real on-chain Solana experience, and verification is up to you. They work for small, well-scoped tasks. For a production program, ask for deployed work you can check on-chain.',
+      },
+      {
+        q: 'How do I check a Solana provider I found online?',
+        a: 'Check deployed programs on-chain, read public audit reports, ask for a client reference, confirm the company behind the brand, and agree milestone payments. The 30-minute routine in our guide covers each step.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-evaluate-a-crypto-market-maker',
     title: 'How to evaluate a crypto market maker before you sign',
     description:

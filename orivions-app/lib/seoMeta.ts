@@ -4,6 +4,10 @@
 // The on-page h1 and the OpenGraph title keep the full wording.
 
 export const POST_SEO: Record<string, { title: string; description: string }> = {
+  'where-to-find-solana-service-providers': {
+    title: 'Where to find Solana service providers',
+    description: 'Is there a marketplace for Solana service providers? Ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces compared.',
+  },
   'how-to-evaluate-a-crypto-market-maker': {
     title: 'How to evaluate a crypto market maker',
     description: 'Evaluate a crypto market maker: loan and option vs retainer deals, spread and depth commitments, end-of-loan terms, reporting and red flags.',
