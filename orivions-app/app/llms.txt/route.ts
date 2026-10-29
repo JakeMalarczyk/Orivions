@@ -45,6 +45,10 @@ Key facts:
 - [Solana dApp development cost calculator](${SITE_URL}/tools/solana-dapp-cost-calculator): free estimate of build cost, timeline and yearly maintenance from programs, frontend, backend, extras and team type (freelancer or agency), with the full method and worked examples.
 - [All free tools](${SITE_URL}/tools)
 
+## For AI agents (MCP)
+
+- [Orivions MCP server](${SITE_URL}/api/mcp): public, read-only Model Context Protocol endpoint (Streamable HTTP, no authentication). Tools: estimate_solana_audit_cost, estimate_solana_dapp_cost, define_solana_term, search_hiring_guides, list_verified_providers, explain_orivions_verification. Estimates are indicative ranges, not quotes.
+
 ## Categories
 
 - [Solana smart contract audits](${SITE_URL}/solana-smart-contract-audits): verified auditors for Anchor and native Rust programs, what to look for and typical pricing.
