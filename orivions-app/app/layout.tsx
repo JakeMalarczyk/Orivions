@@ -50,12 +50,12 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Orivions',
     locale: 'en_US',
-    images: ['/og-image.png'],
+    images: ['/og?title=The%20verified%20B2B%20marketplace%20for%20onchain%20teams&label=Solana%20first'],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@Orivions',
-    images: ['/og-image.png'],
+    images: ['/og?title=The%20verified%20B2B%20marketplace%20for%20onchain%20teams&label=Solana%20first'],
   },
 };
 
