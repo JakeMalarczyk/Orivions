@@ -121,7 +121,7 @@ export default function DashboardClient() {
         </Link>
       </aside>
 
-      <main className="flex-1 p-6 md:p-10">
+      <div className="flex-1 p-6 md:p-10">
         <h1 className="mb-7 font-heading text-xl font-semibold capitalize">{panel}</h1>
 
         {panel === 'overview' && (
@@ -137,7 +137,7 @@ export default function DashboardClient() {
           <ServicesPanel companyId={company.id} services={services} setServices={setServices} showToast={showToast} />
         )}
         {panel === 'leads' && <LeadsPanel leads={leads} onUpdateStatus={updateLeadStatus} />}
-      </main>
+      </div>
 
       {toast && (
         <div className="fixed bottom-6 right-6 flex items-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm text-white shadow-lg">

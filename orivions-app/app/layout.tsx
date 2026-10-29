@@ -120,7 +120,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body className="font-body bg-white text-ink antialiased">
-        {children}
+        <main id="main">{children}</main>
         <Footer />
         <PageViewTracker />
         <script

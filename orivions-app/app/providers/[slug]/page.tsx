@@ -123,7 +123,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-4xl px-8 pb-20 pt-10">
+      <div className="mx-auto max-w-4xl px-8 pb-20 pt-10">
         <p className="text-sm text-gray-soft">
           <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
           <Link href="/providers" className="text-blue-deep">Providers</Link> / {provider.name}
@@ -227,7 +227,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
             </div>
           </aside>
         </div>
-      </main>
+      </div>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
