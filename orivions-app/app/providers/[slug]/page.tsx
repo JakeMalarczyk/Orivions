@@ -30,8 +30,9 @@ function summary(description: string | null, name: string, category: string): st
   return base.length > 155 ? `${base.slice(0, 152).trimEnd()}...` : base;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const data = await getVerifiedProvider(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const data = await getVerifiedProvider(slug);
   if (!data) return { title: 'Provider not found', robots: { index: false } };
   const { provider } = data;
   const title = `${provider.name}: verified ${provider.category} provider`;
@@ -50,8 +51,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function ProviderProfilePage({ params }: { params: { slug: string } }) {
-  const data = await getVerifiedProvider(params.slug);
+export default async function ProviderProfilePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const data = await getVerifiedProvider(slug);
   if (!data) notFound();
   const { provider, portfolio, services } = data;
 

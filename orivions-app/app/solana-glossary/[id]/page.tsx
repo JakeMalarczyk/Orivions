@@ -28,8 +28,9 @@ function question(t: GlossaryTerm): string {
     : `What does “${shortTerm(t)}” mean on Solana?`;
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const t = getTerm(params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const t = getTerm(id);
   if (!t) return {};
   const title = `${shortTerm(t)}: meaning on Solana`;
   return {
@@ -92,9 +93,10 @@ function guidesFor(t: GlossaryTerm, related: GlossaryTerm[]) {
   return out.slice(0, 3);
 }
 
-export default function GlossaryTermPage({ params }: { params: { id: string } }) {
-  const t = getTerm(params.id);
-  const detail = GLOSSARY_DETAILS[params.id];
+export default async function GlossaryTermPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const t = getTerm(id);
+  const detail = GLOSSARY_DETAILS[id];
   if (!t || !detail) notFound();
 
   const related = detail.related.map(getTerm).filter((r): r is GlossaryTerm => Boolean(r));
