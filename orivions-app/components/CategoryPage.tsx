@@ -1,3 +1,4 @@
+import { ldJson } from '@/lib/jsonLd';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
@@ -201,7 +202,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(content)) }}
+        dangerouslySetInnerHTML={{ __html: ldJson(buildJsonLd(content)) }}
       />
     </>
   );

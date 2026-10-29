@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import { websiteUrl } from '@/lib/providers';
 import { supabase, type Company, type Lead } from '@/lib/supabase';
 import LeadInbox, { type ConciergeRequest, type LeadEvent, type ProviderLead } from './LeadInbox';
 import dynamic from 'next/dynamic';
@@ -294,7 +295,7 @@ export default function AdminClient() {
                       <td className="px-5 py-3.5 text-sm">
                         <div className="font-semibold">{p.name}</div>
                         {p.website && (
-                          <a href={p.website} target="_blank" rel="noreferrer" className="text-xs text-blue-deep">
+                          <a href={websiteUrl(p.website) ?? undefined} target="_blank" rel="noreferrer" className="text-xs text-blue-deep">
                             {p.website.replace(/^https?:\/\//, '')}
                           </a>
                         )}

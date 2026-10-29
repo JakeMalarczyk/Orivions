@@ -324,7 +324,7 @@ export async function POST(request: Request) {
 
   const batch = Array.isArray(body);
   const messages = (batch ? body : [body]) as Rpc[];
-  if (messages.length > 20 || messages.some((m) => !m || typeof m !== 'object')) {
+  if (messages.length > 5 || messages.some((m) => !m || typeof m !== 'object')) {
     return NextResponse.json({ jsonrpc: '2.0', id: null, error: { code: -32600, message: 'Invalid request' } }, { status: 400, headers: CORS });
   }
 

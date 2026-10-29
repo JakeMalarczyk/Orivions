@@ -1,3 +1,4 @@
+import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Poppins, Inter } from 'next/font/google';
@@ -125,7 +126,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: ldJson(siteJsonLd) }}
         />
         {/* Plausible: no cookies, no consent banner needed, loaded with next/script's
             "afterInteractive" strategy so it never blocks the page from rendering. */}

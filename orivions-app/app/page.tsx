@@ -1,3 +1,4 @@
+import { ldJson } from '@/lib/jsonLd';
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
@@ -140,7 +141,7 @@ export default function HomePage() {
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: ldJson({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: FAQS.map(([q, a]) => ({
