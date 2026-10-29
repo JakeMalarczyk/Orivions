@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { allowRequest } from '@/lib/rateLimit';
 import { verifyTurnstile } from '@/lib/turnstile';
 import { notifyAdmin } from '@/lib/notify';
+import { writeClient } from '@/lib/supabaseServer';
 
 // Concierge requests: a team asks for a hand-picked shortlist instead of (or
 // after) an automatic Smart Match. Rows land in concierge_requests and show up
@@ -49,7 +50,7 @@ export async function POST(request: Request) {
   const budget = field(body.budget, 60);
   const timeline = field(body.timeline, 60);
   const source = field(body.source, 60);
-  const { error } = await supabase.from('concierge_requests').insert({
+  const { error } = await (writeClient() ?? supabase).from('concierge_requests').insert({
     client_name: name,
     client_email: email,
     client_company: company,

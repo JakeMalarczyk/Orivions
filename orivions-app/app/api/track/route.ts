@@ -2,6 +2,7 @@ import { createHash } from 'crypto';
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { allowRequest } from '@/lib/rateLimit';
+import { writeClient } from '@/lib/supabaseServer';
 
 // Page views and events for the admin Traffic and Campaigns tabs
 // (supabase/migrations/09_page_views.sql, 12_seo_tracking.sql).
@@ -62,7 +63,7 @@ export async function POST(request: Request) {
   const name = text(body.name, 40);
   if (isEvent && (!name || !EVENTS.has(name))) return new NextResponse(null, { status: 400 });
 
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: false } });
+  const supabase = writeClient() ?? createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: false } });
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
   if (!(await allowRequest(supabase, `track:${ip}`, 200, 600))) {
     return new NextResponse(null, { status: 429 });

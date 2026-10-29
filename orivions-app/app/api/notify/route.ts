@@ -4,7 +4,8 @@ import { allowRequest } from '@/lib/rateLimit';
 import { notifyAdmin } from '@/lib/notify';
 
 // Pings the admin's Telegram about events that happen client-side (signups,
-// verification requests, contact requests to providers). The caller only names
+// verification requests). Contact requests to providers are saved and announced by
+// /api/lead, behind the captcha. The caller only names
 // the event; the message is built from what the server reads in Supabase, so
 // nobody can push arbitrary text to the admin through this endpoint.
 
@@ -38,17 +39,6 @@ export async function POST(request: Request) {
   }
 
   const select = 'id, name, category, website, account_type, verification_requested';
-
-  if (body.event === 'lead') {
-    if (typeof body.companyId !== 'string' || body.companyId.length > 64) {
-      return NextResponse.json({ ok: false }, { status: 400 });
-    }
-    const { data } = await supabase.from('companies').select(select).eq('id', body.companyId).maybeSingle();
-    const company = data as CompanyRow | null;
-    if (!company) return NextResponse.json({ ok: false }, { status: 404 });
-    await notifyAdmin(['📩 New contact request', `To provider: ${company.name}`, ADMIN_URL]);
-    return NextResponse.json({ ok: true });
-  }
 
   // signup / verification: require the user's own session and read their row.
   const auth = request.headers.get('authorization') ?? '';

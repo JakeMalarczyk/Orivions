@@ -1,17 +1,19 @@
 'use client';
 
-import { useState, type ChangeEvent } from 'react';
-import { supabase } from '@/lib/supabase';
+import { useRef, useState, type ChangeEvent } from 'react';
+import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import { trackEvent } from '@/lib/analytics';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Direct message to a provider: saved as a lead and forwarded to the admin.
+// Direct message to a provider: /api/lead saves it as a lead (after the captcha) and tells the admin.
 // Used in the directory modal and on /providers/<slug>.
 export default function ProviderContactForm({ providerId, providerName }: { providerId: string; providerName: string }) {
   const [form, setForm] = useState({ name: '', company: '', email: '', message: '' });
   const [sendState, setSendState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+  const captcha = useRef<TurnstileHandle>(null);
 
   async function handleSend() {
     setErrorMsg('');
@@ -20,29 +22,37 @@ export default function ProviderContactForm({ providerId, providerName }: { prov
       setErrorMsg('Please fill in your name, email, and message.');
       return;
     }
+    if (TURNSTILE_ENABLED && !captchaToken) {
+      setSendState('error');
+      setErrorMsg('Please wait for the security check to finish, then try again.');
+      return;
+    }
     setSendState('loading');
     try {
-      const { error } = await supabase.from('leads').insert({
-        company_id: providerId,
-        client_name: form.name.trim(),
-        client_company: form.company.trim(),
-        client_email: form.email.trim(),
-        message: form.message.trim(),
-        status: 'new',
-      });
-      if (error) throw error;
-      // Best-effort admin ping; never blocks the client.
-      fetch('/api/notify', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event: 'lead', companyId: providerId }),
-      }).catch(() => {});
+        body: JSON.stringify({
+          companyId: providerId,
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          message: form.message,
+          captchaToken,
+        }),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(data.error ?? 'failed');
+      }
       setSendState('success');
+      captcha.current?.reset();
       trackEvent('lead_sent', { label: providerName });
       setForm({ name: '', company: '', email: '', message: '' });
-    } catch {
+    } catch (err) {
       setSendState('error');
-      setErrorMsg('Something went wrong. Please try again.');
+      setErrorMsg(err instanceof Error && err.message !== 'failed' ? err.message : 'Something went wrong. Please try again.');
+      captcha.current?.reset();
     }
   }
 
@@ -79,6 +89,7 @@ export default function ProviderContactForm({ providerId, providerName }: { prov
         rows={3}
         className={`mt-2.5 w-full ${input}`}
       />
+      <Turnstile ref={captcha} onToken={setCaptchaToken} action="lead" className="mt-3 flex justify-center" />
       <button
         onClick={handleSend}
         disabled={sendState === 'loading'}

@@ -1,8 +1,10 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { writeClient } from '@/lib/supabaseServer';
 
 // Shared rate limiter for the AI API routes. The counter lives in Postgres
 // (rate_limit_hit() in supabase/migrations/07_rate_limit.sql), so every
-// serverless instance sees the same budget. If the RPC fails (Supabase outage,
+// serverless instance sees the same budget. The call goes through the service role
+// client when configured, so anon callers cannot poke other people's buckets. If the RPC fails (Supabase outage,
 // migration not applied yet) we fall back to a per-instance in-memory counter
 // rather than letting every request through.
 
@@ -26,7 +28,7 @@ export async function allowRequest(
   max: number,
   windowSeconds: number,
 ): Promise<boolean> {
-  const { data, error } = await supabase.rpc('rate_limit_hit', {
+  const { data, error } = await (writeClient() ?? supabase).rpc('rate_limit_hit', {
     p_bucket: bucket,
     p_max: max,
     p_window_seconds: windowSeconds,

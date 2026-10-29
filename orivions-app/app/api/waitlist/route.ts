@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { allowRequest } from '@/lib/rateLimit';
 import { verifyTurnstile } from '@/lib/turnstile';
 import { notifyAdmin } from '@/lib/notify';
+import { writeClient } from '@/lib/supabaseServer';
 
 // Waitlist signups go through the server so we can check the captcha and
 // rate-limit by IP before anything is written to Supabase.
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Captcha check failed.' }, { status: 403 });
   }
 
-  const { error } = await supabase.from('waitlist').insert({ email });
+  const { error } = await (writeClient() ?? supabase).from('waitlist').insert({ email });
   if (error) {
     return NextResponse.json({ error: 'Could not save your email.' }, { status: 500 });
   }
