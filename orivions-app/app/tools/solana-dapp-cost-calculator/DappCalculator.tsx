@@ -83,6 +83,7 @@ export default function DappCalculator() {
             <Field label="Number of programs">
               <input
                 type="number"
+                aria-label="Number of programs"
                 min={1}
                 max={10}
                 value={input.programs}

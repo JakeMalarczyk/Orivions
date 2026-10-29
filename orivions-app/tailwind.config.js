@@ -12,7 +12,7 @@ module.exports = {
         ink: '#0B0B0F',
         gray: {
           DEFAULT: '#5B5B63',
-          soft: '#9797A0',
+          soft: '#6B6B75',
         },
         line: '#EAEAEE',
         'bg-soft': '#F7F8FB',
