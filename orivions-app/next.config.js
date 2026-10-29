@@ -39,6 +39,11 @@ const nextConfig = {
         headers: securityHeaders,
       },
       {
+        // Generated social images: crawlable for link previews, but not worth indexing as pages.
+        source: '/og',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+      },
+      {
         // Private/dashboard routes: never cache, never index (belt-and-braces with the noindex meta tag).
         source: '/(login|provider-dashboard|client-dashboard)',
         headers: [

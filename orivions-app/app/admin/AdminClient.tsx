@@ -6,15 +6,19 @@ import Link from 'next/link';
 import Logo from '@/components/Logo';
 import { supabase, type Company, type Lead } from '@/lib/supabase';
 import LeadInbox, { type ConciergeRequest, type LeadEvent, type ProviderLead } from './LeadInbox';
+import dynamic from 'next/dynamic';
 import CampaignsPanel from './CampaignsPanel';
 import SeoPanel from './SeoPanel';
 import { Empty, Panel, RankList, StatCard, Toggle } from './ui';
+
+// The map outlines are ~80 KB, so load them only when the Map tab opens.
+const GeoPanel = dynamic(() => import('./GeoPanel'), { ssr: false, loading: () => <Empty>Loading map…</Empty> });
 
 // Admin panel. Access is enforced in the database, not here: every query below
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'traffic' | 'campaigns' | 'seo' | 'providers' | 'leads' | 'signups';
+type Tab = 'overview' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'providers' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -61,6 +65,7 @@ interface Signup {
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'traffic', label: 'Traffic' },
+  { id: 'map', label: 'Map' },
   { id: 'campaigns', label: 'Campaigns' },
   { id: 'seo', label: 'SEO & GEO' },
   { id: 'providers', label: 'Providers' },
@@ -261,6 +266,8 @@ export default function AdminClient() {
         {tab === 'traffic' && (
           <TrafficPanel traffic={traffic} />
         )}
+
+        {tab === 'map' && <GeoPanel />}
 
         {tab === 'campaigns' && <CampaignsPanel />}
 
