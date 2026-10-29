@@ -152,10 +152,6 @@ export default function PostPage() {
         what to look for, read{' '}
         <Link href="/blog/how-to-choose-a-solana-smart-contract-auditor" className="text-blue-deep">
           how to choose a Solana smart contract auditor
-        </Link>
-        , see the{' '}
-        <Link href="/blog/solana-audit-marketplaces-compared" className="text-blue-deep">
-          marketplaces compared
         </Link>{' '}
         or browse{' '}
         <Link href="/solana-smart-contract-audits" className="text-blue-deep">
