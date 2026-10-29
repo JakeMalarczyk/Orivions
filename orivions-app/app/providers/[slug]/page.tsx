@@ -125,20 +125,20 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
       <Header />
       <div className="mx-auto max-w-4xl px-8 pb-20 pt-10">
         <p className="text-sm text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/providers" className="text-blue-deep">Providers</Link> / {provider.name}
+          <Link href="/" className="text-ink">Orivions</Link> /{' '}
+          <Link href="/providers" className="text-ink">Providers</Link> / {provider.name}
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-2.5">
           <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">{provider.name}</h1>
           <span className="rounded-full bg-ok/10 px-2.5 py-1 text-xs font-bold text-ok">✓ Verified on Orivions</span>
           {provider.founding_provider && (
-            <span className="rounded-full bg-gradient-to-br from-blue-deep/10 to-blue-light/15 px-2.5 py-1 text-xs font-bold text-blue-deep">
+            <span className="rounded-full bg-ink/5 px-2.5 py-1 text-xs font-bold text-ink">
               ★ Founding Provider
             </span>
           )}
         </div>
-        <div className="mt-2 text-sm font-semibold text-blue-deep">{provider.category}</div>
+        <div className="mt-2 text-sm font-semibold text-ink">{provider.category}</div>
 
         <div className="mt-8 grid gap-8 md:grid-cols-[1.5fr_1fr]">
           <div>
@@ -146,7 +146,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
               {provider.description || `${provider.name} is a verified ${provider.category.toLowerCase()} provider on Orivions.`}
             </p>
             {site && (
-              <a href={site} target="_blank" rel="noopener" className="mt-3 inline-block text-sm font-semibold text-blue-deep">
+              <a href={site} target="_blank" rel="noopener" className="mt-3 inline-block text-sm font-semibold text-ink">
                 {provider.website!.replace(/^https?:\/\//, '')} ↗
               </a>
             )}
@@ -188,7 +188,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
                 A person at Orivions confirmed that {provider.name} is a real company, confirmed at least one
                 portfolio project independently, spoke to a past client and talked to the team. Verification
                 cannot be bought and lowers risk, but it does not replace your own checks.{' '}
-                <Link href="/how-we-verify" className="text-blue-deep">How we verify providers</Link>
+                <Link href="/how-we-verify" className="text-ink">How we verify providers</Link>
               </p>
             </section>
           </div>
@@ -206,7 +206,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
               {profiles.length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-3 border-t border-line pt-4 text-sm">
                   {profiles.map((u) => (
-                    <a key={u} href={u} target="_blank" rel="noopener" className="text-blue-deep">
+                    <a key={u} href={u} target="_blank" rel="noopener" className="text-ink">
                       {new URL(u).hostname.replace(/^www\./, '')} ↗
                     </a>
                   ))}
@@ -220,9 +220,9 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
             <div className="rounded-2xl border border-line p-5 text-sm">
               <div className="font-semibold">Comparing options?</div>
               <p className="mt-1 text-gray">Describe your project and get up to three verified providers that fit.</p>
-              <Link href="/smart-match" className="mt-3 inline-block font-semibold text-blue-deep">Start Smart Match →</Link>
+              <Link href="/smart-match" className="mt-3 inline-block font-semibold text-ink">Start Smart Match →</Link>
               {hub && (
-                <Link href={hub.href} className="mt-2 block text-blue-deep">More {hub.label.toLowerCase()} →</Link>
+                <Link href={hub.href} className="mt-2 block text-ink">More {hub.label.toLowerCase()} →</Link>
               )}
             </div>
           </aside>

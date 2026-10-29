@@ -70,23 +70,62 @@ const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile({ onToke
 
   useEffect(() => {
     if (!TURNSTILE_ENABLED) return;
+    const el = container.current;
+    if (!el) return;
     let cancelled = false;
-    loadScript()
-      .then(() => {
-        if (cancelled || !container.current || !window.turnstile) return;
-        widgetId.current = window.turnstile.render(container.current, {
-          sitekey: TURNSTILE_SITE_KEY,
-          action,
-          appearance: 'interaction-only',
-          size: 'flexible',
-          callback: (token: string) => onTokenRef.current(token),
-          'expired-callback': () => onTokenRef.current(''),
-          'error-callback': () => onTokenRef.current(''),
-        });
-      })
-      .catch(() => onTokenRef.current(''));
+    let started = false;
+
+    // The challenge script is about 1 MB, so it only loads once the widget is
+    // near the viewport or the visitor starts using the form.
+    const start = () => {
+      if (started) return;
+      started = true;
+      cleanupTriggers();
+      loadScript()
+        .then(() => {
+          if (cancelled || !container.current || !window.turnstile) return;
+          widgetId.current = window.turnstile.render(container.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            action,
+            appearance: 'interaction-only',
+            size: 'flexible',
+            callback: (token: string) => onTokenRef.current(token),
+            'expired-callback': () => onTokenRef.current(''),
+            'error-callback': () => onTokenRef.current(''),
+          });
+        })
+        .catch(() => onTokenRef.current(''));
+    };
+
+    // Visible widgets wait for the page to finish loading so the script never
+    // competes with the first paint; focusing the form starts it right away.
+    const whenIdle = (fn: () => void) => {
+      const run = () => {
+        const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
+        if (w.requestIdleCallback) w.requestIdleCallback(fn, { timeout: 4000 });
+        else setTimeout(fn, 2000);
+      };
+      if (document.readyState === 'complete') run();
+      else window.addEventListener('load', run, { once: true });
+    };
+
+    const form = el.closest('form');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) whenIdle(start);
+      },
+      { rootMargin: '300px' },
+    );
+    observer.observe(el);
+    form?.addEventListener('focusin', start);
+    function cleanupTriggers() {
+      observer.disconnect();
+      form?.removeEventListener('focusin', start);
+    }
+
     return () => {
       cancelled = true;
+      cleanupTriggers();
       if (widgetId.current && window.turnstile) window.turnstile.remove(widgetId.current);
       widgetId.current = null;
     };

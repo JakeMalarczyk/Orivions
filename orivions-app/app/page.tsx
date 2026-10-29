@@ -1,6 +1,7 @@
 import { ldJson } from '@/lib/jsonLd';
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import HeroCtas from './HeroCtas';
 import WaitlistForm from './WaitlistForm';
@@ -25,6 +26,25 @@ const FAQS: [string, string][] = [
   ],
 ];
 
+const STEPS: [string, string][] = [
+  ['Describe the project', 'Say what you are building, your stage, budget and timeline. A few plain sentences are enough, no RFQ form.'],
+  ['Get a shortlist with reasons', 'Up to three verified providers, each with a specific note on why it fits your scope.'],
+  ['Talk to them directly', 'Message the ones you like. Orivions takes no commission from you and does not sit between you and the provider.'],
+];
+
+const CHECKS: [string, string][] = [
+  ['The company is real', 'A reachable business with identifiable people, confirmed outside its own website.'],
+  ['Portfolio confirmed independently', 'At least one project checked against a source the provider does not control.'],
+  ['A client reference', 'A past client confirms the work and how the engagement went.'],
+  ['A 15-minute call', 'A person at Orivions talks to the team. Technical firms also answer a Solana control question.'],
+];
+
+const CATEGORIES: [string, string, string][] = [
+  ['/solana-smart-contract-audits', 'Smart contract audits', 'Security reviews of Solana programs, with published reports and clear scope.'],
+  ['/solana-development-companies', 'Development companies', 'Teams that build Anchor programs, dApps and integrations.'],
+  ['/solana-marketing-growth-agencies', 'Marketing and growth agencies', 'Agencies that launch and grow onchain products.'],
+];
+
 export const metadata: Metadata = {
   title: 'Orivions: Verified B2B Marketplace for Onchain Teams',
   description:
@@ -44,84 +64,144 @@ export default function HomePage() {
     <>
       <Header />
 
-      <section className="px-8 pb-16 pt-20 text-center">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-sm text-gray">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-light" />
-            Onchain teams
+      <section className="px-8 pb-20 pt-16 md:pt-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <h1 className="font-heading text-[40px] font-medium leading-[1.05] tracking-tight md:text-[56px]">
+              The{' '}
+              <span className="underline decoration-blue-deep decoration-[3px] underline-offset-[10px]">
+                verified
+              </span>{' '}
+              B2B marketplace for onchain teams.
+            </h1>
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-gray">
+              Tell us what you need. A person at Orivions picks verified auditors, developers and
+              agencies that fit, and tells you why. Free for clients; providers pay 10% only on
+              completed work.
+            </p>
+            <Suspense fallback={null}>
+              <HeroCtas />
+            </Suspense>
           </div>
-          <h1 className="font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-            The{' '}
-            <span className="bg-gradient-to-r from-blue-deep to-blue-light bg-clip-text text-transparent">
-              verified B2B marketplace
-            </span>{' '}
-            for onchain teams.
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-gray">
-            Orivions is where onchain teams describe what they need and get matched with
-            human-verified auditors, developers and agencies. Free for clients; providers pay a
-            10% success fee only on completed work.
-          </p>
-          <Suspense fallback={null}>
-            <HeroCtas />
-          </Suspense>
+
+          {/* Illustration of what a shortlist looks like; the providers are placeholders. */}
+          <figure className="rounded-xl border border-line bg-white p-6 shadow-[0_1px_0_rgba(21,20,15,0.04),0_12px_32px_-16px_rgba(21,20,15,0.18)]">
+            <figcaption className="text-xs font-semibold uppercase tracking-wider text-gray-soft">
+              Example shortlist
+            </figcaption>
+            <p className="mt-3 border-l-2 border-blue-deep pl-4 text-[15px] leading-relaxed">
+              &ldquo;We have an Anchor lending program going to mainnet in six weeks and need an
+              independent security review.&rdquo;
+            </p>
+            <ul className="mt-5 divide-y divide-line">
+              {[
+                ['Security auditor', 'Published reviews of Anchor lending programs; has a slot in your window.'],
+                ['Audit team', 'Audits plus a fix-review pass, price range stated up front.'],
+                ['Boutique reviewer', 'Smaller scope, fits a tighter budget, references available.'],
+              ].map(([role, why]) => (
+                <li key={role} className="flex gap-3 py-3.5">
+                  <span aria-hidden className="mt-1 h-4 w-4 shrink-0 rounded-full bg-ink text-center text-[10px] leading-4 text-white">
+                    ✓
+                  </span>
+                  <div>
+                    <div className="text-sm font-semibold">{role}</div>
+                    <div className="mt-0.5 text-sm text-gray">{why}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-gray-soft">Illustration. Real shortlists name real, verified providers.</p>
+          </figure>
         </div>
       </section>
 
-      <section id="problem" className="bg-bg-soft px-8 py-20">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">
-            01 · The problem
+      <section id="how" className="border-t border-line px-8 py-20">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <h2 className="font-heading text-3xl font-medium tracking-tight md:text-4xl">
+              Hiring in this ecosystem runs on DMs and referrals.
+            </h2>
+            <p className="mt-4 max-w-sm text-gray">
+              Solana has thousands of builders and no trusted place to find them. We replace the
+              Discord thread with a short, checked list.
+            </p>
           </div>
-          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight">
-            The fastest blockchain still runs on the slowest business process.
-          </h2>
-          <p className="mt-4 max-w-2xl text-gray">
-            Solana has thousands of builders, but no trusted place where businesses can find
-            each other. Today that happens through Discord, X, Telegram, and private referrals:
-            fragmented, slow, and impossible to verify.
-          </p>
+          <ol className="divide-y divide-line border-y border-line">
+            {STEPS.map(([title, desc], i) => (
+              <li key={title} className="grid grid-cols-[2.5rem_1fr] gap-4 py-6">
+                <span className="font-heading text-2xl text-gray-soft">{i + 1}</span>
+                <div>
+                  <h3 className="text-lg font-semibold">{title}</h3>
+                  <p className="mt-1 text-gray">{desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section id="solution" className="px-8 py-20">
-        <div className="mx-auto max-w-5xl">
-          <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">
-            02 · The solution
-          </div>
-          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight">
-            Introducing Orivions.
+      <section id="verified" className="bg-ink px-8 py-20 text-white">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="max-w-2xl font-heading text-3xl font-medium tracking-tight md:text-4xl">
+            Verified means four things were checked by a person.
           </h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              ['Discover partners', 'Search verified providers across every category your project needs.'],
-              ['Showcase services', 'Providers build a profile, portfolio, and service catalog once.'],
-              ['Verify providers', "Admin verification and reputation, so trust isn't a guessing game."],
-              ['Receive leads', 'Providers get inbound contact requests from qualified clients.'],
-              ['Collaborate', 'Everything needed to move from first contact to signed work.'],
-              ['Grow', "Reputation compounds: the more you deliver, the more you're found."],
-            ].map(([title, desc]) => (
-              <div key={title} className="rounded-2xl border border-line p-6">
-                <h3 className="text-base font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-gray">{desc}</p>
+          <dl className="mt-12 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {CHECKS.map(([name, text]) => (
+              <div key={name} className="border-t border-white/20 pt-4">
+                <dt className="font-semibold">{name}</dt>
+                <dd className="mt-1 text-[15px] leading-relaxed text-white/70">{text}</dd>
               </div>
             ))}
-          </div>
+          </dl>
+          <p className="mt-10 text-sm text-white/70">
+            Verification is free and cannot be bought. No paid placements.{' '}
+            <Link href="/how-we-verify" className="font-semibold text-white underline underline-offset-4">
+              How we verify
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section id="start" className="px-8 py-20">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="font-heading text-3xl font-medium tracking-tight md:text-4xl">Where to start</h2>
+          <ul className="mt-8 divide-y divide-line border-y border-line">
+            {CATEGORIES.map(([href, name, desc]) => (
+              <li key={href}>
+                <Link href={href} className="group flex items-center justify-between gap-6 py-6">
+                  <div>
+                    <div className="font-heading text-2xl font-medium">{name}</div>
+                    <div className="mt-1 text-gray">{desc}</div>
+                  </div>
+                  <span aria-hidden className="text-2xl text-gray-soft transition group-hover:translate-x-1 group-hover:text-ink">
+                    →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-gray">
+            Offer these services?{' '}
+            <Link href="/founding-providers" className="font-semibold text-ink underline underline-offset-4">
+              List your company
+            </Link>
+            . Providers pay a flat 10% success fee only on completed work, with no subscriptions.
+          </p>
         </div>
       </section>
 
       <section id="faq" className="bg-bg-soft px-8 py-20">
-        <div className="mx-auto max-w-3xl">
-          <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">08 · FAQ</div>
-          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight">
-            Questions people actually ask.
-          </h2>
-          <div className="mt-10 space-y-3">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.8fr_1.2fr]">
+          <h2 className="font-heading text-3xl font-medium tracking-tight md:text-4xl">Questions</h2>
+          <div className="divide-y divide-line border-y border-line">
             {FAQS.map(([q, a]) => (
-              <div key={q} className="rounded-2xl border border-line bg-white p-5">
-                <h3 className="font-semibold">{q}</h3>
-                <p className="mt-1.5 text-sm text-gray">{a}</p>
-              </div>
+              <details key={q} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+                  {q}
+                  <span aria-hidden className="text-xl text-gray-soft transition group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 max-w-xl text-gray">{a}</p>
+              </details>
             ))}
           </div>
         </div>

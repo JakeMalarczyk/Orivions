@@ -1,7 +1,7 @@
 import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Poppins, Inter } from 'next/font/google';
+import { Newsreader, Inter } from 'next/font/google';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import PageViewTracker from '@/components/PageViewTracker';
@@ -13,10 +13,10 @@ import './globals.css';
 // your own domain with automatic font-display: swap and zero layout shift.
 // The old site loaded these from fonts.googleapis.com/fonts.gstatic.com on every
 // visit: an extra DNS lookup + round trip before any text could render.
-const poppins = Poppins({
+const heading = Newsreader({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-poppins',
+  weight: ['500', '600'],
+  variable: '--font-heading',
   display: 'swap',
 });
 
@@ -118,8 +118,8 @@ const siteJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="font-body bg-white text-ink antialiased">
+    <html lang="en" className={`${heading.variable} ${inter.variable}`}>
+      <body className="font-body bg-paper text-ink antialiased">
         <main id="main">{children}</main>
         <Footer />
         <PageViewTracker />

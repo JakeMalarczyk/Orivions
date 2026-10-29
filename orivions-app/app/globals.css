@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-poppins: 'Poppins', sans-serif;
+  --font-heading: 'Newsreader', Georgia, serif;
   --font-inter: 'Inter', sans-serif;
 }
 
@@ -16,5 +16,5 @@ html {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-poppins);
+  font-family: var(--font-heading);
 }

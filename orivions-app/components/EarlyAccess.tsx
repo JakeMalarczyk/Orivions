@@ -4,10 +4,7 @@ import Link from 'next/link';
 
 export function EarlyAccessBadge({ className = '' }: { className?: string }) {
   return (
-    <span
-      className={`inline-flex items-center gap-2 rounded-full border border-blue-light/40 bg-blue-light/10 px-3.5 py-1 text-xs font-semibold text-blue-deep ${className}`}
-    >
-      <span className="h-1.5 w-1.5 rounded-full bg-blue-light" />
+    <span className={`inline-block text-xs font-semibold uppercase tracking-wider text-gray-soft ${className}`}>
       Early access
     </span>
   );
@@ -15,7 +12,7 @@ export function EarlyAccessBadge({ className = '' }: { className?: string }) {
 
 export function FoundingProviderCard({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="rounded-2xl border border-line bg-bg-soft p-6 text-left">
+    <div className="rounded-xl border border-line bg-bg-soft p-6 text-left">
       <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">For providers</div>
       <div className="mt-1.5 font-heading text-lg font-semibold">Become a Founding Provider</div>
       <p className="mt-1 text-sm text-gray">

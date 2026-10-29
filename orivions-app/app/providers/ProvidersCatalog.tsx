@@ -175,10 +175,10 @@ function ProviderCard({
           <span className="rounded-full bg-ok/10 px-2 py-0.5 text-[10px] font-bold text-ok">{t.verified}</span>
         )}
         {provider.founding_provider && (
-          <span className="rounded-full bg-gradient-to-br from-blue-deep/10 to-blue-light/15 px-2 py-0.5 text-[10px] font-bold text-blue-deep">★ Founding</span>
+          <span className="rounded-full bg-ink/5 px-2 py-0.5 text-[10px] font-bold text-ink">★ Founding</span>
         )}
       </div>
-      <div className="mt-1.5 text-xs font-semibold text-blue-deep">{provider.category}</div>
+      <div className="mt-1.5 text-xs font-semibold text-ink">{provider.category}</div>
       <p className="mt-2.5 line-clamp-3 text-[13px] text-gray">{provider.description || t.noDesc}</p>
       {provider.verified && provider.slug && (
         <Link
@@ -218,12 +218,12 @@ function ProviderDetailModal({
                 </span>
               )}
               {provider.founding_provider && (
-                <span className="rounded-full bg-gradient-to-br from-blue-deep/10 to-blue-light/15 px-2 py-0.5 text-[10px] font-bold text-blue-deep">
+                <span className="rounded-full bg-ink/5 px-2 py-0.5 text-[10px] font-bold text-ink">
                   ★ Founding
                 </span>
               )}
             </div>
-            <div className="mt-1 text-sm font-semibold text-blue-deep">{provider.category}</div>
+            <div className="mt-1 text-sm font-semibold text-ink">{provider.category}</div>
           </div>
           <button onClick={onClose} className="rounded-lg bg-bg-soft p-2 text-gray" aria-label="Close">
             ✕
@@ -271,7 +271,7 @@ function ProviderDetailModal({
         )}
 
         {provider.verified && provider.slug && (
-          <Link href={`/providers/${provider.slug}`} className="mt-5 inline-block text-sm font-semibold text-blue-deep">
+          <Link href={`/providers/${provider.slug}`} className="mt-5 inline-block text-sm font-semibold text-ink">
             Full profile →
           </Link>
         )}

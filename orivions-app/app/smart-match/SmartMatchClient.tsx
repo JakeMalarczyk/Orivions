@@ -47,7 +47,7 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
       <div className="mx-auto max-w-2xl px-8 pb-20 pt-14 text-center">
         <EarlyAccessBadge className="mb-6" />
         <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Describe what you need. <span className="text-blue-deep">We&apos;ll find your match.</span>
+          Describe what you need. We&apos;ll find your match.
         </h1>
         <p className="mx-auto mt-4 max-w-lg text-gray">
           During early access, every shortlist is hand-picked by our team: up to three verified
@@ -130,11 +130,9 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
 
   return (
     <div className="mx-auto max-w-2xl px-8 pb-20 pt-14 text-center">
-      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-sm text-blue-deep">
-        Smart Matching
-      </div>
+      <div className="mb-5 text-xs font-semibold uppercase tracking-wider text-gray-soft">Smart Match</div>
       <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-        Describe what you need. <span className="text-blue-deep">We&apos;ll find your match.</span>
+        Describe what you need. We&apos;ll find your match.
       </h1>
       <p className="mx-auto mt-4 max-w-lg text-gray">
         No browsing categories. Tell us about your project in plain English and AI recommends the

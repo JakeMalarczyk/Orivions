@@ -13,11 +13,11 @@ const NAV_LINKS = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-8 py-4">
         <Link href="/" className="flex items-center gap-2.5">
           <Logo size={26} />
-          <span className="font-heading text-lg font-semibold tracking-tight">ORIVIONS</span>
+          <span className="font-heading text-[22px] font-semibold tracking-tight">Orivions</span>
         </Link>
         <div className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map(({ href, label }) => (
@@ -27,7 +27,7 @@ export default function Header() {
           ))}
           <Link
             href="/founding-providers"
-            className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:opacity-90"
+            className="rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
           >
             List your company
           </Link>

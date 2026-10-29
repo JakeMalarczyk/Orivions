@@ -32,18 +32,18 @@ export default function HeroCtas() {
   }
 
   return (
-    <div className="mt-8 flex flex-wrap justify-center gap-3">
+    <div className="mt-8 flex flex-wrap gap-3">
       <button
         onClick={() => trackAndGo('Hero CTA: Browse', '/providers')}
-        className="rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+        className="rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
       >
         Browse providers
       </button>
       <button
         onClick={() => trackAndGo('Hero CTA: Smart Match', '/smart-match')}
-        className="rounded-xl border border-line bg-white px-6 py-3 text-sm font-semibold transition hover:border-blue-light"
+        className="rounded-lg border border-ink/20 px-6 py-3 text-sm font-semibold transition hover:border-ink"
       >
-        Find your match with AI
+        Describe your project
       </button>
     </div>
   );

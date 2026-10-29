@@ -66,8 +66,8 @@ export default function WaitlistForm() {
   }
 
   return (
-    <div className="mx-auto max-w-lg rounded-2xl bg-bg-soft p-10 text-center">
-      <h2 className="font-heading text-2xl font-semibold">Not ready to browse yet?</h2>
+    <div className="mx-auto max-w-lg text-center">
+      <h2 className="font-heading text-3xl font-medium">Not ready to browse yet?</h2>
       <p className="mt-2 text-sm text-gray">
         Leave your email and we&apos;ll send you the highlights: new verified providers, new
         categories, no spam.
@@ -79,12 +79,12 @@ export default function WaitlistForm() {
           onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           placeholder="you@company.com"
           required
-          className="flex-1 rounded-xl border border-line px-4 py-3 text-sm outline-none focus:border-blue-light"
+          className="flex-1 rounded-lg border border-ink/25 bg-white px-4 py-3 text-sm outline-none focus:border-ink"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white disabled:opacity-60"
+          className="rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-white disabled:opacity-60"
         >
           {status === 'loading' ? 'Sending…' : 'Notify me'}
         </button>

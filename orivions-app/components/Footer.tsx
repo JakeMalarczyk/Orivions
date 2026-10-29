@@ -55,12 +55,12 @@ export default function Footer() {
     .map((p) => ({ href: `/blog/${p.slug}`, label: p.title.split(':')[0] ?? p.title }));
 
   return (
-    <footer className="mt-16 border-t border-line bg-bg-soft">
+    <footer className="border-t border-line bg-bg-soft">
       <div className="mx-auto grid max-w-6xl gap-10 px-8 py-14 md:grid-cols-[1.3fr_1fr_1fr_1.4fr_1fr]">
         <div>
           <Link href="/" className="flex items-center gap-2.5">
             <Logo size={22} />
-            <span className="font-heading font-semibold tracking-tight">ORIVIONS</span>
+            <span className="font-heading text-xl font-semibold tracking-tight">Orivions</span>
           </Link>
           <p className="mt-3 max-w-xs text-sm text-gray">
             The verified B2B marketplace for onchain teams. Free for clients; providers pay a 10%
