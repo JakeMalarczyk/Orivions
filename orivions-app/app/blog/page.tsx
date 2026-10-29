@@ -79,7 +79,7 @@ export default function BlogIndexPage() {
           ))}
 
           {UPCOMING.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-dashed border-line p-6 opacity-75">
+            <div key={p.title} className="rounded-2xl border border-dashed border-line p-6">
               <div className="text-xs font-medium uppercase tracking-wide text-gray-soft">Coming soon</div>
               <h2 className="mt-2 font-heading text-xl font-semibold leading-snug">{p.title}</h2>
               <p className="mt-2 text-sm text-gray">{p.excerpt}</p>

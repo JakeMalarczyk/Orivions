@@ -86,12 +86,12 @@ export default function ConciergeForm({ need: initialNeed, source, title, text }
         <input value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} placeholder="Your name" autoComplete="name" className="cf-input" />
         <input type="email" value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} placeholder="you@company.com" autoComplete="email" className="cf-input" />
         <input value={company} onChange={(e: ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)} placeholder="Project or company (optional)" autoComplete="organization" className="cf-input sm:col-span-2" />
-        <select value={budget} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBudget(e.target.value)} className="cf-input bg-white">
+        <select value={budget} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBudget(e.target.value)} className="cf-input bg-white" aria-label="Budget">
           {BUDGETS.map((b) => (
             <option key={b} value={b}>{b || 'Budget (optional)'}</option>
           ))}
         </select>
-        <select value={timeline} onChange={(e: ChangeEvent<HTMLSelectElement>) => setTimeline(e.target.value)} className="cf-input bg-white">
+        <select value={timeline} onChange={(e: ChangeEvent<HTMLSelectElement>) => setTimeline(e.target.value)} className="cf-input bg-white" aria-label="Timeline">
           {TIMELINES.map((t) => (
             <option key={t} value={t}>{t || 'Timeline (optional)'}</option>
           ))}
