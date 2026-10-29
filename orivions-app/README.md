@@ -44,12 +44,11 @@ Weryfikacja: zero referencji do i18n w projekcie (grep), wszystkie importy `@/` 
 
 ## Znane, świadome ograniczenia (uczciwie)
 
-- **Rate limiter jest in-memory**, na hostingu serverless każda instancja ma własny licznik,
-  więc to miękki hamulec. Produkcyjnie: Upstash Ratelimit albo licznik w Supabase. (TODO)
+- **Rate limiter jest wspólny** (licznik w Postgresie, `rate_limit_hit`), wywoływany z serwera kluczem serwisowym.
 - **`/api/smart-match` pozostaje publiczny** (bez logowania), to świadoma decyzja produktowa:
   Smart Match jest główną publiczną funkcją strony. Ochrona: prompt server-side (endpoint umie
   zrobić tylko matching, nic innego), limit 1500 znaków wejścia, rate limit, max_tokens 800.
-- Kod po poprawkach **nadal nie przeszedł prawdziwego `npm run build`** w tym środowisku.
+- Kod buduje się czysto (`npm run build`, Next 16, React 19); produkcja jest wdrażana z gałęzi main na Vercelu.
 
 ## Setup
 
