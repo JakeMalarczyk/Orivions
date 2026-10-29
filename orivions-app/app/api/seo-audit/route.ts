@@ -157,7 +157,7 @@ async function siteChecks(): Promise<SiteCheck[]> {
     const missing = ['GPTBot', 'ClaudeBot', 'PerplexityBot'].filter((b) => !t.includes(b));
     return { ok: missing.length === 0, detail: missing.length ? `Not listed: ${missing.join(', ')}` : 'All listed' };
   });
-  for (const file of ['llms.txt', 'llms-full.txt', 'sitemap.xml', 'rss.xml', 'og-image.png', 'favicon.ico']) {
+  for (const file of ['llms.txt', 'llms-full.txt', 'sitemap.xml', 'blog/rss.xml', 'og-image.png', 'favicon.ico']) {
     await probe(`/${file} exists`, async () => {
       const r = await get(`${SITE_URL}/${file}`);
       return { ok: r.ok, detail: `HTTP ${r.status}` };

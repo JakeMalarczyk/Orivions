@@ -68,7 +68,7 @@ export const POSTS: Post[] = [
       },
       {
         q: 'Where do Solana projects find auditors?',
-        a: 'Mostly through referrals from other teams, the audit firms own sites and public report archives. Competitive audit platforms such as Code4rena, Sherlock and Cantina suit well-documented programs. A vetted marketplace saves the time of checking firms one by one.',
+        a: 'Mostly through referrals from other teams, the audit firms own sites and public report archives. Competitive audit platforms suit well-documented programs. A vetted marketplace saves the time of checking firms one by one.',
       },
       {
         q: 'Are freelance marketplaces good for Solana development?',

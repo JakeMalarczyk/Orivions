@@ -16,10 +16,6 @@ const FAQS: [string, string][] = [
     'Yes, for clients. Searching, comparing, and contacting providers costs nothing. Providers pay a flat 10% success fee only when a real engagement is completed through the platform - no subscriptions, no placement fees.',
   ],
   [
-    'How is Orivions different from Superteam Earn?',
-    'Superteam Earn is a bounty marketplace for individual builders. Orivions is built for verified companies and ongoing B2B engagements: a different unit of trust, not a replacement.',
-  ],
-  [
     'How does Smart Match work?',
     'You describe what you need in plain English and get up to three verified providers that fit, with a specific reason for each. During early access, our team hand-picks every shortlist; automatic matching switches on as the verified network grows. No account or RFQ form is needed.',
   ],

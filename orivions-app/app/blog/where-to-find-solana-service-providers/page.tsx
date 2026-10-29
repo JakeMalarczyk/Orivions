@@ -7,9 +7,9 @@ export const metadata = postMetadata(SLUG);
 
 const OPTIONS: [string, string, string, string][] = [
   ['Ecosystem directories', 'solana.com/ecosystem and project lists', 'Seeing who builds what on Solana', 'Lists projects and tools, not vetted vendors with pricing'],
-  ['Bounty and gig boards', 'Superteam Earn', 'Small, well-scoped tasks and early-stage help', 'Quality varies; you review every applicant'],
-  ['Audit contest platforms', 'Code4rena, Sherlock, Cantina', 'Well-documented programs that want many reviewers', 'Less suited to deep, private reviews of complex protocols'],
-  ['General freelance sites', 'Upwork, Fiverr', 'Largest pool of generic talent', 'Few verified Solana specialists; verification is on you'],
+  ['Bounty and gig boards', 'Ecosystem bounty boards', 'Small, well-scoped tasks and early-stage help', 'Quality varies; you review every applicant'],
+  ['Audit contest platforms', 'Competitive audit platforms', 'Well-documented programs that want many reviewers', 'Less suited to deep, private reviews of complex protocols'],
+  ['General freelance sites', 'General freelance marketplaces', 'Largest pool of generic talent', 'Few verified Solana specialists; verification is on you'],
   ['Referrals and communities', 'Founder chats, Telegram and X, ecosystem events', 'Honest opinions from teams who shipped', 'Hard to scale and hard to compare prices'],
   ['Vetted marketplaces', 'Orivions', 'A short list of checked providers, free for teams', 'Newer, so the verified list is still small'],
 ];
@@ -51,7 +51,7 @@ export default function PostPage() {
         items={[
           ['Ecosystem directories:', 'solana.com/ecosystem and similar lists show who is building on Solana. They are good for discovery, but they list projects and tools rather than vendors you can hire with comparable pricing.'],
           ['Bounty and gig boards:', 'projects post tasks and builders apply. Useful for small, well-scoped work and for meeting active contributors; you carry the review work for every applicant.'],
-          ['Audit contest platforms:', 'Code4rena, Sherlock and Cantina run competitive reviews where many researchers read your code. They fit well-documented programs, while complex protocols often still need a private audit by a named team.'],
+          ['Audit contest platforms:', 'Competitive audit platforms run reviews where many researchers read your code. They fit well-documented programs, while complex protocols often still need a private audit by a named team.'],
           ['General freelance sites:', 'the biggest pool of people, but few with deployed Solana programs you can check. Fine for small tasks; for production code, ask for on-chain proof.'],
           ['Referrals and communities:', 'asking founders who shipped recently is still the most honest signal. It does not scale and gives no price comparison.'],
           ['Vetted marketplaces:', 'a smaller set of providers that someone has already checked, so you compare a short list instead of screening dozens. Orivions is one; its verified list is still growing.'],
