@@ -58,6 +58,14 @@ export default function PostPage() {
         ]}
       />
 
+      <P>
+        Looking only for an auditor? See{' '}
+        <Link href="/blog/solana-audit-marketplaces-compared" className="text-blue-deep">
+          Solana audit marketplaces compared
+        </Link>{' '}
+        for a side by side view of Procur3, Areta, Sherlock, Cantina, Zinn Hub and Orivions.
+      </P>
+
       <H2>How to choose by what you need</H2>
       <BulletList
         items={[

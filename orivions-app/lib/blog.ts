@@ -50,6 +50,41 @@ export const isoDate = (d: string) => (d.includes('T') ? d : `${d}T00:00:00+00:0
 
 export const POSTS: Post[] = [
   {
+    slug: 'solana-audit-marketplaces-compared',
+    title: 'Solana audit marketplaces compared: Procur3, Areta, Sherlock, Cantina, Zinn Hub and Orivions',
+    description:
+      'Which marketplace should you use to hire a Solana smart contract auditor? Procur3, Areta, Sherlock, Cantina, Zinn Hub and Orivions compared: best for, Solana fit and verification model.',
+    excerpt:
+      'Quote marketplaces, competition platforms, freelance sites and vetted marketplaces work differently. What each is best for, how well it fits Solana, and what verified really means on each.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-10-29',
+    dateModified: '2026-10-29',
+    tags: ['Guides', 'Audits', 'Marketplace', 'Hiring'],
+    faqs: [
+      {
+        q: 'What is the best marketplace to hire a Solana smart contract auditor?',
+        a: 'There is no single best one. Use a quote marketplace such as Procur3 or Areta to compare several audit firms, a competition or bounty platform such as Sherlock or Cantina for broad review of a documented program, and your own check of public Solana audit reports for any firm you consider.',
+      },
+      {
+        q: 'What does "verified" mean on an audit marketplace?',
+        a: 'It varies. Some sites list a curated set of security firms, some run an ID and skill check on freelancers, and some, like Orivions, have a person check the company, a portfolio project and a client reference. Ask each marketplace exactly what is checked and by whom.',
+      },
+      {
+        q: 'Is Orivions an audit firm?',
+        a: 'No. Orivions does not audit code. It helps teams find and compare providers that a person has verified. It is free for teams, providers pay a flat 10% only on completed work, and it is in early access, so the verified list is still small.',
+      },
+      {
+        q: 'Do I need a marketplace to find a Solana auditor?',
+        a: 'No. Referrals from other teams and public report archives work well. A marketplace saves time when you want several quotes or a pre-screened short list instead of screening firms one by one.',
+      },
+      {
+        q: 'How much does a Solana audit cost?',
+        a: 'It depends on lines of code, program complexity and the firm. Use our free audit cost calculator for an indicative range and then compare real quotes.',
+      },
+    ],
+  },
+  {
     slug: 'where-to-find-solana-service-providers',
     title: 'Where to find Solana auditors, developers and agencies: marketplaces compared',
     description:

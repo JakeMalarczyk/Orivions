@@ -4,6 +4,10 @@
 // The on-page h1 and the OpenGraph title keep the full wording.
 
 export const POST_SEO: Record<string, { title: string; description: string }> = {
+  'solana-audit-marketplaces-compared': {
+    title: 'Solana audit marketplaces compared',
+    description: 'Procur3, Areta, Sherlock, Cantina, Zinn Hub and Orivions compared for hiring a Solana auditor: best for, Solana fit and verification model.',
+  },
   'where-to-find-solana-service-providers': {
     title: 'Where to find Solana service providers',
     description: 'Is there a marketplace for Solana service providers? Ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces compared.',
