@@ -35,7 +35,7 @@ export default function HeroCtas() {
     <div className="mt-8 flex flex-wrap gap-3">
       <button
         onClick={() => trackAndGo('Hero CTA: Browse', '/providers')}
-        className="rounded-lg bg-spark px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-8px_rgb(var(--c-spark)/0.7)] transition hover:brightness-110"
+        className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light"
       >
         Browse providers
       </button>

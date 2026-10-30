@@ -212,7 +212,7 @@ export default function HomePage() {
             <ul className="mt-4 grid gap-3 text-[15px] text-white/80 md:grid-cols-2">
               {RED_FLAGS.map((f) => (
                 <li key={f} className="flex gap-3">
-                  <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-spark" />
+                  <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-light" />
                   {f}
                 </li>
               ))}

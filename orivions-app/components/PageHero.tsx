@@ -9,7 +9,7 @@ export const HERO_GRID =
   '[background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(75%_80%_at_50%_30%,black,transparent)]';
 
 export const HERO_PRIMARY =
-  'rounded-lg bg-spark px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-8px_rgb(var(--c-spark)/0.7)] transition hover:brightness-110';
+  'rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light';
 
 export const HERO_SECONDARY =
   'rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-light hover:text-blue-light';

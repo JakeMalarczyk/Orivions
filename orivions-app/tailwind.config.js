@@ -12,7 +12,6 @@ module.exports = {
         'blue-deep': c('blue-deep'),
         'blue-light': c('blue-light'),
         ink: c('ink'),
-        spark: c('spark'),
         paper: c('paper'),
         gray: {
           DEFAULT: c('gray'),

@@ -124,7 +124,7 @@ export default async function FoundingProvidersPage() {
             </div>
           </div>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Link href="/login?signup=provider" className="rounded-lg bg-spark px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_8px_30px_-8px_rgb(var(--c-spark)/0.7)] transition hover:brightness-110">
+            <Link href="/login?signup=provider" className="rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light">
               Apply as a Founding Provider →
             </Link>
             <a href="#how" className="rounded-xl border border-white/25 px-7 py-3.5 text-sm font-semibold text-white">
