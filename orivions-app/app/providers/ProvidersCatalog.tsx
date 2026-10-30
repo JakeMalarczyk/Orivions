@@ -40,6 +40,7 @@ export default function ProvidersCatalog({ providers }: { providers: Company[] }
   // Read from window instead of useSearchParams so the page stays statically rendered.
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get('open');
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing with the URL, which only exists in the browser
     if (id && providers.some((p) => p.id === id)) setOpenId(id);
   }, [providers]);
 

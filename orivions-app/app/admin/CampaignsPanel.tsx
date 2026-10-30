@@ -68,8 +68,10 @@ export default function CampaignsPanel() {
     setData((res as Data | null) ?? null);
   }, [days]);
 
+  // Deferred one tick so the fetch result is never set synchronously inside the effect.
   useEffect(() => {
-    load();
+    const t = setTimeout(load, 0);
+    return () => clearTimeout(t);
   }, [load]);
 
   if (data === undefined) return <Empty>Loading…</Empty>;

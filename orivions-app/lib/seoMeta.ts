@@ -80,6 +80,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'How much does it cost to build a Solana dApp?',
     description: 'What a Solana dApp costs to build: on-chain programs, frontend, indexing, audit and maintenance, plus the scope decisions that move the budget most.',
   },
+  'what-makes-a-solana-development-company-trustworthy': {
+    title: 'What makes a Solana dev company trustworthy',
+    description: 'Eight signals you can verify to tell whether a Solana development company is trustworthy: on-chain work, commits, named people, references and code ownership.',
+  },
   'how-to-hire-a-solana-development-company': {
     title: 'How to hire a Solana development company',
     description: 'A guide to hiring a Solana development team: Rust and Anchor experience, scoping, testing, audits, code ownership and how to compare quotes.',

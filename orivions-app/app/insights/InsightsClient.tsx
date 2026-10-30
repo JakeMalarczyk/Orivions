@@ -91,9 +91,9 @@ export default function InsightsClient() {
           <p className="mt-2 text-sm text-white/70">
             We can put together a tailored market view for accelerators, VCs and grant programs.
           </p>
-          <a href="/#ask" className="mt-3.5 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-ink">
+          <Link href="/#ask" className="mt-3.5 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-ink">
             Get in touch
-          </a>
+          </Link>
         </div>
       </div>
       </>
@@ -196,9 +196,9 @@ export default function InsightsClient() {
         <p className="mt-2 text-sm text-white/70">
           We can put together a tailored market report for accelerators, VCs, and grant programs.
         </p>
-        <a href="/#ask" className="mt-3.5 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-ink">
+        <Link href="/#ask" className="mt-3.5 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-ink">
           Get in touch
-        </a>
+        </Link>
       </div>
     </div>
     </>

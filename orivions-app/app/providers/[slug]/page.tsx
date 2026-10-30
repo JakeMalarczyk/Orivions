@@ -233,7 +233,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
       </div>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: ldJson(jsonLd) }}
       />
     </>

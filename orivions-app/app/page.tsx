@@ -320,7 +320,7 @@ export default function HomePage() {
 
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{
           __html: ldJson({
             '@context': 'https://schema.org',

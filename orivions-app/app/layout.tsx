@@ -125,7 +125,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <PageViewTracker />
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
+           
           dangerouslySetInnerHTML={{ __html: ldJson(siteJsonLd) }}
         />
         {/* Plausible: no cookies, no consent banner needed, loaded with next/script's

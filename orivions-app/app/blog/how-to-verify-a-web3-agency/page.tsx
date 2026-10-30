@@ -89,6 +89,10 @@ export default function PostPage() {
         Next, read the{' '}
         <Link href="/blog/red-flags-hiring-web3-service-providers" className="text-blue-deep">
           red flags when hiring Web3 providers
+        </Link>
+        , the{' '}
+        <Link href="/blog/what-makes-a-solana-development-company-trustworthy" className="text-blue-deep">
+          signals of a trustworthy Solana development company
         </Link>{' '}
         and, for audits,{' '}
         <Link href="/blog/how-to-choose-a-solana-smart-contract-auditor" className="text-blue-deep">

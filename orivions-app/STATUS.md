@@ -1,95 +1,78 @@
-# Orivions - app status (verified 2026-10-10)
+# Orivions - app status (verified 2026-10-30)
 
-Honest snapshot of what works and what to check before a live deploy.
-The marketing app (`orivions-nextjs`): Next.js 14 (App Router), TypeScript, Supabase.
+Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind, Supabase.
+Live at https://orivions.com (Vercel project `orivions-app`, auto-deploys from `main`).
 
-## Verified in this pass
+## Checks
 
-- **TypeScript: clean.** `npx tsc --noEmit` returns **0 errors**.
-- **Production build: compiles.** `next build` completes on a normal machine / Vercel.
-  (It only fails in an offline sandbox because `next/font/google` fetches Inter and
-  Poppins from Google Fonts at build time - that needs internet, which Vercel has.)
-- **AI endpoints are protected:**
-  - `app/api/ai-proposal/route.ts` - requires a Bearer session token, rejects
-    anonymous calls with 401, plus per-user rate limiting.
-  - `app/api/smart-match/route.ts` - per-IP rate limiting.
-  - Both limits are shared across serverless instances: the counter lives in
-    Postgres (`07_rate_limit.sql`, `lib/rateLimit.ts`).
-- **Auth middleware** uses `@supabase/ssr` with real `getUser()` JWT validation
-  (the old cookie-guessing redirect loop is gone).
+- `npx tsc --noEmit`: 0 errors.
+- `npx eslint .`: 0 errors, 0 warnings (React 19 rules included).
+- `next build`: compiles.
+- Lighthouse (mobile, local): home 95/100/100, providers 98/100/100, blog post 94/100/100,
+  calculator 95/100/100. LCP 2.1 to 2.9 s, CLS about 0.
 
-- **Database migrations are bundled** in `supabase/migrations/` (01-08), and they
-  already include the post-audit security fixes (`03_security_fixes.sql`): a client
-  can read only their own leads, a provider cannot self-set `verified`/`featured`,
-  and referral codes are not publicly readable. Run them in order on your Supabase
-  project (see the deploy guide).
-- **Pricing is consistent:** the landing FAQ now states the flat **10% success fee,
-  no subscriptions** (it previously said 6-7% with a subscription). Matches the deck,
-  the escrow repo, and the legal docs.
+## Design
 
-## Fixed in this pass
+- Serif headings (Newsreader) + Inter. Cobalt palette lives in CSS variables in `app/globals.css`
+  and is mapped in `tailwind.config.js` (`ink`, `paper`, `gray`, `line`, `bg-soft`, `blue-deep`,
+  `blue-light`, `ok`, `danger`, `warn`). No orange accent.
+- Every top page uses the dark hero from `components/PageHero.tsx`.
+- Footer: logo, (c) 2026 Orivions, four short link groups.
 
-- `app/login/AuthForm.tsx` - `&apos;` HTML entities inside `useState(...)` initializers
-  (these were breaking the build). The `&apos;` left in JSX **text** are correct and
-  were left alone.
-- `middleware.ts` - added explicit types to the Supabase cookie `setAll` callback
-  (6 implicit-`any` TypeScript errors -> 0).
+## Security
 
-## Check before going live (not blockers for the repo, blockers for a real deploy)
+- AI routes need a session (`/api/ai-proposal`) or are rate limited per IP (`/api/smart-match`).
+  Limits are shared via Postgres (`rate_limit_hit`, `lib/rateLimit.ts`).
+- Writes from public forms go through server routes with the service role (`lib/supabaseServer.ts`,
+  migration 15). Contact requests sit behind Cloudflare Turnstile (loaded lazily).
+- `/api/notify` needs the caller's own session, is limited per IP (10 per 10 min) and per user and
+  event (1 per hour), and builds the Telegram text from database rows only.
+- `/api/indexnow` only submits our own sitemap URLs, is limited to 12 calls per hour, and skips
+  the limit when called with `Authorization: Bearer <CRON_SECRET>` (the Vercel cron sends it once
+  `CRON_SECRET` is set in Vercel env).
+- Admin access is enforced in Postgres (`public.admins` + `is_admin()`). Grant it only by SQL
+  after the person has an account.
 
-1. **Run the bundled migrations** (`supabase/migrations/01..08`, in order) on your
-   Supabase project, then smoke-test:
-   - a provider **cannot** set their own `verified`/`featured` via a direct Supabase
-     call (blocked by the trigger in `03_security_fixes.sql`);
-   - the client dashboard shows a signed-in client's own leads.
-2. **Rate limiting** on the AI routes is Postgres-backed (`07_rate_limit.sql`). If the
-   RPC fails it falls back to a per-instance in-memory counter. Anyone with the anon
-   key can call `rate_limit_hit()` directly, so a determined attacker could burn
-   another IP's budget; move to a server-only key (service role) if that matters.
-3. **Env vars** - copy `.env.local.example` to `.env.local` and fill real values.
-   Never commit `.env.local` (already gitignored). The anon key is safe client-side;
-   RLS is what enforces access - so the migrations above must be correct.
-4. **Fonts** - build needs internet for Google Fonts, or self-host Inter/Poppins if
-   you want fully offline/air-gapped builds.
+## Database
 
-## Admin panel (`/admin`)
+Migrations `01` to `15` are in `supabase/migrations/` and applied, except `11_admin_lead_handling`
+which is unconfirmed. Run them in order on a fresh project.
 
-- Access is enforced in Postgres (`08_admin.sql`): `public.admins` + `is_admin()`.
-  Admins can verify / feature / mark founding providers, read leads, concierge
-  requests, waitlist and newsletter, and change concierge status.
-- Granting admin is a manual SQL step after the person has an account:
-  `insert into public.admins (user_id) select id from auth.users where email = '...';`
+## Admin
+
+`/admin`: providers, leads, waitlist, Campaigns (UTM builder, CTR, conversions), Geo (visitors,
+live now), SEO & GEO (checklist, site audit via `/api/seo-audit`, search metrics, AI citation
+checks, listings). Analytics are first party (`components/PageViewTracker.tsx`, `lib/analytics.ts`).
 
 ## SEO / GEO
 
-- Blog posts live in `lib/blog.ts` (one entry per post) and feed the blog index,
-  sitemap, RSS (`/blog/rss.xml`) and `/llms.txt`.
-- Structured data: Organization + WebSite (layout), FAQPage (home), BlogPosting +
-  BreadcrumbList + FAQPage (posts), FAQPage (category pages).
-- `robots.txt` welcomes search and AI crawlers and blocks `/admin`, `/api/`,
-  dashboards and `/login`.
+- Posts live in `lib/blog.ts` and feed the blog, sitemap, RSS (`/blog/rss.xml`), `/llms.txt` and
+  `/llms-full.txt`. SERP titles in `lib/seoMeta.ts` (max 54 chars).
+- Structured data: Organization + WebSite, FAQPage (home, posts, categories), BlogPosting +
+  BreadcrumbList, DefinedTermSet (glossary).
+- `/og?title=&label=`: dynamic social cards.
+- IndexNow key file at `/<key>.txt`; `/api/indexnow` runs daily from `vercel.json`.
+- Google Search Console and Bing Webmaster Tools are set up for orivions.com.
+- AI citation rate (geo_checks, last 30 days): 4 of 13 prompts. Re-measure the same prompts about
+  a week after new content ships.
+- House style: no em dashes anywhere, no pages that compare Orivions with other companies.
 
-## How to run locally
+## Open
+
+1. Vercel: 2FA and billing address (account owner).
+2. First verified provider (the provider detail page has not been checked visually with live data).
+3. Set `CRON_SECRET` in Vercel env.
+4. Request indexing in GSC for pages still "crawled, not indexed" (about 10 per day).
+
+## Run locally
 
 ```bash
 npm install
-cp .env.local.example .env.local   # fill in your Supabase values
+cp .env.local.example .env.local   # public Supabase URL + publishable key at minimum
 npm run dev                         # http://localhost:3000
-npm run typecheck                   # tsc --noEmit (should be 0 errors)
-npm run build                       # production build (needs internet for fonts)
+npm run typecheck
+npm run build                       # needs internet for next/font
 ```
 
-## Note on the onchain escrow
-
-The escrow lives in its own repo (`orivions-escrow`) - milestone state machine,
-fee accounting, Rust core, Postgres schema. It is attachable to this app via the
-single `PaymentProvider` seam. See that repo's README.
-
-## Content and GEO (2026-10-17)
-- Blog: 8 posts in `lib/blog.ts`, each with Key takeaways, FAQ (FAQPage JSON-LD) and automatic "Related reading".
-- New guides: audit cost, Anchor vs native Rust, pre-launch security checklist, choosing a marketing agency, cost of a Solana dApp.
-- `/solana-glossary`: 25 terms from `lib/glossary.ts` with DefinedTermSet JSON-LD.
-- `/og?title=&label=`: dynamic 1200x630 social cards (edge, next/og), used by every post.
-- `/llms-full.txt`: key facts, post summaries and FAQ answers, full glossary.
-- House style: no em dashes anywhere (copy, code comments, AI prompts; AI output is also filtered).
-
+The onchain escrow lives in its own repo (`orivions-escrow`) and plugs in through the
+`PaymentProvider` seam.

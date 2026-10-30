@@ -639,6 +639,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'what-makes-a-solana-development-company-trustworthy',
+    title: 'What makes a Solana development company trustworthy? 8 signals you can check',
+    description:
+      'How to tell if a Solana development company is trustworthy: on-chain programs, public commits, named engineers, client references, code ownership and milestone payments.',
+    excerpt:
+      'Trust in Web3 services should not rest on logos and follower counts. Eight signals you can verify yourself before you hire a Solana development team.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-10-30',
+    dateModified: '2026-10-30',
+    tags: ['Guides', 'Development', 'Hiring', 'Verification'],
+    faqs: [
+      {
+        q: 'How do I know if a Solana development company is trustworthy?',
+        a: 'Check evidence you can verify yourself: Solana programs on-chain that the team built, a public commit history from the engineers you meet, a registered company with named people, and past clients who confirm delivery when you contact them directly.',
+      },
+      {
+        q: 'Are anonymous Solana developers a red flag?',
+        a: 'Not automatically, since many strong engineers work pseudonymously. But anonymity raises the risk when you pay up front or hand over keys. Compensate with milestone payments, a verifiable public track record and an independent audit.',
+      },
+      {
+        q: 'What should be in a contract with a Solana development company?',
+        a: 'A defined scope and deliverables, milestone-based payment, transfer of all code and IP to you, a repository in your organisation, upgrade authority held by you, and a plan for testing and an independent audit.',
+      },
+      {
+        q: 'Is a verified provider badge enough to trust a team?',
+        a: 'It is a head start, not a guarantee. A badge such as Verified on Orivions means a person checked that the company is real and its portfolio holds up. For a large engagement you should still speak to past clients.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-hire-a-solana-development-company',
     title: 'How to hire a Solana development company: 12 questions to ask before you sign',
     description:

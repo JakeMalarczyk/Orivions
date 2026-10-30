@@ -65,14 +65,19 @@ export default function GeoPanel() {
     setLive((res as Live | null) ?? null);
   }, []);
 
+  // Deferred one tick so the fetch result is never set synchronously inside the effect.
   useEffect(() => {
-    load();
+    const t = setTimeout(load, 0);
+    return () => clearTimeout(t);
   }, [load]);
 
   useEffect(() => {
-    loadLive();
+    const first = setTimeout(loadLive, 0);
     const timer = setInterval(loadLive, LIVE_REFRESH_MS);
-    return () => clearInterval(timer);
+    return () => {
+      clearTimeout(first);
+      clearInterval(timer);
+    };
   }, [loadLive]);
 
   // Live visitors are merged into the per-country rows, including countries with no history.

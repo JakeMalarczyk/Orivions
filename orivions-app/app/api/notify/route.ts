@@ -48,6 +48,11 @@ export async function POST(request: Request) {
   const user = userData.user;
   if (!user) return NextResponse.json({ ok: false }, { status: 401 });
 
+  // One ping per user and event per hour, whatever the IP.
+  if (!(await allowRequest(supabase, `notify:${user.id}:${String(body.event)}`, 1, 3600))) {
+    return NextResponse.json({ ok: false }, { status: 429 });
+  }
+
   const { data } = await supabase.from('companies').select(select).eq('id', user.id).maybeSingle();
   const company = data as CompanyRow | null;
 

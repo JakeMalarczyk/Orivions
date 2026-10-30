@@ -113,6 +113,7 @@ export default function SeoPanel() {
   const [listings, setListings] = useState<Listing[]>([]);
   const [audit, setAudit] = useState<AuditResult | null>(null);
   const [error, setError] = useState('');
+  const [now] = useState(() => Date.now());
 
   const load = useCallback(async () => {
     const [t, m, g, l, a] = await Promise.all([
@@ -136,8 +137,10 @@ export default function SeoPanel() {
     setAudit(last ? ({ ...(last.result as AuditResult), ranAt: last.ran_at as string }) : null);
   }, []);
 
+  // Deferred one tick so the fetch result is never set synchronously inside the effect.
   useEffect(() => {
-    load();
+    const t = setTimeout(load, 0);
+    return () => clearTimeout(t);
   }, [load]);
 
   if (error) {
@@ -151,7 +154,7 @@ export default function SeoPanel() {
 
   const done = tasks.filter((t) => t.status === 'done').length;
   const open = tasks.filter((t) => t.status !== 'done' && t.status !== 'skip').length;
-  const cutoff = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+  const cutoff = new Date(now - 30 * 86400000).toISOString().slice(0, 10);
   const recentGeo = geo.filter((c) => c.checked_on >= cutoff);
   const cited = recentGeo.filter((c) => c.cited).length;
   const latestGoogle = metrics.find((m) => m.channel === 'google');

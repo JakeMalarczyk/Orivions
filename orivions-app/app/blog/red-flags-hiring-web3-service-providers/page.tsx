@@ -43,8 +43,10 @@ const GROUPS: { title: string; flags: [string, string][] }[] = [
   },
 ];
 
+// Running number of the first item in each group.
+const START = GROUPS.map((_, i) => GROUPS.slice(0, i).reduce((sum, g) => sum + g.flags.length, 0));
+
 export default function PostPage() {
-  let n = 0;
   return (
     <BlogPost
       slug={SLUG}
@@ -69,11 +71,11 @@ export default function PostPage() {
         each one deserves a direct question, and several together are a reason to walk away.
       </P>
 
-      {GROUPS.map((g) => (
+      {GROUPS.map((g, gi) => (
         <section key={g.title}>
           <H2>{g.title}</H2>
-          {g.flags.map(([flag, why]) => {
-            n += 1;
+          {g.flags.map(([flag, why], i) => {
+            const n = (START[gi] ?? 0) + i + 1;
             return (
               <div key={flag} className="mt-4 rounded-2xl border border-line p-5">
                 <h3 className="font-semibold">
