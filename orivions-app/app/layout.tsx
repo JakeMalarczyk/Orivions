@@ -17,8 +17,7 @@ const heading = Newsreader({
   subsets: ['latin'],
   weight: ['500', '600'],
   variable: '--font-heading',
-  // optional: no late swap of the headline font, which is what delayed LCP on slow mobile.
-  display: 'optional',
+  display: 'swap',
 });
 
 const inter = Inter({
