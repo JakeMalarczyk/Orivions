@@ -5,7 +5,7 @@
 /.next/
 /out/
 
-# env files — real secrets, never commit
+# env files, real secrets, never commit
 .env
 .env.local
 .env.production
