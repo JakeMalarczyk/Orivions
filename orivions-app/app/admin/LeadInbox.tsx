@@ -298,7 +298,7 @@ function LeadRow({
         <div className="grid gap-6 border-t border-line bg-bg-soft/60 p-5 md:grid-cols-[1.4fr_1fr]">
           <div>
             <div className="text-xs font-bold uppercase tracking-wide text-gray-soft">Message</div>
-            <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-[#27272E]">{item.message || '-'}</p>
+            <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-ink/90">{item.message || '-'}</p>
             <dl className="mt-4 grid grid-cols-[110px_1fr] gap-x-3 gap-y-1.5 text-sm">
               <dt className="text-gray-soft">Email</dt>
               <dd className="break-all">{item.email}</dd>

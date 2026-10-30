@@ -90,7 +90,7 @@ export default function GlossaryPage() {
                   {t.term}
                 </Link>
               </dt>
-              <dd className="mt-1.5 text-[15px] leading-relaxed text-[#27272E]">
+              <dd className="mt-1.5 text-[15px] leading-relaxed text-ink/90">
                 {t.definition}
                 {' '}
                 <Link href={termPath(t.id)} className="text-blue-deep">

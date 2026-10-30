@@ -144,14 +144,14 @@ export default function HowWeVerifyPage() {
               </span>
               <div>
                 <div className="font-semibold">{lead}</div>
-                <p className="mt-1 text-[15px] leading-relaxed text-[#27272E]">{rest}</p>
+                <p className="mt-1 text-[15px] leading-relaxed text-ink/90">{rest}</p>
               </div>
             </li>
           ))}
         </ol>
 
         <H2>How the decision is made</H2>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#27272E]">
+        <p className="mt-4 text-[15px] leading-relaxed text-ink/90">
           We decide within 48 hours of receiving everything we need, and every decision is recorded with
           its reason. Only an Orivions administrator can mark a provider as Verified; providers cannot
           change it themselves. If the facts change later, the badge is removed.
@@ -160,14 +160,14 @@ export default function HowWeVerifyPage() {
         <H2>Red flags that mean a rejection</H2>
         <ul className="mt-4 space-y-2.5">
           {RED_FLAGS.map(([lead, rest]) => (
-            <li key={lead} className="text-[15px] leading-relaxed text-[#27272E]">
+            <li key={lead} className="text-[15px] leading-relaxed text-ink/90">
               <span className="font-semibold">{lead}:</span> {rest}
             </li>
           ))}
         </ul>
 
         <H2>The &quot;Verified on Orivions&quot; badge</H2>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#27272E]">
+        <p className="mt-4 text-[15px] leading-relaxed text-ink/90">
           Verified providers can show a &quot;Verified on Orivions&quot; badge on their own website. It links to
           their profile on Orivions, for example orivions.com/providers/&lt;name&gt;, so anyone can check that the
           badge is real and see what we checked. A badge that does not link to a live Orivions profile is not
@@ -175,7 +175,7 @@ export default function HowWeVerifyPage() {
         </p>
 
         <H2>What verification is not</H2>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#27272E]">
+        <p className="mt-4 text-[15px] leading-relaxed text-ink/90">
           Verification lowers the risk of hiring a team that is not what it claims to be. It is not a
           guarantee of the outcome of your project. Our guides on{' '}
           <Link href="/blog/how-to-verify-a-web3-agency" className="text-blue-deep">verifying a Web3 agency</Link>,{' '}
@@ -190,7 +190,7 @@ export default function HowWeVerifyPage() {
           {FAQS.map(([q, a]) => (
             <div key={q} className="p-5">
               <h3 className="font-semibold">{q}</h3>
-              <p className="mt-1.5 text-[15px] leading-relaxed text-[#27272E]">{a}</p>
+              <p className="mt-1.5 text-[15px] leading-relaxed text-ink/90">{a}</p>
             </div>
           ))}
         </div>

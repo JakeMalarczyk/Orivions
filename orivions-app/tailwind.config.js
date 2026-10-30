@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const c = (name) => `rgb(var(--c-${name}) / <alpha-value>)`;
+
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,19 +9,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-deep': '#1D4ED8',
-        'blue-light': '#38BDF8',
-        ink: '#0B1530',
-        paper: '#F8FAFD',
+        'blue-deep': c('blue-deep'),
+        'blue-light': c('blue-light'),
+        ink: c('ink'),
+        spark: c('spark'),
+        paper: c('paper'),
         gray: {
-          DEFAULT: '#55617A',
-          soft: '#66728A',
+          DEFAULT: c('gray'),
+          soft: c('gray-soft'),
         },
-        line: '#DCE4F1',
-        'bg-soft': '#EEF3FB',
-        ok: '#1FA971',
-        danger: '#E4574C',
-        warn: '#E8A33D',
+        line: c('line'),
+        'bg-soft': c('bg-soft'),
+        ok: c('ok'),
+        danger: c('danger'),
+        warn: c('warn'),
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'Georgia', 'serif'],

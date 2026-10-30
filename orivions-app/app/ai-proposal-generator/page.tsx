@@ -15,7 +15,7 @@ export default function AiProposalGeneratorPage() {
       <Suspense fallback={null}>
         <ProposalGeneratorClient />
       </Suspense>
-      <section className="mx-auto max-w-3xl px-8 pb-20 text-[15px] leading-relaxed text-[#27272E]">
+      <section className="mx-auto max-w-3xl px-8 pb-20 text-[15px] leading-relaxed text-ink/90">
         <h2 className="font-heading text-2xl font-semibold">How the AI proposal generator works</h2>
         <p className="mt-3">
           Paste a client brief and the generator drafts a structured proposal for you to edit:

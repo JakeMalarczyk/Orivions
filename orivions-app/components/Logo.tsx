@@ -4,8 +4,8 @@ export default function Logo({ size = 26 }: { size?: number }) {
     <svg width={size} height={h} viewBox="0 0 96 100" aria-hidden="true">
       <defs>
         <linearGradient id="logo-g1" x1="0" y1="0" x2="1" y2="0.15">
-          <stop offset="0%" stopColor="#1D4ED8" />
-          <stop offset="100%" stopColor="#38BDF8" />
+          <stop offset="0%" style={{ stopColor: 'rgb(var(--c-blue-deep))' }} />
+          <stop offset="100%" style={{ stopColor: 'rgb(var(--c-blue-light))' }} />
         </linearGradient>
       </defs>
       <path d="M8 34L48 12L88 34L48 56L8 34Z" fill="url(#logo-g1)" />

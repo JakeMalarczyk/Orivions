@@ -172,12 +172,12 @@ export default function DappCostCalculatorPage() {
           </div>
 
           <h2 className="mt-12 font-heading text-[22px] font-semibold">How the estimate works</h2>
-          <p className="mt-3 text-[15px] leading-relaxed text-[#27272E]">
+          <p className="mt-3 text-[15px] leading-relaxed text-ink/90">
             Development is priced by time, so the calculator adds up developer-days for each part of the
             product and applies a day rate for the type of team. Every number below is an assumption you
             can check against real quotes.
           </p>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-[#27272E]">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-ink/90">
             <li>
               <b>First program:</b>{' '}
               {PROGRAM_TYPES.filter((p) => p.days).map((p) => `${p.label} ${p.days} days`).join(', ')}.
@@ -208,7 +208,7 @@ export default function DappCostCalculatorPage() {
               build cost per year, a common rule of thumb.
             </li>
           </ul>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#27272E]">
+          <p className="mt-4 text-[15px] leading-relaxed text-ink/90">
             The audit is not included. Estimate it with the{' '}
             <Link href="/tools/solana-audit-cost-calculator" className="text-blue-deep">
               Solana audit cost calculator

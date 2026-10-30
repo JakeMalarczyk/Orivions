@@ -79,7 +79,7 @@ export default function PostPage() {
                 <h3 className="font-semibold">
                   {n}. {flag}
                 </h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-[#27272E]">{why}</p>
+                <p className="mt-1.5 text-[15px] leading-relaxed text-ink/90">{why}</p>
               </div>
             );
           })}

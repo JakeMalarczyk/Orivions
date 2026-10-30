@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 :root {
+  /* Brand palette as RGB triplets so Tailwind opacity modifiers keep working. */
+  --c-ink: 5 9 26;
+  --c-paper: 249 251 255;
+  --c-gray: 74 85 110;
+  --c-gray-soft: 100 112 138;
+  --c-line: 223 230 245;
+  --c-bg-soft: 240 245 255;
+  --c-blue-deep: 37 71 245;
+  --c-blue-light: 0 194 255;
+  --c-spark: 255 122 26;
+  --c-ok: 31 169 113;
+  --c-danger: 228 87 76;
+  --c-warn: 232 163 61;
   --font-heading: 'Newsreader', Georgia, serif;
   --font-inter: 'Inter', sans-serif;
 }
@@ -20,11 +33,11 @@ h1, h2, h3 {
 }
 
 ::selection {
-  background: #38bdf8;
-  color: #0b1530;
+  background: rgb(var(--c-blue-light));
+  color: rgb(var(--c-ink));
 }
 
 :focus-visible {
-  outline: 2px solid #1d4ed8;
+  outline: 2px solid rgb(var(--c-blue-deep));
   outline-offset: 2px;
 }

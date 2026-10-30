@@ -151,10 +151,10 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ i
         </div>
 
         <h2 className="mt-10 font-heading text-[22px] font-semibold">Why it matters</h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-[#27272E]">{detail.why}</p>
+        <p className="mt-3 text-[15px] leading-relaxed text-ink/90">{detail.why}</p>
 
         <h2 className="mt-10 font-heading text-[22px] font-semibold">What to check</h2>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-[#27272E]">
+        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-ink/90">
           {detail.check.map((c) => (
             <li key={c}>{c}</li>
           ))}

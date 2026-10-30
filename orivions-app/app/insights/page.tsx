@@ -34,7 +34,7 @@ export default function InsightsPage() {
         <InsightsClient />
       </Suspense>
 
-      <section className="mx-auto max-w-3xl px-8 pb-20 text-[15px] leading-relaxed text-[#27272E]">
+      <section className="mx-auto max-w-3xl px-8 pb-20 text-[15px] leading-relaxed text-ink/90">
         <h2 className="font-heading text-2xl font-semibold">What these insights cover</h2>
         <p className="mt-3">
           The numbers come from verified providers in the Orivions directory: how many are active in

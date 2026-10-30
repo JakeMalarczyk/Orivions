@@ -24,7 +24,7 @@ export default function PostPage() {
         </p>
 
         <h2 className="mt-10 font-heading text-[22px] font-semibold">The problem, concretely</h2>
-        <p className="mt-3 leading-relaxed text-[#27272E]">
+        <p className="mt-3 leading-relaxed text-ink/90">
           If you&apos;ve ever shipped anything on Solana, you know this moment: you need an
           auditor before mainnet, or a Rust developer for a fork, or someone who actually
           understands crypto marketing. So you post in a Discord server. You get three
@@ -32,7 +32,7 @@ export default function PostPage() {
           verifiable track record, and one DM from someone who &quot;can definitely do it&quot;
           for suspiciously little.
         </p>
-        <p className="mt-3 leading-relaxed text-[#27272E]">
+        <p className="mt-3 leading-relaxed text-ink/90">
           There&apos;s no place to verify who&apos;s actually good. Portfolios are unverifiable
           claims. Reviews on generic B2B directories are gameable, and worse, most of those
           directories openly sell visibility, so the &quot;top&quot; providers are simply the
@@ -47,7 +47,7 @@ export default function PostPage() {
         </div>
 
         <h2 className="mt-10 font-heading text-[22px] font-semibold">What Orivions does about it</h2>
-        <ul className="mt-3 list-disc space-y-2.5 pl-5 leading-relaxed text-[#27272E]">
+        <ul className="mt-3 list-disc space-y-2.5 pl-5 leading-relaxed text-ink/90">
           <li>
             <b>Describe what you need in plain English</b>: AI matches you with relevant
             verified providers in about 30 seconds, with a reason for every match. No category
@@ -66,7 +66,7 @@ export default function PostPage() {
         </ul>
 
         <h2 className="mt-10 font-heading text-[22px] font-semibold">Why Solana specifically</h2>
-        <p className="mt-3 leading-relaxed text-[#27272E]">
+        <p className="mt-3 leading-relaxed text-ink/90">
           Generic Web3 directories go wide and shallow: every chain, every category, no depth
           anywhere. We&apos;re going the opposite way: one ecosystem, deeply. Solana has the
           builder density, the funding pipeline (grants, hackathons, accelerators), and the
@@ -77,7 +77,7 @@ export default function PostPage() {
         <h2 className="mt-10 font-heading text-[22px] font-semibold">
           What &quot;building in public&quot; means here
         </h2>
-        <p className="mt-3 leading-relaxed text-[#27272E]">
+        <p className="mt-3 leading-relaxed text-ink/90">
           This blog will publish real numbers: providers onboarded, deals closed, what worked,
           what didn&apos;t. Including the failures, because a launch journal that only reports
           wins is marketing pretending to be transparency. Our first practical guide is out:{' '}

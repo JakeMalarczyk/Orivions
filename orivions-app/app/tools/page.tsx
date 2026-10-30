@@ -89,7 +89,7 @@ export default function ToolsPage() {
         </ul>
 
         <h2 className="mt-12 font-heading text-[22px] font-semibold">How to use these tools</h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-[#27272E]">
+        <p className="mt-3 text-[15px] leading-relaxed text-ink/90">
           Start with the dApp cost calculator to size the whole build, then use the audit cost
           calculator to add security review to the plan. Both give a range, not a quote: use it to
           sanity-check offers and to decide how much runway a launch needs. When you are ready to

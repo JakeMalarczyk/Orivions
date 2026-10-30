@@ -194,7 +194,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
           </section>
         </article>
 
-        <div className="mt-16 rounded-xl bg-ink p-8 text-white [background-image:radial-gradient(70%_100%_at_100%_0%,rgba(56,189,248,0.25),transparent_70%)]">
+        <div className="mt-16 rounded-xl bg-ink p-8 text-white [background-image:radial-gradient(70%_100%_at_100%_0%,rgb(var(--c-blue-light)/0.25),transparent_70%)]">
           <h2 className="font-heading text-2xl font-medium">{ctaBoxTitle}</h2>
           <p className="mt-2 max-w-lg text-white/75">{ctaBoxText}</p>
           <Link href="/smart-match" className="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink">

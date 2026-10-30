@@ -98,7 +98,7 @@ export default function PostPage() {
 
       <H2>Template</H2>
       <P>Copy this into a document, fill in what you know, and mark the rest as open questions.</P>
-      <pre className="mt-4 overflow-x-auto rounded-2xl border border-line bg-bg-soft p-5 text-[13px] leading-relaxed text-[#27272E]">
+      <pre className="mt-4 overflow-x-auto rounded-2xl border border-line bg-bg-soft p-5 text-[13px] leading-relaxed text-ink/90">
         {TEMPLATE}
       </pre>
 

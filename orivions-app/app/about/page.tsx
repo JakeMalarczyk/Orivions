@@ -76,7 +76,7 @@ function Steps({ items }: { items: [string, string][] }) {
           </span>
           <div>
             <div className="font-semibold">{lead}</div>
-            <p className="mt-1 text-[15px] leading-relaxed text-[#27272E]">{rest}</p>
+            <p className="mt-1 text-[15px] leading-relaxed text-ink/90">{rest}</p>
           </div>
         </li>
       ))}
@@ -160,13 +160,13 @@ export default function AboutPage() {
         </dl>
 
         <H2>Why Orivions exists</H2>
-        <p className="mt-4 leading-relaxed text-[#27272E]">
+        <p className="mt-4 leading-relaxed text-ink/90">
           Thousands of funded Solana teams need auditors, developers and growth partners, and
           thousands of companies offer those services. Yet most hiring still happens through Discord
           recommendations and cold DMs, where a proven team and a confident one look the same. A bad
           hire on Solana is not just a delay: it can mean an exploited program or a failed launch.
         </p>
-        <p className="mt-3 leading-relaxed text-[#27272E]">
+        <p className="mt-3 leading-relaxed text-ink/90">
           Orivions makes the first step verifiable. Every provider is checked by a person, every
           match comes with a reason, and teams pay nothing to use it. The longer story is in{' '}
           <Link href="/blog/why-we-are-building-orivions" className="text-blue-deep">
@@ -226,7 +226,7 @@ export default function AboutPage() {
         </p>
 
         <H2>How Orivions makes money</H2>
-        <p className="mt-4 leading-relaxed text-[#27272E]">
+        <p className="mt-4 leading-relaxed text-ink/90">
           Providers pay a flat 10% success fee when an engagement found through Orivions is
           completed. Clients never pay. That is the only way we earn: no subscriptions, no listing
           fees and no paid placements. Ranking and matches are never for sale.

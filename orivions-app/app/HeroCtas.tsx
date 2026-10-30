@@ -35,13 +35,13 @@ export default function HeroCtas() {
     <div className="mt-8 flex flex-wrap gap-3">
       <button
         onClick={() => trackAndGo('Hero CTA: Browse', '/providers')}
-        className="rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-deep"
+        className="rounded-lg bg-spark px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-8px_rgb(var(--c-spark)/0.7)] transition hover:brightness-110"
       >
         Browse providers
       </button>
       <button
         onClick={() => trackAndGo('Hero CTA: Smart Match', '/smart-match')}
-        className="rounded-lg border border-ink/20 px-6 py-3 text-sm font-semibold transition hover:border-blue-deep hover:text-blue-deep"
+        className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-light hover:text-blue-light"
       >
         Describe your project
       </button>

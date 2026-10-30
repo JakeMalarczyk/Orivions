@@ -84,7 +84,7 @@ export function H2({ children }: { children: ReactNode }) {
 }
 
 export function P({ children }: { children: ReactNode }) {
-  return <p className="mt-4 text-[17px] leading-[1.75] text-[#2A2924]">{children}</p>;
+  return <p className="mt-4 text-[17px] leading-[1.75] text-ink/90">{children}</p>;
 }
 
 export function Callout({ children }: { children: ReactNode }) {
@@ -97,7 +97,7 @@ export function Callout({ children }: { children: ReactNode }) {
 
 export function BulletList({ items }: { items: [string, ReactNode][] }) {
   return (
-    <ul className="mt-3 list-disc space-y-2.5 pl-5 text-[17px] leading-[1.7] text-[#2A2924]">
+    <ul className="mt-3 list-disc space-y-2.5 pl-5 text-[17px] leading-[1.7] text-ink/90">
       {items.map(([lead, rest]) => (
         <li key={lead}>
           <b>{lead}</b> {rest}
@@ -211,7 +211,7 @@ export default function BlogPost({
         {summary?.length ? (
           <div className="mt-8 border-l-2 border-blue-deep pl-6">
             <div className="text-xs font-semibold uppercase tracking-wider text-gray-soft">Key takeaways</div>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-[#27272E]">
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-ink/90">
               {summary.map((s) => (
                 <li key={s}>{s}</li>
               ))}
@@ -239,7 +239,7 @@ export default function BlogPost({
         ) : null}
 
         {cta && (
-          <div className="mt-14 rounded-xl bg-ink p-8 text-white [background-image:radial-gradient(70%_100%_at_100%_0%,rgba(56,189,248,0.25),transparent_70%)]">
+          <div className="mt-14 rounded-xl bg-ink p-8 text-white [background-image:radial-gradient(70%_100%_at_100%_0%,rgb(var(--c-blue-light)/0.25),transparent_70%)]">
             <h2 className="font-heading text-2xl font-medium">{cta.title}</h2>
             <p className="mt-2 text-sm text-white/75">{cta.text}</p>
             <Link href={cta.href} className="mt-4 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink">

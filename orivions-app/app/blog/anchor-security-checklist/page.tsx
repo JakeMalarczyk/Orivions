@@ -137,7 +137,7 @@ export default function PostPage() {
             {group.checks.map(({ check, why }) => (
               <li key={check} className="rounded-2xl border border-line p-5">
                 <div className="font-semibold">{check}</div>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-[#27272E]">{why}</p>
+                <p className="mt-1.5 text-[15px] leading-relaxed text-ink/90">{why}</p>
               </li>
             ))}
           </ol>

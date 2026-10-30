@@ -19,7 +19,7 @@ export function FoundingProviderCard({ compact = false }: { compact?: boolean })
         We are verifying our first cohort of Solana service companies by hand.
       </p>
       {!compact && (
-        <ul className="mt-3 space-y-1.5 text-sm text-[#27272E]">
+        <ul className="mt-3 space-y-1.5 text-sm text-ink/90">
           <li>★ Founding Provider badge, reserved for the first 20 verified companies</li>
           <li>✓ Free listing; a flat 10% success fee only on completed engagements</li>
           <li>→ First access to the briefs teams send us during early access</li>

@@ -57,7 +57,7 @@ export default async function SmartMatchPage() {
             </li>
           ))}
         </ol>
-        <p className="mt-6 text-[15px] leading-relaxed text-[#27272E]">
+        <p className="mt-6 text-[15px] leading-relaxed text-ink/90">
           Every provider is checked by a person before it is called verified; see{' '}
           <Link href="/how-we-verify" className="text-blue-deep">how we verify providers</Link>. Not sure what to budget yet?
           Try the{' '}

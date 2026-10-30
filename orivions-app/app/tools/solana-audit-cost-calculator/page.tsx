@@ -174,11 +174,11 @@ export default function AuditCostCalculatorPage() {
           </div>
 
           <h2 className="mt-12 font-heading text-[22px] font-semibold">How the estimate works</h2>
-          <p className="mt-3 text-[15px] leading-relaxed text-[#27272E]">
+          <p className="mt-3 text-[15px] leading-relaxed text-ink/90">
             Auditors price by engineer-time, so the calculator first estimates engineer-days and then
             applies a day rate. Every number below is an assumption you can check against real quotes.
           </p>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-[#27272E]">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-ink/90">
             <li>
               <b>Review speed:</b> about {LINES_PER_ENGINEER_DAY} lines of straightforward Anchor code per
               engineer-day, with a minimum of {MIN_ENGINEER_DAYS} engineer-days for any audit.
@@ -211,7 +211,7 @@ export default function AuditCostCalculatorPage() {
               slow end.
             </li>
           </ul>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#27272E]">
+          <p className="mt-4 text-[15px] leading-relaxed text-ink/90">
             The estimate does not cover economic or design reviews, formal verification, re-audits of
             later upgrades or a bug bounty. For what drives real quotes, read{' '}
             <Link href="/blog/solana-smart-contract-audit-cost" className="text-blue-deep">

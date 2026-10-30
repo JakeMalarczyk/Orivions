@@ -142,7 +142,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
 
         <div className="mt-8 grid gap-8 md:grid-cols-[1.5fr_1fr]">
           <div>
-            <p className="text-base leading-relaxed text-[#27272E]">
+            <p className="text-base leading-relaxed text-ink/90">
               {provider.description || `${provider.name} is a verified ${provider.category.toLowerCase()} provider on Orivions.`}
             </p>
             {site && (

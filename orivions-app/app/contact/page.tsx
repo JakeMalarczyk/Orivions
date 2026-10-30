@@ -81,12 +81,12 @@ export default function ContactPage() {
 
         <section className="mt-12">
           <h2 className="font-heading text-[24px] font-semibold tracking-tight">What to write to us about</h2>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-[#27272E]">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-ink/90">
             <li>Hiring: tell us what you are building and your budget and timeline, and we reply with a hand-picked shortlist.</li>
             <li>Listing your company: ask about verification, Founding Provider status and how profiles work.</li>
             <li>Partnerships and press: ecosystem teams, communities and media are welcome.</li>
           </ul>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#27272E]">
+          <p className="mt-4 text-[15px] leading-relaxed text-ink/90">
             We usually reply within two business days. Read{' '}
             <Link href="/how-we-verify" className="text-blue-deep">how we verify providers</Link> and{' '}
             <Link href="/about" className="text-blue-deep">about Orivions</Link> for background first.

@@ -64,17 +64,21 @@ export default function HomePage() {
     <>
       <Header />
 
-      <section className="px-8 pb-20 pt-16 md:pt-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[1.1fr_0.9fr]">
+      <section className="relative overflow-hidden bg-ink px-8 pb-24 pt-16 text-white md:pt-24 [background-image:radial-gradient(55%_70%_at_90%_0%,rgb(var(--c-blue-deep)/0.55),transparent_70%),radial-gradient(45%_60%_at_5%_100%,rgb(var(--c-blue-light)/0.28),transparent_70%)]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(75%_80%_at_50%_30%,black,transparent)]"
+        />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h1 className="font-heading text-[40px] font-medium leading-[1.05] tracking-tight md:text-[56px]">
               The{' '}
-              <span className="bg-gradient-to-r from-blue-deep to-blue-light bg-[length:100%_4px] bg-[position:0_92%] bg-no-repeat">
+              <span className="bg-gradient-to-r from-blue-light to-white bg-[length:100%_4px] bg-[position:0_92%] bg-no-repeat">
                 verified
               </span>{' '}
               B2B marketplace for onchain teams.
             </h1>
-            <p className="mt-7 max-w-lg text-lg leading-relaxed text-gray">
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/70">
               Describe what you need. We pick verified auditors, developers and agencies, and tell you why. Free for clients.
             </p>
             <Suspense fallback={null}>
@@ -83,7 +87,7 @@ export default function HomePage() {
           </div>
 
           {/* Illustration of what a shortlist looks like; the providers are placeholders. */}
-          <figure className="rounded-xl border border-line bg-white p-6 shadow-[0_1px_0_rgba(11,21,48,0.04),0_16px_40px_-18px_rgba(29,78,216,0.35)]">
+          <figure className="rounded-xl border border-line bg-white p-6 text-ink shadow-[0_0_0_1px_rgb(255_255_255/0.12),0_30px_80px_-20px_rgb(var(--c-blue-light)/0.55)]">
             <figcaption className="text-xs font-semibold uppercase tracking-wider text-gray-soft">
               Example shortlist
             </figcaption>
@@ -138,7 +142,7 @@ export default function HomePage() {
 
       <section
         id="verified"
-        className="bg-ink px-8 py-20 text-white [background-image:radial-gradient(60%_80%_at_85%_0%,rgba(56,189,248,0.22),transparent_70%),radial-gradient(50%_70%_at_0%_100%,rgba(29,78,216,0.35),transparent_70%)]"
+        className="bg-ink px-8 py-20 text-white [background-image:radial-gradient(60%_80%_at_85%_0%,rgb(var(--c-blue-light)/0.22),transparent_70%),radial-gradient(50%_70%_at_0%_100%,rgb(var(--c-blue-deep)/0.35),transparent_70%)]"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="max-w-2xl font-heading text-3xl font-medium tracking-tight md:text-4xl">
