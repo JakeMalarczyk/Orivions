@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent, type ReactNode, type ChangeEvent } fr
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import { HERO_GLOW, HeroBackdrop } from '@/components/PageHero';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import { supabase } from '@/lib/supabase';
 import { trackEvent } from '@/lib/analytics';
@@ -103,16 +104,17 @@ export default function AuthForm() {
 
   return (
     <div className="grid min-h-screen md:grid-cols-2">
-      <div className="hidden flex-col justify-center bg-ink px-16 py-20 text-white md:flex">
-        <div className="flex items-center gap-2.5">
+      <div className={`relative hidden flex-col justify-center overflow-hidden bg-ink px-16 py-20 text-white md:flex ${HERO_GLOW}`}>
+        <HeroBackdrop />
+        <Link href="/" className="relative flex items-center gap-2.5" aria-label="Orivions home">
           <Logo size={28} />
-          <span className="font-heading text-lg font-semibold">ORIVIONS</span>
-        </div>
-        <h1 className="mt-10 font-heading text-3xl font-semibold leading-tight">
+          <span className="font-heading text-2xl font-medium">Orivions</span>
+        </Link>
+        <h1 className="relative mt-10 font-heading text-[40px] font-medium leading-[1.1] tracking-tight">
           The <span className="text-blue-light">verified B2B marketplace</span> for onchain teams.
         </h1>
-        <p className="mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted auditors, developers and agencies, or get found by the clients who need you.</p>
-        <div className="mt-12 flex gap-8 text-sm">
+        <p className="relative mt-4 max-w-sm text-white/70">Discover, verify, and hire trusted auditors, developers and agencies, or get found by the clients who need you.</p>
+        <div className="relative mt-12 flex gap-8 text-sm">
           <div>
             <div className="font-heading text-2xl font-semibold">Free</div>
             <div className="text-white/60">For client teams</div>
@@ -130,7 +132,10 @@ export default function AuthForm() {
 
       <div className="flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-sm">
-          <h2 className="font-heading text-2xl font-semibold">
+          <Link href="/" className="mb-8 inline-flex items-center gap-2 rounded-lg border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-blue-deep hover:text-blue-deep">
+            <span aria-hidden>←</span> Back to home
+          </Link>
+          <h2 className="font-heading text-3xl font-medium">
             {mode === 'login' ? 'Welcome back.' : 'Create your account.'}
           </h2>
           <p className="mt-1 text-sm text-gray">
@@ -221,10 +226,6 @@ export default function AuthForm() {
               {mode === 'login' ? 'Sign up' : 'Log in'}
             </button>
           </div>
-
-          <Link href="/" className="mt-8 block text-center text-xs text-gray-soft">
-            ← Back to Orivions
-          </Link>
         </div>
       </div>
 

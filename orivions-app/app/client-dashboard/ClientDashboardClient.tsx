@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import { HERO_GLOW } from '@/components/PageHero';
 import { supabase, type Lead, type Company, type LeadStatus } from '@/lib/supabase';
 
 interface EnrichedLead extends Lead {
@@ -65,18 +66,18 @@ export default function ClientDashboardClient() {
 
   return (
     <div className="min-h-screen bg-bg-soft">
-      <header className="border-b border-line bg-white">
-        <nav className="mx-auto flex max-w-4xl items-center justify-between px-8 py-4">
+      <header className={`relative overflow-hidden bg-ink text-white ${HERO_GLOW}`}>
+        <nav className="relative mx-auto flex max-w-4xl items-center justify-between px-8 py-4">
           <Link href="/" className="flex items-center gap-2.5">
             <Logo size={24} />
-            <span className="font-heading text-base font-semibold">ORIVIONS</span>
-            <span className="ml-1 border-l border-line pl-2.5 text-xs text-gray-soft">Client Dashboard</span>
+            <span className="font-heading text-xl font-medium">Orivions</span>
+            <span className="ml-1 border-l border-white/25 pl-2.5 text-xs text-white/60">Client Dashboard</span>
           </Link>
           <div className="flex items-center gap-5 text-sm">
-            <Link href="/providers" className="text-gray-soft hover:text-ink">
+            <Link href="/providers" className="text-white/70 hover:text-white">
               Browse providers
             </Link>
-            <Link href="/login" className="text-gray-soft hover:text-danger">
+            <Link href="/login" className="text-white/70 hover:text-white">
               Log out
             </Link>
           </div>

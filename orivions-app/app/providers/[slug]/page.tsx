@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import ProviderContactForm from '@/components/ProviderContactForm';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 import { getVerifiedProvider, listVerifiedProviders, websiteUrl } from '@/lib/providers';
@@ -123,24 +124,26 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
   return (
     <>
       <Header />
+      <PageHero
+        width="max-w-4xl"
+        eyebrow={
+          <>
+            <Link href="/providers" className="hover:text-white">Providers</Link> / {provider.category}
+          </>
+        }
+        title={provider.name}
+      >
+        <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+          ✓ Verified on Orivions
+        </span>
+        {provider.founding_provider && (
+          <span className="rounded-full border border-blue-light/40 bg-blue-light/10 px-3 py-1 text-xs font-semibold text-blue-light">
+            ★ Founding Provider
+          </span>
+        )}
+      </PageHero>
       <div className="mx-auto max-w-4xl px-8 pb-20 pt-10">
-        <p className="text-sm text-gray-soft">
-          <Link href="/" className="text-ink">Orivions</Link> /{' '}
-          <Link href="/providers" className="text-ink">Providers</Link> / {provider.name}
-        </p>
-
-        <div className="mt-6 flex flex-wrap items-center gap-2.5">
-          <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">{provider.name}</h1>
-          <span className="rounded-full bg-ok/10 px-2.5 py-1 text-xs font-bold text-ok">✓ Verified on Orivions</span>
-          {provider.founding_provider && (
-            <span className="rounded-full bg-ink/5 px-2.5 py-1 text-xs font-bold text-ink">
-              ★ Founding Provider
-            </span>
-          )}
-        </div>
-        <div className="mt-2 text-sm font-semibold text-ink">{provider.category}</div>
-
-        <div className="mt-8 grid gap-8 md:grid-cols-[1.5fr_1fr]">
+        <div className="grid gap-8 md:grid-cols-[1.5fr_1fr]">
           <div>
             <p className="text-base leading-relaxed text-ink/90">
               {provider.description || `${provider.name} is a verified ${provider.category.toLowerCase()} provider on Orivions.`}

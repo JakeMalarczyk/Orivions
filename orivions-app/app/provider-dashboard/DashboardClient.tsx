@@ -4,6 +4,7 @@ import { useEffect, useState, type ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import { HERO_GLOW } from '@/components/PageHero';
 import {
   supabase,
   PROVIDER_CATEGORIES,
@@ -86,18 +87,18 @@ export default function DashboardClient() {
 
   return (
     <div className="flex min-h-screen">
-      <aside className="hidden w-60 flex-col border-r border-line bg-bg-soft p-5 md:flex">
-        <div className="flex items-center gap-2.5 px-1">
+      <aside className={`relative hidden w-60 flex-col overflow-hidden bg-ink p-5 text-white md:flex ${HERO_GLOW}`}>
+        <Link href="/" className="relative flex items-center gap-2.5 px-1">
           <Logo size={24} />
-          <span className="font-heading text-sm font-semibold">ORIVIONS</span>
-        </div>
-        <nav className="mt-8 flex flex-1 flex-col gap-1">
+          <span className="font-heading text-xl font-medium">Orivions</span>
+        </Link>
+        <nav className="relative mt-8 flex flex-1 flex-col gap-1">
           {(['overview', 'profile', 'portfolio', 'services', 'leads'] as Panel[]).map((p) => (
             <button
               key={p}
               onClick={() => setPanel(p)}
               className={`rounded-lg px-3 py-2 text-left text-sm capitalize transition ${
-                panel === p ? 'bg-white font-semibold shadow-sm' : 'text-gray hover:bg-white/60'
+                panel === p ? 'bg-white/15 font-semibold text-white' : 'text-white/70 hover:bg-white/10 hover:text-white'
               }`}
             >
               {p}
@@ -110,13 +111,13 @@ export default function DashboardClient() {
           ))}
           <Link
             href="/ai-proposal-generator"
-            className="mt-1 flex items-center rounded-lg px-3 py-2 text-sm text-gray hover:bg-white/60"
+            className="mt-1 flex items-center rounded-lg px-3 py-2 text-sm text-white/70 hover:bg-white/10 hover:text-white"
           >
             AI Proposal Generator
-            <span className="ml-auto rounded-full bg-warn/15 px-1.5 py-0.5 text-[9px] font-bold text-warn">AI</span>
+            <span className="ml-auto rounded-full bg-blue-light/20 px-1.5 py-0.5 text-[9px] font-bold text-blue-light">AI</span>
           </Link>
         </nav>
-        <Link href="/login" className="px-3 py-2 text-xs text-gray-soft hover:text-danger">
+        <Link href="/login" className="relative px-3 py-2 text-xs text-white/60 hover:text-white">
           ← Log out
         </Link>
       </aside>
