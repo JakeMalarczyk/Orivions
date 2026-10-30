@@ -47,13 +47,12 @@ export default function BlogIndexPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-2xl px-6 pb-20 pt-14">
-        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+      <div className="mx-auto max-w-3xl px-6 pb-24 pt-16">
+        <h1 className="font-heading text-[36px] font-medium leading-[1.1] tracking-tight md:text-[52px]">
           Building the business layer for Solana, in public.
         </h1>
-        <p className="mt-3 text-gray">
-          Practical guides for hiring (and being hired) in the Solana ecosystem, product updates
-          with real numbers, and market data from the platform. No hype, no filler.
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray">
+          Guides for hiring in the Solana ecosystem, and notes from building Orivions.
         </p>
         <p className="mt-2 text-sm">
           <Link href="/solana-glossary" className="text-blue-deep">
@@ -61,28 +60,28 @@ export default function BlogIndexPage() {
           </Link>
         </p>
 
-        <div className="mt-10 flex flex-col gap-4">
+        <div className="mt-12 divide-y divide-line border-y border-line">
           {posts.map((p) => (
             <Link
               key={p.slug}
               href={`/blog/${p.slug}`}
-              className="block rounded-2xl border border-line p-6 transition hover:border-blue-deep hover:shadow-md"
+              className="group block py-7"
             >
-              <div className="text-xs font-medium uppercase tracking-wide text-gray-soft">
+              <div className="text-xs font-semibold uppercase tracking-wider text-gray-soft">
                 {p.category} · <time dateTime={p.datePublished}>{formatPostDate(p.datePublished)}</time> ·{' '}
                 {p.readingMinutes} min read
               </div>
-              <h2 className="mt-2 font-heading text-xl font-semibold leading-snug">{p.title}</h2>
-              <p className="mt-2 text-sm text-gray">{p.excerpt}</p>
+              <h2 className="mt-2 font-heading text-[26px] font-medium leading-snug group-hover:text-blue-deep">{p.title}</h2>
+              <p className="mt-2 max-w-2xl text-gray">{p.excerpt}</p>
               <Tags tags={p.tags} />
             </Link>
           ))}
 
           {UPCOMING.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-dashed border-line p-6">
+            <div key={p.title} className="py-7">
               <div className="text-xs font-medium uppercase tracking-wide text-gray-soft">Coming soon</div>
-              <h2 className="mt-2 font-heading text-xl font-semibold leading-snug">{p.title}</h2>
-              <p className="mt-2 text-sm text-gray">{p.excerpt}</p>
+              <h2 className="mt-2 font-heading text-[26px] font-medium leading-snug text-gray">{p.title}</h2>
+              <p className="mt-2 max-w-2xl text-gray">{p.excerpt}</p>
               <Tags tags={p.tags} />
             </div>
           ))}

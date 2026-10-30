@@ -80,16 +80,16 @@ function jsonLd(post: Post) {
 }
 
 export function H2({ children }: { children: ReactNode }) {
-  return <h2 className="mt-10 font-heading text-[22px] font-semibold">{children}</h2>;
+  return <h2 className="mt-12 font-heading text-[28px] font-medium leading-tight">{children}</h2>;
 }
 
 export function P({ children }: { children: ReactNode }) {
-  return <p className="mt-3 leading-relaxed text-[#27272E]">{children}</p>;
+  return <p className="mt-4 text-[17px] leading-[1.75] text-[#2A2924]">{children}</p>;
 }
 
 export function Callout({ children }: { children: ReactNode }) {
   return (
-    <div className="mt-6 rounded-xl border border-line border-l-[3px] border-l-blue-deep bg-bg-soft p-5 text-[15px]">
+    <div className="mt-8 border-l-2 border-blue-deep bg-bg-soft px-6 py-5 text-[15px] leading-relaxed">
       {children}
     </div>
   );
@@ -97,7 +97,7 @@ export function Callout({ children }: { children: ReactNode }) {
 
 export function BulletList({ items }: { items: [string, ReactNode][] }) {
   return (
-    <ul className="mt-3 list-disc space-y-2.5 pl-5 leading-relaxed text-[#27272E]">
+    <ul className="mt-3 list-disc space-y-2.5 pl-5 text-[17px] leading-[1.7] text-[#2A2924]">
       {items.map(([lead, rest]) => (
         <li key={lead}>
           <b>{lead}</b> {rest}
@@ -112,11 +112,11 @@ function RelatedPosts({ slug }: { slug: string }) {
   if (!related.length) return null;
   return (
     <section className="mt-12">
-      <h2 className="font-heading text-[22px] font-semibold">Related reading</h2>
-      <ul className="mt-4 space-y-3">
+      <h2 className="font-heading text-[28px] font-medium">Related reading</h2>
+      <ul className="mt-4 divide-y divide-line border-y border-line">
         {related.map((p) => (
           <li key={p.slug}>
-            <Link href={`/blog/${p.slug}`} className="block rounded-2xl border border-line p-5 hover:border-blue-deep">
+            <Link href={`/blog/${p.slug}`} className="block py-5 hover:text-blue-deep">
               <span className="font-semibold">{p.title}</span>
               <span className="mt-1 block text-sm text-gray">{p.description}</span>
             </Link>
@@ -151,18 +151,18 @@ export default function BlogPost({
   return (
     <>
       <Header />
-      <article className="mx-auto max-w-2xl px-6 pb-20 pt-12">
+      <article className="mx-auto max-w-[44rem] px-6 pb-24 pt-14">
         <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/blog" className="text-blue-deep">Blog</Link> / {breadcrumbLabel}
+          <Link href="/" className="hover:text-ink">Orivions</Link> /{' '}
+          <Link href="/blog" className="hover:text-ink">Blog</Link> / {breadcrumbLabel}
         </p>
-        <div className="mt-5 text-xs font-medium uppercase tracking-wide text-gray-soft">
+        <div className="mt-8 text-xs font-semibold uppercase tracking-wider text-gray-soft">
           {post.category} · {post.readingMinutes} min read
         </div>
-        <h1 className="mt-3 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[34px]">
+        <h1 className="mt-4 font-heading text-[34px] font-medium leading-[1.1] tracking-tight md:text-[46px]">
           {post.title}
         </h1>
-        <p className="mt-4 text-sm text-gray-soft">
+        <p className="mt-6 border-b border-line pb-6 text-sm text-gray-soft">
           By{' '}
           <Link href="/about#kuba-malarczyk" className="font-semibold text-gray hover:text-ink">
             {AUTHOR.name}
@@ -178,13 +178,13 @@ export default function BlogPost({
         </p>
 
         {answer ? (
-          <p className="mt-6 text-[17px] leading-relaxed text-ink">{answer}</p>
+          <p className="mt-8 font-heading text-[21px] leading-[1.5] text-ink">{answer}</p>
         ) : null}
 
         {glance ? (
           <div className="mt-6">
-            <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">{glance.caption}</div>
-            <div className="mt-3 overflow-x-auto rounded-2xl border border-line">
+            <div className="text-xs font-semibold uppercase tracking-wider text-gray-soft">{glance.caption}</div>
+            <div className="mt-3 overflow-x-auto rounded-lg border border-line bg-white">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-line bg-bg-soft text-left text-xs uppercase text-gray-soft">
@@ -211,8 +211,8 @@ export default function BlogPost({
         ) : null}
 
         {summary?.length ? (
-          <div className="mt-8 rounded-2xl border border-line bg-bg-soft p-6">
-            <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">Key takeaways</div>
+          <div className="mt-8 border-l-2 border-blue-deep pl-6">
+            <div className="text-xs font-semibold uppercase tracking-wider text-gray-soft">Key takeaways</div>
             <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-[#27272E]">
               {summary.map((s) => (
                 <li key={s}>{s}</li>
@@ -225,23 +225,26 @@ export default function BlogPost({
 
         {post.faqs?.length ? (
           <section className="mt-12">
-            <h2 className="font-heading text-[22px] font-semibold">Frequently asked questions</h2>
-            <div className="mt-4 space-y-3">
+            <h2 className="font-heading text-[28px] font-medium">Frequently asked questions</h2>
+            <div className="mt-4 divide-y divide-line border-y border-line">
               {post.faqs.map(({ q, a }) => (
-                <div key={q} className="rounded-2xl border border-line p-5">
-                  <h3 className="font-semibold">{q}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-gray">{a}</p>
-                </div>
+                <details key={q} className="group py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+                    {q}
+                    <span aria-hidden className="text-xl text-gray-soft transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-2 text-[15px] leading-relaxed text-gray">{a}</p>
+                </details>
               ))}
             </div>
           </section>
         ) : null}
 
         {cta && (
-          <div className="mt-12 rounded-2xl bg-ink p-7 text-white">
-            <h2 className="font-heading text-xl font-semibold">{cta.title}</h2>
+          <div className="mt-14 rounded-xl bg-ink p-8 text-white [background-image:radial-gradient(70%_100%_at_100%_0%,rgba(56,189,248,0.25),transparent_70%)]">
+            <h2 className="font-heading text-2xl font-medium">{cta.title}</h2>
             <p className="mt-2 text-sm text-white/75">{cta.text}</p>
-            <Link href={cta.href} className="mt-4 inline-block rounded-xl bg-white px-6 py-3 text-sm font-semibold text-ink">
+            <Link href={cta.href} className="mt-4 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink">
               {cta.label}
             </Link>
           </div>

@@ -67,10 +67,9 @@ export default function WaitlistForm() {
 
   return (
     <div className="mx-auto max-w-lg text-center">
-      <h2 className="font-heading text-3xl font-medium">Not ready to browse yet?</h2>
+      <h2 className="font-heading text-3xl font-medium">Not ready yet?</h2>
       <p className="mt-2 text-sm text-gray">
-        Leave your email and we&apos;ll send you the highlights: new verified providers, new
-        categories, no spam.
+        Leave your email for new verified providers. No spam.
       </p>
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-2 sm:flex-row">
         <input

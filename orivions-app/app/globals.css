@@ -18,3 +18,13 @@ html {
 h1, h2, h3 {
   font-family: var(--font-heading);
 }
+
+::selection {
+  background: #38bdf8;
+  color: #0b1530;
+}
+
+:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}

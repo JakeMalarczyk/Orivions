@@ -104,30 +104,30 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
     <>
       <Header />
 
-      <div className="mx-auto max-w-3xl px-8 pb-20 pt-6">
+      <div className="mx-auto max-w-3xl px-8 pb-24 pt-10">
         <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/providers" className="text-blue-deep">Providers</Link> / {breadcrumbLabel}
+          <Link href="/" className="hover:text-ink">Orivions</Link> /{' '}
+          <Link href="/providers" className="hover:text-ink">Providers</Link> / {breadcrumbLabel}
         </p>
 
-        <h1 className="mt-4 font-heading text-3xl font-semibold tracking-tight md:text-4xl">{h1}</h1>
-        <p className="mt-4 max-w-xl text-lg text-gray">{lede}</p>
+        <h1 className="mt-6 font-heading text-[36px] font-medium leading-[1.1] tracking-tight md:text-[52px]">{h1}</h1>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray">{lede}</p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/smart-match" className="rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white">
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/smart-match" className="rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-white">
             {ctaPrimary}
           </Link>
-          <Link href="/providers" className="rounded-xl border border-line bg-white px-6 py-3 text-sm font-semibold">
+          <Link href="/providers" className="rounded-lg border border-ink/20 px-6 py-3 text-sm font-semibold hover:border-ink">
             Browse all categories
           </Link>
         </div>
 
-        <article className="mt-12 space-y-8">
+        <article className="mt-16 space-y-12">
           {sections.map((s) => (
             <section key={s.heading}>
-              <h2 className="text-xl font-semibold">{s.heading}</h2>
+              <h2 className="font-heading text-[28px] font-medium leading-tight">{s.heading}</h2>
               {s.body && (
-                <p className="mt-3 text-[15px] text-gray">
+                <p className="mt-4 text-[17px] leading-[1.75] text-gray">
                   {s.body}
                   {s.linkToInsights && (
                     <>
@@ -144,7 +144,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
                 </p>
               )}
               {s.bullets && (
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-[15px] text-gray">
+                <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[17px] leading-[1.7] text-gray">
                   {s.bullets.map(([lead, rest]) => (
                     <li key={lead}>
                       <b className="text-ink">{lead}</b>: {rest}
@@ -156,7 +156,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
           ))}
 
           <section>
-            <h2 className="text-xl font-semibold">{providersHeading}</h2>
+            <h2 className="font-heading text-[28px] font-medium leading-tight">{providersHeading}</h2>
             <Suspense fallback={<p className="mt-4 text-sm text-gray-soft">Loading providers…</p>}>
               <CategoryProviders category={category} />
             </Suspense>
@@ -164,11 +164,11 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
 
           {guides.length > 0 && (
             <section>
-              <h2 className="text-xl font-semibold">Guides</h2>
-              <ul className="mt-3 space-y-2.5">
+              <h2 className="font-heading text-[28px] font-medium leading-tight">Guides</h2>
+              <ul className="mt-4 divide-y divide-line border-y border-line">
                 {guides.map((p) => (
                   <li key={p.slug}>
-                    <Link href={`/blog/${p.slug}`} className="block rounded-xl border border-line p-4 hover:border-blue-deep">
+                    <Link href={`/blog/${p.slug}`} className="block py-4 hover:text-blue-deep">
                       <span className="text-[15px] font-semibold">{p.title}</span>
                       <span className="mt-1 block text-sm text-gray">{p.description}</span>
                     </Link>
@@ -179,22 +179,25 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
           )}
 
           <section>
-            <h2 className="text-xl font-semibold">Frequently asked questions</h2>
-            <div className="mt-3 divide-y divide-line border-t border-line">
+            <h2 className="font-heading text-[28px] font-medium leading-tight">Frequently asked questions</h2>
+            <div className="mt-4 divide-y divide-line border-y border-line">
               {faqs.map(({ q, a }) => (
-                <div key={q} className="py-4">
-                  <h3 className="font-semibold">{q}</h3>
-                  <p className="mt-1.5 text-sm text-gray">{a}</p>
-                </div>
+                <details key={q} className="group py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+                    {q}
+                    <span aria-hidden className="text-xl text-gray-soft transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-2 text-[15px] leading-relaxed text-gray">{a}</p>
+                </details>
               ))}
             </div>
           </section>
         </article>
 
-        <div className="mt-14 rounded-2xl bg-bg-soft p-7 text-center">
-          <h2 className="font-heading text-lg font-semibold">{ctaBoxTitle}</h2>
-          <p className="mt-2 text-sm text-gray">{ctaBoxText}</p>
-          <Link href="/smart-match" className="mt-3.5 inline-block rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white">
+        <div className="mt-16 rounded-xl bg-ink p-8 text-white [background-image:radial-gradient(70%_100%_at_100%_0%,rgba(56,189,248,0.25),transparent_70%)]">
+          <h2 className="font-heading text-2xl font-medium">{ctaBoxTitle}</h2>
+          <p className="mt-2 max-w-lg text-white/75">{ctaBoxText}</p>
+          <Link href="/smart-match" className="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink">
             Try Smart Match →
           </Link>
         </div>

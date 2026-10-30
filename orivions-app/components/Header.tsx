@@ -21,13 +21,13 @@ export default function Header() {
         </Link>
         <div className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map(({ href, label }) => (
-            <Link key={href} href={href} className="text-sm font-medium text-gray hover:text-ink">
+            <Link key={href} href={href} className="text-sm font-medium text-gray hover:text-blue-deep">
               {label}
             </Link>
           ))}
           <Link
             href="/founding-providers"
-            className="rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+            className="rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-blue-deep"
           >
             List your company
           </Link>
