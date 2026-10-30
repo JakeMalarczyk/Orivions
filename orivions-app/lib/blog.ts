@@ -51,9 +51,9 @@ export const isoDate = (d: string) => (d.includes('T') ? d : `${d}T00:00:00+00:0
 export const POSTS: Post[] = [
   {
     slug: 'where-to-find-solana-service-providers',
-    title: 'Where to find Solana auditors, developers and agencies: marketplaces compared',
+    title: 'Where to find Solana auditors, developers and agencies',
     description:
-      'Is there a marketplace for Solana service providers? The main options compared: ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces.',
+      'Is there a marketplace for Solana service providers? The main places teams look: ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces.',
     excerpt:
       'Solana has no single dominant marketplace for hiring auditors, developers or marketing agencies. Where teams look today, what each option is good for, and how to check any provider you find.',
     category: 'Guides',
@@ -182,6 +182,37 @@ export const POSTS: Post[] = [
       {
         q: 'What should a Solana team check before a mainnet launch?',
         a: 'An audit with a completed fix review on a frozen commit, upgrade authority in a multisig or removed on purpose, a verifiable build, token authorities set deliberately, an incident plan, a legal view on the token or product, and one clear launch message.',
+      },
+    ],
+  },
+  {
+    slug: 'solana-audit-readiness-checklist',
+    title: 'Solana audit readiness checklist: 12 things to prepare before the audit starts',
+    description:
+      'What to prepare before a Solana audit: a frozen commit, a short spec, invariants, tests that run in one command, agreed scope and a developer on call.',
+    excerpt:
+      'Every hour an auditor spends on setup is an hour not spent finding bugs. Twelve things to hand over before the start date so the audit time counts.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-10-30',
+    dateModified: '2026-10-30',
+    tags: ['Guides', 'Audits', 'Security', 'Launch'],
+    faqs: [
+      {
+        q: 'How do I prepare for a Solana smart contract audit?',
+        a: 'Freeze a tagged commit, finish the features in scope, write a short spec with the invariants that must always hold, make the tests run in one command, agree the scope and exclusions in writing, and keep a developer available to answer questions.',
+      },
+      {
+        q: 'What do auditors need from me before they start?',
+        a: 'The repository and exact commit hash, build instructions with pinned versions, a description of each instruction and who may call it, the trust model for keys and upgrade authority, and a working test suite.',
+      },
+      {
+        q: 'Does preparing for an audit make it cheaper or faster?',
+        a: 'It rarely removes the booking wait, but it avoids extra review days and back-and-forth, so the audit is less likely to overrun. Less time lost on setup means more time on your logic.',
+      },
+      {
+        q: 'Should I fix known bugs before the audit?',
+        a: 'Yes, and tell the auditors about the ones you know of. Paying for a review of issues you already knew about wastes engineer-days that should go to the problems you have not found.',
       },
     ],
   },

@@ -6,7 +6,7 @@
 export const POST_SEO: Record<string, { title: string; description: string }> = {
   'where-to-find-solana-service-providers': {
     title: 'Where to find Solana service providers',
-    description: 'Is there a marketplace for Solana service providers? Ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces compared.',
+    description: 'Is there a marketplace for Solana service providers? Ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces explained.',
   },
   'how-to-evaluate-a-crypto-market-maker': {
     title: 'How to evaluate a crypto market maker',
@@ -83,6 +83,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
   'what-makes-a-solana-development-company-trustworthy': {
     title: 'What makes a Solana dev company trustworthy',
     description: 'Eight signals you can verify to tell whether a Solana development company is trustworthy: on-chain work, commits, named people, references and code ownership.',
+  },
+  'solana-audit-readiness-checklist': {
+    title: 'Solana audit readiness checklist: 12 items',
+    description: 'What to prepare before a Solana audit: frozen commit, short spec, invariants, tests that run in one command, agreed scope and a developer on call.',
   },
   'how-to-hire-a-solana-development-company': {
     title: 'How to hire a Solana development company',

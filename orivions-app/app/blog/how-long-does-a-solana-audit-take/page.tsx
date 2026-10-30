@@ -121,6 +121,10 @@ export default function PostPage() {
         the auditors check every fix before the final report. Budget three to ten days for this,
         include it in the quote, and do not schedule the launch for the day the first report lands.
         Our{' '}
+        <Link href="/blog/solana-audit-readiness-checklist" className="text-blue-deep">
+          audit readiness checklist
+        </Link>{' '}
+        covers what to prepare, and our{' '}
         <Link href="/blog/how-to-read-a-smart-contract-audit-report" className="text-blue-deep">
           guide to reading an audit report
         </Link>{' '}
