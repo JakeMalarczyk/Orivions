@@ -7,7 +7,7 @@
   --c-ink: 5 9 26;
   --c-paper: 249 251 255;
   --c-gray: 74 85 110;
-  --c-gray-soft: 100 112 138;
+  --c-gray-soft: 88 100 124;
   --c-line: 223 230 245;
   --c-bg-soft: 240 245 255;
   --c-blue-deep: 37 71 245;
@@ -39,4 +39,14 @@ h1, h2, h3 {
 :focus-visible {
   outline: 2px solid rgb(var(--c-blue-deep));
   outline-offset: 2px;
+}
+
+/* Inline links inside running text are underlined so they do not rely on colour alone. */
+p a.text-blue-deep,
+li a.text-blue-deep,
+article a.text-blue-deep,
+dd a.text-blue-deep {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
