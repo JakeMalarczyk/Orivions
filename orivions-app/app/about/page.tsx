@@ -4,7 +4,6 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { FOUNDER_JSONLD, SITE_URL, ogImageUrl } from '@/lib/blog';
-import { CONTACT_EMAIL } from '@/lib/contact';
 
 const DESCRIPTION =
   'Orivions is the verified B2B marketplace for onchain teams. How it works for teams and providers, how verification works and how Orivions makes money.';
@@ -175,33 +174,6 @@ export default function AboutPage() {
           </Link>
           .
         </p>
-
-        <section id="kuba-malarczyk" className="scroll-mt-24">
-          <H2>Who builds Orivions</H2>
-          <div className="mt-5 rounded-2xl border border-line p-5">
-            <div className="font-semibold">Jakub (Kuba) Malarczyk</div>
-            <div className="text-sm text-gray-soft">Founder, Orivions</div>
-            <p className="mt-3 text-sm leading-relaxed text-gray">
-              Kuba founded Orivions and writes the guides on the{' '}
-              <Link href="/blog" className="text-blue-deep">
-                Orivions blog
-              </Link>
-              . Updates are posted on{' '}
-              <a href="https://x.com/Orivions" className="text-blue-deep" rel="me">
-                X (@Orivions)
-              </a>
-              . Email:{' '}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-deep">
-                {CONTACT_EMAIL}
-              </a>
-              {' '}or see{' '}
-              <Link href="/contact" className="text-blue-deep">
-                Contact
-              </Link>
-              .
-            </p>
-          </div>
-        </section>
 
         <H2>Our principles</H2>
         <div className="mt-5 grid gap-3 sm:grid-cols-2">

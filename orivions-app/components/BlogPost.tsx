@@ -164,9 +164,7 @@ export default function BlogPost({
         </h1>
         <p className="mt-6 border-b border-line pb-6 text-sm text-gray-soft">
           By{' '}
-          <Link href="/about#kuba-malarczyk" className="font-semibold text-gray hover:text-ink">
-            {AUTHOR.name}
-          </Link>
+          <span className="font-semibold text-gray">{AUTHOR.name}</span>
           , {AUTHOR.role}
           {' '}·{' '}
           <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>

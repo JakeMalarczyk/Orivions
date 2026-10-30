@@ -26,13 +26,13 @@ export interface Post {
   faqs?: PostFaq[];
 }
 
-// Articles are written by the founder. The Person entity lives on /about
-// (section #kuba-malarczyk). Every page emits the same node under the same @id,
-// so search engines merge it into one person instead of two conflicting ones.
+// Articles are written by the founder. Every page emits the same Person node
+// under the same @id, so search engines merge it into one person instead of two
+// conflicting ones.
 export const AUTHOR = {
   name: 'Kuba Malarczyk',
   role: 'Founder',
-  url: `${SITE_URL}/about#kuba-malarczyk`,
+  url: `${SITE_URL}/about`,
 };
 
 export const FOUNDER_JSONLD = {
