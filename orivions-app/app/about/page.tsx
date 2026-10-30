@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero, { HERO_PRIMARY, HERO_SECONDARY } from '@/components/PageHero';
 import { FOUNDER_JSONLD, SITE_URL, ogImageUrl } from '@/lib/blog';
 
 const DESCRIPTION =
@@ -127,30 +128,21 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-3xl px-6 pb-12 pt-12">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> / About
-        </p>
-
-        <div className="mt-5 text-xs font-bold uppercase tracking-wide text-blue-deep">About Orivions</div>
-        <h1 className="mt-3 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[42px]">
-          The verified B2B marketplace for onchain teams.
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg text-gray">
-          Orivions helps onchain teams find auditors, developers and growth partners they can actually
-          trust. Describe what you need in plain English, and Smart Match suggests the one to three
-          best-fitting providers, each checked by a person before being marked Verified.
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Link href="/smart-match" className="rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white">
-            Find a provider
-          </Link>
-          <Link href="/login" className="rounded-xl border border-line bg-white px-6 py-3 text-sm font-semibold">
-            List your company
-          </Link>
-        </div>
-
-        <dl className="mt-12 divide-y divide-line rounded-2xl border border-line">
+      <PageHero
+        narrow
+        eyebrow="About Orivions"
+        title="The verified B2B marketplace for onchain teams."
+        lede="Orivions helps onchain teams find auditors, developers and growth partners they can actually trust. Describe what you need, and Smart Match suggests the best-fitting providers, each checked by a person before being marked Verified."
+      >
+        <Link href="/smart-match" className={HERO_PRIMARY}>
+          Find a provider
+        </Link>
+        <Link href="/founding-providers" className={HERO_SECONDARY}>
+          List your company
+        </Link>
+      </PageHero>
+      <div className="mx-auto max-w-3xl px-8 pb-12 pt-12">
+        <dl className="divide-y divide-line rounded-xl border border-line bg-white">
           {FACTS.map(([k, v]) => (
             <div key={k} className="grid gap-1 p-4 sm:grid-cols-[170px_1fr]">
               <dt className="text-sm font-semibold">{k}</dt>

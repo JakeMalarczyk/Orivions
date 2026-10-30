@@ -2,6 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero, { HERO_PRIMARY, HERO_SECONDARY } from '@/components/PageHero';
 import CategoryProviders from '@/components/CategoryProviders';
 import { SITE_URL, sortedPosts } from '@/lib/blog';
 
@@ -104,24 +105,25 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
     <>
       <Header />
 
-      <div className="mx-auto max-w-3xl px-8 pb-24 pt-10">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="hover:text-ink">Orivions</Link> /{' '}
-          <Link href="/providers" className="hover:text-ink">Providers</Link> / {breadcrumbLabel}
-        </p>
+      <PageHero
+        narrow
+        eyebrow={
+          <>
+            <Link href="/providers" className="hover:text-white">Providers</Link> / {breadcrumbLabel}
+          </>
+        }
+        title={h1}
+        lede={lede}
+      >
+        <Link href="/smart-match" className={HERO_PRIMARY}>
+          {ctaPrimary}
+        </Link>
+        <Link href="/providers" className={HERO_SECONDARY}>
+          Browse all categories
+        </Link>
+      </PageHero>
 
-        <h1 className="mt-6 font-heading text-[36px] font-medium leading-[1.1] tracking-tight md:text-[52px]">{h1}</h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray">{lede}</p>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/smart-match" className="rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-white">
-            {ctaPrimary}
-          </Link>
-          <Link href="/providers" className="rounded-lg border border-ink/20 px-6 py-3 text-sm font-semibold hover:border-ink">
-            Browse all categories
-          </Link>
-        </div>
-
+      <div className="mx-auto max-w-3xl px-8 pb-24 pt-4">
         <article className="mt-16 space-y-12">
           {sections.map((s) => (
             <section key={s.heading}>

@@ -2,7 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
-import { EarlyAccessBadge } from '@/components/EarlyAccess';
+import { HERO_GLOW, HeroBackdrop } from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 import { FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
 
@@ -99,9 +99,10 @@ export default async function FoundingProvidersPage() {
   return (
     <>
       <Header />
-      <section className="bg-ink px-6 pb-16 pt-14 text-white">
-        <div className="mx-auto max-w-4xl text-center">
-          <EarlyAccessBadge className="border-white/20 bg-white/10 text-blue-light" />
+      <section className={`relative overflow-hidden bg-ink px-6 pb-16 pt-14 text-white ${HERO_GLOW}`}>
+        <HeroBackdrop />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <div className="text-xs font-semibold uppercase tracking-wider text-blue-light">Founding Providers</div>
           <h1 className="mt-6 font-heading text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
             Only 20 Founding Providers. <span className="text-blue-light">Ever.</span>
           </h1>
@@ -123,7 +124,7 @@ export default async function FoundingProvidersPage() {
             </div>
           </div>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Link href="/login?signup=provider" className="rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-ink">
+            <Link href="/login?signup=provider" className="rounded-lg bg-spark px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_8px_30px_-8px_rgb(var(--c-spark)/0.7)] transition hover:brightness-110">
               Apply as a Founding Provider →
             </Link>
             <a href="#how" className="rounded-xl border border-white/25 px-7 py-3.5 text-sm font-semibold text-white">

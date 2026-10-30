@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 import ConciergeForm from '@/components/ConciergeForm';
 import { trackEvent } from '@/lib/analytics';
+import PageHero from '@/components/PageHero';
 import { EarlyAccessBadge } from '@/components/EarlyAccess';
 
 // Shape returned by /api/smart-match, a public subset of the Company row
@@ -44,15 +45,14 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
   // Early access: every shortlist is hand-picked by the Orivions team.
   if (!autoMatch) {
     return (
-      <div className="mx-auto max-w-2xl px-8 pb-20 pt-14 text-center">
-        <EarlyAccessBadge className="mb-6" />
-        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Describe what you need. We&apos;ll find your match.
-        </h1>
-        <p className="mx-auto mt-4 max-w-lg text-gray">
-          During early access, every shortlist is hand-picked by our team: up to three verified
-          Solana providers that fit your scope, budget and timeline, with a reason for each pick.
-        </p>
+      <>
+      <PageHero
+        align="center"
+        eyebrow="Smart Match · Early access"
+        title="Describe what you need. We'll find your match."
+        lede="During early access, every shortlist is hand-picked by our team: up to three verified Solana providers that fit your scope, budget and timeline, with a reason for each."
+      />
+      <div className="mx-auto max-w-2xl px-8 pb-20 pt-12 text-center">
         <div className="mt-8">
           <ConciergeForm
             need={need.trim()}
@@ -76,6 +76,7 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
           </li>
         </ol>
       </div>
+      </>
     );
   }
 
@@ -129,17 +130,15 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-8 pb-20 pt-14 text-center">
-      <div className="mb-5 text-xs font-semibold uppercase tracking-wider text-gray-soft">Smart Match</div>
-      <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-        Describe what you need. We&apos;ll find your match.
-      </h1>
-      <p className="mx-auto mt-4 max-w-lg text-gray">
-        No browsing categories. Tell us about your project in plain English and AI recommends the
-        right verified providers from our directory.
-      </p>
-
-      <div className="mt-8 rounded-2xl border border-line p-2 text-left shadow-sm">
+    <>
+    <PageHero
+      align="center"
+      eyebrow="Smart Match"
+      title="Describe what you need. We'll find your match."
+      lede="No browsing categories. Tell us about your project in plain English and AI recommends the right verified providers."
+    />
+    <div className="mx-auto max-w-2xl px-8 pb-20 pt-12 text-center">
+      <div className="rounded-xl border border-line bg-white p-2 text-left shadow-[0_20px_50px_-24px_rgb(var(--c-blue-deep)/0.35)]">
         <textarea
           value={need}
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setNeed(e.target.value)}
@@ -231,5 +230,6 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
         provider&apos;s portfolio before hiring.
       </p>
     </div>
+    </>
   );
 }

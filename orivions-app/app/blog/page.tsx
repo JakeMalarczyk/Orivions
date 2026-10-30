@@ -2,6 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero, { HERO_SECONDARY } from '@/components/PageHero';
 import { SITE_URL, UPCOMING, formatPostDate, isoDate, postUrl, sortedPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
@@ -47,20 +48,18 @@ export default function BlogIndexPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-3xl px-6 pb-24 pt-16">
-        <h1 className="font-heading text-[36px] font-medium leading-[1.1] tracking-tight md:text-[52px]">
-          Building the business layer for Solana, in public.
-        </h1>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray">
-          Guides for hiring in the Solana ecosystem, and notes from building Orivions.
-        </p>
-        <p className="mt-2 text-sm">
-          <Link href="/solana-glossary" className="text-blue-deep">
-            Solana glossary
-          </Link>
-        </p>
-
-        <div className="mt-12 divide-y divide-line border-y border-line">
+      <PageHero
+        narrow
+        eyebrow="Blog"
+        title="Building the business layer for Solana, in public."
+        lede="Guides for hiring in the Solana ecosystem, and notes from building Orivions."
+      >
+        <Link href="/solana-glossary" className={HERO_SECONDARY}>
+          Solana glossary
+        </Link>
+      </PageHero>
+      <div className="mx-auto max-w-3xl px-8 pb-24 pt-6">
+        <div className="divide-y divide-line border-y border-line">
           {posts.map((p) => (
             <Link
               key={p.slug}

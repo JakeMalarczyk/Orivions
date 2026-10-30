@@ -6,7 +6,8 @@ import { supabase, PROVIDER_CATEGORIES, type Company, type PortfolioItem, type S
 import { isDirectoryOpen } from '@/lib/directory';
 import ConciergeForm from '@/components/ConciergeForm';
 import ProviderContactForm from '@/components/ProviderContactForm';
-import { EarlyAccessBadge, FoundingProviderCard } from '@/components/EarlyAccess';
+import { FoundingProviderCard } from '@/components/EarlyAccess';
+import PageHero from '@/components/PageHero';
 
 // UI strings for this page. The site is English-only by design; these were
 // previously routed through a locale dictionary and prop-drilled three levels
@@ -64,39 +65,34 @@ export default function ProvidersCatalog({ providers }: { providers: Company[] }
   // shortlist and providers can apply for the founding cohort.
   if (!directoryOpen) {
     return (
-      <section className="mx-auto max-w-5xl px-8 pb-20 pt-14">
-        <div className="text-center">
-          <EarlyAccessBadge />
-          <h1 className="mt-5 font-heading text-3xl font-semibold tracking-tight md:text-4xl">{t.title}</h1>
-          <p className="mx-auto mt-3 max-w-2xl text-gray">
-            We are verifying our founding cohort of service companies one by one: real company,
-            confirmed portfolio, a client reference and a call. The public directory opens with that cohort. Until
-            then, our team matches you by hand.
-          </p>
-        </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-[1.4fr_1fr]">
+      <>
+        <PageHero
+          eyebrow="Early access"
+          title={t.title}
+          lede="We verify our founding cohort one by one: real company, confirmed portfolio, a client reference and a call. Until the directory opens, our team matches you by hand."
+        />
+        <section className="mx-auto max-w-5xl px-8 pb-20 pt-12">
+        <div className="grid gap-5 md:grid-cols-[1.4fr_1fr]">
           <ConciergeForm need="" source="providers" />
           <FoundingProviderCard />
         </div>
-      </section>
+        </section>
+      </>
     );
   }
 
   return (
     <>
-      <section className="px-8 pb-6 pt-14 text-center">
-        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">{t.title}</h1>
-        <p className="mt-3 text-gray">{t.sub}</p>
-        <div className="mx-auto mt-7 max-w-xl">
-          <input
+      <PageHero eyebrow="Providers" title={t.title} lede={t.sub}>
+        <div className="w-full max-w-xl">          <input
             type="text"
             value={search}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
             placeholder={t.searchPh}
-            className="w-full rounded-xl border border-line px-5 py-3.5 text-sm outline-none focus:border-blue-light"
+            className="w-full rounded-lg border border-white/20 bg-white/10 px-5 py-3.5 text-sm text-white outline-none placeholder:text-white/50 focus:border-blue-light"
           />
         </div>
-      </section>
+      </PageHero>
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-8 pb-20 md:grid-cols-[220px_1fr]">
         <aside className="flex flex-wrap gap-1.5 md:sticky md:top-20 md:block md:h-fit">

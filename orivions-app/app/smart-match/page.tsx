@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { isDirectoryOpen, verifiedProviderCount } from '@/lib/directory';
 import SmartMatchClient from './SmartMatchClient';
 
@@ -31,15 +32,12 @@ export default async function SmartMatchPage() {
           receive. Keep the h1 and intro here, in the server HTML. */}
       <Suspense
         fallback={
-          <div className="mx-auto max-w-2xl px-8 pb-10 pt-14 text-center">
-            <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-              Describe what you need. <span className="text-blue-deep">We&apos;ll find your match.</span>
-            </h1>
-            <p className="mx-auto mt-4 max-w-lg text-gray">
-              Smart Match turns a plain-English project brief into a shortlist of verified Solana
-              providers: auditors, developers, marketing and growth agencies.
-            </p>
-          </div>
+          <PageHero
+            align="center"
+            eyebrow="Smart Match"
+            title="Describe what you need. We'll find your match."
+            lede="Smart Match turns a plain-English project brief into a shortlist of verified Solana providers: auditors, developers, marketing and growth agencies."
+          />
         }
       >
         <SmartMatchClient autoMatch={autoMatch} />
