@@ -27,6 +27,7 @@ export default function PageHero({
   children,
   align = 'left',
   narrow = false,
+  width,
 }: {
   eyebrow?: ReactNode;
   title: ReactNode;
@@ -35,12 +36,14 @@ export default function PageHero({
   align?: 'left' | 'center';
   /** Align with a max-w-3xl content column below. */
   narrow?: boolean;
+  /** Explicit max-width class, e.g. max-w-2xl, to match the content column below. */
+  width?: string;
 }) {
   const center = align === 'center';
   return (
     <section className={`relative overflow-hidden bg-ink pb-12 pt-12 text-white md:pb-16 md:pt-16 ${HERO_GLOW}`}>
       <HeroBackdrop />
-      <div className={`relative mx-auto px-8 ${narrow ? 'max-w-3xl' : 'max-w-5xl'} ${center ? 'text-center' : ''}`}>
+      <div className={`relative mx-auto px-8 ${width ?? (narrow ? 'max-w-3xl' : 'max-w-5xl')} ${center ? 'text-center' : ''}`}>
         {eyebrow ? (
           <div className="text-xs font-semibold uppercase tracking-wider text-blue-light">{eyebrow}</div>
         ) : null}

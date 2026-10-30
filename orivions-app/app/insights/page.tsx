@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import InsightsClient from './InsightsClient';
 
 export const metadata: Metadata = {
@@ -20,15 +21,12 @@ export default function InsightsPage() {
       {/* The fallback is what crawlers receive, so it carries the h1 and intro. */}
       <Suspense
         fallback={
-          <div className="mx-auto max-w-3xl px-8 pb-10 pt-14 text-center">
-            <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-              Solana Business Infrastructure: Market Insights
-            </h1>
-            <p className="mx-auto mt-3 max-w-xl text-gray">
-              Verified provider supply by category and indicative pricing for Solana audits,
-              development and marketing, updated from the Orivions directory.
-            </p>
-          </div>
+          <PageHero
+            align="center"
+            eyebrow="Market insights"
+            title="Solana Business Infrastructure: Market Insights"
+            lede="Verified provider supply by category and indicative pricing for Solana audits, development and marketing, updated from the Orivions directory."
+          />
         }
       >
         <InsightsClient />

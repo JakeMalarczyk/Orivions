@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { AUTHOR, FOUNDER_JSONLD, SITE_URL, isoDate, formatPostDate, getPost, ogImageUrl, postUrl, relatedPosts, type Post } from '@/lib/blog';
 import { POST_SEO } from '@/lib/seoMeta';
 
@@ -151,30 +152,27 @@ export default function BlogPost({
   return (
     <>
       <Header />
-      <article className="mx-auto max-w-[44rem] px-6 pb-24 pt-14">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="hover:text-ink">Orivions</Link> /{' '}
-          <Link href="/blog" className="hover:text-ink">Blog</Link> / {breadcrumbLabel}
-        </p>
-        <div className="mt-8 text-xs font-semibold uppercase tracking-wider text-gray-soft">
-          {post.category} · {post.readingMinutes} min read
-        </div>
-        <h1 className="mt-4 font-heading text-[34px] font-medium leading-[1.1] tracking-tight md:text-[46px]">
-          {post.title}
-        </h1>
-        <p className="mt-6 border-b border-line pb-6 text-sm text-gray-soft">
-          By{' '}
-          <span className="font-semibold text-gray">{AUTHOR.name}</span>
-          , {AUTHOR.role}
-          {' '}·{' '}
-          <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>
-          {post.dateModified !== post.datePublished && (
-            <>
-              {' '}· Updated <time dateTime={post.dateModified}>{formatPostDate(post.dateModified)}</time>
-            </>
-          )}
-        </p>
-
+      <PageHero
+        width="max-w-[44rem]"
+        eyebrow={
+          <>
+            <Link href="/blog" className="hover:text-white">Blog</Link> · {post.category} · {post.readingMinutes} min read
+          </>
+        }
+        title={post.title}
+        lede={
+          <span className="text-base text-white/60">
+            By <span className="font-semibold text-white/80">{AUTHOR.name}</span>, {AUTHOR.role} ·{' '}
+            <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>
+            {post.dateModified !== post.datePublished && (
+              <>
+                {' '}· Updated <time dateTime={post.dateModified}>{formatPostDate(post.dateModified)}</time>
+              </>
+            )}
+          </span>
+        }
+      />
+      <article className="mx-auto max-w-[44rem] px-8 pb-24 pt-4">
         {answer ? (
           <p className="mt-8 font-heading text-[21px] leading-[1.5] text-ink">{answer}</p>
         ) : null}

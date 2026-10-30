@@ -2,6 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 import { formatUsd } from '@/lib/auditEstimate';
 import {
@@ -122,20 +123,22 @@ export default function DappCostCalculatorPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-5xl px-6 pb-20 pt-12">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/tools" className="text-blue-deep">Free tools</Link> / dApp cost calculator
-        </p>
-        <div className="mt-5 text-xs font-medium uppercase tracking-wide text-gray-soft">Free tool</div>
-        <h1 className="mt-3 max-w-3xl font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[38px]">
-          {TITLE}
-        </h1>
-        <p className="mt-4 max-w-3xl text-gray">
-          Estimate what it costs to build your Solana dApp and how long it takes: programs, frontend,
+      <PageHero
+        eyebrow={
+          <>
+            <Link href="/tools" className="hover:text-white">Free tools</Link> / dApp cost calculator
+          </>
+        }
+        title={TITLE}
+        lede={
+          <>
+            Estimate what it costs to build your Solana dApp and how long it takes: programs, frontend,
           backend and the team that builds it. The range updates as you go. No signup, and nothing you
           enter leaves your browser.
-        </p>
+          </>
+        }
+      />
+      <div className="mx-auto max-w-5xl px-8 pb-20 pt-10">
 
         <div className="mt-8">
           <DappCalculator />

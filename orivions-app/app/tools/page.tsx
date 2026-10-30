@@ -2,6 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 
 // Hub for the free calculators. Each tool also links back here via its breadcrumb.
@@ -66,18 +67,14 @@ export default function ToolsPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-3xl px-6 pb-20 pt-12">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> / Free tools
-        </p>
-        <h1 className="mt-5 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[34px]">
-          Free tools for Solana teams
-        </h1>
-        <p className="mt-3 text-gray">
-          Plan your budget before you talk to providers. Every calculator shows its method and
-          assumptions, so you can check the numbers against real quotes.
-        </p>
-        <ul className="mt-8 space-y-3">
+      <PageHero
+        narrow
+        eyebrow="Free tools"
+        title="Free tools for Solana teams"
+        lede="Plan your budget before you talk to providers. Every calculator shows its method and assumptions, so you can check the numbers against real quotes."
+      />
+      <div className="mx-auto max-w-3xl px-8 pb-20 pt-10">
+        <ul className="space-y-3">
           {TOOLS.map((t) => (
             <li key={t.href}>
               <Link href={t.href} className="block rounded-2xl border border-line p-6 hover:border-blue-deep">

@@ -2,6 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 import { GLOSSARY, shortTerm, termPath } from '@/lib/glossary';
 
@@ -58,18 +59,13 @@ export default function GlossaryPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-2xl px-6 pb-20 pt-12">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> / Solana glossary
-        </p>
-        <h1 className="mt-5 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[34px]">
-          Solana glossary
-        </h1>
-        <p className="mt-3 text-gray">
-          Plain-English definitions of the terms that come up when you build, audit and launch on
-          Solana, or hire a team to do it. Short enough to quote, with links to our deeper guides.
-        </p>
-
+      <PageHero
+        width="max-w-2xl"
+        eyebrow="Reference"
+        title="Solana glossary"
+        lede="Plain-English definitions of the terms that come up when you build, audit and launch on Solana, or hire a team to do it. Short enough to quote, with links to our deeper guides."
+      />
+      <div className="mx-auto max-w-2xl px-8 pb-20 pt-2">
         <nav aria-label="Terms" className="mt-6 flex flex-wrap gap-1.5">
           {terms.map((t) => (
             <a

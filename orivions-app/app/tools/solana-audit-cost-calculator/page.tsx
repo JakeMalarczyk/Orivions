@@ -2,6 +2,7 @@ import { ldJson } from '@/lib/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
 import {
   COMPLEXITY,
@@ -126,18 +127,20 @@ export default function AuditCostCalculatorPage() {
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-5xl px-6 pb-20 pt-12">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/tools" className="text-blue-deep">Free tools</Link> / Audit cost calculator
-        </p>
-        <div className="mt-5 text-xs font-medium uppercase tracking-wide text-gray-soft">Free tool</div>
-        <h1 className="mt-3 max-w-3xl font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[38px]">
-          {TITLE}
-        </h1>
-        <p className="mt-4 max-w-3xl text-gray">
-          {`This Solana audit cost calculator estimates the price and calendar time of an independent security audit from lines of code, number of programs, complexity, framework (Anchor or native Rust) and integrations. It uses ${formatUsd(DAY_RATE_LOW)}-${formatUsd(DAY_RATE_HIGH)} per engineer-day and about ${LINES_PER_ENGINEER_DAY} lines of Anchor code per engineer-day. Free, no signup, and nothing you enter leaves your browser.`}
-        </p>
+      <PageHero
+        eyebrow={
+          <>
+            <Link href="/tools" className="hover:text-white">Free tools</Link> / Audit cost calculator
+          </>
+        }
+        title={TITLE}
+        lede={
+          <>
+            {`This Solana audit cost calculator estimates the price and calendar time of an independent security audit from lines of code, number of programs, complexity, framework (Anchor or native Rust) and integrations. It uses ${formatUsd(DAY_RATE_LOW)}-${formatUsd(DAY_RATE_HIGH)} per engineer-day and about ${LINES_PER_ENGINEER_DAY} lines of Anchor code per engineer-day. Free, no signup, and nothing you enter leaves your browser.`}
+          </>
+        }
+      />
+      <div className="mx-auto max-w-5xl px-8 pb-20 pt-10">
 
         <div className="mt-8">
           <AuditCalculator />

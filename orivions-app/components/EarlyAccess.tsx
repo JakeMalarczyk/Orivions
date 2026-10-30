@@ -33,7 +33,7 @@ export function FoundingProviderCard({ compact = false }: { compact?: boolean })
           Apply as a provider →
         </Link>
         <Link href="/founding-providers" className="text-sm font-semibold text-blue-deep">
-          Learn more
+          About Founding Providers
         </Link>
       </div>
     </div>

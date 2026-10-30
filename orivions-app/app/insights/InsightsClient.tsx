@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { supabase, PROVIDER_CATEGORIES, type Company, type Service } from '@/lib/supabase';
 import { isDirectoryOpen } from '@/lib/directory';
-import { EarlyAccessBadge } from '@/components/EarlyAccess';
+import PageHero from '@/components/PageHero';
 
 export default function InsightsClient() {
   const [providers, setProviders] = useState<Company[]>([]);
@@ -61,29 +61,22 @@ export default function InsightsClient() {
   if (loading) {
     // Same heading as the loaded page, so the server-rendered HTML has an h1.
     return (
-      <div className="mx-auto max-w-3xl px-8 pb-10 pt-14 text-center">
-        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Solana Business Infrastructure: Market Insights
-        </h1>
-        <p className="mx-auto mt-3 max-w-xl text-gray">Loading the latest numbers…</p>
-      </div>
+      <PageHero align="center" eyebrow="Market insights" title="Solana Business Infrastructure: Market Insights" lede="Loading the latest numbers…" />
     );
   }
 
   // Early access: publish market data only once there is a real verified cohort.
   if (!isDirectoryOpen(providers.length)) {
     return (
-      <div className="mx-auto max-w-3xl px-8 pb-20 pt-14 text-center">
-        <EarlyAccessBadge />
-        <h1 className="mt-5 font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Solana Business Infrastructure: Market Insights
-        </h1>
-        <p className="mx-auto mt-3 max-w-xl text-gray">
-          Live supply and pricing data from verified providers is published once our founding cohort
-          is listed, so every number reflects real, checked companies. Until then, plan your budget
-          with our free calculators.
-        </p>
-        <div className="mt-8 grid gap-3 text-left sm:grid-cols-2">
+      <>
+      <PageHero
+        align="center"
+        eyebrow="Market insights · Early access"
+        title="Solana Business Infrastructure: Market Insights"
+        lede="Live supply and pricing data from verified providers is published once our founding cohort is listed, so every number reflects real, checked companies. Until then, plan your budget with our free calculators."
+      />
+      <div className="mx-auto max-w-3xl px-8 pb-20 pt-12 text-center">
+        <div className="grid gap-3 text-left sm:grid-cols-2">
           <Link href="/tools/solana-audit-cost-calculator" className="block rounded-2xl border border-line p-5 hover:border-blue-deep">
             <span className="font-semibold">Solana audit cost calculator →</span>
             <span className="mt-1 block text-sm text-gray">Price range and timeline for auditing your programs.</span>
@@ -103,25 +96,20 @@ export default function InsightsClient() {
           </a>
         </div>
       </div>
+      </>
     );
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-8 pb-20 pt-14">
-      <div className="text-center">
-        <h1 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
-          Solana Business Infrastructure: Market Insights
-        </h1>
-        <p className="mx-auto mt-3 max-w-xl text-gray">
-          Live data from the Orivions directory: verified provider supply by category and
-          indicative pricing. Updated automatically as the network grows.
-        </p>
-        <p className="mt-3 text-xs text-gray-soft">
-          {loading ? 'Loading…' : `Updated ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`}
-        </p>
-      </div>
-
-      <div className="mt-10 grid gap-3.5 sm:grid-cols-3">
+    <>
+    <PageHero
+      align="center"
+      eyebrow="Market insights"
+      title="Solana Business Infrastructure: Market Insights"
+      lede={`Live data from the Orivions directory: verified provider supply by category and indicative pricing. Updated ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.`}
+    />
+    <div className="mx-auto max-w-5xl px-8 pb-20 pt-12">
+      <div className="grid gap-3.5 sm:grid-cols-3">
         <StatCard label="Verified providers" value={providers.length} />
         <StatCard label="Categories with active supply" value={activeCategories.length} />
         <StatCard label="Services listed" value={services.length} />
@@ -213,6 +201,7 @@ export default function InsightsClient() {
         </a>
       </div>
     </div>
+    </>
   );
 }
 

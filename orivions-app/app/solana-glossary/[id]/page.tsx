@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import { POSTS, SITE_URL, ogImageUrl } from '@/lib/blog';
 import { GLOSSARY, getTerm, shortTerm, termPath, type GlossaryTerm } from '@/lib/glossary';
 import { GLOSSARY_DETAILS } from '@/lib/glossaryDetails';
@@ -137,16 +138,18 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ i
   return (
     <>
       <Header />
-      <article className="mx-auto max-w-2xl px-6 pb-20 pt-12">
-        <p className="text-xs text-gray-soft">
-          <Link href="/" className="text-blue-deep">Orivions</Link> /{' '}
-          <Link href="/solana-glossary" className="text-blue-deep">Solana glossary</Link> / {shortTerm(t)}
-        </p>
-        <div className="mt-5 text-xs font-medium uppercase tracking-wide text-gray-soft">Solana glossary</div>
-        <h1 className="mt-3 font-heading text-3xl font-semibold leading-tight tracking-tight md:text-[34px]">{t.term}</h1>
-
-        <div className="mt-6 rounded-2xl border border-line bg-bg-soft p-6">
-          <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">Definition</div>
+      <PageHero
+        width="max-w-2xl"
+        eyebrow={
+          <>
+            <Link href="/solana-glossary" className="hover:text-white">Solana glossary</Link> / {shortTerm(t)}
+          </>
+        }
+        title={t.term}
+      />
+      <article className="mx-auto max-w-2xl px-8 pb-20 pt-2">
+        <div className="rounded-xl border border-line bg-bg-soft p-6">
+          <div className="text-xs font-semibold uppercase tracking-wider text-blue-deep">Definition</div>
           <p className="mt-2 text-[17px] leading-relaxed text-ink">{t.definition}</p>
         </div>
 
