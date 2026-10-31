@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import { HERO_GLOW, HeroBackdrop } from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
-import { FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
+import { FOUNDING_JOINED, FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
 
 // Landing page for provider outreach (DMs link here with ?ref=...). The spot
 // counter is the real number of Founding Provider badges granted in Supabase.
@@ -67,7 +67,7 @@ const FAQS: [string, string][] = [
 ];
 
 export default async function FoundingProvidersPage() {
-  const taken = Math.min(FOUNDING_SPOTS, await foundingProviderCount());
+  const taken = Math.min(FOUNDING_SPOTS, Math.max(FOUNDING_JOINED.length, await foundingProviderCount()));
   const left = FOUNDING_SPOTS - taken;
   const url = `${SITE_URL}/founding-providers`;
 
@@ -122,6 +122,7 @@ export default async function FoundingProvidersPage() {
                 <span key={i} className={`h-2 rounded-full ${i < taken ? 'bg-blue-light' : 'bg-white/15'}`} />
               ))}
             </div>
+            <p className="mt-3 text-xs text-white/60">Already in: {FOUNDING_JOINED.join(' and ')}.</p>
           </div>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Link href="/login?signup=provider" className="rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light">

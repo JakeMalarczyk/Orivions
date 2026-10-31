@@ -30,6 +30,9 @@ export async function verifiedProviderCount(): Promise<number> {
 
 export const FOUNDING_SPOTS = 20;
 
+/** Founding companies that already joined outside the sign-up flow. Shown on /founding-providers. */
+export const FOUNDING_JOINED = ['Legaichain', 'Monethic'];
+
 /** Server-side count of Founding Provider badges already granted. */
 export async function foundingProviderCount(): Promise<number> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
