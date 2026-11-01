@@ -57,6 +57,8 @@ Teams describe what they need in plain English and Smart Match (AI) suggests the
 - Solana smart contract audits: ${SITE_URL}/solana-smart-contract-audits
 - Solana development companies: ${SITE_URL}/solana-development-companies
 - Solana marketing and growth agencies: ${SITE_URL}/solana-marketing-growth-agencies
+- Solana legal and compliance firms: ${SITE_URL}/solana-legal-compliance-firms
+- Solana infrastructure providers: ${SITE_URL}/solana-infrastructure-providers
 - Insights (live provider counts and indicative pricing): ${SITE_URL}/insights
 - Solana glossary: ${SITE_URL}/solana-glossary
 - Blog: ${SITE_URL}/blog
