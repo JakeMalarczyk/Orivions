@@ -54,6 +54,8 @@ Key facts:
 - [Solana smart contract audits](${SITE_URL}/solana-smart-contract-audits): verified auditors for Anchor and native Rust programs, what to look for and typical pricing.
 - [Solana development companies](${SITE_URL}/solana-development-companies): verified teams for programs, dApps and infrastructure.
 - [Solana marketing and growth agencies](${SITE_URL}/solana-marketing-growth-agencies): verified agencies for launches, community and growth.
+- [Solana legal and compliance firms](${SITE_URL}/solana-legal-compliance-firms): firms for token launches, entity structure, contracts and terms.
+- [Solana infrastructure providers](${SITE_URL}/solana-infrastructure-providers): RPC, node, data and DevOps providers.
 
 ${verified ? `## Verified providers\n\n${verified}\n\n` : ''}## Guides and blog
 
