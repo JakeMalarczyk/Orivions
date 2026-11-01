@@ -19,6 +19,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Audit vs bug bounty"
+      answer="A smart contract audit is a structured review of a fixed scope by a hired team before launch, while a bug bounty pays anyone who reports a bug later. A bounty cannot replace an audit, because nobody is obliged to look. The usual order is audit, fix review, launch with a bounty, then re-audit major changes."
       summary={[
         'An audit is a structured review of a fixed scope before launch. A bug bounty rewards anyone who reports a bug later.',
         'A bounty cannot replace an audit: nobody is obliged to look, and bugs are often found after funds are at risk.',

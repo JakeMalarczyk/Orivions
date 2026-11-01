@@ -10,6 +10,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Choosing a Solana marketing agency"
+      answer="To choose a Solana marketing agency, define the outcome first (users, deposits or a retained community), then check verifiable crypto results instead of follower counts. Measure KOL campaigns on wallet connects or deposits. A single campaign push often starts around $2,000-5,000 and retainers run $3,000-10,000 or more per month, so start with a short paid pilot."
       summary={[
         'Define the outcome first (users, deposits, retained community), then hire for it.',
         'Judge agencies on verifiable past results in crypto, ideally on Solana, not on follower counts.',

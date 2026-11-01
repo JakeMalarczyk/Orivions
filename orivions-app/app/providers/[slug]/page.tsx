@@ -19,6 +19,8 @@ const CATEGORY_HUBS: Record<string, { href: string; label: string }> = {
   'Security & Audits': { href: '/solana-smart-contract-audits', label: 'Smart contract audits' },
   Development: { href: '/solana-development-companies', label: 'Development companies' },
   'Marketing & Growth': { href: '/solana-marketing-growth-agencies', label: 'Marketing and growth agencies' },
+  'Legal & Compliance': { href: '/solana-legal-compliance-firms', label: 'Legal and compliance firms' },
+  Infrastructure: { href: '/solana-infrastructure-providers', label: 'Infrastructure providers' },
 };
 
 export async function generateStaticParams() {

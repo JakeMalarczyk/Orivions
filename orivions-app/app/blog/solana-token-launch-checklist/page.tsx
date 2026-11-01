@@ -10,6 +10,19 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Token launch checklist"
+      answer="A Solana token launch checklist covers the token program and extensions, the mint, freeze and metadata authorities, metadata, supply and vesting, liquidity, audits of any custom program, legal review and launch-day communication. Decide the authorities and publish the allocation before launch, because buyers and screening tools check both on-chain."
+      glance={{
+        caption: 'Solana token launch checklist at a glance',
+        head: ['Step', 'What to decide', 'Rule of thumb'],
+        rows: [
+          ['Token program', 'SPL Token or Token-2022', 'Check that your venues support the extensions'],
+          ['Authorities', 'Mint, freeze, update and extension authorities', 'Revoke, or move to a multisig'],
+          ['Metadata', 'Name, symbol, image, links', 'Decimals cannot change after the mint exists'],
+          ['Allocation', 'Team, investors, treasury, community, liquidity', 'Publish it, hold team tokens in vesting or multisig'],
+          ['Liquidity', 'Venue, size, start price, LP policy', 'Lock, burn or multisig the LP with a published policy'],
+          ['Audit and legal', 'Custom programs, jurisdictions', 'Before you announce a sale date'],
+        ],
+      }}
       summary={[
         'Decide the mint and freeze authorities before launch, and make the choice visible on-chain.',
         'Set metadata (name, symbol, image, links) once, and lock the update authority when it is final.',

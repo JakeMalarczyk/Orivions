@@ -61,6 +61,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Hiring a Solana development company"
+      answer="To hire a Solana development company, judge it on what it has shipped to mainnet, ask for named engineers, a written scope with milestones and explicit assumptions, and check how it tests on-chain code and who arranges the external audit. Own the repository, upgrade authority and deployment keys from day one, and tie payments to accepted milestones."
       summary={[
         'Judge a Solana team by what it has shipped to mainnet, not by its pitch deck.',
         'Insist on named engineers, a written scope with milestones and explicit assumptions.',

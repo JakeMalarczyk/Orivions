@@ -10,6 +10,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Anchor vs native Rust"
+      answer="Anchor is the sensible default for most Solana applications: it speeds up development, generates the IDL and clients and removes several common account-validation mistakes. Choose native Rust for performance-critical primitives that need tight control over compute units, account layout or binary size. Security depends more on the team and the audit than on the framework."
       summary={[
         'Anchor is the sensible default for most Solana applications: faster development, generated IDL and clients, and fewer account-validation mistakes.',
         'Native Rust gives full control over compute units, account layout and binary size, at the cost of writing every check by hand.',

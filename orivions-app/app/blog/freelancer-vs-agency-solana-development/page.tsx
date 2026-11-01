@@ -21,6 +21,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Freelancer vs agency"
+      answer="Hire a freelancer for a well-scoped task one person can own, such as a module or a review next to your own engineers. Hire an agency for a full product that needs several roles, a deadline and one accountable contract. Compare cost per finished outcome rather than per hour, and watch continuity when a single freelancer owns critical code."
       summary={[
         'Freelancers suit well-scoped tasks one person can own, especially next to your own engineers.',
         'Agencies suit full products that need several roles, a deadline and one accountable contract.',

@@ -12,6 +12,8 @@ const GROUPS: { title: string; links: { href: string; label: string }[] }[] = [
       { href: '/solana-smart-contract-audits', label: 'Audits' },
       { href: '/solana-development-companies', label: 'Development' },
       { href: '/solana-marketing-growth-agencies', label: 'Marketing' },
+      { href: '/solana-legal-compliance-firms', label: 'Legal' },
+      { href: '/solana-infrastructure-providers', label: 'Infrastructure' },
     ],
   },
   {

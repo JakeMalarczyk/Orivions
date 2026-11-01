@@ -10,6 +10,18 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Choosing a Solana auditor"
+      answer="Choose a Solana auditor on Solana-specific experience, public reports and method: read two or three published reports for similar programs, ask who does the work and how many auditor-days are quoted, and agree programs, commit hash and fix review in writing. Walk away from guaranteed security, prices given without seeing the code and complex reviews promised in days."
+      glance={{
+        caption: 'Choosing a Solana auditor at a glance',
+        head: ['What to check', 'Good sign', 'Red flag'],
+        rows: [
+          ['Experience', 'Named engineers who reviewed Anchor or native Solana programs', 'Dozens of Solidity audits and two Solana reports'],
+          ['Public reports', 'Findings that show the protocol logic was understood, with severity and reproduction steps', 'Mostly informational notes on naming and comments'],
+          ['Method', 'Manual review by more than one person, a threat model, invariant testing', 'Automated tooling as the main product'],
+          ['Scope', 'Programs, exact commit and fix review agreed in writing', 'Open or verbal scope'],
+          ['Quote', 'Auditor-days and assigned people stated', 'Fixed price before anyone has seen the repository'],
+        ],
+      }}
       summary={[
         'Pick an auditor for Solana-specific experience (Anchor or native Rust programs), not general "Web3 security" branding.',
         'Read their past public reports before you read their quote: the quality of findings is the best predictor of what you will get.',

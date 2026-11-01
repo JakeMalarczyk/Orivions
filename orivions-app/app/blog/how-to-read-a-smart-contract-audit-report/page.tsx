@@ -10,6 +10,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Reading an audit report"
+      answer="To read a smart contract audit report, check the scope and commit first, then the auditor's own severity definitions, then the status of each finding, since resolved, acknowledged and partially resolved mean different things. Confirm that a fix review was done and that the audited commit matches what is deployed: audited means this commit, this scope, this time."
       summary={[
         'Start with the scope: which programs, at which commit, and what was out of scope.',
         'Severity levels rank impact and likelihood; read the auditor’s own definitions.',
