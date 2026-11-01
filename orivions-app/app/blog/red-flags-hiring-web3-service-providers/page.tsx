@@ -51,6 +51,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Red flags when hiring"
+      answer={'The most common red flags when hiring a Web3 service provider are an unverifiable portfolio, guaranteed results and a precise quote from a vague brief. Never let a provider hold your upgrade authority, treasury or deployment keys, pay per accepted milestone, and treat changed payment details as fraud until confirmed through a second channel.'}
       summary={[
         'Unverifiable portfolios and guaranteed results are the most common early warning signs.',
         'A precise quote from a vague brief is a guess, not an estimate.',

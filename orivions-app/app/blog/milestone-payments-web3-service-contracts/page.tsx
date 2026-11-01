@@ -18,6 +18,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Milestone payments and escrow"
+      answer={'Pay Web3 service providers per accepted milestone, not per month of activity and not all upfront. Give every milestone a written acceptance criterion both sides can check, accept a modest deposit for the first milestone but not full prepayment, use escrow through a neutral party or smart contract while trust is low, and agree in writing how disputes are handled.'}
       summary={[
         'Pay per accepted milestone, not per month of activity and not all upfront.',
         'Every milestone needs a written acceptance criterion both sides can check.',

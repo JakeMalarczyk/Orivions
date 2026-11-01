@@ -53,6 +53,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Trustworthy Solana development company"
+      answer={'A trustworthy Solana development company shows work you can verify: on-chain programs, public commits, named engineers and clients who answer. Check the evidence yourself instead of trusting logos or a polished deck, make sure you own the code and the upgrade authority, and expect an independent audit before mainnet. No single check settles it, but several weak signals together are a reason to walk away.'}
       summary={[
         'A trustworthy Solana development company shows work you can verify: on-chain programs, public commits, named engineers and clients who answer.',
         'Check the evidence yourself instead of relying on logos, followers or a polished deck.',

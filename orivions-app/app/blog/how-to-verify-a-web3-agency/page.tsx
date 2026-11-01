@@ -40,6 +40,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="How to verify a Web3 agency"
+      answer={'To verify a Web3 agency, check the work before the pitch (program addresses, repositories, reports and checkable metrics), confirm it is a registered entity with people who have a real public history, and contact a past client you choose yourself. Thirty minutes of checks prevents most bad hires. A third-party Verified badge is a head start, not a replacement.'}
       summary={[
         'Verify the work before the pitch: program addresses, repositories, reports and checkable metrics.',
         'Confirm the company is a registered entity and the people on the call have a real public history.',

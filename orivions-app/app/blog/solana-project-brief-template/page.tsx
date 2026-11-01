@@ -44,6 +44,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Solana project brief template"
+      answer={'A good Solana project brief fits on one or two pages and answers what you are building, for whom, by when and for how much. Separate on-chain scope (programs, accounts, tokens) from off-chain scope (frontend, indexers, keepers), state constraints such as launch date and audit, share a budget range and send the same brief to every team.'}
       summary={[
         'A good brief fits on one or two pages and answers what, for whom, by when and for how much.',
         'Separate on-chain scope (programs, accounts, tokens) from off-chain scope (frontend, indexers, keepers).',

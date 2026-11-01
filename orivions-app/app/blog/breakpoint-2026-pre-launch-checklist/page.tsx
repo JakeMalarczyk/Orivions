@@ -10,6 +10,7 @@ export default function PostPage() {
     <BlogPost
       slug={SLUG}
       breadcrumbLabel="Breakpoint 2026 pre-launch checklist"
+      answer={'Breakpoint 2026 runs 15-17 November at Olympia London, and many teams time launches around it. Anything that needs an outside team, such as an audit with fix review, legal review or market making, has to be booked weeks before the event. Sort security, authorities, token launch details and legal first, and use the event to meet providers you have already checked.'}
       summary={[
         'Breakpoint 2026 runs 15-17 November at Olympia London. Many teams time launches and announcements around it.',
         'Anything that needs an outside team (audit, fix review, legal review, market making) has to be booked weeks before, not at the event.',
