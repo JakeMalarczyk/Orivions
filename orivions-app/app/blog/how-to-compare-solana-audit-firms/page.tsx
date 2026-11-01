@@ -129,6 +129,56 @@ export default function PostPage() {
         .
       </P>
 
+      <H2>A worked example: two quotes for the same commit</H2>
+      <P>
+        Hypothetical figures, not real firms. Quote B looks $6,000 cheaper, but it costs more per
+        engineer-day, puts five fewer engineer-days on your code and leaves the fix review for
+        later.
+      </P>
+      <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-line bg-bg-soft text-left text-xs uppercase text-gray-soft">
+              <th className="px-4 py-3 font-semibold"></th>
+              <th className="px-4 py-3 font-semibold">Quote A</th>
+              <th className="px-4 py-3 font-semibold">Quote B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Price</td>
+              <td className="px-4 py-3 tabular-nums">$24,000</td>
+              <td className="px-4 py-3 tabular-nums">$18,000</td>
+            </tr>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Engineer-days on your code</td>
+              <td className="px-4 py-3 tabular-nums">12</td>
+              <td className="px-4 py-3 tabular-nums">7</td>
+            </tr>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Price per engineer-day</td>
+              <td className="px-4 py-3 tabular-nums">$2,000</td>
+              <td className="px-4 py-3 tabular-nums">about $2,570</td>
+            </tr>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Fix review</td>
+              <td className="px-4 py-3 tabular-nums">Included</td>
+              <td className="px-4 py-3 tabular-nums">Quoted separately at $4,000</td>
+            </tr>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Total with fix review</td>
+              <td className="px-4 py-3 tabular-nums">$24,000</td>
+              <td className="px-4 py-3 tabular-nums">$22,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <P>
+        With the fix review added the gap is $2,000 for five extra engineer-days of review, which
+        is the cheaper side of the trade for most teams. Make every firm quote in this format before
+        you decide.
+      </P>
+
       <Callout>
         <b>Brand is a real factor, but a separate one.</b> A well-known name can help with investors,
         exchanges and users. It does not guarantee that the engineers assigned to your code know your

@@ -71,6 +71,47 @@ export default function PostPage() {
         ]}
       />
 
+      <H2>Audit cost next to build cost</H2>
+      <P>
+        Audit budgets are easier to defend when you see them next to the build. By our calculator
+        method, a small program can cost more to audit than to write, while a large DeFi protocol is
+        audited for roughly 44-50% of its build cost.
+      </P>
+      <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-line bg-bg-soft text-left text-xs uppercase text-gray-soft">
+              <th className="px-4 py-3 font-semibold">Project</th>
+              <th className="px-4 py-3 font-semibold">Audit</th>
+              <th className="px-4 py-3 font-semibold">Build next to it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Token vesting, 500 lines</td>
+              <td className="px-4 py-3 tabular-nums">$5,500-10,000</td>
+              <td className="px-4 py-3 tabular-nums">$3,000-5,500 with a basic interface</td>
+            </tr>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Lending, 2 programs, oracle, 3,000 lines</td>
+              <td className="px-4 py-3 tabular-nums">$37,000-64,500</td>
+              <td className="px-4 py-3 tabular-nums">$73,500-147,000 with a production app</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <P>
+        Indicative, from our{' '}
+        <Link href="/tools/solana-audit-cost-calculator" className="text-blue-deep">audit cost calculator</Link>{' '}
+        and{' '}
+        <Link href="/tools/solana-dapp-cost-calculator" className="text-blue-deep">dApp cost calculator</Link>.
+        See{' '}
+        <Link href="/blog/how-much-does-it-cost-to-build-a-solana-dapp" className="text-blue-deep">
+          how much a Solana dApp costs to build
+        </Link>{' '}
+        for the build side.
+      </P>
+
       <H2>Why two quotes for the same code can differ</H2>
       <P>
         It is normal to receive quotes that differ by a factor of two or more. One auditor may

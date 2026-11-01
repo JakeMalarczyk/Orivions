@@ -79,6 +79,47 @@ export default function PostPage() {
       <H2>Where the money goes</H2>
       <BulletList items={COMPONENTS} />
 
+      <H2>How big the audit is next to the build</H2>
+      <P>
+        The audit is the line teams most often leave out. By our two calculators it is small next
+        to a large protocol and larger than the build for a tiny one, because an audit day
+        ($1,600-2,800 in our method) costs several times a freelancer day ($350-700).
+      </P>
+      <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-line bg-bg-soft text-left text-xs uppercase text-gray-soft">
+              <th className="px-4 py-3 font-semibold">Project</th>
+              <th className="px-4 py-3 font-semibold">Build (our dApp calculator)</th>
+              <th className="px-4 py-3 font-semibold">Audit (our audit calculator)</th>
+              <th className="px-4 py-3 font-semibold">Audit next to the build</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Vesting program, basic interface</td>
+              <td className="px-4 py-3 tabular-nums">$3,000-5,500</td>
+              <td className="px-4 py-3 tabular-nums">$5,500-10,000 (500 lines)</td>
+              <td className="px-4 py-3 tabular-nums">about 1.8 times the build</td>
+            </tr>
+            <tr className="border-b border-line last:border-0">
+              <td className="px-4 py-3 font-semibold">Lending protocol, 2 programs, oracle</td>
+              <td className="px-4 py-3 tabular-nums">$73,500-147,000</td>
+              <td className="px-4 py-3 tabular-nums">$37,000-64,500 (3,000 lines)</td>
+              <td className="px-4 py-3 tabular-nums">about 44-50% of the build</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <P>
+        Indicative figures from our{' '}
+        <Link href="/tools/solana-dapp-cost-calculator" className="text-blue-deep">dApp cost calculator</Link>{' '}
+        and{' '}
+        <Link href="/tools/solana-audit-cost-calculator" className="text-blue-deep">audit cost calculator</Link>;
+        they exclude each other and the maintenance that follows after launch. Plan the audit when
+        you plan the build, not after.
+      </P>
+
       <H2>What moves the budget most</H2>
       <BulletList
         items={[

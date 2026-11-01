@@ -129,7 +129,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 6,
     datePublished: '2026-10-22',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-01',
     tags: ['Guides', 'Audits', 'Security'],
     faqs: [
       {
@@ -520,7 +520,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-01',
     tags: ['Guides', 'Security', 'Audits', 'Pricing'],
     faqs: [
       {
@@ -644,7 +644,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-01',
     tags: ['Guides', 'Development', 'Pricing'],
     faqs: [
       {
