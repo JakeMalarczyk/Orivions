@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChecklistGuide from '@/components/ChecklistGuide';
 import BlogPost, { BulletList, Callout, H2, P, postMetadata } from '@/components/BlogPost';
 
 const SLUG = 'solana-token-launch-checklist';
@@ -136,6 +137,8 @@ export default function PostPage() {
         </Link>
         . Paid promises of listings or guaranteed volume are a warning sign.
       </P>
+
+      <ChecklistGuide current={SLUG} />
     </BlogPost>
   );
 }

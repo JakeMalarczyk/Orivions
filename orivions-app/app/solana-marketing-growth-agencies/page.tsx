@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Marketing & Growth Agencies: Verified Providers',
+  title: 'Solana Marketing & Growth Agencies (Verified)',
   description:
     'Find verified marketing and growth agencies for Solana projects: community, KOL marketing and growth campaigns. Compare providers, free to contact.',
   alternates: { canonical: '/solana-marketing-growth-agencies' },

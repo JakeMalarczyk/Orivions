@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/insights',
   },
+  // Mostly zeros until there is real provider data: keep out of the index for now.
+  robots: { index: false, follow: true },
 };
 
 export default function InsightsPage() {

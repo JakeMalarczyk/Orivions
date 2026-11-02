@@ -160,7 +160,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: 'breakpoint-2026-pre-launch-checklist',
-    title: 'Breakpoint 2026: what Solana teams should sort out before launch',
+    title: 'Breakpoint 2026 launch-week checklist: what Solana teams should sort out',
     description:
       'Launching around Solana Breakpoint 2026 (15-17 November, Olympia London)? A checklist for security, authorities, token launch, legal and growth, and what to book before the event.',
     excerpt:
@@ -168,7 +168,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 5,
     datePublished: '2026-10-22',
-    dateModified: '2026-10-22',
+    dateModified: '2026-11-02',
     tags: ['Guides', 'Launch', 'Security', 'Audits'],
     faqs: [
       {
@@ -195,7 +195,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 5,
     datePublished: '2026-10-30',
-    dateModified: '2026-10-30',
+    dateModified: '2026-11-02',
     tags: ['Guides', 'Audits', 'Security', 'Launch'],
     faqs: [
       {
@@ -257,7 +257,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: 'anchor-security-checklist',
-    title: 'Anchor security checklist: 16 checks before your Solana audit',
+    title: 'Solana Anchor security checklist: 16 code checks before your audit',
     description:
       'A practical Anchor security checklist: signers, has_one, UncheckedAccount, PDA seeds, init_if_needed, closing accounts, token constraints, CPIs, math and remaining_accounts.',
     excerpt:
@@ -265,7 +265,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-20',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-02',
     tags: ['Guides', 'Security', 'Audits', 'Development', 'Anchor'],
     faqs: [
       {
@@ -304,7 +304,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-19',
-    dateModified: '2026-10-19',
+    dateModified: '2026-11-02',
     tags: ['Guides', 'Launch', 'Security', 'Marketing'],
     faqs: [
       {
@@ -520,7 +520,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-11-01',
+    dateModified: '2026-11-02',
     tags: ['Guides', 'Security', 'Audits', 'Pricing'],
     faqs: [
       {
@@ -582,7 +582,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 8,
     datePublished: '2026-10-17',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-02',
     tags: ['Guides', 'Security', 'Launch'],
     faqs: [
       {
@@ -766,15 +766,6 @@ export const POSTS: Post[] = [
     datePublished: '2026-10-10',
     dateModified: '2026-10-22',
     tags: ['Building in public', 'Announcement'],
-  },
-];
-
-export const UPCOMING = [
-  {
-    title: 'State of Solana Services: first data from the platform',
-    excerpt:
-      'Supply by category, indicative pricing, and what funded teams are actually looking for. Published when we have real numbers worth sharing.',
-    tags: ['Market data', 'Insights'],
   },
 ];
 

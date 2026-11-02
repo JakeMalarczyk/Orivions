@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChecklistGuide from '@/components/ChecklistGuide';
 import BlogPost, { BulletList, Callout, H2, P, postMetadata } from '@/components/BlogPost';
 
 const SLUG = 'breakpoint-2026-pre-launch-checklist';
@@ -9,7 +10,7 @@ export default function PostPage() {
   return (
     <BlogPost
       slug={SLUG}
-      breadcrumbLabel="Breakpoint 2026 pre-launch checklist"
+      breadcrumbLabel="Breakpoint 2026 launch-week checklist"
       answer={'Breakpoint 2026 runs 15-17 November at Olympia London, and many teams time launches around it. Anything that needs an outside team, such as an audit with fix review, legal review or market making, has to be booked weeks before the event. Sort security, authorities, token launch details and legal first, and use the event to meet providers you have already checked.'}
       summary={[
         'Breakpoint 2026 runs 15-17 November at Olympia London. Many teams time launches and announcements around it.',
@@ -47,7 +48,7 @@ export default function PostPage() {
           ['Is the audit booked?', <>Good Solana auditors are often booked weeks ahead, and the whole process usually takes longer than the review itself. See <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">how long a Solana audit takes</Link>.</>],
           ['Frozen commit:', 'the code you launch should be the code that was audited, plus reviewed fixes.'],
           ['Fix review in the schedule:', 'do not plan the launch for the day the first report arrives.'],
-          ['Pre-launch checks:', <>Run the <Link href="/blog/solana-pre-launch-security-checklist" className="text-blue-deep">pre-launch security checklist</Link> and, for Anchor programs, the <Link href="/blog/anchor-security-checklist" className="text-blue-deep">Anchor security checklist</Link>.</>],
+          ['Pre-launch checks:', <>Run the <Link href="/blog/solana-pre-launch-security-checklist" className="text-blue-deep">Solana pre-launch security checklist</Link> and, for Anchor programs, the <Link href="/blog/anchor-security-checklist" className="text-blue-deep">Solana Anchor security checklist</Link>.</>],
         ]}
       />
 
@@ -113,6 +114,8 @@ export default function PostPage() {
         . If the numbers or the dates do not fit, cut scope or move the launch. Launching after
         Breakpoint with audited code is better than launching at Breakpoint without it.
       </P>
+
+      <ChecklistGuide current={SLUG} />
     </BlogPost>
   );
 }

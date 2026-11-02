@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChecklistGuide from '@/components/ChecklistGuide';
 import BlogPost, { Callout, H2, P, postMetadata } from '@/components/BlogPost';
 
 const SLUG = 'solana-pre-launch-security-checklist';
@@ -159,6 +160,8 @@ export default function PostPage() {
         </Link>
         .
       </P>
+
+      <ChecklistGuide current={SLUG} />
     </BlogPost>
   );
 }

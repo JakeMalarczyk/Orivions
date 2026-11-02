@@ -20,12 +20,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const pages = [
     { path: '/', updated: '2026-10-23', priority: 1.0, changeFrequency: 'weekly' as const },
-    { path: '/providers', updated: '2026-10-22', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/smart-match', updated: '2026-10-25', priority: 0.8, changeFrequency: 'weekly' as const },
-    { path: '/insights', updated: '2026-10-25', priority: 0.7, changeFrequency: 'daily' as const },
+    { path: '/providers', updated: '2026-11-02', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/smart-match', updated: '2026-11-02', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/solana-smart-contract-audits', updated: '2026-10-23', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-development-companies', updated: '2026-10-25', priority: 0.85, changeFrequency: 'weekly' as const },
-    { path: '/solana-marketing-growth-agencies', updated: '2026-10-25', priority: 0.85, changeFrequency: 'weekly' as const },
+    { path: '/solana-marketing-growth-agencies', updated: '2026-11-02', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-legal-compliance-firms', updated: '2026-11-01', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-infrastructure-providers', updated: '2026-11-01', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/blog', updated: newestPost, priority: 0.8, changeFrequency: 'weekly' as const },
@@ -37,7 +36,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/tools', updated: '2026-10-25', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-audit-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-dapp-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/ai-proposal-generator', updated: '2026-10-25', priority: 0.4, changeFrequency: 'monthly' as const },
   ];
 
   const day = (d: string) => new Date(`${d}T00:00:00Z`);

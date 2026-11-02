@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'AI Proposal Generator',
   description: 'Draft a client proposal in seconds. AI-powered tool for verified providers on Orivions.',
   alternates: { canonical: '/ai-proposal-generator' },
+  robots: { index: false, follow: true }, // provider tool, thin content: keep out of the index
 };
 
 export default function AiProposalGeneratorPage() {

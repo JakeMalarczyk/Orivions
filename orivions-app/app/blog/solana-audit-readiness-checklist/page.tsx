@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChecklistGuide from '@/components/ChecklistGuide';
 import BlogPost, { BulletList, Callout, H2, P, postMetadata } from '@/components/BlogPost';
 
 const SLUG = 'solana-audit-readiness-checklist';
@@ -108,6 +109,8 @@ export default function PostPage() {
         </Link>
         .
       </P>
+
+      <ChecklistGuide current={SLUG} />
     </BlogPost>
   );
 }

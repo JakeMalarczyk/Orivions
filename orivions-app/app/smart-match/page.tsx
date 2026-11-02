@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import PageHero from '@/components/PageHero';
 import { isDirectoryOpen, verifiedProviderCount } from '@/lib/directory';
+import FaqSection from '@/components/FaqSection';
 import SmartMatchClient from './SmartMatchClient';
 
 export const metadata: Metadata = {
@@ -21,6 +22,25 @@ const STEPS = [
   ['Describe the project', 'Say what you are building, your stage, budget and timeline. A few sentences are enough.'],
   ['We pick the fit', 'You get up to three verified Solana providers, each with a short reason it matches your scope.'],
   ['Talk to them directly', 'Message the providers you like. Orivions is free for teams and takes no commission from you.'],
+];
+
+const FAQS = [
+  {
+    q: 'What is Smart Match?',
+    a: 'Smart Match turns a plain-English project brief into a shortlist of up to three verified providers, each with a short reason it fits your scope. It covers auditors, developers, legal and compliance firms and marketing agencies.',
+  },
+  {
+    q: 'What should I put in the brief?',
+    a: 'What you are building, what you need (for example an audit, development, legal review or launch support), your stage, budget and timeline. A few sentences are enough.',
+  },
+  {
+    q: 'Does Smart Match cost anything?',
+    a: 'No. It is free for teams and Orivions takes no commission from you. Providers pay a 10% success fee only on completed work.',
+  },
+  {
+    q: 'Who picks the providers?',
+    a: 'While the directory is in early access, the Orivions team matches you by hand from providers we have reviewed. Automatic matching switches on once enough providers are verified.',
+  },
 ];
 
 export default async function SmartMatchPage() {
@@ -64,6 +84,7 @@ export default async function SmartMatchPage() {
           <Link href="/solana-smart-contract-audits" className="text-blue-deep">Solana auditors</Link>.
         </p>
       </section>
+      <FaqSection title="Smart Match FAQ" faqs={FAQS} />
     </>
   );
 }

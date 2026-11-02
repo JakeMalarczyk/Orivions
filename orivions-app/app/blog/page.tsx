@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import PageHero, { HERO_SECONDARY } from '@/components/PageHero';
-import { SITE_URL, UPCOMING, formatPostDate, isoDate, postUrl, sortedPosts } from '@/lib/blog';
+import { SITE_URL, formatPostDate, isoDate, postUrl, sortedPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog: Building the business layer for Solana',
@@ -74,15 +74,6 @@ export default function BlogIndexPage() {
               <p className="mt-2 max-w-2xl text-gray">{p.excerpt}</p>
               <Tags tags={p.tags} />
             </Link>
-          ))}
-
-          {UPCOMING.map((p) => (
-            <div key={p.title} className="py-7">
-              <div className="text-xs font-medium uppercase tracking-wide text-gray-soft">Coming soon</div>
-              <h2 className="mt-2 font-heading text-[26px] font-medium leading-snug text-gray">{p.title}</h2>
-              <p className="mt-2 max-w-2xl text-gray">{p.excerpt}</p>
-              <Tags tags={p.tags} />
-            </div>
           ))}
         </div>
       </div>

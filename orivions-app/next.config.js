@@ -53,6 +53,15 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    // Conventional paths that crawlers, browsers and feed readers request. Next.js serves
+    // the same content from its own file-convention routes.
+    return [
+      { source: '/apple-touch-icon.png', destination: '/apple-icon.png' },
+      { source: '/site.webmanifest', destination: '/manifest.webmanifest' },
+      { source: '/feed.xml', destination: '/blog/rss.xml' },
+    ];
+  },
   images: {
     formats: ['image/avif', 'image/webp'], // smaller payloads, faster loads on mobile
   },

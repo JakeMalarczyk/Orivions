@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChecklistGuide from '@/components/ChecklistGuide';
 import BlogPost, { Callout, H2, P, postMetadata } from '@/components/BlogPost';
 
 const SLUG = 'anchor-security-checklist';
@@ -96,8 +97,8 @@ export default function PostPage() {
   return (
     <BlogPost
       slug={SLUG}
-      breadcrumbLabel="Anchor security checklist"
-      answer="An Anchor security checklist covers what Anchor does not check for you: Signer and has_one on every authority, a reason for each UncheckedAccount, seeds and bump on PDAs, careful init_if_needed, the close constraint, mint and authority constraints on token accounts, typed program accounts for CPIs, checked math and hand-validated remaining_accounts. Run all 16 checks before your audit."
+      breadcrumbLabel="Solana Anchor security checklist"
+      answer="A Solana Anchor security checklist covers what the Solana Anchor framework does not check for you: Signer and has_one on every authority, a reason for each UncheckedAccount, seeds and bump on PDAs, careful init_if_needed, the close constraint, mint and authority constraints on token accounts, typed program accounts for CPIs, checked math and hand-validated remaining_accounts. Run all 16 checks before your audit."
       glance={{
         caption: 'Anchor security checklist at a glance',
         head: ['Area', 'Checks', 'Most common miss'],
@@ -167,6 +168,8 @@ export default function PostPage() {
         <Link href="/solana-glossary/discriminator" className="text-blue-deep">discriminator</Link> are
         explained in our glossary.
       </P>
+
+      <ChecklistGuide current={SLUG} />
     </BlogPost>
   );
 }

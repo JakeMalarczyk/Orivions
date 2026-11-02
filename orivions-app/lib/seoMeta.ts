@@ -17,7 +17,7 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'Compare Solana audit firms on evidence you can check: public reports, Anchor or native Rust experience, engineer-days, fix review and timing.',
   },
   'breakpoint-2026-pre-launch-checklist': {
-    title: 'Breakpoint 2026 pre-launch checklist for Solana teams',
+    title: 'Breakpoint 2026 launch-week checklist',
     description: 'Launching around Solana Breakpoint 2026 in London? A checklist for security, authorities, token launch, legal and growth, and what to book first.',
   },
   'how-long-does-a-solana-audit-take': {
@@ -25,11 +25,11 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'How long a Solana audit takes: booking, waiting for a slot, the review, fixes and the fix review. Typical timelines and how to get audited sooner.',
   },
   'anchor-security-checklist': {
-    title: 'Anchor security checklist: 16 checks',
+    title: 'Solana Anchor security checklist: 16 checks',
     description: 'A practical Anchor security checklist: signers, has_one, UncheckedAccount, PDA seeds, init_if_needed, token constraints, CPIs, math and remaining_accounts.',
   },
   'solana-token-launch-checklist': {
-    title: 'Solana token launch checklist',
+    title: 'Solana token launch checklist: mint and liquidity',
     description: 'A Solana token launch checklist: mint and freeze authority, metadata, Token-2022 extensions, supply and vesting, liquidity, audits and legal review.',
   },
   'smart-contract-audit-vs-bug-bounty': {
@@ -61,7 +61,7 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'A 30-minute due-diligence routine for Web3 service providers: on-chain work, repositories, audit reports, references, company details and the people behind it.',
   },
   'solana-smart-contract-audit-cost': {
-    title: 'How much does a Solana audit cost?',
+    title: 'Solana smart contract audit cost in 2026: price ranges',
     description: 'What a Solana smart contract audit costs, why quotes for the same project differ, and how to get a better audit for the same budget.',
   },
   'anchor-vs-native-rust-solana': {
