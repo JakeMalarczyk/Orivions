@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import { HERO_GLOW, HeroBackdrop } from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
-import { FOUNDING_JOINED, FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
+import { FOUNDING_JOINED, FOUNDING_LINKS, FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
 
 // Landing page for provider outreach (DMs link here with ?ref=...). The spot
 // counter is the real number of Founding Provider badges granted in Supabase.
@@ -13,23 +13,33 @@ const TITLE = 'Become a Founding Provider on Orivions';
 const DESCRIPTION =
   'Orivions is hand-picking its first 20 verified Solana service companies. Free profile, briefs from funded teams, 10% fee only on completed work, lasting badge.';
 
-export const metadata: Metadata = {
-  title: 'Founding Providers: Join the First 20',
-  description: DESCRIPTION,
-  alternates: { canonical: '/founding-providers' },
-  openGraph: {
-    title: TITLE,
+// The social card shows the live spot count. The page is re-rendered every 5 minutes (see
+// revalidate below), so the card text follows the real number of badges granted.
+async function takenSpots(): Promise<number> {
+  return Math.min(FOUNDING_SPOTS, Math.max(FOUNDING_JOINED.length, await foundingProviderCount()));
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const taken = await takenSpots();
+  const card = ogImageUrl(`Only ${FOUNDING_SPOTS} Founding Providers. ${taken} of ${FOUNDING_SPOTS} taken.`, 'For Solana service companies');
+  return {
+    title: 'Founding Providers: Join the First 20',
     description: DESCRIPTION,
-    url: '/founding-providers',
-    images: [{ url: ogImageUrl('Only 20 Founding Providers. Ever.', 'For Solana service companies'), width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [ogImageUrl('Only 20 Founding Providers. Ever.', 'For Solana service companies')],
-  },
-};
+    alternates: { canonical: '/founding-providers' },
+    openGraph: {
+      title: TITLE,
+      description: DESCRIPTION,
+      url: '/founding-providers',
+      images: [{ url: card, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: TITLE,
+      description: DESCRIPTION,
+      images: [card],
+    },
+  };
+}
 
 export const revalidate = 300;
 
@@ -67,7 +77,7 @@ const FAQS: [string, string][] = [
 ];
 
 export default async function FoundingProvidersPage() {
-  const taken = Math.min(FOUNDING_SPOTS, Math.max(FOUNDING_JOINED.length, await foundingProviderCount()));
+  const taken = await takenSpots();
   const left = FOUNDING_SPOTS - taken;
   const url = `${SITE_URL}/founding-providers`;
 
@@ -122,7 +132,23 @@ export default async function FoundingProvidersPage() {
                 <span key={i} className={`h-2 rounded-full ${i < taken ? 'bg-blue-light' : 'bg-white/15'}`} />
               ))}
             </div>
-            <p className="mt-3 text-xs text-white/60">Already in: {FOUNDING_JOINED.join(' and ')}.</p>
+            <p className="mt-3 text-xs text-white/60">
+              Already in:{' '}
+              {FOUNDING_JOINED.map((name, i) => (
+                <span key={name}>
+                  {i > 0 && (i === FOUNDING_JOINED.length - 1 ? ' and ' : ', ')}
+                  {FOUNDING_LINKS[name] ? (
+                    <a href={FOUNDING_LINKS[name]} target="_blank" rel="noopener" className="underline decoration-white/30 underline-offset-2 hover:text-white">
+                      {name}
+                    </a>
+                  ) : (
+                    name
+                  )}
+                </span>
+              ))}
+              .
+            </p>
+            <p className="mt-1.5 text-xs text-white/60">First cohort announced at Breakpoint 2026, Nov 15.</p>
           </div>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Link href="/login?signup=provider" className="rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light">
@@ -198,6 +224,7 @@ export default async function FoundingProvidersPage() {
           <p className="mt-2 text-sm text-white/70">
             Badges are granted in the order verified profiles are approved.
           </p>
+          <p className="mt-1 text-sm text-white/70">First cohort announced at Breakpoint 2026, Nov 15.</p>
           <Link href="/login?signup=provider" className="mt-5 inline-block rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-ink">
             Apply as a Founding Provider →
           </Link>

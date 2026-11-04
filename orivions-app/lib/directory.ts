@@ -31,7 +31,13 @@ export async function verifiedProviderCount(): Promise<number> {
 export const FOUNDING_SPOTS = 20;
 
 /** Founding companies that already joined outside the sign-up flow. Shown on /founding-providers. */
-export const FOUNDING_JOINED = ['Legaichain', 'Monethic'];
+export const FOUNDING_JOINED = ['LegAIchain', 'Monethic'];
+
+/** Company websites for the names above (checked 2026-11-04). Keep in step with FOUNDING_JOINED. */
+export const FOUNDING_LINKS: Record<string, string> = {
+  LegAIchain: 'https://legaicha.in',
+  Monethic: 'https://www.monethic.io',
+};
 
 /** Server-side count of Founding Provider badges already granted. */
 export async function foundingProviderCount(): Promise<number> {
