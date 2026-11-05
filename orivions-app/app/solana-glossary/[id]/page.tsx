@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import PageHero from '@/components/PageHero';
 import { POSTS, SITE_URL, ogImageUrl } from '@/lib/blog';
 import { GLOSSARY, getTerm, shortTerm, termPath, type GlossaryTerm } from '@/lib/glossary';
-import { GLOSSARY_DETAILS } from '@/lib/glossaryDetails';
+import { GLOSSARY_DETAILS, GLOSSARY_EXTRA } from '@/lib/glossaryDetails';
 
 // One page per glossary term. Answer-first (the definition is the first thing
 // on the page and in the FAQ answer), so search snippets and AI answer engines
@@ -98,6 +98,7 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ i
   const { id } = await params;
   const t = getTerm(id);
   const detail = GLOSSARY_DETAILS[id];
+  const extra = GLOSSARY_EXTRA[id];
   if (!t || !detail) notFound();
 
   const related = detail.related.map(getTerm).filter((r): r is GlossaryTerm => Boolean(r));
@@ -122,6 +123,9 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ i
         mainEntity: [
           { '@type': 'Question', name: question(t), acceptedAnswer: { '@type': 'Answer', text: t.definition } },
           { '@type': 'Question', name: `Why does ${shortTerm(t)} matter for Solana teams?`, acceptedAnswer: { '@type': 'Answer', text: detail.why } },
+          ...(extra
+            ? [{ '@type': 'Question', name: `What are common mistakes with ${shortTerm(t)}?`, acceptedAnswer: { '@type': 'Answer', text: extra.mistakes.join(' ') } }]
+            : []),
         ],
       },
       {
@@ -162,6 +166,21 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ i
             <li key={c}>{c}</li>
           ))}
         </ul>
+
+        {extra && (
+          <>
+            <h2 className="mt-10 font-heading text-[22px] font-semibold">How it works in practice</h2>
+            {extra.inPractice.map((para) => (
+              <p key={para} className="mt-3 text-[15px] leading-relaxed text-ink/90">{para}</p>
+            ))}
+            <h2 className="mt-10 font-heading text-[22px] font-semibold">Common mistakes</h2>
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-ink/90">
+              {extra.mistakes.map((m) => (
+                <li key={m}>{m}</li>
+              ))}
+            </ul>
+          </>
+        )}
 
         {related.length > 0 && (
           <>

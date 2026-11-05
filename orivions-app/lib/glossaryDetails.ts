@@ -213,3 +213,101 @@ export const GLOSSARY_DETAILS: Record<string, GlossaryDetail> = {
     related: ['success-fee', 'milestone-payment', 'escrow'],
   },
 };
+
+// Longer practical notes for the terms that teams and auditors ask about most.
+// Rendered on /solana-glossary/<id> after "What to check".
+export interface GlossaryExtra {
+  inPractice: string[];
+  mistakes: string[];
+}
+
+export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
+  account: {
+    inPractice: [
+      'Every account has one owner program. Only that program can change the account data or take lamports out of it, while anyone can send lamports in. Wallets are accounts owned by the System Program.',
+      'An account must hold a minimum balance to stay alive (rent exemption), and its size is chosen when it is created. The owning program can grow it later, within limits, so plan sizes with future fields in mind.',
+    ],
+    mistakes: [
+      'Not checking the owner of an account passed in by the client, so an attacker supplies a lookalike account with fake data.',
+      'Not checking that the right account signed, or that an account is the type the instruction expects.',
+      'Closing an account without clearing it, which can let it be revived within the same transaction.',
+    ],
+  },
+  pda: {
+    inPractice: [
+      'A program derived address (PDA) is derived from seeds and a program ID and has no private key. Only the program it was derived for can sign for it, by passing the seeds, so programs use PDAs as vaults and authorities.',
+      'Derivation searches for a bump value so the address falls off the signing curve. The canonical bump is the first valid one found counting down from 255, and programs should store and check it.',
+    ],
+    mistakes: [
+      'Accepting a PDA without re-deriving it from the expected seeds, so a different account passes the check.',
+      'Using a non-canonical bump, which can produce several valid addresses for the same seeds.',
+      'Joining user-controlled seeds without a separator, so two different inputs derive the same address.',
+    ],
+  },
+  'upgrade-authority': {
+    inPractice: [
+      'A program deployed with the upgradeable loader keeps its code in a program data account, and that account stores the upgrade authority. Run solana program show with the program ID to see the current authority.',
+      'solana program set-upgrade-authority moves it to a new address, and the --final option removes it for good, which makes the program immutable and cannot be undone.',
+    ],
+    mistakes: [
+      'Leaving the authority in the deployer wallet, or with the development agency, after launch.',
+      'Moving it to a multisig but never rehearsing an upgrade, so the first real one is also the first attempt.',
+      'Locking the upgrade key while another admin instruction still lets one key drain the vault.',
+    ],
+  },
+  multisig: {
+    inPractice: [
+      'A multisig is set up as m of n: for example, three of five signers must approve a transaction. Squads is a common choice on Solana, and it can add a timelock between approval and execution.',
+      'The address that holds assets or authorities is the multisig vault, not any member wallet. Members propose, review and approve, and the vault executes.',
+    ],
+    mistakes: [
+      'Signers who are not independent: several keys held by one person, on one device or behind one password manager.',
+      'A threshold of one, which is a single key with extra steps.',
+      'No rehearsal and no plan for replacing a signer who loses a key.',
+    ],
+  },
+  'verifiable-build': {
+    inPractice: [
+      'A verifiable build compiles the program in a fixed, reproducible environment, so anyone can rebuild it from a public commit and get the same bytes. The solana-verify tool compares the hash of the on-chain program with the hash built from the repository.',
+      'After a successful verification, explorers can show the program as verified, and an auditor can confirm the code on mainnet is the code they reviewed.',
+    ],
+    mistakes: [
+      'Building with a different toolchain than the one used for verification, which gives a different hash.',
+      'Deploying a commit that is not the audited one, or not tagging the audited commit.',
+      'Keeping the repository private, which makes outside verification impossible.',
+    ],
+  },
+  rpc: {
+    inPractice: [
+      'Apps read accounts and send transactions through RPC nodes. Reads take a commitment level: processed is fastest but can roll back, confirmed is voted on by most of the cluster, and finalized is the safest.',
+      'The public Solana endpoints are rate limited and are not meant for production. Production apps use a paid provider with documented limits and a fallback.',
+    ],
+    mistakes: [
+      'Showing balances or confirming payments at the processed commitment level.',
+      'Relying on one provider with no fallback, or putting an unrestricted API key in frontend code.',
+      'Calling getProgramAccounts with no filters on a large program, which is slow and often limited.',
+    ],
+  },
+  'priority-fee': {
+    inPractice: [
+      'Every transaction pays a base fee per signature. A priority fee is extra, set as a price per compute unit with the compute budget instructions, and it raises the chance of being included when the network is busy.',
+      'The priority fee is the compute unit price multiplied by the compute unit limit. The default limit is 200,000 compute units per instruction, so setting a limit close to the real usage keeps the fee lower.',
+    ],
+    mistakes: [
+      'Not setting a compute unit limit and paying for far more than the transaction uses.',
+      'Using one fixed price at all times instead of reading recent fees.',
+      'Treating a failed or expired transaction as final without retrying with a fresh blockhash.',
+    ],
+  },
+  'mint-authority': {
+    inPractice: [
+      'The mint authority is the only key that can create new units of an SPL token. Setting it to none fixes the supply, and that cannot be undone.',
+      'Token-2022 adds further authorities for extensions such as transfer fees or a permanent delegate. Check every authority on a token, not only the mint and freeze ones.',
+    ],
+    mistakes: [
+      'Leaving the mint authority with the deployer wallet, where a leaked key lets anyone inflate the supply.',
+      'Revoking it before planned emissions or vesting are in place.',
+      'Confusing the mint authority with the freeze authority, or ignoring extension authorities on Token-2022 mints.',
+    ],
+  },
+};
