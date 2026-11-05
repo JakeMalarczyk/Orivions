@@ -755,6 +755,103 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'solana-program-upgrade-authority-multisig',
+    title: 'Solana program upgrade authority: how to secure it with a multisig',
+    description:
+      'Who should hold a Solana program upgrade authority, how to move it to a multisig, when to add a timelock or make the program immutable, and the mistakes to avoid.',
+    excerpt:
+      'The upgrade authority can replace your program with any code. It is the most powerful key in a Solana launch and often the least protected. How to secure it, step by step.',
+    category: 'Guides',
+    readingMinutes: 7,
+    datePublished: '2026-11-05',
+    dateModified: '2026-11-05',
+    tags: ['Guides', 'Security', 'Launch'],
+    faqs: [
+      {
+        q: 'What is the upgrade authority of a Solana program?',
+        a: 'It is the key that is allowed to replace the code of a deployed program. Programs deployed with the upgradeable loader store it in a program data account. Whoever controls it can change what the program does, including its handling of user funds.',
+      },
+      {
+        q: 'How do I check who holds the upgrade authority?',
+        a: 'Run solana program show with the program ID, or look the program up in a block explorer. The output lists the upgrade authority address. If it is a normal wallet instead of a multisig, or it is not a key your team controls, fix that before launch.',
+      },
+      {
+        q: 'How do I move the upgrade authority to a multisig?',
+        a: 'Create the multisig, copy its vault address and run solana program set-upgrade-authority with the program ID and --new-upgrade-authority set to that address. Then check the result with solana program show and rehearse one upgrade through the multisig on devnet.',
+      },
+      {
+        q: 'Should a Solana program be immutable?',
+        a: 'Once the code is stable and audited, making it immutable removes the upgrade risk entirely, but it also removes your ability to fix bugs. Many teams keep a multisig with a timelock first and revoke the authority later. Revoking is irreversible.',
+      },
+      {
+        q: 'Can the development agency keep the upgrade authority?',
+        a: 'It should not. Put the handover of the upgrade authority and the repository into the contract and confirm it on-chain at delivery.',
+      },
+    ],
+  },
+  {
+    slug: 'how-to-choose-a-solana-rpc-provider',
+    title: 'How to choose a Solana RPC provider: 10 questions to ask',
+    description:
+      'How to pick a Solana RPC provider: shared vs dedicated nodes, rate limits, streaming, transaction landing, failover and security, with questions to ask and a way to test.',
+    excerpt:
+      'Your RPC provider sits between your app and the chain. A slow or flaky one looks like a bug in your product. How to choose one, what to ask and how to test before you commit.',
+    category: 'Guides',
+    readingMinutes: 7,
+    datePublished: '2026-11-05',
+    dateModified: '2026-11-05',
+    tags: ['Guides', 'Infrastructure', 'Launch'],
+    faqs: [
+      {
+        q: 'Can I use the public Solana RPC endpoint in production?',
+        a: 'No. The public endpoints are rate limited and are meant for development and light use. A production app needs a provider with documented limits, support and an agreement on uptime.',
+      },
+      {
+        q: 'What is the difference between shared and dedicated Solana RPC nodes?',
+        a: 'Shared plans split capacity between customers and are cheaper, but a busy neighbour or a traffic spike can slow you down. A dedicated node is reserved for you, costs much more, and gives steady performance and fewer limits on heavy calls.',
+      },
+      {
+        q: 'Do I need more than one RPC provider?',
+        a: 'For anything that holds user funds or runs keepers, yes. One provider is a single point of failure. Configure a second one as a fallback and test the switch.',
+      },
+      {
+        q: 'How do I test a Solana RPC provider before committing?',
+        a: 'Run your own real workload against it for a week and record median and slow latency, error rate, rate-limit responses and how far its reported slot lags behind a second source. A benchmark of simple calls tells you little about your use case.',
+      },
+    ],
+  },
+  {
+    slug: 'how-to-choose-a-web3-lawyer-for-a-token-launch',
+    title: 'How to choose a Web3 lawyer for a token launch',
+    description:
+      'How to choose a crypto lawyer or compliance firm for a Solana token launch: what to cover, questions to ask, jurisdiction, MiCA, fee structure and red flags. Not legal advice.',
+    excerpt:
+      'Token launches go wrong in legal as often as in code. What a Web3 lawyer should cover, how to choose one for your jurisdiction and the warning signs to watch for.',
+    category: 'Guides',
+    readingMinutes: 8,
+    datePublished: '2026-11-05',
+    dateModified: '2026-11-05',
+    tags: ['Guides', 'Legal', 'Launch'],
+    faqs: [
+      {
+        q: 'When should I talk to a lawyer about a token launch?',
+        a: 'Before the token exists and before you promise anything to buyers, partners or exchanges. Structure, token design and the wording of your marketing all affect how the token is classified, and they are expensive to change after launch.',
+      },
+      {
+        q: 'Does MiCA apply to my Solana token?',
+        a: 'It can. MiCA applies across the EU and depends on the type of token, who issues or offers it and where. Some tokens need a published white paper and notification, and some services need a licence. Ask counsel in the member state you target.',
+      },
+      {
+        q: 'Fixed fee or hourly rate for a crypto lawyer?',
+        a: 'For a clear piece of work such as a token classification memo, terms of service or a sale agreement, ask for a fixed fee or a capped estimate. For open-ended advice or regulator contact, hourly billing with a monthly cap is common.',
+      },
+      {
+        q: 'Can I use a template instead of a lawyer?',
+        a: 'Templates can help for simple documents such as basic terms, but they do not fit a token sale, a licence question or a cross-border structure. Use a lawyer for the parts where a mistake exposes you or your buyers.',
+      },
+    ],
+  },
+  {
     slug: 'why-we-are-building-orivions',
     title: "Why we're building Orivions, and why the Solana services market is broken",
     description:

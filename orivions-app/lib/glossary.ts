@@ -114,6 +114,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'multisig',
     definition:
       'A wallet that requires approval from several signers before executing a transaction. On Solana, multisigs commonly hold program upgrade authorities and treasury funds instead of a single key.',
+    link: { href: '/blog/solana-program-upgrade-authority-multisig', label: 'Securing the upgrade authority with a multisig' },
   },
   {
     term: 'Native Rust program',
@@ -150,6 +151,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'rpc',
     definition:
       'A server that applications use to read Solana data and submit transactions. Production apps usually rely on paid RPC providers and configure a fallback.',
+    link: { href: '/blog/how-to-choose-a-solana-rpc-provider', label: 'How to choose an RPC provider' },
   },
   {
     term: 'SPL token',
@@ -175,7 +177,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'upgrade-authority',
     definition:
       'The key allowed to replace a deployed program’s code. Best practice is to place it in a multisig, put upgrades behind a timelock, or remove it to make the program immutable.',
-    link: { href: '/blog/solana-pre-launch-security-checklist', label: 'Pre-launch security checklist' },
+    link: { href: '/blog/solana-program-upgrade-authority-multisig', label: 'Securing the upgrade authority' },
   },
   {
     term: 'Verifiable build',

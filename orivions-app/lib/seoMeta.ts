@@ -96,6 +96,18 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'How to choose a Solana smart contract auditor',
     description: 'What matters when picking a Solana auditor: Anchor and native Rust experience, methodology, scope, timelines, red flags in quotes and a good report.',
   },
+  'solana-program-upgrade-authority-multisig': {
+    title: 'Solana upgrade authority and multisig guide',
+    description: 'Who should hold a Solana program upgrade authority, how to move it to a multisig, when to add a timelock or go immutable, and mistakes to avoid.',
+  },
+  'how-to-choose-a-solana-rpc-provider': {
+    title: 'How to choose a Solana RPC provider',
+    description: 'How to pick a Solana RPC provider: shared vs dedicated nodes, rate limits, streaming, transaction landing, failover, security and how to test one.',
+  },
+  'how-to-choose-a-web3-lawyer-for-a-token-launch': {
+    title: 'How to choose a Web3 lawyer for a token launch',
+    description: 'How to choose a crypto lawyer for a token launch: what to cover, questions to ask, jurisdiction, MiCA, fee structure and red flags. Not legal advice.',
+  },
   'why-we-are-building-orivions': {
     title: 'Why we are building Orivions',
     description: 'Why Orivions exists: finding a trustworthy Solana auditor, developer or agency is slow and risky, so we are building a verified marketplace for onchain teams.',

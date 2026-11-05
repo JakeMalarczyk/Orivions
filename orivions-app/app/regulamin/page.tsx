@@ -17,7 +17,7 @@ export default function Page() {
     <>
       <Header />
       <PageHero narrow eyebrow="Prawne" title="Regulamin" />
-      <div className="mx-auto max-w-3xl px-6 pb-16 pt-6">
+      <div lang="pl" className="mx-auto max-w-3xl px-6 pb-16 pt-6">
         <LegalDocument source={REGULAMIN_PL} />
         <p className="mt-12 text-sm text-gray">
           <Link href="/contact" className="text-blue-deep">Pytania? Napisz do nas</Link>

@@ -38,7 +38,13 @@ export const FOUNDING_LINKS: Record<string, string> = {
   LegAIchain: 'https://legaicha.in',
   Monethic: 'https://www.monethic.io',
   softstack: 'https://softstack.io',
-  // Babalabs: website not confirmed yet, shown as plain text.
+  Babalabs: 'https://babs.xyz',
+};
+
+/** Public Orivions profile pages for Founding Providers that are verified (internal links, also help crawling). */
+export const FOUNDING_PROFILES: Record<string, string> = {
+  softstack: '/providers/softstack-gmbh',
+  Babalabs: '/providers/babs-labs',
 };
 
 /** Server-side count of Founding Provider badges already granted. */

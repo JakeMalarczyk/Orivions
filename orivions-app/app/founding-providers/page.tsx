@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import { HERO_GLOW, HeroBackdrop } from '@/components/PageHero';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
-import { FOUNDING_JOINED, FOUNDING_LINKS, FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
+import { FOUNDING_JOINED, FOUNDING_LINKS, FOUNDING_PROFILES, FOUNDING_SPOTS, foundingProviderCount } from '@/lib/directory';
 
 // Landing page for provider outreach (DMs link here with ?ref=...). The spot
 // counter is the real number of Founding Provider badges granted in Supabase.
@@ -144,6 +144,12 @@ export default async function FoundingProvidersPage() {
                   ) : (
                     name
                   )}
+                  {FOUNDING_PROFILES[name] ? (
+                    <>
+                      {' '}
+                      (<Link href={FOUNDING_PROFILES[name]} className="underline decoration-white/30 underline-offset-2 hover:text-white">profile</Link>)
+                    </>
+                  ) : null}
                 </span>
               ))}
               .
