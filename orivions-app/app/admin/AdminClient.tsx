@@ -10,6 +10,7 @@ import { supabase, type Company, type Lead } from '@/lib/supabase';
 import LeadInbox, { type ConciergeRequest, type LeadEvent, type ProviderLead } from './LeadInbox';
 import dynamic from 'next/dynamic';
 import CampaignsPanel from './CampaignsPanel';
+import CrmPanel from './CrmPanel';
 import SeoPanel from './SeoPanel';
 import { Empty, Panel, RankList, StatCard, Toggle } from './ui';
 
@@ -20,7 +21,7 @@ const GeoPanel = dynamic(() => import('./GeoPanel'), { ssr: false, loading: () =
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'providers' | 'leads' | 'signups';
+type Tab = 'overview' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'crm' | 'providers' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -70,6 +71,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'map', label: 'Map' },
   { id: 'campaigns', label: 'Campaigns' },
   { id: 'seo', label: 'SEO & GEO' },
+  { id: 'crm', label: 'CRM' },
   { id: 'providers', label: 'Providers' },
   { id: 'leads', label: 'Leads' },
   { id: 'signups', label: 'Signups' },
@@ -274,6 +276,8 @@ export default function AdminClient() {
         {tab === 'campaigns' && <CampaignsPanel />}
 
         {tab === 'seo' && <SeoPanel />}
+
+        {tab === 'crm' && <CrmPanel />}
 
         {tab === 'providers' && (
           <Panel title="Providers" subtitle="Pending verification requests are listed first. Verifying clears the request.">
