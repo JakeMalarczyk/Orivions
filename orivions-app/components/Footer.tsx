@@ -42,6 +42,7 @@ const GROUPS: { title: string; links: { href: string; label: string }[] }[] = [
       { href: '/about', label: 'About' },
       { href: '/how-we-verify', label: 'How we verify' },
       { href: '/founding-providers', label: 'Founding Providers' },
+      { href: '/newsletter', label: 'Newsletter' },
       { href: '/contact', label: 'Contact' },
     ],
   },
