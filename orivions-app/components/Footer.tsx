@@ -44,6 +44,8 @@ const GROUPS: { title: string; links: { href: string; label: string }[] }[] = [
       { href: '/founding-providers', label: 'Founding Providers' },
       { href: '/newsletter', label: 'Newsletter' },
       { href: '/contact', label: 'Contact' },
+      { href: '/terms', label: 'Terms' },
+      { href: '/privacy', label: 'Privacy' },
     ],
   },
 ];

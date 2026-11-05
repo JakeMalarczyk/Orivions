@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRef, useState, type FormEvent } from 'react';
 import Turnstile, { TURNSTILE_ENABLED, type TurnstileHandle } from '@/components/Turnstile';
 
@@ -90,7 +91,8 @@ export default function NewsletterForm() {
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5" />
         <span>
           I agree to receive the Orivions newsletter by email. I can unsubscribe at any time. We use your email only
-          for this newsletter and never sell it.
+          for this newsletter and never sell it. See the{' '}
+          <Link href="/privacy" className="text-blue-deep">Privacy Policy</Link>.
         </span>
       </label>
       <Turnstile ref={captcha} onToken={setCaptchaToken} action="newsletter" className="flex" />
