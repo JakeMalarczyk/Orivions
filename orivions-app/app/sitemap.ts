@@ -12,7 +12,7 @@ import { listVerifiedProviders } from '@/lib/providers';
 // change the page's content.
 export const revalidate = 3600;
 
-const GLOSSARY_UPDATED = '2026-10-20';
+const GLOSSARY_UPDATED = '2026-11-05';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = sortedPosts();
