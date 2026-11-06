@@ -78,6 +78,21 @@ export interface Company {
   referral_code: string | null;
   account_type: 'provider' | 'client';
   created_at: string;
+  // Optional profile details (migrations 01 and 19). Absent until the provider fills them in.
+  tagline?: string | null;
+  specialties?: string | null;
+  languages?: string | null;
+  location?: string | null;
+  team_size?: string | null;
+  founded_year?: number | null;
+  chains?: string[] | null;
+  min_project_usd?: number | null;
+  typical_timeline?: string | null;
+  availability?: string | null;
+  x_url?: string | null;
+  github_url?: string | null;
+  linkedin_url?: string | null;
+  discord_url?: string | null;
 }
 
 export interface PortfolioItem {
