@@ -14,10 +14,18 @@ export interface PublicProvider extends Company {
   x_url: string | null;
   github_url: string | null;
   linkedin_url: string | null;
+  discord_url: string | null;
+  chains: string[] | null;
+  tagline: string | null;
+  specialties: string | null;
+  languages: string | null;
+  min_project_usd: number | null;
+  typical_timeline: string | null;
+  availability: string | null;
 }
 
 const COLUMNS =
-  'id, slug, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at, updated_at, location, team_size, founded_year, x_url, github_url, linkedin_url';
+  'id, slug, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at, updated_at, location, team_size, founded_year, x_url, github_url, linkedin_url, discord_url, chains, tagline, specialties, languages, min_project_usd, typical_timeline, availability';
 
 function client() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
