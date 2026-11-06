@@ -17,6 +17,29 @@ function field(value: unknown, max: number): string {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
 }
 
+// Optional detail fields are free-form but capped; the dropdown ones are
+// whitelisted so the admin table stays clean.
+const STAGES = ['Idea', 'Building', 'Testnet', 'Pre-mainnet', 'Live'];
+const FUNDING = ['Bootstrapped', 'Pre-seed', 'Seed', 'Series A+', 'Grant funded'];
+const TEAM = ['Solo', '2-5', '6-15', '16+'];
+const CHAINS = ['Solana', 'Ethereum / EVM', 'Multi-chain', 'Other'];
+const NEEDS = ['Security audit', 'Legal / compliance', 'Marketing / growth', 'Development', 'Other'];
+function pick(value: unknown, allowed: string[]): string {
+  return typeof value === 'string' && allowed.includes(value) ? value : '';
+}
+// A website or GitHub link: keep it only if it looks like a URL, never executable.
+function link(value: unknown): string {
+  const v = field(value, 200);
+  if (!v) return '';
+  const withScheme = /^https?:\/\//i.test(v) ? v : `https://${v}`;
+  try {
+    const u = new URL(withScheme);
+    return u.hostname.includes('.') ? u.toString().slice(0, 200) : '';
+  } catch {
+    return '';
+  }
+}
+
 export async function POST(request: Request) {
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     return NextResponse.json({ error: 'Server misconfigured: Supabase env vars not set.' }, { status: 500 });
@@ -50,6 +73,12 @@ export async function POST(request: Request) {
   const budget = field(body.budget, 60);
   const timeline = field(body.timeline, 60);
   const source = field(body.source, 60);
+  const website = link(body.website);
+  const stage = pick(body.stage, STAGES);
+  const chain = pick(body.chain, CHAINS);
+  const funding = pick(body.funding, FUNDING);
+  const team = pick(body.team, TEAM);
+  const needCategory = pick(body.needCategory, NEEDS);
   const { error } = await (writeClient() ?? supabase).from('concierge_requests').insert({
     client_name: name,
     client_email: email,
@@ -58,6 +87,12 @@ export async function POST(request: Request) {
     budget_range: budget,
     timeline,
     category: source,
+    repo_url: website,
+    chain,
+    project_stage: stage,
+    funding,
+    team_size: team,
+    need_category: needCategory,
   });
   if (error) {
     return NextResponse.json({ error: 'Could not save your request.' }, { status: 500 });
@@ -66,6 +101,9 @@ export async function POST(request: Request) {
     '🔥 New shortlist request (concierge)',
     `${name}${company ? ` · ${company}` : ''} <${email}>`,
     (budget || timeline) && [budget, timeline].filter(Boolean).join(' · '),
+    needCategory && `Needs: ${needCategory}`,
+    [stage, chain, funding, team && `team ${team}`].filter(Boolean).join(' · '),
+    website && `Site: ${website}`,
     source && `Source: ${source}`,
     '',
     need.slice(0, 800),
