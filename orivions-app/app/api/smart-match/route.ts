@@ -25,6 +25,13 @@ interface ProviderRow {
   category: string;
   description: string | null;
   verified: boolean;
+  tagline: string | null;
+  specialties: string | null;
+  chains: string[] | null;
+  location: string | null;
+  min_project_usd: number | null;
+  typical_timeline: string | null;
+  availability: string | null;
 }
 interface ServiceRow {
   company_id: string;
@@ -74,7 +81,7 @@ export async function POST(request: Request) {
   try {
     const { data: providersData, error: pErr } = await supabase
       .from('companies')
-      .select('id, name, category, description, verified')
+      .select('id, name, category, description, verified, tagline, specialties, chains, location, min_project_usd, typical_timeline, availability')
       .eq('account_type', 'provider');
     if (pErr) throw pErr;
     const providers = (providersData ?? []) as ProviderRow[];
@@ -96,7 +103,18 @@ export async function POST(request: Request) {
           .filter((s) => s.company_id === p.id)
           .map((s) => `${s.name} ($${s.price_min}-$${s.price_max})`)
           .join('; ');
-        return `ID: ${p.id} | Name: ${p.name} | Category: ${p.category} | Verified: ${p.verified} | Description: ${p.description ?? 'n/a'} | Services: ${svc || 'n/a'}`;
+        const extra = [
+          p.tagline && `Tagline: ${p.tagline}`,
+          p.specialties && `Specialties: ${p.specialties}`,
+          p.chains?.length && `Chains: ${p.chains.join(', ')}`,
+          p.location && `Location: ${p.location}`,
+          p.min_project_usd && `Minimum project: $${p.min_project_usd}`,
+          p.typical_timeline && `Typical timeline: ${p.typical_timeline}`,
+          p.availability && `Availability: ${p.availability}`,
+        ]
+          .filter(Boolean)
+          .join(' | ');
+        return `ID: ${p.id} | Name: ${p.name} | Category: ${p.category} | Verified: ${p.verified} | Description: ${p.description ?? 'n/a'}${extra ? ` | ${extra}` : ''} | Services: ${svc || 'n/a'}`;
       })
       .join('\n');
 
