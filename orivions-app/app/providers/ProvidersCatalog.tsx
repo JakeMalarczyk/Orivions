@@ -176,7 +176,7 @@ function ProviderCard({
         )}
       </div>
       <div className="mt-1.5 text-xs font-semibold text-ink">{provider.category}</div>
-      <p className="mt-2.5 line-clamp-3 text-[13px] text-gray">{provider.description || t.noDesc}</p>
+      <p className="mt-2.5 line-clamp-3 text-[13px] text-gray">{provider.tagline || provider.description || t.noDesc}</p>
       {provider.verified && provider.slug && (
         <Link
           href={`/providers/${provider.slug}`}
