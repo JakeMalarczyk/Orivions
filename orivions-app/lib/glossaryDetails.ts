@@ -310,4 +310,114 @@ export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
       'Confusing the mint authority with the freeze authority, or ignoring extension authorities on Token-2022 mints.',
     ],
   },
+  anchor: {
+    inPractice: [
+      'Anchor is a Rust framework for Solana programs. You describe accounts in a struct with constraints, and Anchor generates the checks, the instruction routing and an IDL that clients use to talk to the program.',
+      'Anchor adds an 8 byte discriminator to every account type and instruction, which helps stop one account type from being passed in place of another. Many teams start with anchor test and a local validator for fast checks.',
+    ],
+    mistakes: [
+      'Using UncheckedAccount or remaining accounts without writing the checks by hand.',
+      'Forgetting constraints such as has_one, owner or seeds, so an account passes that should not.',
+      'Using init_if_needed without thinking through what happens when the account already exists.',
+    ],
+  },
+  cpi: {
+    inPractice: [
+      'A cross-program invocation (CPI) is one program calling another inside the same transaction. A program signs for its own PDAs during a CPI by passing the seeds, which is what invoke_signed does.',
+      'Account data held in memory before a CPI can be out of date afterwards, because the called program may have changed it. Reload accounts after a CPI if you read them again.',
+    ],
+    mistakes: [
+      'Not checking the program ID of the program being called, so an attacker substitutes a different one.',
+      'Passing along signer or writable privileges to a program that does not need them.',
+      'Reading stale account data after a CPI and acting on old balances.',
+    ],
+  },
+  discriminator: {
+    inPractice: [
+      'A discriminator is a short tag at the start of account data or instruction data that says what type it is. Anchor uses 8 bytes derived from the name of the account or instruction.',
+      'When a program reads an account it checks the discriminator first, so data of one type is not read as another.',
+    ],
+    mistakes: [
+      'Writing a native program that reads account bytes without checking a type tag, so a different account type is accepted.',
+      'Renaming an account or instruction in Anchor without planning for the discriminator change on existing accounts.',
+      'Assuming the discriminator also proves who owns the account, which is a separate check.',
+    ],
+  },
+  'compute-units': {
+    inPractice: [
+      'Compute units measure how much work a transaction does. The default limit is 200,000 per instruction, there is a larger cap per transaction, and you can request a specific limit with the compute budget program.',
+      'A transaction that runs out of compute units fails. Setting the limit close to real usage keeps priority fees lower, because the fee is the price per unit times the limit.',
+    ],
+    mistakes: [
+      'Leaving the default limit when the program uses far less, or far more.',
+      'Logging a lot inside a program, which spends compute units.',
+      'Writing loops over data whose size a user can grow, so a transaction can become too expensive to run.',
+    ],
+  },
+  rent: {
+    inPractice: [
+      'An account must hold a minimum balance of lamports based on its size to stay on chain. Accounts that meet it are rent exempt, and the RPC method getMinimumBalanceForRentExemption returns the amount for a given size.',
+      'When a program closes an account, the lamports go to an account the program chooses, so check where they are sent.',
+    ],
+    mistakes: [
+      'Creating accounts larger than needed, which locks up more lamports for every user.',
+      'Closing an account and sending the lamports to an address a user can choose without checking.',
+      'Forgetting that the payer of an account creation must have enough lamports for the rent as well as fees.',
+    ],
+  },
+  'spl-token': {
+    inPractice: [
+      'The SPL Token program holds token balances. A mint account defines the token, and each holder has a token account for that mint. The usual address for a wallet and a mint is the associated token account.',
+      'Amounts are stored as integers and the mint sets the number of decimals, so a balance of 1,000,000 with six decimals is one token.',
+    ],
+    mistakes: [
+      'Sending tokens to the wallet address instead of the associated token account.',
+      'Not checking that a token account belongs to the expected mint and owner.',
+      'Assuming every token has the same decimals and doing the math with floating point numbers.',
+    ],
+  },
+  'token-2022': {
+    inPractice: [
+      'Token-2022, also called Token Extensions, is a second token program with a different program ID. It supports extensions such as transfer fees, transfer hooks, confidential transfers, a permanent delegate and an interest bearing display.',
+      'Not every wallet, exchange or protocol supports every extension, so check support before choosing extensions for a token you plan to list.',
+    ],
+    mistakes: [
+      'Hard-coding the classic Token program ID in a program that must also accept Token-2022 tokens.',
+      'Adding an extension that a key partner or exchange does not support.',
+      'Leaving a powerful authority such as a permanent delegate set without telling users.',
+    ],
+  },
+  idl: {
+    inPractice: [
+      'An IDL is a JSON file that describes a program: its instructions, accounts, arguments and errors. Clients and tools use it to build transactions and decode accounts without reading the source code.',
+      'Anchor generates the IDL at build time and can publish it on chain next to the program so explorers and wallets can read it.',
+    ],
+    mistakes: [
+      'Publishing an IDL that no longer matches the deployed program after an upgrade.',
+      'Treating the IDL as proof of what the program does, when only the deployed code decides that.',
+      'Changing the order of accounts or arguments without updating clients that depend on them.',
+    ],
+  },
+  'freeze-authority': {
+    inPractice: [
+      'The freeze authority of a token mint can freeze and unfreeze individual token accounts, which blocks transfers from that account. It is set when the mint is created and can be removed.',
+      'A token that claims to be fully permissionless should have no freeze authority. Anyone can check it by reading the mint account.',
+    ],
+    mistakes: [
+      'Leaving a freeze authority on a token that is presented as decentralized.',
+      'Keeping the freeze authority in a single hot wallet.',
+      'Not telling users and exchanges when the freeze authority is part of a compliance design.',
+    ],
+  },
+  lamport: {
+    inPractice: [
+      'A lamport is the smallest unit of SOL: one SOL is 1,000,000,000 lamports. Balances, fees and rent on chain are counted in lamports as whole numbers.',
+      'Programs and clients should do money math in lamports with integer types and convert to SOL only to display a value.',
+    ],
+    mistakes: [
+      'Using floating point numbers for balances, which can introduce rounding errors.',
+      'Mixing up SOL and lamports in one calculation, so an amount is off by a factor of a billion.',
+      'Not checking for overflow when adding or multiplying large lamport amounts.',
+    ],
+  },
 };
