@@ -22,6 +22,10 @@ export interface ConciergeRequest {
   category: string | null;
   chain: string | null;
   repo_url: string | null;
+  project_stage: string | null;
+  funding: string | null;
+  team_size: string | null;
+  need_category: string | null;
   status: ConciergeStatus;
   created_at: string;
 }
@@ -114,10 +118,14 @@ export default function LeadInbox({
         [
           ['Type', 'Shortlist request'],
           ['Category', c.category ?? ''],
+          ['Needs', c.need_category ?? ''],
+          ['Stage', c.project_stage ?? ''],
+          ['Funding', c.funding ?? ''],
+          ['Team', c.team_size ?? ''],
           ['Budget', c.budget_range ?? ''],
           ['Timeline', c.timeline ?? ''],
           ['Chain', c.chain ?? ''],
-          ['Repo', c.repo_url ?? ''],
+          ['Website / repo', c.repo_url ?? ''],
         ] as [string, string][]
       ).filter(([, v]) => v),
       status: c.status,
