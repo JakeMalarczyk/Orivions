@@ -17,6 +17,11 @@ import {
 
 type Panel = 'overview' | 'profile' | 'portfolio' | 'services' | 'leads';
 
+const CHAIN_OPTIONS = ['Solana', 'Ethereum / EVM', 'Base', 'Arbitrum', 'Bitcoin', 'Other'];
+const TEAM_SIZES = ['', 'Solo', '2-5', '6-15', '16-50', '50+'];
+/** Keeps a previously saved free-text team size selectable. */
+const teamOptions = (current: string) => (current && !TEAM_SIZES.includes(current) ? [...TEAM_SIZES, current] : TEAM_SIZES);
+
 export default function DashboardClient() {
   const router = useRouter();
   const [panel, setPanel] = useState<Panel>('overview');
@@ -46,7 +51,7 @@ export default function DashboardClient() {
       const [{ data: c }, { data: referralCode }, { data: pf }, { data: sv }, { data: ld }] = await Promise.all([
         supabase
           .from('companies')
-          .select('id, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at')
+          .select('id, name, description, category, website, verified, featured, founding_provider, verification_requested, account_type, created_at, tagline, specialties, languages, location, team_size, founded_year, chains, min_project_usd, typical_timeline, availability, x_url, github_url, linkedin_url, discord_url')
           .eq('id', user.id)
           .single(),
         supabase.rpc('my_referral_code'),
@@ -168,7 +173,7 @@ function OverviewPanel({
     {
       done: (company.description ?? '').trim().length >= 40 && !!company.website,
       label: 'Complete your company profile',
-      hint: 'Company name, category, website and a short description of what you do on Solana.',
+      hint: 'Company name, category, website, a tagline, specialties and a short description of what you do on Solana.',
       panel: 'profile',
     },
     { done: services.length > 0, label: 'Add your services with price ranges', hint: 'Specific services and indicative prices help clients compare.', panel: 'services' },
@@ -271,23 +276,90 @@ function ProfilePanel({
   const [description, setDescription] = useState(company.description ?? '');
   const [category, setCategory] = useState(company.category);
   const [website, setWebsite] = useState(company.website ?? '');
+  const [tagline, setTagline] = useState(company.tagline ?? '');
+  const [specialties, setSpecialties] = useState(company.specialties ?? '');
+  const [languages, setLanguages] = useState(company.languages ?? '');
+  const [location, setLocation] = useState(company.location ?? '');
+  const [teamSize, setTeamSize] = useState(company.team_size ?? '');
+  const [foundedYear, setFoundedYear] = useState(company.founded_year ? String(company.founded_year) : '');
+  const [chains, setChains] = useState<string[]>(company.chains ?? ['Solana']);
+  const [minProject, setMinProject] = useState(company.min_project_usd ? String(company.min_project_usd) : '');
+  const [timeline, setTimeline] = useState(company.typical_timeline ?? '');
+  const [availability, setAvailability] = useState(company.availability ?? '');
+  const [xUrl, setXUrl] = useState(company.x_url ?? '');
+  const [githubUrl, setGithubUrl] = useState(company.github_url ?? '');
+  const [linkedinUrl, setLinkedinUrl] = useState(company.linkedin_url ?? '');
+  const [discordUrl, setDiscordUrl] = useState(company.discord_url ?? '');
   const [saving, setSaving] = useState(false);
   const [requestingVerification, setRequestingVerification] = useState(false);
 
   async function save() {
+    // Links: accept "acme.xyz" or a full URL; keep only https links that parse.
+    const fixed: Record<string, string> = {};
+    for (const [key, raw] of [
+      ['x_url', xUrl],
+      ['github_url', githubUrl],
+      ['linkedin_url', linkedinUrl],
+      ['discord_url', discordUrl],
+    ] as const) {
+      const v = raw.trim();
+      if (!v) {
+        fixed[key] = '';
+        continue;
+      }
+      try {
+        const u = new URL(/^https?:\/\//i.test(v) ? v : `https://${v}`);
+        if (!u.hostname.includes('.')) throw new Error('host');
+        fixed[key] = u.toString();
+      } catch {
+        showToast(`Check the link: ${v.slice(0, 40)}`);
+        return;
+      }
+    }
+    const year = foundedYear.trim() ? Number(foundedYear) : null;
+    if (year !== null && (!Number.isInteger(year) || year < 1990 || year > new Date().getFullYear())) {
+      showToast('Founded year looks wrong');
+      return;
+    }
+    const min = minProject.trim() ? Number(minProject.replace(/[,$\s]/g, '')) : null;
+    if (min !== null && (!Number.isFinite(min) || min < 0 || min > 10_000_000)) {
+      showToast('Minimum project size looks wrong');
+      return;
+    }
+    const patch = {
+      name,
+      description,
+      category,
+      website,
+      tagline: tagline.trim(),
+      specialties: specialties.trim(),
+      languages: languages.trim(),
+      location: location.trim(),
+      team_size: teamSize,
+      founded_year: year,
+      chains: chains.length ? chains : ['Solana'],
+      min_project_usd: min === null ? null : Math.round(min),
+      typical_timeline: timeline.trim(),
+      availability: availability.trim(),
+      ...fixed,
+    };
     setSaving(true);
-    const { error } = await supabase
-      .from('companies')
-      .update({ name, description, category, website })
-      .eq('id', company.id);
+    const { error } = await supabase.from('companies').update(patch).eq('id', company.id);
     setSaving(false);
     if (error) {
       showToast('Error saving profile');
       return;
     }
-    setCompany({ ...company, name, description, category, website });
+    setCompany({ ...company, ...patch } as Company);
     showToast('Profile saved');
   }
+
+  // How much of the public profile is filled in. Clients judge providers by what they can read.
+  const filled = [
+    name, description.length >= 40, website, tagline, specialties, location, teamSize, foundedYear,
+    languages, minProject, timeline, availability, xUrl || githubUrl || linkedinUrl,
+  ].filter(Boolean).length;
+  const total = 13;
 
   async function requestVerification() {
     setRequestingVerification(true);
@@ -317,12 +389,58 @@ function ProfilePanel({
   return (
     <div className="max-w-xl space-y-5">
       <div className="rounded-2xl border border-line p-6">
-        <h3 className="mb-4 font-semibold">Company profile</h3>
+        <div className="mb-4 flex items-baseline justify-between gap-3">
+          <h3 className="font-semibold">Company profile</h3>
+          <span className="text-xs text-gray-soft">{filled} of {total} filled in</span>
+        </div>
+        <p className="-mt-2 mb-4 text-xs text-gray">
+          This is what clients read on your public page and what Smart Match uses to pick you. The more specific you are, the easier it is to choose you for the right project.
+        </p>
         <TextField label="Company name" value={name} onChange={setName} />
-        <TextAreaField label="Description" value={description} onChange={setDescription} />
+        <TextField label="Tagline (one line, up to 140 characters)" value={tagline} onChange={(v) => setTagline(v.slice(0, 140))} />
+        <TextAreaField label="Description: what you do, for whom, and what you have shipped" value={description} onChange={setDescription} />
         <div className="grid grid-cols-2 gap-3">
           <SelectField label="Category" value={category} onChange={(v) => setCategory(v as Company['category'])} options={PROVIDER_CATEGORIES} />
           <TextField label="Website" value={website} onChange={setWebsite} />
+        </div>
+        <TextField label="Specialties, comma separated (e.g. DeFi lending, Anchor, oracles)" value={specialties} onChange={(v) => setSpecialties(v.slice(0, 300))} />
+
+        <h4 className="mb-3 mt-5 text-xs font-bold uppercase tracking-wide text-gray-soft">Company</h4>
+        <div className="grid grid-cols-2 gap-3">
+          <TextField label="Location" value={location} onChange={setLocation} />
+          <SelectField label="Team size" value={teamSize} onChange={setTeamSize} options={teamOptions(teamSize)} />
+          <TextField label="Founded (year)" value={foundedYear} onChange={setFoundedYear} />
+          <TextField label="Languages (e.g. English, Polish)" value={languages} onChange={(v) => setLanguages(v.slice(0, 100))} />
+        </div>
+        <div className="mb-3.5">
+          <span className="mb-1.5 block text-xs font-semibold text-gray">Chains you work on</span>
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+            {CHAIN_OPTIONS.map((c) => (
+              <label key={c} className="flex items-center gap-1.5 text-sm">
+                <input
+                  type="checkbox"
+                  checked={chains.includes(c)}
+                  onChange={() => setChains((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]))}
+                />
+                {c}
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <h4 className="mb-3 mt-5 text-xs font-bold uppercase tracking-wide text-gray-soft">Working terms</h4>
+        <div className="grid grid-cols-2 gap-3">
+          <TextField label="Minimum project size (USD)" value={minProject} onChange={setMinProject} />
+          <TextField label="Typical timeline (e.g. 2-4 weeks)" value={timeline} onChange={(v) => setTimeline(v.slice(0, 60))} />
+        </div>
+        <TextField label="Availability (e.g. Booking from December)" value={availability} onChange={(v) => setAvailability(v.slice(0, 80))} />
+
+        <h4 className="mb-3 mt-5 text-xs font-bold uppercase tracking-wide text-gray-soft">Links</h4>
+        <div className="grid grid-cols-2 gap-3">
+          <TextField label="X (Twitter)" value={xUrl} onChange={setXUrl} />
+          <TextField label="GitHub" value={githubUrl} onChange={setGithubUrl} />
+          <TextField label="LinkedIn" value={linkedinUrl} onChange={setLinkedinUrl} />
+          <TextField label="Discord" value={discordUrl} onChange={setDiscordUrl} />
         </div>
         <button
           onClick={save}
@@ -606,7 +724,7 @@ function SelectField({
       >
         {options.map((o) => (
           <option key={o} value={o}>
-            {o}
+            {o || 'Not set'}
           </option>
         ))}
       </select>
