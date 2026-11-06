@@ -43,6 +43,7 @@ export const FOUNDER_JSONLD = {
   jobTitle: 'Founder',
   url: `${SITE_URL}/about`,
   worksFor: { '@id': `${SITE_URL}/#organization` },
+  sameAs: ['https://dev.to/jakemalarczyk', 'https://github.com/JakeMalarczyk'],
 };
 
 /** Schema.org wants a full date-time with a time zone; posts store plain dates. */
