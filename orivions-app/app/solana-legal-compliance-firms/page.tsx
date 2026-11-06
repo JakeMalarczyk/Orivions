@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Legal and Compliance Firms for Web3 Teams',
+  title: 'Crypto Lawyer for Solana Projects: How to Choose',
   description:
-    'Find legal and compliance firms for Solana and Web3 projects: token launches, MiCA, entity structure, contracts and terms. Checked by a person, free to contact.',
+    'How to choose a crypto lawyer for a Solana project: token launch review, entity structure, contracts and terms, red flags and questions to ask. Browse firms, free to contact. General information, not legal advice.',
   alternates: { canonical: '/solana-legal-compliance-firms' },
 };
 
@@ -39,6 +39,46 @@ const content: CategoryContent = {
       ],
       link: { text: 'Before you speak to a lawyer, work through the', href: '/blog/solana-token-launch-checklist', label: 'Solana token launch checklist' },
     },
+    {
+      heading: 'What to prepare before the first call',
+      bullets: [
+        ['A one-page description', 'what the product does, who uses it and how money or tokens move.'],
+        ['Where people are', 'the countries of your team, your company and your expected buyers or users.'],
+        ['Token plan', 'whether you plan a token, a sale or an airdrop, and roughly when.'],
+        ['Existing documents', 'any terms, contracts with developers or incorporation papers you already have.'],
+        ['Your questions', 'a short list, so the call covers what you actually need to decide.'],
+      ],
+    },
+    {
+      heading: 'How an engagement usually runs',
+      bullets: [
+        ['Scoping call', 'a short conversation to understand the project and decide what the firm can do for you.'],
+        ['Written scope and fee', 'the deliverables, the price or hourly rate and what counts as extra work.'],
+        ['Review and advice', 'a memo, an opinion or marked-up documents, with open questions listed clearly.'],
+        ['Follow-up', 'changes to your documents and answers to questions that come up before launch.'],
+      ],
+    },
+    {
+      heading: 'Red flags when choosing a firm',
+      bullets: [
+        ['Guarantees about regulators', 'no lawyer can promise how an authority will treat a token.'],
+        ['No written scope', 'advice without a defined deliverable makes the bill hard to predict.'],
+        ['One template for every project', 'documents copied from another launch rarely fit your structure.'],
+        ['Only one jurisdiction covered', 'ask who handles the other countries you sell into.'],
+        ['Pressure to launch first', 'structure and disclosures are easier to fix before a sale than after.'],
+      ],
+    },
+    {
+      heading: 'Questions to ask before you sign',
+      bullets: [
+        ['Who will do the work?', 'the partner you spoke to, or a junior team.'],
+        ['Which similar projects have you advised?', 'and can I speak to one of them.'],
+        ['What is included in the fee?', 'revisions, calls and follow-up questions.'],
+        ['Which countries do you cover yourselves?', 'and when do you bring in local counsel.'],
+        ['How do you handle conflicts of interest?', 'for example if you advise a service provider I plan to hire.'],
+      ],
+      link: { text: 'For a longer walkthrough, read', href: '/blog/how-to-choose-a-web3-lawyer-for-a-token-launch', label: 'how to choose a Web3 lawyer for a token launch' },
+    },
   ],
   providersHeading: 'Verified Legal and Compliance providers',
   category: 'Legal & Compliance',
@@ -54,6 +94,22 @@ const content: CategoryContent = {
     {
       q: 'Is information on Orivions legal advice?',
       a: 'No. Orivions guides and tools are general information. Orivions connects you with firms, and only a qualified lawyer can advise on your situation.',
+    },
+    {
+      q: 'How much does a crypto lawyer cost?',
+      a: 'It depends on scope and on the firm. Some firms quote a fixed fee for defined work such as a token launch review, others bill hourly. Ask for a written scope and an estimate before you start, and ask what counts as extra.',
+    },
+    {
+      q: 'Do I need a company before I launch a token?',
+      a: 'Often yes, because someone has to hold the code, the treasury and the contracts. Where and how to set it up depends on your team, your buyers and your plans, so discuss it with a lawyer before you announce a sale.',
+    },
+    {
+      q: 'Does MiCA apply to a Solana token?',
+      a: 'MiCA is a European Union regulation, and whether it applies depends on the type of token, who offers it and where. The blockchain you use does not decide this. A lawyer who works with crypto projects can tell you how it applies to your plan.',
+    },
+    {
+      q: 'Can I use a template for my terms of use?',
+      a: 'A template is a starting point, but terms should match how your product works and where your users are. Have a lawyer review them before launch, especially if you handle funds or a token.',
     },
   ],
   ctaBoxTitle: 'Not sure which firm fits your project?',
