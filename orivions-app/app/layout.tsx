@@ -31,7 +31,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.com';
 
 // Official profiles. Listed as sameAs on the Organization so search engines and
 // AI answer engines connect them to orivions.com as one entity.
-const SOCIAL_PROFILES = ['https://x.com/Orivions', 'https://github.com/JakeMalarczyk/Orivions'];
+const SOCIAL_PROFILES = [
+  'https://x.com/Orivions',
+  'https://github.com/JakeMalarczyk/Orivions',
+  'https://github.com/JakeMalarczyk/solana-security-checklists',
+  'https://dev.to/jakemalarczyk',
+];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
