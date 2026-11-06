@@ -108,6 +108,29 @@ export function BulletList({ items }: { items: [string, ReactNode][] }) {
   );
 }
 
+// Pillar page for each guide. The guide is a cluster page and links up to the
+// category page that lists providers for the same topic.
+function topicHub(post: Post): { href: string; label: string } {
+  const key = `${post.slug} ${post.tags.join(' ')}`.toLowerCase();
+  if (/audit|security|bug-bounty/.test(key)) return { href: '/solana-smart-contract-audits', label: 'Solana smart contract audit providers' };
+  if (/rpc|infrastructure/.test(key)) return { href: '/solana-infrastructure-providers', label: 'Solana infrastructure and RPC providers' };
+  if (/lawyer|legal|token-launch|milestone|contract/.test(key)) return { href: '/solana-legal-compliance-firms', label: 'crypto lawyers and compliance firms for Solana' };
+  if (/marketing|market-maker|market making/.test(key)) return { href: '/solana-marketing-growth-agencies', label: 'Solana marketing and growth agencies' };
+  if (/development|dapp|anchor|rust|freelancer|trustworthy/.test(key)) return { href: '/solana-development-companies', label: 'Solana development companies' };
+  return { href: '/providers', label: 'verified Solana service providers' };
+}
+
+function TopicHub({ post }: { post: Post }) {
+  const hub = topicHub(post);
+  return (
+    <p className="mt-12 rounded-xl border border-line p-5 text-[15px] leading-relaxed">
+      Looking for help with this? Browse{' '}
+      <Link href={hub.href} className="font-semibold text-blue-deep">{hub.label}</Link>
+      , or <Link href="/smart-match" className="font-semibold text-blue-deep">describe your project</Link> and get matched for free.
+    </p>
+  );
+}
+
 function RelatedPosts({ slug }: { slug: string }) {
   const related = relatedPosts(slug);
   if (!related.length) return null;
@@ -245,6 +268,8 @@ export default function BlogPost({
             </Link>
           </div>
         )}
+
+        <TopicHub post={post} />
 
         <RelatedPosts slug={post.slug} />
 
