@@ -63,7 +63,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
   const url = `${SITE_URL}/providers/${provider.slug}`;
   const site = websiteUrl(provider.website);
   const hub = CATEGORY_HUBS[provider.category];
-  const profiles = [provider.x_url, provider.github_url, provider.linkedin_url].filter(
+  const profiles = [provider.x_url, provider.github_url, provider.linkedin_url, provider.discord_url].filter(
     (u): u is string => !!u && /^https?:\/\//.test(u)
   );
   const facts: [string, string][] = [
@@ -71,7 +71,18 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
     ...(provider.location ? ([['Location', provider.location]] as [string, string][]) : []),
     ...(provider.team_size ? ([['Team size', provider.team_size]] as [string, string][]) : []),
     ...(provider.founded_year ? ([['Founded', String(provider.founded_year)]] as [string, string][]) : []),
+    ...(provider.chains?.length ? ([['Chains', provider.chains.join(', ')]] as [string, string][]) : []),
+    ...(provider.languages ? ([['Languages', provider.languages]] as [string, string][]) : []),
+    ...(provider.min_project_usd
+      ? ([['Typical minimum', `from $${provider.min_project_usd.toLocaleString('en-US')}`]] as [string, string][])
+      : []),
+    ...(provider.typical_timeline ? ([['Typical timeline', provider.typical_timeline]] as [string, string][]) : []),
+    ...(provider.availability ? ([['Availability', provider.availability]] as [string, string][]) : []),
   ];
+  const specialties = (provider.specialties ?? '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -91,6 +102,9 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
         '@id': `${url}#organization`,
         name: provider.name,
         description: provider.description || undefined,
+        slogan: provider.tagline || undefined,
+        knowsAbout: specialties.length ? specialties : undefined,
+        knowsLanguage: provider.languages || undefined,
         url: site ?? url,
         sameAs: profiles.length ? profiles : undefined,
         address: provider.location || undefined,
@@ -134,6 +148,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
           </>
         }
         title={provider.name}
+        lede={provider.tagline || undefined}
       >
         <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">
           ✓ Verified on Orivions
@@ -150,6 +165,11 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
             <p className="text-base leading-relaxed text-ink/90">
               {provider.description || `${provider.name} is a verified ${provider.category.toLowerCase()} provider on Orivions.`}
             </p>
+            {specialties.length > 0 && (
+              <p className="mt-4 text-sm text-gray">
+                <span className="font-semibold text-ink">Specialties:</span> {specialties.join(' · ')}
+              </p>
+            )}
             {site && (
               <a href={site} target="_blank" rel="noopener" className="mt-3 inline-block text-sm font-semibold text-ink">
                 {provider.website!.replace(/^https?:\/\//, '')} ↗
