@@ -420,4 +420,50 @@ export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
       'Not checking for overflow when adding or multiplying large lamport amounts.',
     ],
   },
+  audit: {
+    inPractice: [
+      'An audit is fixed to one commit. Code that changes after the review is not covered, so teams freeze the scope, agree the commit hash with the auditors and re-review anything that changes afterwards.',
+      'A typical engagement ends with a report that lists findings by severity, followed by a fix review where the auditors check that each reported issue was actually resolved. Publish the final report, not only a badge or a logo.',
+    ],
+    mistakes: [
+      'Booking the audit late, so findings arrive days before launch and there is no time to fix them properly.',
+      'Auditing a moving target, then shipping code that differs from the reviewed commit.',
+      'Treating a passed audit as a guarantee. It lowers risk but cannot prove that no bugs remain.',
+      'Skipping the fix review and assuming reported issues were closed correctly.',
+    ],
+  },
+  'bug-bounty': {
+    inPractice: [
+      'A bounty program publishes the scope (which programs and contracts), the severity levels, the reward range for each level and the rules for reporting. Researchers report privately, the team confirms and fixes the issue, then pays the reward.',
+      'Programs are usually run through a platform or published on the project site. Safe harbor wording tells researchers that good-faith testing within the rules will not be treated as an attack.',
+    ],
+    mistakes: [
+      'Setting rewards so low that selling or exploiting a critical bug looks more attractive than reporting it.',
+      'Launching a bounty with a vague scope, which leads to disputes about what is eligible.',
+      'Using a bounty as a replacement for an audit instead of a layer that runs after it.',
+      'Leaving reports unanswered, which discourages researchers from reporting again.',
+    ],
+  },
+  program: {
+    inPractice: [
+      'A Solana program is stateless. It holds no data of its own: every piece of state lives in separate accounts, and a transaction passes in the accounts that the program is allowed to read or write.',
+      'Programs are commonly written in Rust, often with the Anchor framework. A deployed program lives in an executable account, and with the upgradeable loader its code can be replaced by whoever holds the upgrade authority.',
+    ],
+    mistakes: [
+      'Assuming a program remembers values between calls, instead of storing them in an account.',
+      'Trusting any account the client passes in without checking its owner, type and signer status.',
+      'Leaving the upgrade authority with one person after launch, so users depend on a single key.',
+    ],
+  },
+  'native-rust': {
+    inPractice: [
+      'In a native Rust program there is no framework to parse accounts. The program reads the account list and the instruction data itself, so every owner, signer and size check is code the team wrote and an auditor has to read.',
+      'Teams choose native Rust for tight control over compute usage and account layout, and often keep the compute-heavy part native while the rest uses Anchor.',
+    ],
+    mistakes: [
+      'Skipping a check that Anchor would have added automatically, such as the account owner or the discriminator.',
+      'Writing instruction parsing by hand without tests for malformed or truncated input.',
+      'Choosing native Rust for speed without measuring compute units, so the extra complexity buys nothing.',
+    ],
+  },
 };
