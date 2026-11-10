@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Check, Choice, Field } from '@/components/CalculatorControls';
 import { trackEvent } from '@/lib/analytics';
+import ConciergeForm from '@/components/ConciergeForm';
 import { formatUsd } from '@/lib/auditEstimate';
 import {
   BACKEND,
@@ -204,6 +205,21 @@ export default function DappCalculator() {
             Share this estimate on X ↗
           </a>
         </div>
+        <details className="group mt-4 rounded-2xl border border-line">
+          <summary className="cursor-pointer select-none px-5 py-4 text-sm font-semibold text-ink">
+            Email me this estimate and a shortlist
+            <span className="block text-xs font-normal text-gray-soft">Free. A person at Orivions replies, usually within two business days.</span>
+          </summary>
+          <div className="px-2 pb-2">
+            <ConciergeForm
+              key={`${matchNeed}-${result.costLow}-${result.costHigh}`}
+              need={`${matchNeed} Indicative estimate: ${formatUsd(result.costLow)} to ${formatUsd(result.costHigh)}.`}
+              source="dapp-calculator"
+              title="Send me this estimate and a shortlist"
+              text="We email your numbers and up to three verified providers that fit this dApp scope. No obligation."
+            />
+          </div>
+        </details>
       </div>
     </div>
   );
