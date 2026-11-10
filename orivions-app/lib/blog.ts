@@ -822,6 +822,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'solana-indexer-vs-rpc-what-to-use',
+    title: 'Solana indexer vs RPC: what to use, and when to add an indexer',
+    description:
+      'When RPC is enough on Solana and when you need an indexer: history, filters and totals, Geyser streaming, decoding, build or buy, and questions to ask a provider.',
+    excerpt:
+      'RPC answers one question at a time and is not a database. When a Solana app needs an indexer, how it works, whether to build or buy it, and what to ask before you commit.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-10',
+    dateModified: '2026-11-10',
+    tags: ['Guides', 'Infrastructure', 'Development'],
+    faqs: [
+      {
+        q: 'Do I need an indexer for my Solana app?',
+        a: 'Only if you show history, lists, totals or search, or if account scans such as getProgramAccounts become slow or costly. If you read balances and send transactions, an RPC provider is enough.',
+      },
+      {
+        q: 'What is the difference between an RPC node and an indexer on Solana?',
+        a: 'An RPC node returns current chain state and sends transactions, one request at a time. An indexer reads and decodes chain data into a database you can filter, sort and aggregate.',
+      },
+      {
+        q: 'What is a Geyser plugin?',
+        a: 'A validator plugin interface that streams account, slot and transaction updates to an external system. Providers commonly expose it as a gRPC stream that indexers consume to stay current.',
+      },
+      {
+        q: 'Should I build my own Solana indexer or use a hosted one?',
+        a: 'A hosted indexer is the fastest start but ties you to its schema and uptime. Your own gives full control at scale but means running a stream consumer, a database, monitoring and backfills. Many teams mix both.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-choose-a-web3-lawyer-for-a-token-launch',
     title: 'How to choose a Web3 lawyer for a token launch',
     description:
