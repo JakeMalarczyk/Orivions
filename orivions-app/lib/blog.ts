@@ -529,7 +529,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-11-02',
+    dateModified: '2026-11-10',
     tags: ['Guides', 'Security', 'Audits', 'Pricing'],
     faqs: [
       {
@@ -547,6 +547,10 @@ export const POSTS: Post[] = [
       {
         q: 'How much does a Solana auditor charge per day?',
         a: 'Our calculator uses $1,600 to $2,800 per engineer-day as an indicative range for Solana security engineers. Most quotes are engineer-days multiplied by a day rate, so ask every firm for both numbers and compare them against the same frozen commit and scope.',
+      },
+      {
+        q: 'Is a Solidity audit cheaper than a Solana audit?',
+        a: 'The language alone does not set the price. Quotes follow the size and complexity of the code, how many engineers are needed and how busy the auditor is. Solana programs are written in Rust and use an account model, so you need auditors with Solana experience, which narrows the pool. If you ship on both chains, ask for separate quotes.',
       },
       {
         q: 'Is a Solana audit cheaper for Anchor than for native Rust?',
