@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/providers', updated: '2026-11-02', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/smart-match', updated: '2026-11-02', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/solana-smart-contract-audits', updated: '2026-11-06', priority: 0.85, changeFrequency: 'weekly' as const },
-    { path: '/solana-development-companies', updated: '2026-11-06', priority: 0.85, changeFrequency: 'weekly' as const },
+    { path: '/solana-development-companies', updated: '2026-11-10', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-marketing-growth-agencies', updated: '2026-11-06', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-legal-compliance-firms', updated: '2026-11-06', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-infrastructure-providers', updated: '2026-11-06', priority: 0.85, changeFrequency: 'weekly' as const },
