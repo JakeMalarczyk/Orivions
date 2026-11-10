@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Development Company: How to Choose and Compare',
+  title: 'Solana Development Company: Services and How to Choose',
   description:
-    'How to choose a Solana development company: what they deliver, red flags, a typical timeline, pricing and questions to ask. Compare vetted Anchor and full-stack teams, free to contact.',
+    'How to choose a Solana development company: smart contract, DeFi and dApp development services, red flags, timeline, pricing and questions to ask. Compare vetted Anchor and full-stack teams.',
   alternates: { canonical: '/solana-development-companies' },
 };
 
@@ -31,6 +31,19 @@ const content: CategoryContent = {
         ['Handover', 'documentation, repository access and a clear statement that you own the code and keys.'],
       ],
       link: { text: 'Upgrade authority is easy to get wrong; read how to', href: '/blog/solana-program-upgrade-authority-multisig', label: 'put an upgrade authority behind a multisig' },
+    },
+    {
+      heading: 'Solana development services: what companies offer',
+      body: 'Solana development companies cover a range of work. Knowing which service you need makes quotes easier to compare.',
+      bullets: [
+        ['Smart contract development', 'Anchor or native Rust programs for your protocol, tokens or marketplace, with tests and a clear permission model.'],
+        ['DeFi app development', 'lending, swaps, vaults and staking products, where money handling and oracle use call for extra review.'],
+        ['dApp and wallet integration', 'the web or mobile app, wallet connection, transaction building and the error messages users see.'],
+        ['Token and NFT launches', 'mint and token program setup, authorities, metadata and distribution, planned together with legal and security checks.'],
+        ['Integrations and data', 'indexers, oracles, payments and RPC setup so the product keeps working under load.'],
+        ['Maintenance and upgrades', 'monitoring, program upgrades through a controlled process, and support after launch.'],
+      ],
+      link: { text: 'If you are not sure which approach to pick, see', href: '/blog/anchor-vs-native-rust-solana', label: 'Anchor vs native Rust for Solana programs' },
     },
     {
       heading: 'What to look for in a Solana dev shop',
@@ -80,6 +93,7 @@ const content: CategoryContent = {
         ['Who holds the keys and the repositories?', 'the answer should be you, from day one.'],
         ['What happens if the project stops?', 'you should be able to take the code and continue with another team.'],
       ],
+      link: { text: 'To get comparable quotes, send every company the same brief: use our free', href: '/blog/solana-project-brief-template', label: 'Solana project brief template' },
     },
   ],
   providersHeading: 'Verified Development providers',
@@ -100,6 +114,18 @@ const content: CategoryContent = {
     {
       q: 'Do I need a separate team for frontend and smart contracts?',
       a: 'Not necessarily. Many verified providers on Orivions offer full-stack development, covering both the on-chain program and the client-facing application.',
+    },
+    {
+      q: 'What services does a Solana development company offer?',
+      a: 'Typically smart contract development in Anchor or native Rust, DeFi and dApp development, wallet and frontend integration, token and NFT launches, integrations such as indexers and oracles, and maintenance and upgrades after launch. Ask which of these the team has shipped on mainnet.',
+    },
+    {
+      q: 'How do I choose a Solana smart contract development company?',
+      a: 'Ask for mainnet programs they built, a sample test suite, references from past clients and a written scope with milestones. Make sure you will own the code and the upgrade authority, and plan for a separate security audit before launch.',
+    },
+    {
+      q: 'Freelancer or company for Solana development?',
+      a: 'A freelancer can suit a small, well-defined program. A company is usually better when you need several roles, project management and continuity after launch. Either way, check shipped work and agree milestones and ownership in writing.',
     },
     {
       q: 'Who owns the code and the upgrade authority?',
