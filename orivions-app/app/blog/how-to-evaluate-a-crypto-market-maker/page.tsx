@@ -186,6 +186,29 @@ export default function PostPage() {
         explains the checks we run before a company gets the Verified badge.
       </P>
 
+      <H2>Questions to ask on the first call</H2>
+      <BulletList
+        items={[
+          ['Which deal models do you offer, and which would you pick for us?', 'a good firm explains the trade-off instead of pushing the one it earns most on.'],
+          ['Which venues and pairs would you cover on day one?', 'and what do you need from us in inventory and in exchange access?'],
+          ['What spread and depth would you commit to, and how is uptime measured?', 'numbers per pair, not adjectives.'],
+          ['How do you hedge a call option position?', 'you want to know how much selling that can create, and when.'],
+          ['Who is the legal entity, and where is it based?', 'and is the trading done by that entity or by a related one?'],
+          ['Which projects can we speak to?', 'pick them yourself from public lists, not only from the ones offered.'],
+          ['What do you do when a commitment is missed?', 'fee reduction, notice, termination: ask for it in the contract.'],
+        ]}
+      />
+
+      <H2>How to spot wash trading in the data</H2>
+      <P>
+        You do not need a data team for a first check. Compare the reported daily volume with what
+        the order book can support and with the number of distinct wallets or accounts trading. Volume
+        that is large but sits on a thin book, trades that repeat at the same size and price at fixed
+        intervals, and buyer and seller addresses that are the same or linked are all signs of
+        trading with yourself. If the market maker offers a volume target, treat that as a sign too.
+        Ask for trade-level data so you or an independent analyst can run these checks.
+      </P>
+
       <H2>Red flags</H2>
       <BulletList
         items={[
