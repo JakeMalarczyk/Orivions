@@ -466,4 +466,49 @@ export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
       'Choosing native Rust for speed without measuring compute units, so the extra complexity buys nothing.',
     ],
   },
+  indexer: {
+    inPractice: [
+      'An indexer follows the chain, decodes the programs you care about and writes the result to a database. The app then answers questions such as history, rankings or totals with one query instead of many RPC calls.',
+      'Many indexers consume a validator stream (Geyser) so data arrives as it happens, and they need a backfill to cover what happened before they started.',
+    ],
+    mistakes: [
+      'Treating processed slots as final, so rolled-back data ends up in the database.',
+      'Having no alert when the indexer falls behind the chain, so users see stale numbers.',
+      'Forgetting that a program upgrade can change an account layout and break the old decoder.',
+    ],
+  },
+  kol: {
+    inPractice: [
+      'KOL stands for key opinion leader. In crypto it means a creator whose audience trusts their picks, and campaigns usually pay them to post, thread or stream about a project.',
+      'Good campaigns match the creator to the project audience, use tracked links so results can be measured in actions, and make the paid nature of the post clear.',
+    ],
+    mistakes: [
+      'Judging a campaign by impressions only, without wallet connects, sign-ups or deposits.',
+      'Hiring many unvetted accounts instead of a few that fit the audience.',
+      'Skipping disclosure of paid promotion, which can create legal and reputation problems.',
+      'Paying only in tokens without a written agreement on what is delivered.',
+    ],
+  },
+  escrow: {
+    inPractice: [
+      'In an escrow, the client puts the agreed amount with a neutral holder, which can be a regulated third party or a smart contract. The holder releases it when the agreed condition is met, for example an accepted deliverable.',
+      'Escrow is usually paired with milestones: the amount is split by stage and each part is released after review, so neither side carries all the risk.',
+    ],
+    mistakes: [
+      'Agreeing to escrow without written acceptance criteria, which turns release into an argument.',
+      'Not defining what happens in a dispute, who decides and how long it takes.',
+      'Assuming a smart contract escrow needs no legal agreement around it.',
+    ],
+  },
+  'milestone-payment': {
+    inPractice: [
+      'A milestone is a defined deliverable with written acceptance criteria and a set amount. Work on the next stage starts after the previous one is accepted or the parties agree otherwise.',
+      'Typical splits follow the project stages, for example discovery, build and handover. Sizes should match the real effort, not just a round number.',
+    ],
+    mistakes: [
+      'Writing milestones as dates instead of deliverables, so there is nothing to accept.',
+      'Making the last payment so small that the provider has no reason to finish the handover.',
+      'Leaving out how long the client has to review before a milestone counts as accepted.',
+    ],
+  },
 };
