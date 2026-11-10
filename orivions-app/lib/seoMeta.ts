@@ -100,6 +100,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'Solana upgrade authority and multisig guide',
     description: 'Who should hold a Solana program upgrade authority, how to move it to a multisig, when to add a timelock or go immutable, and mistakes to avoid.',
   },
+  'solana-indexer-vs-rpc-what-to-use': {
+    title: 'Solana indexer vs RPC: what to use',
+    description: 'When RPC is enough on Solana and when to add an indexer: history, filters, Geyser streaming, build or buy, and questions to ask a provider.',
+  },
   'how-to-choose-a-solana-rpc-provider': {
     title: 'How to choose a Solana RPC provider',
     description: 'How to pick a Solana RPC provider: shared vs dedicated nodes, rate limits, streaming, transaction landing, failover, security and how to test one.',
