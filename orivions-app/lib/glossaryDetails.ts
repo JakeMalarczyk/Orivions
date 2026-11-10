@@ -511,4 +511,26 @@ export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
       'Leaving out how long the client has to review before a milestone counts as accepted.',
     ],
   },
+  'success-fee': {
+    inPractice: [
+      'A success fee is charged only when the work is completed, so the party paying it takes no cost upfront. On Orivions the fee is a flat 10% paid by the provider on a completed engagement, and the client pays nothing.',
+      'The fee is tied to completion, which is why scope, milestones and acceptance criteria should be written down before the work starts.',
+    ],
+    mistakes: [
+      'Not asking who pays the fee and when it is due.',
+      'Leaving the definition of completed vague, so the parties disagree on when the fee is due.',
+      'Comparing two quotes without checking whether one of them includes a success fee and the other a fixed price.',
+    ],
+  },
+  'verified-provider': {
+    inPractice: [
+      'On Orivions, a person checks a provider before it is marked Verified: that the company is real and reachable, that the portfolio holds up, and that services and price ranges are specific.',
+      'Verified providers get a public profile with their services, indicative prices and portfolio, so a client can compare them before making contact.',
+    ],
+    mistakes: [
+      'Treating Verified as a guarantee of the work. It lowers risk, but you should still ask for references and recent work in your category.',
+      'Skipping your own check of the portfolio because a badge is shown.',
+      'Not asking what exactly was checked and when.',
+    ],
+  },
 };
