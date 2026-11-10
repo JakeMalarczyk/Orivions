@@ -91,7 +91,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-22',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-10',
     tags: ['Guides', 'Market making', 'Launch', 'Hiring'],
     faqs: [
       {
@@ -105,6 +105,14 @@ export const POSTS: Post[] = [
       {
         q: 'What should be in a market making contract?',
         a: 'The venues and pairs covered, the maximum spread, the depth on each side of the book, the uptime for those commitments, reporting you can verify, consequences when commitments are missed, and clear terms for the end of any token loan.',
+      },
+      {
+        q: 'How much does a crypto market maker cost?',
+        a: 'There is no standard price. It depends on the deal model: a token loan with call options costs you through the strike prices and the loan, a retainer costs a fee plus the inventory you provide. Compare offers by the full terms, not by a headline fee.',
+      },
+      {
+        q: 'How can I tell if a market maker is wash trading?',
+        a: 'Watch for large reported volume on a thin order book, repeated trades of the same size and price at regular intervals, and buyer and seller addresses that are the same or linked. A volume target in the pitch is itself a warning. Ask for trade-level data to check.',
       },
       {
         q: 'How do I spot a bad market maker?',
