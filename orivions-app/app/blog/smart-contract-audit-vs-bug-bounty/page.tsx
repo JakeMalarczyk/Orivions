@@ -122,6 +122,10 @@ export default function PostPage() {
         </Link>
         .
       </P>
+
+      <P>
+        Also useful: <Link href="/blog/solana-program-upgrade-authority-multisig" className="text-blue-deep">how to secure the upgrade authority with a multisig</Link>.
+      </P>
     </BlogPost>
   );
 }
