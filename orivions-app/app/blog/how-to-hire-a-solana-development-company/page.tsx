@@ -113,6 +113,10 @@ export default function PostPage() {
       <P>
         Related: see <Link href="/blog/how-much-does-it-cost-to-build-a-solana-dapp" className="text-blue-deep">what a Solana dApp costs to build</Link>.
       </P>
+
+      <P>
+        Also useful: <Link href="/blog/solana-program-upgrade-authority-multisig" className="text-blue-deep">how to secure the upgrade authority</Link>.
+      </P>
     </BlogPost>
   );
 }
