@@ -166,6 +166,10 @@ export default function PostPage() {
       <P>
         Related: see <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">how long a Solana audit takes</Link> and <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms</Link>. Launching a token as well? Use the <Link href="/blog/solana-token-launch-checklist" className="text-blue-deep">Solana token launch checklist</Link> for metadata, liquidity and legal checks.
       </P>
+
+      <P>
+        Also useful: <Link href="/blog/solana-program-upgrade-authority-multisig" className="text-blue-deep">how to secure the upgrade authority with a multisig</Link>.
+      </P>
     </BlogPost>
   );
 }
