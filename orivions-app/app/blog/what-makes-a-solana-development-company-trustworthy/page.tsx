@@ -119,6 +119,10 @@ export default function PostPage() {
         <Link href="/how-we-verify" className="text-blue-deep">how verification works</Link> for the
         process.
       </P>
+
+      <P>
+        Related: see <Link href="/blog/how-much-does-it-cost-to-build-a-solana-dapp" className="text-blue-deep">what a Solana dApp costs to build</Link>.
+      </P>
     </BlogPost>
   );
 }
