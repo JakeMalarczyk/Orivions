@@ -21,7 +21,7 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'Launching around Solana Breakpoint 2026 in London? A checklist for security, authorities, token launch, legal and growth, and what to book first.',
   },
   'how-long-does-a-solana-audit-take': {
-    title: 'How long does a Solana audit take?',
+    title: 'How long does a Solana audit take? 1-12 weeks',
     description: 'How long a Solana audit takes: booking, waiting for a slot, the review, fixes and the fix review. Typical timelines and how to get audited sooner.',
   },
   'anchor-security-checklist': {
@@ -61,7 +61,7 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'A 30-minute due-diligence routine for Web3 service providers: on-chain work, repositories, audit reports, references, company details and the people behind it.',
   },
   'solana-smart-contract-audit-cost': {
-    title: 'Solana smart contract audit cost in 2026: price ranges',
+    title: 'Solana smart contract audit cost: $5.5K to $90K+',
     description: 'What a Solana smart contract audit costs, why quotes for the same project differ, and how to get a better audit for the same budget.',
   },
   'anchor-vs-native-rust-solana': {
