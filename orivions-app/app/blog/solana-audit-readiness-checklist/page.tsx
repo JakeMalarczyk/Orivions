@@ -111,6 +111,10 @@ export default function PostPage() {
       </P>
 
       <ChecklistGuide current={SLUG} />
+
+      <P>
+        Related: see <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms</Link>.
+      </P>
     </BlogPost>
   );
 }
