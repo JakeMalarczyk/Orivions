@@ -95,6 +95,10 @@ export default function PostPage() {
         </Link>
         .
       </P>
+
+      <P>
+        Also useful: <Link href="/blog/how-to-choose-a-web3-lawyer-for-a-token-launch" className="text-blue-deep">how to choose a Web3 lawyer for the contract</Link>.
+      </P>
     </BlogPost>
   );
 }
