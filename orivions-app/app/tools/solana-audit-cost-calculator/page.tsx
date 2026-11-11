@@ -224,6 +224,14 @@ export default function AuditCostCalculatorPage() {
             <Link href="/blog/how-to-choose-a-solana-smart-contract-auditor" className="text-blue-deep">
               how to choose a Solana auditor
             </Link>
+            . For calendar time, see{' '}
+            <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">
+              how long a Solana audit takes
+            </Link>
+            , and to weigh quotes side by side,{' '}
+            <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">
+              how to compare audit firms
+            </Link>
             .
           </p>
 
