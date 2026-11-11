@@ -865,6 +865,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'how-to-run-a-crypto-kol-campaign',
+    title: 'How to run a crypto KOL campaign: brief, contract and tracking',
+    description:
+      'How to run a crypto KOL campaign: set one measurable goal, choose creators who fit your users, pick a payment model, write the brief and disclosure terms, and track results per creator.',
+    excerpt:
+      'KOL campaigns can bring real users or a pile of impressions. How to set a goal, choose creators, agree terms and disclosure, and measure what each one delivered.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-11',
+    dateModified: '2026-11-11',
+    tags: ['Guides', 'Marketing', 'KOL', 'Hiring'],
+    faqs: [
+      {
+        q: 'What is a KOL campaign in crypto?',
+        a: 'A campaign where a project pays creators, called key opinion leaders, to post, thread or stream about it to an audience that trusts their picks. Results depend on audience fit, written terms and tracking.',
+      },
+      {
+        q: 'How do I measure a KOL campaign?',
+        a: 'Give each creator a unique tracked link or code and count one action you defined in advance, such as wallet connects, sign-ups or first deposits. Compare creators by cost per action, not by impressions.',
+      },
+      {
+        q: 'How should I pay a crypto KOL?',
+        a: 'Common models are a flat fee, a payment per verified action, a hybrid of both, or tokens with vesting. Pay in stages and keep the last part until the posts are live and checked.',
+      },
+      {
+        q: 'Do KOLs have to disclose paid posts?',
+        a: 'Regulators in several countries, including the US and the UK, expect paid promotion to be clearly labelled. Rules differ by country, so write disclosure into the agreement and check your target markets with a lawyer.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-choose-a-web3-lawyer-for-a-token-launch',
     title: 'How to choose a Web3 lawyer for a token launch',
     description:
