@@ -881,6 +881,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'dao-legal-structure-wrapper-options',
+    title: 'DAO legal structure: wrapper options and how to choose',
+    description:
+      'Why a DAO may need a legal wrapper and how the common options compare: Wyoming DAO LLC, Marshall Islands DAO LLC, Cayman foundation company and Swiss structures, plus questions to ask a lawyer.',
+    excerpt:
+      'A DAO that signs contracts or pays people needs someone the law recognises. What a legal wrapper does, the common options, how to choose, and what it does not solve.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-11',
+    dateModified: '2026-11-11',
+    tags: ['Guides', 'Legal', 'DAO', 'Compliance'],
+    faqs: [
+      {
+        q: 'Does a DAO need a legal entity?',
+        a: 'Not to exist on-chain, but a DAO that signs contracts, holds off-chain assets, pays contributors or wants to limit member liability usually needs a legal wrapper. Without one, some jurisdictions may treat it as a general partnership.',
+      },
+      {
+        q: 'What is a DAO legal wrapper?',
+        a: 'A legal entity, such as an LLC or foundation, that acts for the DAO in the off-chain world: it signs contracts, holds a bank account and intellectual property, pays people and can limit liability.',
+      },
+      {
+        q: 'What are the common legal structures for a DAO?',
+        a: 'Commonly discussed options are a Wyoming DAO LLC, a Marshall Islands DAO LLC, a Cayman Islands foundation company and a Swiss association or foundation. Many projects also pair a foundation with a separate operating company.',
+      },
+      {
+        q: 'Does a legal wrapper solve token and securities questions?',
+        a: 'No. Token regulation, tax and anti-money-laundering duties are separate questions that need their own legal advice, whatever structure the DAO uses.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-run-a-crypto-kol-campaign',
     title: 'How to run a crypto KOL campaign: brief, contract and tracking',
     description:
