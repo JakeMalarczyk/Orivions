@@ -139,6 +139,10 @@ export default function PostPage() {
       </P>
 
       <ChecklistGuide current={SLUG} />
+
+      <P>
+        Also useful: <Link href="/blog/how-to-choose-a-web3-lawyer-for-a-token-launch" className="text-blue-deep">how to choose a Web3 lawyer for a token launch</Link> and <Link href="/blog/solana-program-upgrade-authority-multisig" className="text-blue-deep">how to secure the upgrade authority with a multisig</Link>.
+      </P>
     </BlogPost>
   );
 }
