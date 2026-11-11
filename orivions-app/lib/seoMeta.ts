@@ -104,6 +104,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'Solana indexer vs RPC: what to use',
     description: 'When RPC is enough on Solana and when to add an indexer: history, filters, Geyser streaming, build or buy, and questions to ask a provider.',
   },
+  'how-to-run-a-crypto-kol-campaign': {
+    title: 'How to run a crypto KOL campaign',
+    description: 'Run a crypto KOL campaign: one measurable goal, creators who fit your users, payment models, brief and disclosure terms, and tracking per creator.',
+  },
   'how-to-choose-a-solana-rpc-provider': {
     title: 'How to choose a Solana RPC provider',
     description: 'How to pick a Solana RPC provider: shared vs dedicated nodes, rate limits, streaming, transaction landing, failover, security and how to test one.',
