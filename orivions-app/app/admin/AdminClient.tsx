@@ -15,13 +15,14 @@ import SeoPanel from './SeoPanel';
 import { Empty, Panel, RankList, StatCard, Toggle } from './ui';
 
 // The map outlines are ~80 KB, so load them only when the Map tab opens.
+const MarketsPanel = dynamic(() => import('./MarketsPanel'), { ssr: false, loading: () => <Empty>Loading map…</Empty> });
 const GeoPanel = dynamic(() => import('./GeoPanel'), { ssr: false, loading: () => <Empty>Loading map…</Empty> });
 
 // Admin panel. Access is enforced in the database, not here: every query below
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'crm' | 'providers' | 'leads' | 'signups';
+type Tab = 'overview' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'crm' | 'markets' | 'providers' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -72,6 +73,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'campaigns', label: 'Campaigns' },
   { id: 'seo', label: 'SEO & GEO' },
   { id: 'crm', label: 'CRM' },
+  { id: 'markets', label: 'Markets' },
   { id: 'providers', label: 'Providers' },
   { id: 'leads', label: 'Leads' },
   { id: 'signups', label: 'Signups' },
@@ -278,6 +280,8 @@ export default function AdminClient() {
         {tab === 'seo' && <SeoPanel />}
 
         {tab === 'crm' && <CrmPanel />}
+
+        {tab === 'markets' && <MarketsPanel />}
 
         {tab === 'providers' && (
           <Panel title="Providers" subtitle="Pending verification requests are listed first. Verifying clears the request.">
