@@ -172,6 +172,10 @@ export default function PostPage() {
         </Link>{' '}
         page.
       </P>
+
+      <P>
+        Related: see <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms and their quotes</Link> and <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">how long a Solana audit takes</Link>.
+      </P>
     </BlogPost>
   );
 }
