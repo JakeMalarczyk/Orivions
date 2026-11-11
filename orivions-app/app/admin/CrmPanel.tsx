@@ -47,13 +47,27 @@ const STAGES: { id: Stage; label: string; hint: string }[] = [
   { id: 'declined', label: 'Declined', hint: 'Not interested or bounced' },
 ];
 
-const SIDES: { id: Side | 'all'; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'provider', label: 'Providers' },
-  { id: 'client', label: 'Clients' },
-  { id: 'supply', label: 'Supply' },
-  { id: 'ecosystem', label: 'Ecosystem' },
+type Tab = 'client' | 'provider' | 'other';
+
+// Clients (teams that buy services) and providers (firms that sell them) are worked
+// differently, so each gets its own tab, funnel and stage wording.
+const TABS: { id: Tab; label: string; sides: Side[]; addSide: Side; hint: string }[] = [
+  { id: 'client', label: 'Clients', sides: ['client'], addSide: 'client', hint: 'Teams that need an auditor, lawyer, developer or marketer' },
+  { id: 'provider', label: 'Providers', sides: ['provider'], addSide: 'provider', hint: 'Firms that sell those services' },
+  { id: 'other', label: 'Other', sides: ['supply', 'ecosystem'], addSide: 'ecosystem', hint: 'Supply prospects and ecosystem partners' },
 ];
+
+const STAGE_TEXT: Record<Tab, Partial<Record<Stage, { label: string; hint: string }>>> = {
+  client: {
+    verification: { label: 'Brief / matching', hint: 'They sent a brief, we are matching providers' },
+    active: { label: 'Using Orivions', hint: 'Got a shortlist or started an engagement' },
+  },
+  provider: {
+    verification: { label: 'Verification', hint: 'Signing up, being checked' },
+    active: { label: 'Verified provider', hint: 'Founding or verified provider' },
+  },
+  other: {},
+};
 
 const BREAKPOINT_LABEL: Record<string, string> = {
   to_invite: 'To invite',
@@ -96,7 +110,7 @@ export default function CrmPanel() {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState('');
   const [stage, setStage] = useState<Stage | 'all' | 'action'>('action');
-  const [side, setSide] = useState<Side | 'all'>('all');
+  const [tab, setTab] = useState<Tab>('client');
   const [query, setQuery] = useState('');
   const [limit, setLimit] = useState(PAGE);
   const [openId, setOpenId] = useState<number | null>(null);
@@ -119,11 +133,23 @@ export default function CrmPanel() {
     return () => clearTimeout(t);
   }, [load]);
 
-  const counts = useMemo(() => {
+  const tabDef = TABS.find((t) => t.id === tab) ?? TABS[0]!;
+  const scoped = useMemo(() => rows.filter((r) => tabDef.sides.includes(r.side)), [rows, tabDef]);
+  const tabCounts = useMemo(() => {
     const c: Record<string, number> = {};
-    for (const r of rows) c[r.stage] = (c[r.stage] ?? 0) + 1;
+    for (const t of TABS) c[t.id] = rows.filter((r) => t.sides.includes(r.side)).length;
     return c;
   }, [rows]);
+  const stages = useMemo(
+    () => STAGES.map((s) => ({ ...s, ...(STAGE_TEXT[tab][s.id] ?? {}) })),
+    [tab],
+  );
+
+  const counts = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const r of scoped) c[r.stage] = (c[r.stage] ?? 0) + 1;
+    return c;
+  }, [scoped]);
 
   // "Needs action": someone replied, a meeting or verification is open, or a follow-up date has come.
   const needsAction = useCallback(
@@ -132,20 +158,19 @@ export default function CrmPanel() {
     [],
   );
 
-  const actionCount = useMemo(() => rows.filter(needsAction).length, [rows, needsAction]);
-  const overdue = useMemo(() => rows.filter((r) => r.due && r.due < today() && !['active', 'declined'].includes(r.stage)).length, [rows]);
+  const actionCount = useMemo(() => scoped.filter(needsAction).length, [scoped, needsAction]);
+  const overdue = useMemo(() => scoped.filter((r) => r.due && r.due < today() && !['active', 'declined'].includes(r.stage)).length, [scoped]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const list = rows.filter((r) => {
+    const list = scoped.filter((r) => {
       if (stage === 'action' ? !needsAction(r) : stage !== 'all' && r.stage !== stage) return false;
-      if (side !== 'all' && r.side !== side) return false;
       if (!q) return true;
       return [r.name, r.category, r.contact, r.next_step, r.country].some((v) => v?.toLowerCase().includes(q));
     });
     // Soonest due date first; rows without a date go last.
     return list.sort((a, b) => (a.due ?? '9999').localeCompare(b.due ?? '9999') || a.name.localeCompare(b.name));
-  }, [rows, stage, side, query, needsAction]);
+  }, [scoped, stage, query, needsAction]);
 
   async function patch(id: number, changes: Partial<Company>, note?: string) {
     const prev = rows;
@@ -162,10 +187,27 @@ export default function CrmPanel() {
   return (
     <div className="space-y-6">
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Companies" value={rows.length} />
+        <StatCard label={tabDef.label} value={scoped.length} sub={tabDef.hint} />
         <StatCard label="Need action" value={actionCount} highlight={actionCount > 0} sub="Replies, meetings, follow-ups due" />
         <StatCard label="Overdue" value={overdue} highlight={overdue > 0} sub="Due date in the past" />
-        <StatCard label="Active" value={counts.active ?? 0} sub="Founding or verified" />
+        <StatCard label={stages.find((x) => x.id === 'active')?.label ?? 'Active'} value={counts.active ?? 0} sub={stages.find((x) => x.id === 'active')?.hint} />
+      </div>
+
+      <div className="flex gap-1 border-b border-line">
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => {
+              setTab(t.id);
+              setStage('action');
+              setLimit(PAGE);
+              setOpenId(null);
+            }}
+            className={`-mb-px border-b-2 px-5 py-2.5 text-sm font-semibold ${tab === t.id ? 'border-blue-deep text-ink' : 'border-transparent text-gray hover:text-ink'}`}
+          >
+            {t.label} <span className="text-xs font-normal text-gray-soft">({tabCounts[t.id] ?? 0})</span>
+          </button>
+        ))}
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -175,7 +217,7 @@ export default function CrmPanel() {
         >
           Needs action ({actionCount})
         </button>
-        {STAGES.map((s) => (
+        {stages.map((s) => (
           <button
             key={s.id}
             title={s.hint}
@@ -192,25 +234,11 @@ export default function CrmPanel() {
           onClick={() => setStage('all')}
           className={`rounded-full px-3.5 py-1.5 text-xs font-semibold ${stage === 'all' ? 'bg-ink text-white' : 'border border-line bg-white text-gray hover:text-ink'}`}
         >
-          All ({rows.length})
+          All ({scoped.length})
         </button>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex gap-1.5">
-          {SIDES.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => {
-                setSide(s.id);
-                setLimit(PAGE);
-              }}
-              className={`rounded-lg px-3 py-1.5 text-xs font-semibold ${side === s.id ? 'bg-blue-deep text-white' : 'border border-line bg-white text-gray'}`}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
         <input
           className={`${input} w-64`}
           placeholder="Search name, contact, next step"
@@ -229,6 +257,7 @@ export default function CrmPanel() {
 
       {adding && (
         <AddForm
+          defaultSide={tabDef.addSide}
           onDone={() => {
             setAdding(false);
             load();
@@ -260,6 +289,7 @@ export default function CrmPanel() {
                 <CompanyRow
                   key={r.id}
                   row={r}
+                  stages={stages}
                   open={openId === r.id}
                   onToggle={() => setOpenId(openId === r.id ? null : r.id)}
                   onPatch={patch}
@@ -282,11 +312,13 @@ export default function CrmPanel() {
 
 function CompanyRow({
   row,
+  stages,
   open,
   onToggle,
   onPatch,
 }: {
   row: Company;
+  stages: { id: Stage; label: string }[];
   open: boolean;
   onToggle: () => void;
   onPatch: (id: number, changes: Partial<Company>, note?: string) => Promise<void>;
@@ -315,7 +347,7 @@ function CompanyRow({
             }}
             className={`rounded-full px-2.5 py-1 text-xs font-semibold outline-none ${stageClass(row.stage)}`}
           >
-            {STAGES.map((s) => (
+            {stages.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.label}
               </option>
@@ -469,9 +501,9 @@ function Detail({ row, onPatch }: { row: Company; onPatch: (id: number, changes:
   );
 }
 
-function AddForm({ onDone }: { onDone: () => void }) {
+function AddForm({ onDone, defaultSide }: { onDone: () => void; defaultSide: Side }) {
   const [name, setName] = useState('');
-  const [side, setSide] = useState<Side>('provider');
+  const [side, setSide] = useState<Side>(defaultSide);
   const [category, setCategory] = useState('');
   const [contact, setContact] = useState('');
   const [busy, setBusy] = useState(false);
