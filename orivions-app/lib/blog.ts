@@ -235,7 +235,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 5,
     datePublished: '2026-10-20',
-    dateModified: '2026-10-23',
+    dateModified: '2026-11-11',
     tags: ['Guides', 'Audits', 'Security', 'Launch'],
     faqs: [
       {
@@ -261,6 +261,14 @@ export const POSTS: Post[] = [
       {
         q: 'Why does it take so long to start a Solana audit?',
         a: 'Because established Solana auditors are booked ahead. The wait for a start date is typically 2 to 8 weeks, longer before big launches, and it is often longer than the review itself. Contact auditors when the scope is stable, typically 4 to 8 weeks before you need the report.',
+      },
+      {
+        q: 'What affects how long a Solana audit takes?',
+        a: 'Mainly the size of the code in scope, measured in lines of program code, and its complexity: custom math, liquidations and calls into other programs take longer per line. Native Rust takes longer than Anchor, a changing codebase forces re-reading, and the fix review adds days at the end.',
+      },
+      {
+        q: 'Is a re-audit needed after the fixes?',
+        a: 'Usually the auditors only re-check each fix and update the report. A broader re-audit is needed when the fixes or new features change a lot of code. Agree what the fix review covers before you sign.',
       },
     ],
   },
@@ -529,7 +537,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-11-10',
+    dateModified: '2026-11-11',
     tags: ['Guides', 'Security', 'Audits', 'Pricing'],
     faqs: [
       {
@@ -555,6 +563,10 @@ export const POSTS: Post[] = [
       {
         q: 'Is a Solana audit cheaper for Anchor than for native Rust?',
         a: 'Usually, for the same features. Anchor generates much of the account validation that auditors otherwise have to review by hand. Our calculator adds 15% to the review effort for native Rust programs.',
+      },
+      {
+        q: 'What does an audit cost for a small Solana program?',
+        a: 'By our calculator method, about $5,500 to $10,000 for a simple 500-line program, with the fix review included. Cost grows with lines of code, complexity, framework and integrations, so use the calculator with your own numbers.',
       },
     ],
   },
@@ -595,7 +607,7 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 8,
     datePublished: '2026-10-17',
-    dateModified: '2026-11-02',
+    dateModified: '2026-11-11',
     tags: ['Guides', 'Security', 'Launch'],
     faqs: [
       {
@@ -617,6 +629,10 @@ export const POSTS: Post[] = [
       {
         q: 'How do I check that a deployed Solana program matches the audited code?',
         a: 'Build the audited commit and compare it with the program onchain, using solana-verify get-program-hash and solana-verify verify-from-repo. Once a remote verification succeeds, explorers such as Solana Explorer, SolanaFM and Solscan show the program as verified.',
+      },
+      {
+        q: 'Is this the same as a Solana token launch checklist?',
+        a: 'No. This checklist covers launching a program on mainnet: authorities, multisig, builds, monitoring and the audit. A token launch also needs metadata, liquidity and legal checks, which our token launch checklist covers.',
       },
     ],
   },
