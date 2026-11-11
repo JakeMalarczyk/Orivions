@@ -118,6 +118,10 @@ export default function PostPage() {
         </Link>
         .
       </P>
+
+      <P>
+        Also useful: <Link href="/blog/dao-legal-structure-wrapper-options" className="text-blue-deep">DAO legal structure and wrapper options</Link>.
+      </P>
     </BlogPost>
   );
 }
