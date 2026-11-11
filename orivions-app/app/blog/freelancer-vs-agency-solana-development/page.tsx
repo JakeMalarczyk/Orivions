@@ -110,6 +110,10 @@ export default function PostPage() {
         </Link>{' '}
         to compare answers.
       </P>
+
+      <P>
+        Related: see <Link href="/blog/how-much-does-it-cost-to-build-a-solana-dapp" className="text-blue-deep">what a Solana dApp costs to build</Link>.
+      </P>
     </BlogPost>
   );
 }
