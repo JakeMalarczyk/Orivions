@@ -111,7 +111,25 @@ export default function HomePage() {
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/70">
               Describe what you need. We pick verified auditors, developers and agencies, and tell you why. Free for clients.
             </p>
-            <Suspense fallback={null}>
+            {/* Same buttons as plain links while HeroCtas loads, so the layout does not jump. */}
+            <Suspense
+              fallback={
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link
+                    href="/providers"
+                    className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)]"
+                  >
+                    Browse providers
+                  </Link>
+                  <Link
+                    href="/smart-match"
+                    className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white"
+                  >
+                    Describe your project
+                  </Link>
+                </div>
+              }
+            >
               <HeroCtas />
             </Suspense>
           </div>
