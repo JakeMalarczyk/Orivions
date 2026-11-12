@@ -104,6 +104,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'Solana indexer vs RPC: what to use',
     description: 'When RPC is enough on Solana and when to add an indexer: history, filters, Geyser streaming, build or buy, and questions to ask a provider.',
   },
+  'solana-program-monitoring-and-alerts': {
+    title: 'Solana program monitoring and alerts',
+    description: 'What to monitor on a live Solana program: failed transactions, upgrade changes, keeper balances, oracle freshness and RPC lag, and who should own each alert.',
+  },
   'dao-legal-structure-wrapper-options': {
     title: 'DAO legal structure: wrapper options explained',
     description: 'Why a DAO may need a legal wrapper and how Wyoming and Marshall Islands DAO LLCs, Cayman foundation companies and Swiss structures compare.',
