@@ -881,6 +881,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'solana-program-monitoring-and-alerts',
+    title: 'Solana program monitoring: what to watch and alert on',
+    description:
+      'What to monitor on a live Solana program: failed transactions, upgrade and authority changes, keeper balances, oracle freshness and RPC lag, plus how to get the data and who should own each alert.',
+    excerpt:
+      'Monitoring is part of the launch. Five things to watch on a live Solana program, how to get the data, and how to give every alert an owner and a runbook.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-12',
+    dateModified: '2026-11-12',
+    tags: ['Guides', 'Infrastructure', 'Operations', 'Launch'],
+    faqs: [
+      {
+        q: 'What should I monitor on a Solana program?',
+        a: 'Failed transactions per instruction, upgrade and authority changes, balances of your keeper and fee-payer wallets, oracle freshness, and how far your RPC lags behind the chain. Start with these five and add more only when you need them.',
+      },
+      {
+        q: 'How do I get alerts on a Solana program?',
+        a: 'Small programs can use RPC WebSocket subscriptions for accounts and logs. Larger setups stream updates through Geyser-based gRPC feeds or read from an indexer, then send alerts to the person who owns each one.',
+      },
+      {
+        q: 'How do I know if someone upgraded my program?',
+        a: 'Watch the program data account, which stores the upgrade authority, and the authority accounts your program uses. Alert on any change you did not schedule, and put the upgrade authority behind a multisig.',
+      },
+      {
+        q: 'Should I test my monitoring before mainnet?',
+        a: 'Yes. Cause each failure on devnet on purpose and confirm that the alert fires, reaches a named person and comes with a short runbook.',
+      },
+    ],
+  },
+  {
     slug: 'dao-legal-structure-wrapper-options',
     title: 'DAO legal structure: wrapper options and how to choose',
     description:
