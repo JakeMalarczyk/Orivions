@@ -129,6 +129,10 @@ export default function PostPage() {
         page. The related term in the glossary is{' '}
         <Link href="/solana-glossary/rpc" className="text-blue-deep">RPC</Link>.
       </P>
+
+      <P>
+        Also useful: <Link href="/blog/solana-program-monitoring-and-alerts" className="text-blue-deep">how to monitor a Solana program in production</Link>.
+      </P>
     </BlogPost>
   );
 }
