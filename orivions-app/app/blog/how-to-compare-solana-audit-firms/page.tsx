@@ -210,6 +210,13 @@ export default function PostPage() {
         . On Orivions, every listed auditor has passed a manual check of company, portfolio and a
         client reference, and nobody can pay for a higher position.
       </P>
+      <P>
+        To get comparable quotes in the first place, send every firm the same brief. See{' '}
+        <Link href="/blog/how-to-write-an-rfp-for-a-smart-contract-audit" className="text-blue-deep">
+          how to write an RFP for a smart contract audit
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
