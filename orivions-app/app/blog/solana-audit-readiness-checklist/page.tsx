@@ -99,7 +99,11 @@ export default function PostPage() {
         .
       </P>
       <P>
-        Once you are ready, choose the firm with{' '}
+        When the code is frozen, send every firm the same brief: see{' '}
+        <Link href="/blog/how-to-write-an-rfp-for-a-smart-contract-audit" className="text-blue-deep">
+          how to write an RFP for a smart contract audit
+        </Link>
+        . Then choose the firm with{' '}
         <Link href="/blog/how-to-choose-a-solana-smart-contract-auditor" className="text-blue-deep">
           the auditor checklist
         </Link>
