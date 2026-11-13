@@ -112,6 +112,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'DAO legal structure: wrapper options explained',
     description: 'Why a DAO may need a legal wrapper and how Wyoming and Marshall Islands DAO LLCs, Cayman foundation companies and Swiss structures compare.',
   },
+  'how-to-write-an-rfp-for-a-smart-contract-audit': {
+    title: 'How to write an RFP for a smart contract audit',
+    description: 'Write an audit RFP: scope and commit, out-of-scope items, materials, dates, deliverables, fix review and questions to ask every firm.',
+  },
   'how-to-run-a-crypto-kol-campaign': {
     title: 'How to run a crypto KOL campaign',
     description: 'Run a crypto KOL campaign: one measurable goal, creators who fit your users, payment models, brief and disclosure terms, and tracking per creator.',
