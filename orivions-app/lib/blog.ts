@@ -943,6 +943,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'how-to-write-an-rfp-for-a-smart-contract-audit',
+    title: 'How to write an RFP for a smart contract audit',
+    description:
+      'How to write an RFP for a smart contract audit: scope and commit, out-of-scope items, materials, dates, deliverables, fix review and the questions to ask every firm.',
+    excerpt:
+      'Five audit firms, five different quotes? Send them the same brief. What to put in an audit RFP, the questions to ask every firm and how to compare the answers.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-13',
+    dateModified: '2026-11-13',
+    tags: ['Guides', 'Security', 'Audits', 'Hiring'],
+    faqs: [
+      {
+        q: 'What is an RFP for a smart contract audit?',
+        a: 'A short written brief that you send unchanged to every audit firm. It names the code and commit to review, what is out of scope, the materials you provide, your dates and the deliverables, so the quotes can be compared.',
+      },
+      {
+        q: 'What should I include in an audit RFP?',
+        a: 'The project and what it controls, repository and commit hash, programs and framework, what is out of scope, specs and tests you will provide, code freeze and launch dates, report format, fix review terms and questions about the reviewing team and price.',
+      },
+      {
+        q: 'How do I compare audit quotes?',
+        a: 'Compare engineer-days and day rate, not only the total. Check that each quote covers the same scope, who the named reviewers are, whether fix review is included and when the firm can start.',
+      },
+      {
+        q: 'When should I send the RFP?',
+        a: 'Once the code is frozen and the specification exists, and early enough to fit the firms booking time. Good firms are often booked for weeks, so asking only a few weeks before launch narrows your choice.',
+      },
+    ],
+  },
+  {
     slug: 'how-to-run-a-crypto-kol-campaign',
     title: 'How to run a crypto KOL campaign: brief, contract and tracking',
     description:
