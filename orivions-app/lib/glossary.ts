@@ -19,6 +19,12 @@ export const GLOSSARY: GlossaryTerm[] = [
       'The unit of storage on Solana. Every piece of state, including programs, token balances and user data, lives in an account with an owner program, a balance in lamports and a data field.',
   },
   {
+    term: 'Address lookup table',
+    id: 'address-lookup-table',
+    definition:
+      'An on-chain account that stores a list of addresses. A versioned transaction can refer to an address by its index in the table, one byte instead of 32, so it can touch many more accounts within the transaction size limit.',
+  },
+  {
     term: 'Anchor',
     id: 'anchor',
     definition:
@@ -31,6 +37,13 @@ export const GLOSSARY: GlossaryTerm[] = [
     definition:
       'An independent security review of a program at a specific commit, usually by a specialised firm, that reports vulnerabilities and recommendations before launch. It reduces risk but does not guarantee security.',
     link: { href: '/blog/how-to-choose-a-solana-smart-contract-auditor', label: 'How to choose an auditor' },
+  },
+  {
+    term: 'Bonding curve',
+    id: 'bonding-curve',
+    definition:
+      'A pricing rule coded into a smart contract that sets a token price from its current supply. Buyers and sellers trade against the contract instead of an order book, and the price rises as more tokens are bought.',
+    link: { href: '/blog/solana-token-launch-checklist', label: 'Solana token launch checklist' },
   },
   {
     term: 'Bug bounty',
@@ -50,6 +63,12 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'cpi',
     definition:
       'A call from one Solana program to another within the same transaction, for example a DeFi program calling the Token Program to move tokens. Invoking a program ID supplied by the caller without checking it is a classic vulnerability.',
+  },
+  {
+    term: 'Durable nonce',
+    id: 'durable-nonce',
+    definition:
+      'A value stored in a nonce account that replaces the recent blockhash in a transaction. It lets a transaction be signed now and submitted later, because it does not expire after a minute or two like a normal one.',
   },
   {
     term: 'Discriminator',
@@ -82,6 +101,12 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'indexer',
     definition:
       'An off-chain service that reads Solana transactions and accounts and stores them in a queryable database, so applications can show history and aggregated data quickly.',
+  },
+  {
+    term: 'Jito bundle',
+    id: 'jito-bundle',
+    definition:
+      'A group of up to five Solana transactions that are executed in order and atomically in one block, all or nothing. The sender adds a tip for validators that run the Jito software.',
   },
   {
     term: 'KOL (key opinion leader)',
@@ -190,6 +215,12 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'verified-provider',
     definition:
       'A service company on Orivions whose identity, portfolio, services and price ranges were checked by a person at Orivions before it was marked Verified.',
+  },
+  {
+    term: 'Versioned transaction',
+    id: 'versioned-transaction',
+    definition:
+      'The Solana transaction format that supports address lookup tables. Version 0 transactions can reference far more accounts than a legacy transaction, and clients and wallets must support the format to read and sign them.',
   },
 ];
 
