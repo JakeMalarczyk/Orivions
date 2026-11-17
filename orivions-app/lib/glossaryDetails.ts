@@ -212,6 +212,46 @@ export const GLOSSARY_DETAILS: Record<string, GlossaryDetail> = {
     check: ['Still ask for references and recent work in your exact category.'],
     related: ['success-fee', 'milestone-payment', 'escrow'],
   },
+  'address-lookup-table': {
+    why: 'A transaction has a size limit, and every account address costs 32 bytes. Lookup tables are how programs with many accounts, such as swaps across several pools, stay within it. If your team builds that kind of instruction, they need to know how to create, extend and use tables.',
+    check: [
+      'Ask whether the program needs lookup tables and who creates and maintains them.',
+      'Ask how the client falls back when a table is missing or not yet active.',
+    ],
+    related: ['versioned-transaction', 'program', 'account', 'cpi'],
+  },
+  'versioned-transaction': {
+    why: 'Versioned transactions are the only way to use address lookup tables, so any app with large transactions depends on them. Wallets, RPC providers and indexers have to handle the format, and some older tooling does not.',
+    check: [
+      'Ask which transaction version the app sends and whether every wallet and RPC provider you rely on supports it.',
+      'Ask how the indexer reads version 0 transactions.',
+    ],
+    related: ['address-lookup-table', 'rpc', 'indexer', 'compute-units'],
+  },
+  'durable-nonce': {
+    why: 'A normal transaction expires if it is not included within about a minute or two. A durable nonce removes that limit, which suits offline signing, custody workflows and multisig approvals that take time. The trade-off is that whoever holds the signed transaction can submit it whenever they like until it is used.',
+    check: [
+      'Ask who controls the nonce account authority and how signed transactions are stored.',
+      'Ask how the team prevents a signed nonce transaction from being replayed or held back.',
+    ],
+    related: ['multisig', 'account', 'program', 'rpc'],
+  },
+  'bonding-curve': {
+    why: 'A bonding curve is common in token launches, so the quality of its code decides whether buyers get a fair price. The curve formula, rounding, fees and what happens at the end of the curve are all places where bugs and abuse show up.',
+    check: [
+      'Ask for the curve formula in writing and for test cases at the edges, such as the first and last purchase.',
+      'Ask who can change parameters or withdraw the reserve, and under which conditions.',
+    ],
+    related: ['spl-token', 'token-2022', 'mint-authority', 'upgrade-authority'],
+  },
+  'jito-bundle': {
+    why: 'Bundles are how some teams and traders make several transactions land together or not at all. They matter if your protocol depends on ordering, for example liquidations or arbitrage, and they involve paying a tip to validators.',
+    check: [
+      'Ask whether the protocol or its keepers rely on bundles, and what happens when a bundle does not land.',
+      'Ask how tips are budgeted and who pays them.',
+    ],
+    related: ['priority-fee', 'compute-units', 'rpc', 'program'],
+  },
 };
 
 // Longer practical notes for the terms that teams and auditors ask about most.
@@ -531,6 +571,61 @@ export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
       'Treating Verified as a guarantee of the work. It lowers risk, but you should still ask for references and recent work in your category.',
       'Skipping your own check of the portfolio because a badge is shown.',
       'Not asking what exactly was checked and when.',
+    ],
+  },
+  'address-lookup-table': {
+    inPractice: [
+      'A lookup table is created and filled with an on-chain instruction, and a table can hold up to 256 addresses. An address added to a table can be used from a later slot, not in the same slot it was added.',
+      'A table has an authority that can extend or close it. Tables that many users rely on are usually controlled by the team that runs the app.',
+    ],
+    mistakes: [
+      'Building the transaction with a table that is not active yet, so it fails right after creation.',
+      'Leaving the table authority on a single key with no plan for rotation.',
+      'Assuming every wallet will accept a transaction that uses a table.',
+    ],
+  },
+  'versioned-transaction': {
+    inPractice: [
+      'Legacy transactions list every account in the message. Version 0 transactions can also load accounts through lookup tables, which makes room for more accounts in the same size limit.',
+      'Code that reads transactions has to ask for version 0 support explicitly. A client that does not do so can miss or reject these transactions.',
+    ],
+    mistakes: [
+      'Reading transactions with a client that does not request version 0, so some transactions seem to be missing.',
+      'Building a version 0 transaction for a wallet that only signs legacy ones.',
+      'Not testing the largest realistic transaction before launch.',
+    ],
+  },
+  'durable-nonce': {
+    inPractice: [
+      'A durable nonce lives in a nonce account owned by the System Program. The transaction uses the stored nonce value instead of a recent blockhash, and its first instruction must advance the nonce.',
+      'Each use advances the nonce, so one signed transaction can be used only once. The nonce account also has an authority that you should protect.',
+    ],
+    mistakes: [
+      'Forgetting to advance the nonce, so the transaction is rejected.',
+      'Keeping signed nonce transactions in an unprotected place, where anyone who finds them can submit them.',
+      'Sharing one nonce account between several pending transactions.',
+    ],
+  },
+  'bonding-curve': {
+    inPractice: [
+      'The curve is a formula, for example price rising linearly or exponentially with supply. The contract holds a reserve and mints or burns tokens as people buy and sell.',
+      'Launches often move to an ordinary liquidity pool after a target is reached. That migration step is where many issues appear, so it needs its own review.',
+    ],
+    mistakes: [
+      'Leaving out slippage limits, so a buyer pays a very different price than quoted.',
+      'Rounding errors in the formula that favor one side and can be repeated many times.',
+      'Giving an admin key control over the reserve or the curve parameters without a timelock or multisig.',
+    ],
+  },
+  'jito-bundle': {
+    inPractice: [
+      'A bundle groups up to five transactions that run in order and atomically in the same block: either all of them succeed or none is included.',
+      'The sender attaches a tip, paid in a transfer to a designated tip account, to get the bundle considered by validators running the Jito software.',
+    ],
+    mistakes: [
+      'Assuming a bundle always lands. Without the right tip and timing it can be dropped, so the caller needs a retry plan.',
+      'Putting more than five transactions in one bundle.',
+      'Overpaying tips because the budget was never set against the expected profit.',
     ],
   },
 };
