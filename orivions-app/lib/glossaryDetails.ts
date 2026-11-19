@@ -252,6 +252,47 @@ export const GLOSSARY_DETAILS: Record<string, GlossaryDetail> = {
     ],
     related: ['priority-fee', 'compute-units', 'rpc', 'program'],
   },
+  'commitment-level': {
+    why: 'Reading or acting on data that is not yet final is a common source of wrong balances and double actions. The right level depends on the action: a fast UI preview can use a lower level, a payout or a withdrawal should wait for a higher one.',
+    check: [
+      'Ask which commitment level the app uses for reads and for sending, and why.',
+      'Ask how the backend reacts when a transaction seen at a lower level is later dropped.',
+    ],
+    related: ['rpc', 'indexer', 'geyser-plugin', 'priority-fee'],
+  },
+  'compressed-nft': {
+    why: 'Compression makes very large mints affordable, for example for loyalty items or game assets. The trade-off is that the data is not in ordinary accounts, so wallets, marketplaces and your own app depend on indexers to show and transfer it.',
+    check: [
+      'Ask which indexer or API the app uses to read compressed assets, and what happens if it is unavailable.',
+      'Ask who controls the tree and whether the tree authority can be changed.',
+    ],
+    related: ['indexer', 'account', 'spl-token', 'merkle-distributor'],
+  },
+  'geyser-plugin': {
+    why: 'A Geyser stream delivers chain data with lower delay than polling RPC, which matters for trading tools, alerts and live dashboards. It also means you depend on a validator or a provider that runs the plugin.',
+    check: [
+      'Ask whether the stream is self-hosted or from a provider, and what the reconnect and backfill plan is.',
+      'Ask which commitment level the consumer reads, and how it handles rolled-back slots.',
+    ],
+    related: ['indexer', 'rpc', 'commitment-level', 'account'],
+  },
+  'merkle-distributor': {
+    why: 'Airdrops and reward programs with many recipients are cheaper and simpler when recipients claim themselves. The contract holds the funds, so the allocation list, the claim logic and the admin rights all need review.',
+    check: [
+      'Ask how the Merkle root is produced and who can change it after launch.',
+      'Ask how the program records claims, so one allocation cannot be claimed twice.',
+      'Ask what happens to unclaimed tokens and who can withdraw them.',
+    ],
+    related: ['spl-token', 'compressed-nft', 'upgrade-authority', 'audit'],
+  },
+  timelock: {
+    why: 'A timelock limits what a compromised or careless admin key can do, because every sensitive change becomes visible before it takes effect. Users and partners treat it as a sign of mature operations.',
+    check: [
+      'Ask which actions go through the timelock and how long the delay is.',
+      'Ask who can cancel a queued change, and whether the timelock itself can be bypassed or upgraded.',
+    ],
+    related: ['upgrade-authority', 'multisig', 'program', 'audit'],
+  },
 };
 
 // Longer practical notes for the terms that teams and auditors ask about most.
@@ -626,6 +667,61 @@ export const GLOSSARY_EXTRA: Record<string, GlossaryExtra> = {
       'Assuming a bundle always lands. Without the right tip and timing it can be dropped, so the caller needs a retry plan.',
       'Putting more than five transactions in one bundle.',
       'Overpaying tips because the budget was never set against the expected profit.',
+    ],
+  },
+  'commitment-level': {
+    inPractice: [
+      'Processed means a node has seen the transaction, confirmed means a supermajority of stake has voted on its block, and finalized means it is very unlikely to be rolled back. Higher levels are safer and slower.',
+      'The level is set on each RPC request, for both reads and for the checks done while sending a transaction.',
+    ],
+    mistakes: [
+      'Crediting a user after a processed confirmation, so a dropped transaction leaves a wrong balance.',
+      'Mixing levels, for example sending at one level and reading the result at a lower one.',
+      'Using the highest level for every UI read and making the app feel slow.',
+    ],
+  },
+  'compressed-nft': {
+    inPractice: [
+      'A compressed NFT is a leaf in a Merkle tree kept on-chain with the account compression program. Only the tree root is stored in an account, which is why a mint costs a small fraction of a regular NFT.',
+      'To read or transfer an asset, a client needs the leaf data and a proof. Most apps get them from an indexer that supports the Digital Asset Standard (DAS) API.',
+    ],
+    mistakes: [
+      'Assuming ordinary RPC calls can list the assets of a wallet.',
+      'Choosing the tree size too small and running out of capacity, since a tree cannot grow after creation.',
+      'Relying on a single indexer without a fallback.',
+    ],
+  },
+  'geyser-plugin': {
+    inPractice: [
+      'A Geyser plugin runs inside a validator and pushes account updates, transactions, slot status and block data to another system, such as a message queue, a database or a gRPC stream.',
+      'Consumers still need a backfill for the period before they connected, and a plan for slots that are rolled back.',
+    ],
+    mistakes: [
+      'Building an indexer on a stream without any backfill, so history starts at the moment it was switched on.',
+      'Ignoring slot status and writing data from forks that never finalize.',
+      'Running a plugin on a validator that also has to vote, without checking the performance impact.',
+    ],
+  },
+  'merkle-distributor': {
+    inPractice: [
+      'The team builds a Merkle tree from the list of recipients and amounts and stores the root in the program. A claimant sends their amount and a proof, the program verifies it against the root and pays out.',
+      'The program records each claim, for example in a per-claimant account or a bitmap, so the same allocation cannot be claimed twice.',
+    ],
+    mistakes: [
+      'Publishing a wrong or unreviewed allocation list, which cannot be fixed without a new root.',
+      'Leaving an admin able to replace the root or drain the vault with no delay or multisig.',
+      'Not setting a claim deadline and a plan for unclaimed tokens.',
+    ],
+  },
+  timelock: {
+    inPractice: [
+      'A change is first queued with a time, then anyone can see it, and only after the delay has passed can it be executed. A cancel path lets the owners stop a change that was queued by mistake.',
+      'On Solana a timelock is usually part of a governance or multisig setup that controls the upgrade authority and key parameters.',
+    ],
+    mistakes: [
+      'Setting a delay so short that users cannot react in time.',
+      'Leaving a second admin path that skips the timelock.',
+      'Queuing changes without telling the community where to watch for them.',
     ],
   },
 };
