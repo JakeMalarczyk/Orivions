@@ -222,6 +222,39 @@ export const GLOSSARY: GlossaryTerm[] = [
     definition:
       'The Solana transaction format that supports address lookup tables. Version 0 transactions can reference far more accounts than a legacy transaction, and clients and wallets must support the format to read and sign them.',
   },
+  {
+    term: 'Commitment level',
+    id: 'commitment-level',
+    definition:
+      'How sure a Solana node is that a transaction will stay in the chain: processed (seen by a node), confirmed (voted on by a supermajority of stake) or finalized (very unlikely to be rolled back). Apps choose the level per request.',
+    link: { href: '/blog/how-to-choose-a-solana-rpc-provider', label: 'Choosing an RPC provider' },
+  },
+  {
+    term: 'Compressed NFT',
+    id: 'compressed-nft',
+    definition:
+      'An NFT whose data lives in an on-chain Merkle tree (state compression), so only the tree root is stored in an account. Minting is far cheaper than for a regular NFT, and reading the data needs an indexer.',
+  },
+  {
+    term: 'Geyser plugin',
+    id: 'geyser-plugin',
+    definition:
+      'A plugin interface of the Solana validator that streams account updates, transactions, slots and blocks to an external system as they are processed. Indexers and real-time data services are built on it.',
+    link: { href: '/blog/solana-indexer-vs-rpc-what-to-use', label: 'Indexer or RPC' },
+  },
+  {
+    term: 'Merkle distributor',
+    id: 'merkle-distributor',
+    definition:
+      'A program that lets many recipients claim tokens from one on-chain Merkle root. Each claimant proves their allocation with a Merkle proof, so the team does not send thousands of transfers itself.',
+  },
+  {
+    term: 'Timelock',
+    id: 'timelock',
+    definition:
+      'A mandatory delay between queuing a sensitive change, such as a program upgrade or a parameter change, and executing it. The delay gives users time to review the change or exit.',
+    link: { href: '/blog/solana-program-upgrade-authority-multisig', label: 'Securing the upgrade authority' },
+  },
 ];
 
 export function getTerm(id: string): GlossaryTerm | undefined {
