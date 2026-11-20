@@ -12,6 +12,19 @@ import type { Deal, FeeBreakdown, Milestone } from './types';
 /** Valid fee rate in V1: a single flat 10% success fee. Snapshotted on the deal; anything else is a data bug. */
 export const VALID_FEE_RATES = [0.10] as const;
 
+/**
+ * Amount -> integer cents. Amounts must already have at most 2 decimals (the SQL
+ * column is numeric(14,2)); anything finer is rejected instead of being rounded
+ * differently in TS and SQL.
+ */
+export function toCents(amount: number): number {
+  const cents = Math.round(amount * 100);
+  if (!Number.isFinite(amount) || Math.abs(amount * 100 - cents) > 1e-6) {
+    throw new Error(`Amount must have at most 2 decimals (got ${amount})`);
+  }
+  return cents;
+}
+
 export function computeFees(
   deal: Pick<Deal, 'feeRate'>,
   milestones: Pick<Milestone, 'amount'>[]
@@ -25,8 +38,7 @@ export function computeFees(
     }
   }
 
-  // Work in integer cents to avoid float drift; round half-up at each boundary.
-  const toCents = (v: number) => Math.round(v * 100);
+  // Work in integer cents to avoid float drift; the fee is rounded half-up.
   const totalCents = milestones.reduce((sum, m) => sum + toCents(m.amount), 0);
   const feeCents = Math.round(totalCents * deal.feeRate);
 
