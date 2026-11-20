@@ -109,7 +109,7 @@ export default function HomePage() {
               B2B marketplace for onchain teams.
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/70">
-              Describe what you need. We pick verified auditors, developers and agencies, and tell you why. Free for clients.
+              Describe what you need. We match you with top-tier auditors, developers and agencies, and tell you why. Free for clients.
             </p>
             {/* Same buttons as plain links while HeroCtas loads, so the layout does not jump. */}
             <Suspense
@@ -122,15 +122,12 @@ export default function HomePage() {
                     >
                       Get a shortlist
                     </Link>
-                    <Link
-                      href="/providers"
-                      className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white"
-                    >
-                      Browse providers
+                    <Link href="/founding-providers" className="px-2 py-3 text-sm font-medium text-white/70">
+                      Join as a provider
                     </Link>
                   </div>
                   <p className="mt-4 text-sm text-white/60">
-                    Free for teams. A person picks up to three verified providers and emails you, usually within two business days.
+                    Free for teams. We introduce you to top-tier providers that fit, and they contact you directly.
                   </p>
                 </div>
               }
