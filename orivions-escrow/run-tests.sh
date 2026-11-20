@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 echo "== Building core/ -> dist/ =="
 ./node_modules/.bin/tsc -p tsconfig.json
 echo "== Running TypeScript test suite =="
-for t in surface stateMachine fees payments parity; do
+for t in surface stateMachine fees payments parity sql; do
   node "tests/$t.test.mjs"
 done
 echo ""
