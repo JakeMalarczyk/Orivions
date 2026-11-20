@@ -126,6 +126,14 @@ export default function PostPage() {
         <Link href="/solana-glossary/upgrade-authority" className="text-blue-deep">upgrade authority</Link>{' '}
         and <Link href="/solana-glossary/multisig" className="text-blue-deep">multisig</Link>.
       </P>
+
+      <P>
+        Also useful:{' '}
+        <Link href="/blog/solana-incident-response-plan" className="text-blue-deep">
+          how to write an incident response plan
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
