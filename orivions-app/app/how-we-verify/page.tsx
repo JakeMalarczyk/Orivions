@@ -196,9 +196,9 @@ export default function HowWeVerifyPage() {
         </div>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2">
-          <Link href="/providers" className="rounded-2xl border border-line p-5 hover:shadow-md">
-            <div className="font-semibold">Find a verified provider →</div>
-            <p className="mt-1 text-sm text-gray">Free for clients. Describe what you need or browse the directory.</p>
+          <Link href="/smart-match" className="rounded-2xl border border-line p-5 hover:shadow-md">
+            <div className="font-semibold">Get a shortlist →</div>
+            <p className="mt-1 text-sm text-gray">Free for clients. Describe what you need and we introduce you to providers that fit.</p>
           </Link>
           <Link href="/founding-providers" className="rounded-2xl border border-line p-5 hover:shadow-md">
             <div className="font-semibold">Get verified →</div>
