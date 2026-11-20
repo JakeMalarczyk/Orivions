@@ -7,7 +7,6 @@ const GROUPS: { title: string; links: { href: string; label: string }[] }[] = [
   {
     title: 'Find',
     links: [
-      { href: '/providers', label: 'Providers' },
       { href: '/smart-match', label: 'Smart Match' },
       { href: '/solana-smart-contract-audits', label: 'Audits' },
       { href: '/solana-development-companies', label: 'Development' },
