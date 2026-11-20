@@ -128,6 +128,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'How to choose a Web3 lawyer for a token launch',
     description: 'How to choose a crypto lawyer for a token launch: what to cover, questions to ask, jurisdiction, MiCA, fee structure and red flags. Not legal advice.',
   },
+  'solana-incident-response-plan': {
+    title: 'Solana incident response plan for protocol teams',
+    description: 'Write a Solana incident response plan: roles, severity levels, what to pause, emergency fix path, contacts, user communication and a first-hour checklist.',
+  },
   'why-we-are-building-orivions': {
     title: 'Why we are building Orivions',
     description: 'Why Orivions exists: finding a trustworthy Solana auditor, developer or agency is slow and risky, so we are building a verified marketplace for onchain teams.',
