@@ -117,7 +117,7 @@ function topicHub(post: Post): { href: string; label: string } {
   if (/lawyer|legal|token-launch|milestone|contract/.test(key)) return { href: '/solana-legal-compliance-firms', label: 'crypto lawyers and compliance firms for Solana' };
   if (/marketing|market-maker|market making/.test(key)) return { href: '/solana-marketing-growth-agencies', label: 'Solana marketing and growth agencies' };
   if (/development|dapp|anchor|rust|freelancer|trustworthy/.test(key)) return { href: '/solana-development-companies', label: 'Solana development companies' };
-  return { href: '/providers', label: 'verified Solana service providers' };
+  return { href: '/smart-match', label: 'a shortlist of verified Solana service providers' };
 }
 
 function TopicHub({ post }: { post: Post }) {
