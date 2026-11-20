@@ -60,5 +60,14 @@ for (const [deal, ms, label] of [
   assert(threw, label);
 }
 
+// audit #8: sub-cent amounts are rejected, not silently rounded differently from SQL
+{
+  const { toCents } = require('../dist/fees.js');
+  let threw = false; try { computeFees({ feeRate: 0.10 }, [{ amount: 1.005 }]); } catch { threw = true; }
+  assert(threw, 'computeFees rejects 1.005');
+  assert(toCents(19.99) === 1999 && toCents(0.1 + 0.2) === 30 && toCents(1500) === 150000, 'toCents handles float noise');
+  let threw2 = false; try { toCents(NaN); } catch { threw2 = true; }
+  assert(threw2, 'toCents rejects NaN');
+}
 console.log(`\nfees: ${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
