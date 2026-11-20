@@ -50,15 +50,15 @@ mechanicznie z tabelami TS** - każda edycja jednej strony bez drugiej wywala te
    udane przejście emituje dokładnie jeden typ zdarzenia (mapowanie w
    stateMachine.ts, pokryte testami).
 4. **Aktor wyprowadzany z tożsamości, nie z requestu**: provider = auth.uid()
-   równe provider_id; klient = e-mail zweryfikowanej sesji (ten sam wzorzec co
-   RLS leads w głównej aplikacji); admin = wyłącznie service_role.
+   równe provider_id; klient = konto, które przyjęło jednorazowe zaproszenie (e-mail nigdy nie jest
+   tożsamością, bo rejestracja go nie weryfikuje); admin = wyłącznie service_role.
 5. **Kwoty w centach wewnętrznie** (core/fees.ts) - zero dryfu floatów;
    inwariant fee + net = total sfuzzowany 500 przypadkami.
 
 ## Weryfikacja - co zostało NAPRAWDĘ sprawdzone
 
 - `tsc --strict`: kompilacja czysta (realny kompilator, realne emitowanie JS)
-- **242 asercje testów TS wykonane, 0 porażek; 11 testów Rust zielonych (`cargo test`)**, w tym WYCZERPUJĄCA
+- **262 asercje TS i 73 SQL wykonane, 0 porażek; 11 testów Rust (nieuruchomione od audytu 6.11, brak cargo)**, w tym WYCZERPUJĄCA
   matryca 6×6×3 przejść deala (108) i 4×4×3 milestone (48) - każda kombinacja
   stan×stan×aktor porównana z tabelą
 - **Test parzystości TS↔SQL wykonany** (12 tupli deal + 4 milestone, zgodne;
@@ -84,7 +84,7 @@ mechanicznie z tabelami TS** - każda edycja jednej strony bez drugiej wywala te
 
 ## Uruchomienie testów
 ```bash
-npm install && npm test   # 242 asercje TS: surface, stateMachine, fees, payments, parity
+npm install && npm test   # 262 asercje TS + 73 SQL: surface, stateMachine, fees, payments, parity, sql
 cd rust && cargo test     # 11 testów Rust (jądro + parzystość SQL) - zielone
 ```
 
@@ -97,6 +97,8 @@ cd rust && cargo test     # 11 testów Rust (jądro + parzystość SQL) - zielon
 - [ ] Klient A nie widzi deali klienta B (RLS, dwa konta testowe)
 - [ ] Provider nie może zaakceptować własnego milestone'u (actor check)
 - [ ] `escrow_deal_fees` = `computeFees()` dla 3 ręcznych przypadków, w tym groszowego
-- [ ] Wszystkie 3 suity testów zielone na maszynie audytora
+- [ ] Wszystkie suity testów zielone na maszynie audytora (w tym `tests/sql.test.mjs` na prawdziwym Postgresie)
+- [ ] Konto z cudzym adresem e-mail nie widzi ani nie rusza deala (zaproszenie, nie e-mail)
+- [ ] `escrow_deal_fees` niedostępny dla anon, a dla zalogowanych tylko własne deale
 
 ## Dołączenie do produktu - patrz INTEGRATION.md (30 min)
