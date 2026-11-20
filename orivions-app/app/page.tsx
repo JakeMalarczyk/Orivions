@@ -114,19 +114,24 @@ export default function HomePage() {
             {/* Same buttons as plain links while HeroCtas loads, so the layout does not jump. */}
             <Suspense
               fallback={
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href="/providers"
-                    className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)]"
-                  >
-                    Browse providers
-                  </Link>
-                  <Link
-                    href="/smart-match"
-                    className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white"
-                  >
-                    Describe your project
-                  </Link>
+                <div className="mt-8">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Link
+                      href="/smart-match"
+                      className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)]"
+                    >
+                      Get a shortlist
+                    </Link>
+                    <Link
+                      href="/providers"
+                      className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white"
+                    >
+                      Browse providers
+                    </Link>
+                  </div>
+                  <p className="mt-4 text-sm text-white/60">
+                    Free for teams. A person picks up to three verified providers and emails you, usually within two business days.
+                  </p>
                 </div>
               }
             >
