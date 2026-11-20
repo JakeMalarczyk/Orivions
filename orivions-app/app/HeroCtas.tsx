@@ -41,14 +41,14 @@ export default function HeroCtas() {
           Get a shortlist
         </button>
         <button
-          onClick={() => trackAndGo('Hero CTA: Browse', '/providers')}
-          className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-light hover:text-blue-light"
+          onClick={() => trackAndGo('Hero CTA: Join as provider', '/founding-providers')}
+          className="px-2 py-3 text-sm font-medium text-white/70 underline-offset-4 transition hover:text-white hover:underline"
         >
-          Browse providers
+          Join as a provider
         </button>
       </div>
       <p className="mt-4 text-sm text-white/60">
-        Free for teams. A person picks up to three verified providers and emails you, usually within two business days.
+        Free for teams. We introduce you to top-tier providers that fit, and they contact you directly.
       </p>
     </div>
   );
