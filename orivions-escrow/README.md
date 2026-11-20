@@ -1,6 +1,6 @@
 # Orivions Escrow
 
-Milestone escrow core for the [Orivions](https://orivions.xyz) marketplace -
+Milestone escrow core for the [Orivions](https://orivions.com) marketplace -
 the trust layer that lets onchain teams hire with their funds protected.
 
 This module tracks deals and milestones, enforces a strict state machine,
@@ -13,9 +13,9 @@ component: attachable to the main product at any time, auditable in isolation.
 
 | Part | State |
 |------|-------|
-| TypeScript core (types, state machine, fees, payment seam) | **Built, tested** - 242 assertions, 0 failures |
-| Rust core (fees + state machine, canonical) | **Built, tested** - 11 tests green, incl. SQL parity |
-| Postgres schema + RLS + guard triggers | **Written**; validate on a live Supabase project before production |
+| TypeScript core (types, state machine, fees, payment seam) | **Built, tested** - 262 assertions, 0 failures |
+| Rust core (fees + state machine, canonical) | **Built, tested** - 11 tests, not re-run since the 6.11 audit (no cargo on the build machine) |
+| Postgres schema + RLS + guard triggers | **Built, tested on real Postgres (PGlite)** - 73 assertions incl. the audit exploits; still validate once on a live Supabase project |
 | Custody (holding/moving funds) | **Not in V1** - by design (see below) |
 
 ## What V1 does - and what it deliberately does not
@@ -62,7 +62,8 @@ tables - editing one side without the other fails CI.
 3. **Append-only event log** - a trigger rejects UPDATE/DELETE. Every successful
    transition emits exactly one event type (mapped in `stateMachine.ts`, tested).
 4. **Actor derived from identity, not from the request**: provider = `auth.uid()`
-   equal to `provider_id`; client = the email of a verified session; admin =
+   equal to `provider_id`; client = the account that claimed a single-use invite
+   token (e-mail is never an identity: sign-up does not verify it); admin =
    `service_role` only.
 5. **Amounts in integer cents internally** (`core/fees.ts`) - no float drift;
    the `fee + net = total` invariant is fuzzed over 500 cases.
@@ -70,7 +71,7 @@ tables - editing one side without the other fails CI.
 ## Run the tests
 
 ```bash
-npm install && npm test     # 242 TS assertions: surface, stateMachine, fees, payments, parity
+npm install && npm test     # 262 TS + 73 SQL assertions: surface, stateMachine, fees, payments, parity, sql
 cd rust && cargo test       # 11 Rust tests (core + SQL parity)
 ```
 
@@ -80,10 +81,10 @@ Requires Node 18+ and a stable Rust toolchain. CI runs both on every push
 ## What was actually verified
 
 - `tsc --strict`: clean compile (real compiler, real JS emit).
-- **242 TS assertions pass**, including the exhaustive 6x6x3 deal matrix (108)
+- **262 TS and 73 SQL assertions pass**, including the exhaustive 6x6x3 deal matrix (108)
   and 4x4x3 milestone matrix (48) - every state x state x actor combination
   checked against the table.
-- **11 Rust tests pass**, including the SQL-parity test.
+- **11 Rust tests** (including SQL parity) were green before the 6.11 audit; not re-run since (no cargo on the build machine).
 - SQL has been structurally validated but **not yet run against a live
   Postgres**; run the migration on a throwaway Supabase project before
   production. (This is the one open checklist item.)
