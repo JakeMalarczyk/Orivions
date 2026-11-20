@@ -4,8 +4,6 @@ import Logo from './Logo';
 // Single source of truth for the main site navigation.
 // The site is English-only; all i18n machinery was removed deliberately.
 const NAV_LINKS = [
-  { href: '/smart-match', label: 'Smart Match' },
-  { href: '/providers', label: 'Find providers' },
   { href: '/insights', label: 'Insights' },
   { href: '/blog', label: 'Blog' },
   { href: '/login', label: 'Log in' },
@@ -25,11 +23,14 @@ export default function Header() {
               {label}
             </Link>
           ))}
+          <Link href="/founding-providers" className="text-sm font-medium text-gray hover:text-blue-deep">
+            Join as a provider
+          </Link>
           <Link
-            href="/founding-providers"
+            href="/smart-match"
             className="rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-blue-deep"
           >
-            List your company
+            Get a shortlist
           </Link>
         </div>
       </nav>
