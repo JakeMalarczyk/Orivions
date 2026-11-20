@@ -109,7 +109,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
         narrow
         eyebrow={
           <>
-            <Link href="/providers" className="hover:text-white">Providers</Link> / {breadcrumbLabel}
+            <Link href="/" className="hover:text-white">Orivions</Link> / {breadcrumbLabel}
           </>
         }
         title={h1}
@@ -118,8 +118,8 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
         <Link href="/smart-match" className={HERO_PRIMARY}>
           {ctaPrimary}
         </Link>
-        <Link href="/providers" className={HERO_SECONDARY}>
-          Browse all categories
+        <Link href="/founding-providers" className={HERO_SECONDARY}>
+          Join as a provider
         </Link>
       </PageHero>
 
