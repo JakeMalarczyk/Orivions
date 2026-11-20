@@ -134,6 +134,14 @@ export default function PostPage() {
         </Link>{' '}
         page.
       </P>
+
+      <P>
+        Also useful:{' '}
+        <Link href="/blog/solana-incident-response-plan" className="text-blue-deep">
+          how to write an incident response plan
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
