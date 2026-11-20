@@ -16,6 +16,12 @@ const CHAINS = ['', 'Solana', 'Ethereum / EVM', 'Multi-chain', 'Other'];
 const FUNDING = ['', 'Bootstrapped', 'Pre-seed', 'Seed', 'Series A+', 'Grant funded'];
 const TEAMS = ['', 'Solo', '2-5', '6-15', '16+'];
 
+const EXAMPLES = [
+  { label: 'Smart contract audit', text: 'I need an independent audit of our Solana lending program before mainnet. Budget around $5-8k, code freeze in two weeks.' },
+  { label: 'Legal for a token launch', text: 'We need a legal adviser to structure our token launch and DAO. Team is based in the EU, launch planned within two months.' },
+  { label: 'Growth for a launch', text: 'Looking for a growth agency to run a launch campaign for our consumer app on Solana, measured by wallet connects.' },
+];
+
 interface Props {
   need: string;
   source: string;
@@ -94,28 +100,38 @@ export default function ConciergeForm({ need: initialNeed, source, title, text }
           'Tell us what you need and a person at Orivions will email you up to three verified providers that fit. Free for teams.'}
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        {!need.trim() && (
+          <div className="flex flex-wrap items-center gap-2 sm:col-span-2">
+            <span className="text-xs text-gray-soft">Start from an example:</span>
+            {EXAMPLES.map((ex) => (
+              <button key={ex.label} type="button" onClick={() => setNeed(ex.text)} className="rounded-full border border-line px-3 py-1.5 text-xs text-gray hover:border-blue-light hover:text-blue-deep">
+                {ex.label}
+              </button>
+            ))}
+          </div>
+        )}
         <textarea value={need} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setNeed(e.target.value)} placeholder={'What are you building, what stage is it at, what do you need and by when?\nThe more you tell us, the sharper the shortlist.'} rows={4} className="cf-input resize-none sm:col-span-2" />
         <input value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} placeholder="Your name" autoComplete="name" className="cf-input" />
         <input type="email" value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} placeholder="you@company.com" autoComplete="email" className="cf-input" />
-        <input value={company} onChange={(e: ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)} placeholder="Project or company (optional)" autoComplete="organization" className="cf-input sm:col-span-2" />
-        <select value={budget} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBudget(e.target.value)} className="cf-input bg-white" aria-label="Budget">
-          {BUDGETS.map((b) => (
-            <option key={b} value={b}>{b || 'Budget (optional)'}</option>
-          ))}
-        </select>
-        <select value={timeline} onChange={(e: ChangeEvent<HTMLSelectElement>) => setTimeline(e.target.value)} className="cf-input bg-white" aria-label="Timeline">
-          {TIMELINES.map((t) => (
-            <option key={t} value={t}>{t || 'Timeline (optional)'}</option>
-          ))}
-        </select>
         <details className="group sm:col-span-2 rounded-xl border border-line px-4 py-3">
           <summary className="cursor-pointer select-none text-sm font-semibold text-ink">
-            Tell us more <span className="font-normal text-gray-soft">(optional, sharper matches)</span>
+            Budget, timeline and more <span className="font-normal text-gray-soft">(optional, sharper matches)</span>
           </summary>
           <p className="mt-2 text-xs text-gray-soft">
             We use this only to pick your matches. Skip anything you prefer not to share.
           </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <input value={company} onChange={(e: ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)} placeholder="Project or company (optional)" autoComplete="organization" className="cf-input sm:col-span-2" />
+            <select value={budget} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBudget(e.target.value)} className="cf-input bg-white" aria-label="Budget">
+              {BUDGETS.map((b) => (
+                <option key={b} value={b}>{b || 'Budget (optional)'}</option>
+              ))}
+            </select>
+            <select value={timeline} onChange={(e: ChangeEvent<HTMLSelectElement>) => setTimeline(e.target.value)} className="cf-input bg-white" aria-label="Timeline">
+              {TIMELINES.map((t) => (
+                <option key={t} value={t}>{t || 'Timeline (optional)'}</option>
+              ))}
+            </select>
             <input value={website} onChange={(e: ChangeEvent<HTMLInputElement>) => setWebsite(e.target.value)} placeholder="Website or GitHub" autoComplete="url" inputMode="url" className="cf-input sm:col-span-2" />
             <select value={needCategory} onChange={(e: ChangeEvent<HTMLSelectElement>) => setNeedCategory(e.target.value)} className="cf-input bg-white" aria-label="What you need">
               {NEEDS.map((v) => (<option key={v} value={v}>{v || 'What you need'}</option>))}
