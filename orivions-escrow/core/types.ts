@@ -62,8 +62,13 @@ export interface Deal {
   id: string;
   /** companies.id of the provider (auth.uid on the provider side). */
   providerId: string;
-  /** Client is identified by verified session e-mail - same rule as leads RLS. */
+  /**
+   * Invite address only. NOT an identity: sign-up does not verify e-mail, so
+   * authority never derives from it. The client is whoever claimed the invite.
+   */
   clientEmail: string;
+  /** auth user id of the client, set once by escrow_claim_deal. Null until the invite is claimed. */
+  clientUserId: string | null;
   title: string;
   description: string | null;
   currency: 'USD' | 'USDC';
