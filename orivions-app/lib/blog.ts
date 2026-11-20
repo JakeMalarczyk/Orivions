@@ -1036,6 +1036,37 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'solana-incident-response-plan',
+    title: 'Solana incident response plan: what to write before launch',
+    description:
+      'How to write an incident response plan for a live Solana program: roles, severity levels, what you can pause, the emergency fix path, contacts, communication and a first-hour checklist.',
+    excerpt:
+      'Incidents do not wait for a good moment. The seven parts of a short response plan for a live Solana program, and a first-hour checklist you can use as a start.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-20',
+    dateModified: '2026-11-20',
+    tags: ['Guides', 'Operations', 'Infrastructure', 'Launch'],
+    faqs: [
+      {
+        q: 'What is an incident response plan for a Solana program?',
+        a: 'A short written document that says who decides, what you can pause or switch off, whom you contact, what you tell users and how you ship a fix when something goes wrong on a live program. It is written and tested before launch.',
+      },
+      {
+        q: 'What should a Solana incident response plan include?',
+        a: 'Named roles with backups, severity levels, the list of containment options and who holds them, the emergency fix and deploy path, a tested contact list, communication templates and an official channel, and a post-incident review.',
+      },
+      {
+        q: 'Should a Solana program have a pause switch?',
+        a: 'It depends on the design. A pause lets you contain a problem quickly but is also a trust decision, because someone holds the power to use it. Decide before launch, have it reviewed and tell users who can use it and when.',
+      },
+      {
+        q: 'How do a timelock and a multisig affect incident response?',
+        a: 'They slow upgrades on purpose, which protects users from a rogue or compromised key but also delays an urgent fix. Plan an emergency path in advance and make sure the multisig signers can be reached quickly.',
+      },
+    ],
+  },
+  {
     slug: 'why-we-are-building-orivions',
     title: "Why we're building Orivions, and why the Solana services market is broken",
     description:
