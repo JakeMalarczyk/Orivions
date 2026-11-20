@@ -32,19 +32,24 @@ export default function HeroCtas() {
   }
 
   return (
-    <div className="mt-8 flex flex-wrap gap-3">
-      <button
-        onClick={() => trackAndGo('Hero CTA: Browse', '/providers')}
-        className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light"
-      >
-        Browse providers
-      </button>
-      <button
-        onClick={() => trackAndGo('Hero CTA: Smart Match', '/smart-match')}
-        className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-light hover:text-blue-light"
-      >
-        Describe your project
-      </button>
+    <div className="mt-8">
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          onClick={() => trackAndGo('Hero CTA: Smart Match', '/smart-match')}
+          className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-ink shadow-[0_8px_30px_-12px_rgb(var(--c-blue-light)/0.6)] transition hover:bg-blue-light"
+        >
+          Get a shortlist
+        </button>
+        <button
+          onClick={() => trackAndGo('Hero CTA: Browse', '/providers')}
+          className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-light hover:text-blue-light"
+        >
+          Browse providers
+        </button>
+      </div>
+      <p className="mt-4 text-sm text-white/60">
+        Free for teams. A person picks up to three verified providers and emails you, usually within two business days.
+      </p>
     </div>
   );
 }
