@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node tests/fees.test.mjs && node tests/stateMachine.test.mjs && node tests/payments.test.mjs && node tests/surface.test.mjs && node tests/parity.test.mjs"
+    "test": "npm run build && node tests/fees.test.mjs && node tests/stateMachine.test.mjs && node tests/payments.test.mjs && node tests/surface.test.mjs && node tests/parity.test.mjs && node tests/sql.test.mjs"
   },
   "license": "UNLICENSED",
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.15",
     "typescript": "^5.4.5"
   },
   "engines": {
