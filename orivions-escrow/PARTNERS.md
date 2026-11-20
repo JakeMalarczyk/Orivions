@@ -5,6 +5,15 @@ Kod jest partner-agnostyczny: adapter = implementacja 3 metod `PartnerClient`
 `NormalizedWebhookEvent`. **Bramka: adapter musi przejść tests/payments.test.mjs
 z podmienionym mockiem** - ta sama suita, prawdziwy sandbox partnera.
 
+Wymagania po audycie 6.11.2026 (adapter i magazyn MUSZĄ je spełniać):
+- `createHold` dostaje `idempotencyKey` (`dealId:milestoneId`); to samo wywołanie z tym samym
+  kluczem zwraca tę samą blokadę, nigdy drugą. Ponowienie aktywacji pomija kamienie z istniejącym holdem.
+- `PaymentStore.commitEvent(eventId, record, expectedState)` zapisuje nowy stan ORAZ oznacza
+  zdarzenie jako przetworzone w jednej transakcji (compare-and-set), `hasEvent` tylko czyta.
+  Zdarzenie nie jest "spalone" przed zmianą stanu; `WebhookOutcome.retry=true` oznacza odpowiedź 5xx.
+- Bramka finansowania: `isDealFullyFunded()` przed przejściem proposed → active.
+- Kwoty mają maks. 2 miejsca po przecinku (`toCents` odrzuca resztę).
+
 | Kandydat | Za | Przeciw | Dopasowanie |
 |---|---|---|---|
 | **Circle (USDC)** | natywne USDC, programmable wallets, escrow-like holds | onboarding compliance | ★★★ - zgodne z "USDC na Solanie" ze strategii |
