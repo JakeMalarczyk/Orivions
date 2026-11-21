@@ -170,6 +170,14 @@ export default function PostPage() {
       <P>
         Also useful: <Link href="/blog/solana-program-upgrade-authority-multisig" className="text-blue-deep">how to secure the upgrade authority with a multisig</Link>.
       </P>
+
+      <P>
+        Not sure who can upgrade your program today? Paste its address into the free{' '}
+        <Link href="/tools/solana-program-check" className="text-blue-deep">
+          upgrade authority checker
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
