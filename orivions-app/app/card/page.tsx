@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BOOKING_URL, CONTACT_EMAIL } from '@/lib/contact';
+import { BOOKING_URL, CONTACT_EMAIL, TELEGRAM_HANDLE, TELEGRAM_URL } from '@/lib/contact';
 import { HERO_GLOW, HeroBackdrop } from '@/components/PageHero';
 
 // Digital business card, opened from the QR code on printed cards and the one-pager.
@@ -14,6 +14,7 @@ const LINKS: { label: string; hint: string; href: string; external?: boolean }[]
   { label: 'Describe your project', hint: 'Get a hand-picked shortlist of providers. Free for teams.', href: '/smart-match?ref=bp-card' },
   { label: 'Apply as a Founding Provider', hint: 'Free profile, a verified badge after a short check.', href: '/founding-providers?ref=bp-card' },
   { label: 'Book a 20-minute call', hint: 'Pick a time that suits you.', href: BOOKING_URL, external: true },
+  { label: `Telegram ${TELEGRAM_HANDLE}`, hint: 'A quick question or a short intro.', href: TELEGRAM_URL, external: true },
   { label: 'Follow @Orivions on X', hint: 'Building in public.', href: 'https://x.com/Orivions', external: true },
 ];
 
