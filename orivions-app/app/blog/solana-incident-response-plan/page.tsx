@@ -161,6 +161,14 @@ export default function PostPage() {
         </Link>{' '}
         we have checked.
       </P>
+
+      <P>
+        Not sure who can upgrade your program today? Paste its address into the free{' '}
+        <Link href="/tools/solana-program-check" className="text-blue-deep">
+          upgrade authority checker
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
