@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/tools', updated: '2026-10-25', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-audit-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-dapp-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/tools/solana-program-check', updated: '2026-11-22', priority: 0.8, changeFrequency: 'monthly' as const },
   ];
 
   const day = (d: string) => new Date(`${d}T00:00:00Z`);
