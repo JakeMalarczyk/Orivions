@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { SITE_URL, ogImageUrl } from '@/lib/blog';
-import { BOOKING_URL, CONTACT_EMAIL } from '@/lib/contact';
+import { BOOKING_URL, CONTACT_EMAIL, TELEGRAM_HANDLE, TELEGRAM_URL } from '@/lib/contact';
 
 const DESCRIPTION =
   'Contact the Orivions team by email or book a 20-minute call to talk about hiring verified auditors, developers and agencies, or about listing your company.';
@@ -69,6 +69,13 @@ export default function ContactPage() {
               {CONTACT_EMAIL}
             </a>
             <p className="mt-1.5 text-sm text-gray">For teams, providers, partners and press.</p>
+          </div>
+          <div className="rounded-2xl border border-line p-5">
+            <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">Telegram</div>
+            <a href={TELEGRAM_URL} target="_blank" rel="noopener" className="mt-2 block font-semibold hover:text-blue-deep">
+              {TELEGRAM_HANDLE}
+            </a>
+            <p className="mt-1.5 text-sm text-gray">For a quick question or a short intro.</p>
           </div>
           <div className="rounded-2xl border border-line p-5">
             <div className="text-xs font-bold uppercase tracking-wide text-blue-deep">Looking for a provider?</div>
