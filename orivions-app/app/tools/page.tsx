@@ -22,6 +22,11 @@ const TOOLS = [
     text: 'Build cost and timeline for your dApp: programs, frontend, backend, extras, and whether a freelancer or an agency builds it.',
   },
   {
+    href: '/tools/solana-program-check',
+    title: 'Solana program upgrade check',
+    text: 'Paste a program address and see who can upgrade it: a single key, a multisig-style authority or nobody. Public chain data, no signup.',
+  },
+  {
     href: '/ai-proposal-generator',
     title: 'AI proposal generator',
     text: 'For providers: turn a client brief into a structured proposal with scope, milestones and pricing.',
