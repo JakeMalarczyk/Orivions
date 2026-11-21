@@ -6,6 +6,7 @@ import PageHero from '@/components/PageHero';
 import { isDirectoryOpen, verifiedProviderCount } from '@/lib/directory';
 import FaqSection from '@/components/FaqSection';
 import SmartMatchClient from './SmartMatchClient';
+import { BOOKING_URL, TELEGRAM_HANDLE, TELEGRAM_URL } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: 'Smart Match: find a verified Solana provider',
@@ -62,6 +63,18 @@ export default async function SmartMatchPage() {
       >
         <SmartMatchClient autoMatch={autoMatch} />
       </Suspense>
+
+      <p className="mx-auto max-w-3xl px-8 pb-10 text-center text-sm text-gray">
+        Prefer to talk? Message{' '}
+        <a href={TELEGRAM_URL} target="_blank" rel="noopener" className="font-semibold text-blue-deep">{TELEGRAM_HANDLE} on Telegram</a>
+        {BOOKING_URL ? (
+          <>
+            {' '}or{' '}
+            <a href={BOOKING_URL} target="_blank" rel="noopener" className="font-semibold text-blue-deep">book a 20-minute call</a>
+          </>
+        ) : null}
+        .
+      </p>
 
       <section className="mx-auto max-w-3xl px-8 pb-20">
         <h2 className="font-heading text-2xl font-semibold">How Smart Match works</h2>
