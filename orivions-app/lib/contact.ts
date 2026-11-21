@@ -6,3 +6,7 @@ export const CONTACT_EMAIL = 'jakub@orivions.com';
 // Google Calendar appointment page for a 20-minute call. Opened in a new tab
 // (no iframe, so the CSP needs no change). Empty hides the "Book a call" section.
 export const BOOKING_URL = 'https://calendar.app.google/hFdaS5z9igWQZ46AA';
+
+// Telegram for quick questions and brief intros. Shown on /contact, /smart-match and /card.
+export const TELEGRAM_URL = 'https://t.me/Kubammm';
+export const TELEGRAM_HANDLE = '@Kubammm';
