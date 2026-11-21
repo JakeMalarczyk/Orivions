@@ -62,7 +62,7 @@ export default function ProgramCheck() {
         setError(data.error ?? 'Something went wrong. Try again.');
       } else {
         setResult(data);
-        trackEvent('calculator_used', { label: 'program-check' });
+        trackEvent('calculator_used', { label: `program-check:${data.authorityKind ?? data.status}` });
       }
     } catch {
       setError('Something went wrong. Try again.');
