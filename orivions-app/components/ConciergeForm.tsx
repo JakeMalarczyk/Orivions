@@ -104,7 +104,7 @@ export default function ConciergeForm({ need: initialNeed, source, title, text }
           <div className="flex flex-wrap items-center gap-2 sm:col-span-2">
             <span className="text-xs text-gray-soft">Start from an example:</span>
             {EXAMPLES.map((ex) => (
-              <button key={ex.label} type="button" onClick={() => setNeed(ex.text)} className="rounded-full border border-line px-3 py-1.5 text-xs text-gray hover:border-blue-light hover:text-blue-deep">
+              <button key={ex.label} type="button" onClick={() => setNeed(ex.text)} className="rounded-full border border-line px-3.5 py-2.5 text-xs sm:py-1.5 text-gray hover:border-blue-light hover:text-blue-deep">
                 {ex.label}
               </button>
             ))}
