@@ -155,6 +155,14 @@ export default function PostPage() {
         </Link>{' '}
         page lists firms we have checked.
       </P>
+
+      <P>
+        Prefer not to write it from scratch? Use the free{' '}
+        <Link href="/tools/audit-rfp-generator" className="text-blue-deep">
+          audit RFP generator
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
