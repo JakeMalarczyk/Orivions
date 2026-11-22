@@ -165,7 +165,7 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
           <button
             key={ex.label}
             onClick={() => setNeed(ex.text)}
-            className="rounded-full border border-line px-3.5 py-2 text-xs text-gray hover:border-blue-light hover:text-blue-deep"
+            className="rounded-full border border-line px-3.5 py-3 text-xs text-gray sm:py-2 hover:border-blue-light hover:text-blue-deep"
           >
             {ex.label}
           </button>
