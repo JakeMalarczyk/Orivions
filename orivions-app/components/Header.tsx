@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from './Logo';
+import MobileMenu from './MobileMenu';
 
 // Single source of truth for the main site navigation.
 // The site is English-only; all i18n machinery was removed deliberately.
@@ -9,10 +10,16 @@ const NAV_LINKS = [
   { href: '/login', label: 'Log in' },
 ] as const;
 
+const MOBILE_LINKS = [
+  ...NAV_LINKS,
+  { href: '/tools', label: 'Free tools' },
+  { href: '/founding-providers', label: 'Join as a provider' },
+] as const;
+
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-8 py-4">
+      <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
         <Link href="/" className="flex items-center gap-2.5">
           <Logo size={26} />
           <span className="font-heading text-[22px] font-semibold tracking-tight">Orivions</span>
@@ -33,6 +40,7 @@ export default function Header() {
             Get a shortlist
           </Link>
         </div>
+        <MobileMenu links={MOBILE_LINKS} />
       </nav>
     </header>
   );
