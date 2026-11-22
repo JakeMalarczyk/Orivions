@@ -77,18 +77,25 @@ export default function ProgramCheck() {
     <div>
       <form onSubmit={submit} className="rounded-xl border border-line bg-white p-2 shadow-[0_20px_50px_-24px_rgb(var(--c-blue-deep)/0.35)]">
         <label htmlFor="program-address" className="sr-only">Solana program address</label>
-        <input
+        <textarea
           id="program-address"
+          rows={2}
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              e.currentTarget.form?.requestSubmit();
+            }
+          }}
           placeholder="Paste a Solana program address, for example the program ID from your Anchor.toml"
           autoComplete="off"
           spellCheck={false}
-          className="w-full rounded-xl border-none p-4 font-mono text-sm outline-none"
+          className="block w-full resize-none break-all rounded-xl border-none p-4 font-mono text-sm leading-snug outline-none"
         />
-        <div className="flex items-center justify-between px-3 pb-2 pt-1">
+        <div className="flex flex-col gap-3 px-3 pb-2 pt-1 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-xs text-gray-soft">Reads public mainnet data only. Nothing is stored.</span>
-          <button type="submit" disabled={loading} className="rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60">
+          <button type="submit" disabled={loading} className="whitespace-nowrap rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white disabled:opacity-60 sm:py-2.5">
             {loading ? 'Checking…' : 'Check program'}
           </button>
         </div>
