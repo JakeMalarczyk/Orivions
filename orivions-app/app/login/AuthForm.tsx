@@ -221,7 +221,7 @@ export default function AuthForm() {
             {mode === 'login' ? 'Don\'t have an account?' : 'Already have an account?'}{' '}
             <button
               onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
-              className="font-semibold text-blue-deep"
+              className="-my-2 px-2 py-2.5 font-semibold text-blue-deep"
             >
               {mode === 'login' ? 'Sign up' : 'Log in'}
             </button>
