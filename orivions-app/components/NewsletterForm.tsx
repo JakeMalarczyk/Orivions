@@ -59,11 +59,11 @@ export default function NewsletterForm() {
       <fieldset>
         <legend className="text-sm font-semibold">I am</legend>
         <div className="mt-2 flex flex-wrap gap-4 text-sm">
-          <label className="flex items-center gap-2">
+          <label className="flex items-center gap-2 py-1.5">
             <input type="radio" name="role" checked={role === 'client'} onChange={() => setRole('client')} />
             hiring providers (a project team)
           </label>
-          <label className="flex items-center gap-2">
+          <label className="flex items-center gap-2 py-1.5">
             <input type="radio" name="role" checked={role === 'provider'} onChange={() => setRole('provider')} />
             a provider (auditor, developer, agency)
           </label>
@@ -88,7 +88,7 @@ export default function NewsletterForm() {
         </button>
       </div>
       <label className="flex items-start gap-2 text-[13px] leading-snug text-gray">
-        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5" />
+        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0" />
         <span>
           I agree to receive the Orivions newsletter by email. I can unsubscribe at any time. We use your email only
           for this newsletter and never sell it. See the{' '}
