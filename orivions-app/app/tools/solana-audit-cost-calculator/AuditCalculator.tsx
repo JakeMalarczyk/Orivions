@@ -63,7 +63,7 @@ export default function AuditCalculator() {
               step={100}
               value={input.lines}
               onChange={(e) => set('lines', Number(e.target.value))}
-              className="w-full accent-blue-deep"
+              className="h-8 w-full accent-blue-deep"
               aria-label="Lines of Rust in scope"
             />
             <input
@@ -72,7 +72,7 @@ export default function AuditCalculator() {
               max={50000}
               value={input.lines}
               onChange={(e) => set('lines', Math.min(50000, Math.max(0, Number(e.target.value) || 0)))}
-              className="w-24 rounded-lg border border-line px-2 py-1.5 text-right text-sm tabular-nums"
+              className="w-24 rounded-lg border border-line px-2 py-2.5 text-right text-sm tabular-nums"
               aria-label="Lines of Rust (number)"
             />
           </div>
@@ -86,7 +86,7 @@ export default function AuditCalculator() {
             max={20}
             value={input.programs}
             onChange={(e) => set('programs', Math.min(20, Math.max(1, Number(e.target.value) || 1)))}
-            className="w-24 rounded-lg border border-line px-2 py-1.5 text-sm tabular-nums"
+            className="w-24 rounded-lg border border-line px-2 py-2.5 text-sm tabular-nums"
           />
         </Field>
 
