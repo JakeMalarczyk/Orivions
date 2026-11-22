@@ -117,6 +117,14 @@ export default function PostPage() {
       <P>
         Also useful: <Link href="/blog/solana-program-upgrade-authority-multisig" className="text-blue-deep">how to secure the upgrade authority</Link>.
       </P>
+
+      <P>
+        Ready to brief firms? Build the document with the free{' '}
+        <Link href="/tools/software-development-rfp-generator" className="text-blue-deep">
+          software development RFP generator
+        </Link>
+        .
+      </P>
     </BlogPost>
   );
 }
