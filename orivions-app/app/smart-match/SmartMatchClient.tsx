@@ -219,7 +219,7 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
       ) : (
         <p className="mt-8 text-sm text-gray">
           Prefer a person to pick for you?{' '}
-          <button onClick={() => setShowConcierge(true)} className="font-semibold text-blue-deep">
+          <button onClick={() => setShowConcierge(true)} className="-my-2 py-2.5 font-semibold text-blue-deep">
             Get a hand-picked shortlist
           </button>
         </p>
