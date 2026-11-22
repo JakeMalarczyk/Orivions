@@ -44,6 +44,8 @@ Key facts:
 - [Solana smart contract audit cost calculator](${SITE_URL}/tools/solana-audit-cost-calculator): free estimate of audit cost and duration from lines of code, complexity, framework and integrations, with the full method and worked examples.
 - [Solana dApp development cost calculator](${SITE_URL}/tools/solana-dapp-cost-calculator): free estimate of build cost, timeline and yearly maintenance from programs, frontend, backend, extras and team type (freelancer or agency), with the full method and worked examples.
 - [Solana program upgrade authority checker](${SITE_URL}/tools/solana-program-check): free tool that reads public chain data and shows whether a Solana program can be upgraded by a single key, a program-controlled authority or nobody.
+- [Smart contract audit RFP generator](${SITE_URL}/tools/audit-rfp-generator): free tool that builds a ready-to-send RFP for audit firms from scope, commit, dates, deliverables and standard questions.
+- [Software development RFP generator](${SITE_URL}/tools/software-development-rfp-generator): free tool that builds a ready-to-send RFP for development firms from scope, deliverables, commercial terms, timeline and standard questions.
 - [All free tools](${SITE_URL}/tools)
 
 ## For AI agents (MCP)
