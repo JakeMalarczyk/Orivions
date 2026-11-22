@@ -89,7 +89,7 @@ export default function DappCalculator() {
                 max={10}
                 value={input.programs}
                 onChange={(e) => set('programs', Math.min(10, Math.max(1, Number(e.target.value) || 1)))}
-                className="w-24 rounded-lg border border-line px-2 py-1.5 text-sm tabular-nums"
+                className="w-24 rounded-lg border border-line px-2 py-2.5 text-sm tabular-nums"
               />
             </Field>
             <Field label="External protocol integrations">
