@@ -22,6 +22,16 @@ const TOOLS = [
     text: 'Build cost and timeline for your dApp: programs, frontend, backend, extras, and whether a freelancer or an agency builds it.',
   },
   {
+    href: '/tools/audit-rfp-generator',
+    title: 'Audit RFP generator',
+    text: 'Build a ready-to-send RFP for smart contract audit firms: scope, commit, dates, deliverables and the questions to ask every firm.',
+  },
+  {
+    href: '/tools/software-development-rfp-generator',
+    title: 'Software development RFP generator',
+    text: 'Build a ready-to-send RFP for development firms: scope, deliverables, milestones, code ownership, timeline and questions.',
+  },
+  {
     href: '/tools/solana-program-check',
     title: 'Solana program upgrade check',
     text: 'Paste a program address and see who can upgrade it: a single key, a multisig-style authority or nobody. Public chain data, no signup.',
