@@ -88,7 +88,7 @@ const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile({ onToke
             sitekey: TURNSTILE_SITE_KEY,
             action,
             appearance: 'interaction-only',
-            size: 'flexible',
+            size: typeof window !== 'undefined' && window.innerWidth < 360 ? 'compact' : 'flexible',
             callback: (token: string) => onTokenRef.current(token),
             'expired-callback': () => onTokenRef.current(''),
             'error-callback': () => onTokenRef.current(''),
