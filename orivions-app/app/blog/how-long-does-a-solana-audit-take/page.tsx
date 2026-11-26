@@ -135,7 +135,11 @@ export default function PostPage() {
       <P>
         Work backwards from the launch date: at least a week of buffer before launch, the fix review
         before that, your fixes before that, the review itself, and the start date the auditor gave
-        you. If that puts the first call in the past, either move the launch or cut the scope. For the
+        you. If that puts the first call in the past, either move the launch or cut the scope. Our free{' '}
+        <Link href="/tools/solana-audit-timeline-planner" className="text-blue-deep">
+          audit timeline planner
+        </Link>{' '}
+        does this arithmetic from your launch date. For the
         rest of the launch, go through the{' '}
         <Link href="/blog/solana-pre-launch-security-checklist" className="text-blue-deep">
           Solana pre-launch security checklist
