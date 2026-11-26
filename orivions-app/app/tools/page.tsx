@@ -17,6 +17,11 @@ const TOOLS = [
     text: 'Price range, engineer-days and calendar time for auditing your Solana programs, from lines of code, complexity, framework and integrations.',
   },
   {
+    href: '/tools/solana-audit-timeline-planner',
+    title: 'Solana audit timeline planner',
+    text: 'Enter your mainnet launch date and code size and get the latest date to contact auditors, with the phases of an audit laid out.',
+  },
+  {
     href: '/tools/solana-dapp-cost-calculator',
     title: 'Solana dApp cost calculator',
     text: 'Build cost and timeline for your dApp: programs, frontend, backend, extras, and whether a freelancer or an agency builds it.',
