@@ -164,7 +164,7 @@ export default function PostPage() {
       <ChecklistGuide current={SLUG} />
 
       <P>
-        Related: see <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">how long a Solana audit takes</Link> and <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms</Link>. Launching a token as well? Use the <Link href="/blog/solana-token-launch-checklist" className="text-blue-deep">Solana token launch checklist</Link> for metadata, liquidity and legal checks.
+        Related: see <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">how long a Solana audit takes</Link>, plan your dates with the <Link href="/tools/solana-audit-timeline-planner" className="text-blue-deep">audit timeline planner</Link> and <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms</Link>. Launching a token as well? Use the <Link href="/blog/solana-token-launch-checklist" className="text-blue-deep">Solana token launch checklist</Link> for metadata, liquidity and legal checks.
       </P>
 
       <P>
