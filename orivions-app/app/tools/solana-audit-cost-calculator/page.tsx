@@ -228,6 +228,10 @@ export default function AuditCostCalculatorPage() {
             <Link href="/blog/how-long-does-a-solana-audit-take" className="text-blue-deep">
               how long a Solana audit takes
             </Link>
+            , plan the dates with the{' '}
+            <Link href="/tools/solana-audit-timeline-planner" className="text-blue-deep">
+              audit timeline planner
+            </Link>
             , and to weigh quotes side by side,{' '}
             <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">
               how to compare audit firms
