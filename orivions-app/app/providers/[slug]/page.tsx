@@ -213,7 +213,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
                 A person at Orivions confirmed that {provider.name} is a real company, confirmed at least one
                 portfolio project independently, spoke to a past client and talked to the team. Verification
                 cannot be bought and lowers risk, but it does not replace your own checks.{' '}
-                <Link href="/how-we-verify" className="text-ink">How we verify providers</Link>
+                <Link href="/how-we-verify" className="text-ink underline underline-offset-2">How we verify providers</Link>
               </p>
             </section>
           </div>
@@ -231,7 +231,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
               {profiles.length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-3 border-t border-line pt-4 text-sm">
                   {profiles.map((u) => (
-                    <a key={u} href={u} target="_blank" rel="noopener" className="text-ink">
+                    <a key={u} href={u} target="_blank" rel="noopener" className="text-ink underline underline-offset-2">
                       {new URL(u).hostname.replace(/^www\./, '')} ↗
                     </a>
                   ))}

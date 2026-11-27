@@ -60,7 +60,7 @@ export default function ProviderContactForm({ providerId, providerName }: { prov
 
   return (
     <div>
-      <h4 className="mb-3.5 text-sm font-semibold">Contact {providerName}</h4>
+      <h2 className="mb-3.5 text-sm font-semibold">Contact {providerName}</h2>
       <div className="grid grid-cols-2 gap-2.5">
         <input
           placeholder="Your name"
