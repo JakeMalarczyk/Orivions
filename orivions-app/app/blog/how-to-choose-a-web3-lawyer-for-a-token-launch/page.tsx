@@ -32,9 +32,9 @@ export default function PostPage() {
         'Walk away from guaranteed outcomes and from anyone who will not name who does the work.',
       ]}
       cta={{
-        title: 'Find a verified legal and compliance firm',
-        text: 'Describe your project and the countries you operate in. Smart Match suggests verified legal and compliance providers with a reason for each match. Free for teams.',
-        href: '/smart-match',
+        title: 'Get matched with a crypto lawyer',
+        text: 'Send your launch plan and the countries you operate in. We introduce verified crypto lawyers who fit your jurisdiction and timeline. Free for teams.',
+        href: '/token-launch-legal-review?ref=lawyer-guide',
         label: 'Get matched →',
       }}
     >

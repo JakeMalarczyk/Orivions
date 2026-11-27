@@ -62,7 +62,7 @@ export default function TokenLaunchPackagePage() {
           <Link href='/blog/solana-token-launch-checklist' className='text-blue-deep'>Solana token launch checklist</Link>, get{' '}
           <Link href='/solana-audit-quotes?ref=launch-package' className='text-blue-deep'>audit quotes</Link>, compare{' '}
           <Link href='/crypto-market-maker-offers?ref=launch-package' className='text-blue-deep'>market maker offers</Link>, read{' '}
-          <Link href='/blog/how-to-choose-a-web3-lawyer-for-a-token-launch' className='text-blue-deep'>how to choose a Web3 lawyer</Link> and{' '}
+          <Link href='/token-launch-legal-review?ref=launch-package' className='text-blue-deep'>get matched with a crypto lawyer</Link> and{' '}
           <Link href='/blog/how-to-run-a-crypto-kol-campaign' className='text-blue-deep'>how to run a KOL campaign</Link>.
         </>
       }

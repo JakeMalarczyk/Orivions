@@ -15,6 +15,7 @@ const OFFERS: { source: string; label: string; path: string }[] = [
   { source: 'rpc-match', label: 'RPC provider match', path: '/solana-rpc-provider-match' },
   { source: 'market-maker-offers', label: 'Market maker offers', path: '/crypto-market-maker-offers' },
   { source: 'token-launch-package', label: 'Token launch package', path: '/token-launch-package' },
+  { source: 'token-legal-review', label: 'Token launch legal review', path: '/token-launch-legal-review' },
 ];
 
 const DAY = 86_400_000;

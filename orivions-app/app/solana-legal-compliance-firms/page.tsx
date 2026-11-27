@@ -14,7 +14,8 @@ const content: CategoryContent = {
   breadcrumbLabel: 'Solana Legal and Compliance Firms',
   h1: 'Solana Legal and Compliance Firms',
   lede: 'Law and compliance firms that work with onchain teams: token launches, entity structure, contracts, terms and regulatory questions. Compare firms, then contact them directly. Free to search.',
-  ctaPrimary: 'Describe your project (AI match)',
+  ctaPrimary: 'Get matched with a crypto lawyer',
+  ctaHref: '/token-launch-legal-review?ref=legal-category',
   sections: [
     {
       heading: 'When does a Web3 project need a lawyer?',

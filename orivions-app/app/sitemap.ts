@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/tools/solana-audit-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/solana-dapp-development-quotes', updated: '2026-11-27', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/solana-rpc-provider-match', updated: '2026-11-27', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/token-launch-legal-review', updated: '2026-11-27', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/token-launch-package', updated: '2026-11-27', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/solana-audit-fixes', updated: '2026-11-27', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/crypto-market-maker-offers', updated: '2026-11-27', priority: 0.8, changeFrequency: 'monthly' as const },
