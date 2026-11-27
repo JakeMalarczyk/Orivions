@@ -9,8 +9,8 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'Is there a marketplace for Solana service providers? Ecosystem directories, bounty boards, audit contests, freelance sites and vetted marketplaces explained.',
   },
   'how-to-evaluate-a-crypto-market-maker': {
-    title: 'How to evaluate a crypto market maker',
-    description: 'Evaluate a crypto market maker: loan and option vs retainer deals, spread and depth commitments, end-of-loan terms, reporting and red flags.',
+    title: 'Crypto market maker: questions to ask and red flags',
+    description: 'What to ask a crypto market maker before you sign, how to check what they actually do (spread, depth, reporting) and the red flags to walk away from.',
   },
   'how-to-compare-solana-audit-firms': {
     title: 'How to compare Solana audit firms',
@@ -33,8 +33,8 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'A Solana token launch checklist: mint and freeze authority, metadata, Token-2022 extensions, supply and vesting, liquidity, audits and legal review.',
   },
   'smart-contract-audit-vs-bug-bounty': {
-    title: 'Smart contract audit vs bug bounty',
-    description: 'Audits and bug bounties catch different bugs at different times. How each works on Solana, what they cost, and how to combine them around launch.',
+    title: 'Bug bounty or audit: which does your protocol need?',
+    description: 'Audit before launch, bug bounty after. What each one catches, what it costs on Solana and how to combine them at your stage.',
   },
   'how-to-read-a-smart-contract-audit-report': {
     title: 'How to read a smart contract audit report',
@@ -69,8 +69,8 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'Anchor or native Rust for your Solana program? The trade-offs in safety, development speed, compute usage, tooling and hiring, and when each makes sense.',
   },
   'solana-pre-launch-security-checklist': {
-    title: 'Solana pre-launch security checklist',
-    description: 'A checklist for launching a Solana program on mainnet: upgrade authority, multisig, verifiable builds, token authorities, monitoring and the audit.',
+    title: 'Solana pre-launch security checklist: 15 checks',
+    description: '15 checks before mainnet: who holds the upgrade authority, multisig, verifiable build, token authorities, alerts and an incident plan.',
   },
   'how-to-choose-a-solana-marketing-agency': {
     title: 'How to choose a Solana marketing agency',
@@ -86,7 +86,7 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
   },
   'solana-audit-readiness-checklist': {
     title: 'Solana audit readiness checklist: 12 items',
-    description: 'What to prepare before a Solana audit: frozen commit, short spec, invariants, tests that run in one command, agreed scope and a developer on call.',
+    description: 'Get more from your Solana audit: freeze the commit, write a short spec and invariants, make tests run in one command, agree the scope. 12 items.',
   },
   'how-to-hire-a-solana-development-company': {
     title: 'How to hire a Solana development company',
@@ -109,8 +109,8 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     description: 'What to monitor on a live Solana program: failed transactions, upgrade changes, keeper balances, oracle freshness and RPC lag, and who should own each alert.',
   },
   'dao-legal-structure-wrapper-options': {
-    title: 'DAO legal structure: wrapper options explained',
-    description: 'Why a DAO may need a legal wrapper and how Wyoming and Marshall Islands DAO LLCs, Cayman foundation companies and Swiss structures compare.',
+    title: 'DAO legal wrapper: legal structure options for a DAO',
+    description: 'Which legal structure fits your DAO: Wyoming DAO LLC, Marshall Islands DAO LLC, Cayman foundation company or Swiss structures, and what to ask a lawyer.',
   },
   'how-to-write-an-rfp-for-a-smart-contract-audit': {
     title: 'How to write an RFP for a smart contract audit',
