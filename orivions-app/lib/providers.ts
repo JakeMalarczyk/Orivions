@@ -75,7 +75,7 @@ export async function listProviders(): Promise<PublicProvider[]> {
       .order('verified', { ascending: false })
       .order('created_at', { ascending: true });
     if (error || !data) return [];
-    return (data as unknown as PublicProvider[]).map((p) => ({ ...p, description: tidyText(p.description), slug: p.slug || slugify(p.name) }));
+    return (data as unknown as PublicProvider[]).map((p) => ({ ...p, description: tidyText(p.description), tagline: tidyText(p.tagline), slug: p.slug || slugify(p.name) }));
   } catch {
     return [];
   }
