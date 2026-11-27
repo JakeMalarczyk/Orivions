@@ -17,6 +17,7 @@ interface MatchProvider {
   category: string;
   description: string | null;
   verified: boolean;
+  slug?: string | null;
 }
 
 interface Match {

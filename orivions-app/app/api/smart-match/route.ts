@@ -21,6 +21,7 @@ const MAX_REQUESTS_PER_WINDOW = 5;
 
 interface ProviderRow {
   id: string;
+  slug: string | null;
   name: string;
   category: string;
   description: string | null;
@@ -81,7 +82,7 @@ export async function POST(request: Request) {
   try {
     const { data: providersData, error: pErr } = await supabase
       .from('companies')
-      .select('id, name, category, description, verified, tagline, specialties, chains, location, min_project_usd, typical_timeline, availability')
+      .select('id, slug, name, category, description, verified, tagline, specialties, chains, location, min_project_usd, typical_timeline, availability')
       .eq('account_type', 'provider');
     if (pErr) throw pErr;
     const providers = (providersData ?? []) as ProviderRow[];
