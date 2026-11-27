@@ -11,6 +11,7 @@ const NAV_LINKS = [
 ] as const;
 
 const MOBILE_LINKS = [
+  { href: '/solana-audit-quotes', label: 'Get audit quotes' },
   ...NAV_LINKS,
   { href: '/tools', label: 'Free tools' },
   { href: '/founding-providers', label: 'Join as a provider' },
@@ -30,8 +31,15 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          <Link href="/founding-providers" className="text-sm font-medium text-gray hover:text-blue-deep">
+          <Link href="/founding-providers" className="hidden text-sm font-medium text-gray hover:text-blue-deep lg:inline">
             Join as a provider
+          </Link>
+          <Link
+            href="/solana-audit-quotes"
+            data-cta="audit-quotes-header"
+            className="rounded-lg border border-ink px-4 py-2 text-sm font-semibold text-ink hover:border-blue-deep hover:text-blue-deep"
+          >
+            Get audit quotes
           </Link>
           <Link
             href="/smart-match"

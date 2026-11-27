@@ -39,6 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/founding-providers', updated: '2026-10-25', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/tools', updated: '2026-10-25', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-audit-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/solana-audit-quotes', updated: '2026-11-27', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-audit-timeline-planner', updated: '2026-11-26', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/tools/solana-dapp-cost-calculator', updated: '2026-10-23', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/tools/audit-rfp-generator', updated: '2026-11-22', priority: 0.8, changeFrequency: 'monthly' as const },

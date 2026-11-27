@@ -154,10 +154,11 @@ export default function AuditCalculator() {
             and documentation. See the methodology below.
           </p>
           <Link
-            href={`/smart-match?need=${encodeURIComponent(matchNeed)}`}
+            href="/solana-audit-quotes?ref=audit-calculator#request"
+            data-cta="audit-quotes-calculator"
             className="mt-5 block rounded-xl bg-white px-5 py-3 text-center text-sm font-semibold text-ink"
           >
-            Get quotes from verified auditors →
+            Get up to 3 audit quotes in 72 hours →
           </Link>
           <a
             href={shareOnX(

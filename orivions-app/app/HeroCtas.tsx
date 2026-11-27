@@ -41,6 +41,12 @@ export default function HeroCtas() {
           Get a shortlist
         </button>
         <button
+          onClick={() => trackAndGo('Hero CTA: Audit quotes', '/solana-audit-quotes')}
+          className="rounded-lg border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:border-white"
+        >
+          Get 3 audit quotes in 72 h
+        </button>
+        <button
           onClick={() => trackAndGo('Hero CTA: Join as provider', '/founding-providers')}
           className="px-2 py-3 text-sm font-medium text-white/70 underline-offset-4 transition hover:text-white hover:underline"
         >

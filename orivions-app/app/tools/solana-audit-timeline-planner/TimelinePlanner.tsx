@@ -56,7 +56,6 @@ export default function TimelinePlanner() {
   }
 
   const verdict = plan ? VERDICT[plan.status] : null;
-  const need = `Audit of ${input.programs} Solana program${input.programs > 1 ? 's' : ''} (${input.framework === 'native' ? 'native Rust' : 'Anchor'}), about ${input.lines.toLocaleString('en-US')} lines, mainnet launch ${launch || 'date not set'}.`;
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1.2fr_1fr]">
@@ -145,10 +144,11 @@ export default function TimelinePlanner() {
           )}
           <p className="mt-5 text-xs leading-relaxed text-white/60">A planning range, not a booking. Real calendars depend on the firm.</p>
           <Link
-            href={`/smart-match?need=${encodeURIComponent(need)}&ref=audit-timeline`}
+            href="/solana-audit-quotes?ref=audit-timeline#request"
+            data-cta="audit-quotes-timeline"
             className="mt-5 block rounded-xl bg-white px-5 py-3 text-center text-sm font-semibold text-ink"
           >
-            Get a shortlist of auditors →
+            Get up to 3 audit quotes in 72 hours →
           </Link>
         </div>
       </div>
