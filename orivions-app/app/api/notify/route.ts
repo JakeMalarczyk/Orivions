@@ -53,7 +53,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 429 });
   }
 
-  const { data } = await supabase.from('companies').select(select).eq('id', user.id).maybeSingle();
+  // Read as the user, so RLS ("users can read their own company row") lets
+  // client rows through; public reads only cover provider rows.
+  const asUser = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+  const { data } = await asUser.from('companies').select(select).eq('id', user.id).maybeSingle();
   const company = data as CompanyRow | null;
 
   if (body.event === 'signup') {
