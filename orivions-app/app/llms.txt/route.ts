@@ -42,6 +42,8 @@ Key facts:
 ## Tools
 
 - [Solana smart contract audit cost calculator](${SITE_URL}/tools/solana-audit-cost-calculator): free estimate of audit cost and duration from lines of code, complexity, framework and integrations, with the full method and worked examples.
+- [Solana audit fixes](${SITE_URL}/solana-audit-fixes): free for teams. Send audit findings once and Orivions matches verified Solana developers to fix them before the fix review, move the upgrade authority to a multisig and set up a verifiable build.
+- [Compare crypto market maker offers](${SITE_URL}/crypto-market-maker-offers): free for token teams. Send a launch plan once and compare market maker offers on the same terms: deal model, venues, spread, depth, uptime, reporting and end of loan.
 - [Small Solana audit quotes](${SITE_URL}/solana-audit-quotes): free for teams. For Solana programs under about 2,000 lines, send a scope once and Orivions passes the same brief to up to three verified audit firms; comparable quotes usually within 72 hours on business days and a start usually within 2 weeks.
 - [Solana audit readiness check](${SITE_URL}/tools/solana-audit-readiness-check): free tool with twelve questions on code, documentation, tests and process; shows a readiness score and the items to fix before a Solana audit starts.
 - [Solana audit timeline planner](${SITE_URL}/tools/solana-audit-timeline-planner): free tool that works backwards from a mainnet launch date and code size to the latest date to contact Solana auditors, with each phase of the audit laid out.

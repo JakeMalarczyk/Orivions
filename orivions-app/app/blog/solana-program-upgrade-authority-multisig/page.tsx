@@ -30,9 +30,9 @@ export default function PostPage() {
         'Making the program immutable is irreversible: do it only when the code is final and audited.',
       ]}
       cta={{
-        title: 'Get your launch security reviewed',
-        text: 'Describe your program and launch date. Smart Match suggests verified Solana auditors and developers with a reason for each match. Free for teams.',
-        href: '/smart-match',
+        title: 'Need help moving the authority to a multisig?',
+        text: 'Send your program and launch date. We match you with verified Solana developers for the multisig, a verifiable build and any audit fixes. Free for teams.',
+        href: '/solana-audit-fixes?ref=multisig-guide',
         label: 'Get matched →',
       }}
     >

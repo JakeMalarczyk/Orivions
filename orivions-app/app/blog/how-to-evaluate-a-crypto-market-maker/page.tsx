@@ -59,10 +59,10 @@ export default function PostPage() {
         'Check the firm the same way you would check any provider: real entity, independent references, a contract a lawyer has read.',
       ]}
       cta={{
-        title: 'Need a market maker you can check?',
-        text: 'Tell us your token, venues and timeline. We hand-pick verified providers and you see how each one was checked. Free for teams.',
-        href: '/smart-match',
-        label: 'Start Smart Match →',
+        title: 'Compare market maker offers before you sign',
+        text: 'Send your launch plan once and get offers on the same terms: venues, spread, depth, uptime, reporting and the end of the loan. Free for teams.',
+        href: '/crypto-market-maker-offers?ref=mm-guide',
+        label: 'Compare offers →',
       }}
     >
       <P>

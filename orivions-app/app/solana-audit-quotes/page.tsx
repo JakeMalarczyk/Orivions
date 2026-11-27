@@ -166,7 +166,8 @@ export default function AuditQuotesPage() {
             , the latest date to book with the{' '}
             <Link href="/tools/solana-audit-timeline-planner" className="text-blue-deep">audit timeline planner</Link>
             {' '}and what to prepare with the{' '}
-            <Link href="/blog/solana-audit-readiness-checklist" className="text-blue-deep">audit readiness checklist</Link>.
+            <Link href="/blog/solana-audit-readiness-checklist" className="text-blue-deep">audit readiness checklist</Link>. Already have a report and need the findings fixed?{' '}
+            <Link href="/solana-audit-fixes?ref=audit-quotes" className="text-blue-deep">Get developers for audit fixes</Link>.
           </p>
 
           <h2 className="mt-12 font-heading text-[22px] font-semibold">Frequently asked questions</h2>
