@@ -19,6 +19,7 @@ export interface Attribution {
 }
 
 const KEY = 'orv_attr';
+const NOTRACK_KEY = 'orv_notrack';
 const OWN_HOSTS = new Set(['orivions.com', 'www.orivions.com']);
 
 const SEARCH = ['google.', 'bing.com', 'duckduckgo.com', 'yahoo.', 'ecosia.org', 'brave.com', 'yandex.', 'baidu.com'];
@@ -76,8 +77,45 @@ export function getAttribution(): Attribution {
   }
 }
 
+/**
+ * Marks this browser as our own so it never counts in the stats: our tracker and
+ * Plausible (which reads localStorage.plausible_ignore) both skip it. Set by
+ * visiting any page with ?notrack=1 and automatically on opening /admin;
+ * ?notrack=0 removes it.
+ */
+export function setOwnTraffic(own: boolean) {
+  try {
+    if (own) {
+      localStorage.setItem(NOTRACK_KEY, '1');
+      localStorage.setItem('plausible_ignore', 'true');
+    } else {
+      localStorage.removeItem(NOTRACK_KEY);
+      localStorage.removeItem('plausible_ignore');
+    }
+  } catch {
+    // Storage blocked: nothing to remember.
+  }
+}
+
+/** True when this browser is ours and must not be counted. */
+export function isOwnTraffic(): boolean {
+  if (typeof window === 'undefined') return true;
+  const flag = new URLSearchParams(window.location.search).get('notrack');
+  if (flag === '1') setOwnTraffic(true);
+  else if (flag === '0') setOwnTraffic(false);
+  if (window.location.pathname.startsWith('/admin')) {
+    setOwnTraffic(true);
+    return true;
+  }
+  try {
+    return localStorage.getItem(NOTRACK_KEY) === '1';
+  } catch {
+    return flag === '1';
+  }
+}
+
 export function trackEvent(name: EventName, opts: { label?: string; target?: string; placement?: string } = {}) {
-  if (typeof window === 'undefined' || window.location.pathname.startsWith('/admin')) return;
+  if (isOwnTraffic()) return;
   fetch('/api/track', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -2,11 +2,12 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { getAttribution, trackEvent } from '@/lib/analytics';
+import { getAttribution, isOwnTraffic, trackEvent } from '@/lib/analytics';
 
 // Sends one page view to /api/track per route change and records clicks on
-// calls to action (see app/api/track/route.ts). Admin pages are skipped so
-// checking the stats does not inflate them.
+// calls to action (see app/api/track/route.ts). Admin pages and our own browsers
+// (isOwnTraffic: ?notrack=1 or a visit to /admin) are skipped so the stats show
+// only real visitors.
 //
 // A click counts as a CTA click when the link or button has data-cta="name", or
 // when it is an internal link to a page we want visitors to reach. Links to other
@@ -26,7 +27,7 @@ export default function PageViewTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!pathname || pathname.startsWith('/admin')) return;
+    if (!pathname || isOwnTraffic()) return;
     fetch('/api/track', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -40,7 +41,7 @@ export default function PageViewTracker() {
     let lastAt = 0;
 
     function onClick(e: MouseEvent) {
-      if (window.location.pathname.startsWith('/admin')) return;
+      if (isOwnTraffic()) return;
       const el = (e.target as Element | null)?.closest('[data-cta], a[href]');
       if (!el) return;
       const cta = el.getAttribute('data-cta');
