@@ -122,6 +122,9 @@ export default function HomePage() {
                     >
                       Get a shortlist
                     </Link>
+                    <Link href="/solana-audit-quotes" className="rounded-lg border border-white/40 px-6 py-3 text-sm font-semibold text-white">
+                      Get 3 audit quotes in 72 h
+                    </Link>
                     <Link href="/founding-providers" className="px-2 py-3 text-sm font-medium text-white/70">
                       Join as a provider
                     </Link>
