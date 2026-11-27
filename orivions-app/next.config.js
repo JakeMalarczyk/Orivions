@@ -9,7 +9,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   font-src 'self' https://fonts.gstatic.com;
   img-src 'self' data: https:;
-  connect-src 'self' https://*.supabase.co https://api.anthropic.com https://plausible.io https://challenges.cloudflare.com;
+  connect-src 'self' https://*.supabase.co https://plausible.io https://challenges.cloudflare.com;
   frame-ancestors 'none';
   base-uri 'self';
   form-action 'self';
