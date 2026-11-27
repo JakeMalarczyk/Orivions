@@ -10,6 +10,7 @@ import { supabase, type Company, type Lead } from '@/lib/supabase';
 import LeadInbox, { type ConciergeRequest, type LeadEvent, type ProviderLead } from './LeadInbox';
 import dynamic from 'next/dynamic';
 import CampaignsPanel from './CampaignsPanel';
+import OffersPanel from './OffersPanel';
 import CrmPanel from './CrmPanel';
 import SeoPanel from './SeoPanel';
 import { Empty, Panel, RankList, StatCard, Toggle } from './ui';
@@ -22,7 +23,7 @@ const GeoPanel = dynamic(() => import('./GeoPanel'), { ssr: false, loading: () =
 // only returns data if public.is_admin() is true for the signed-in user
 // (supabase/migrations/08_admin.sql). This page just hides the UI from others.
 
-type Tab = 'overview' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'crm' | 'markets' | 'providers' | 'leads' | 'signups';
+type Tab = 'overview' | 'offers' | 'traffic' | 'map' | 'campaigns' | 'seo' | 'crm' | 'markets' | 'providers' | 'leads' | 'signups';
 
 interface Stats {
   providers: number;
@@ -68,6 +69,7 @@ interface Signup {
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: 'Overview' },
+  { id: 'offers', label: 'Offers' },
   { id: 'traffic', label: 'Traffic' },
   { id: 'map', label: 'Map' },
   { id: 'campaigns', label: 'Campaigns' },
@@ -268,6 +270,8 @@ export default function AdminClient() {
             <StatCard label="Newsletter" value={stats.newsletter} />
           </div>
         )}
+
+        {tab === 'offers' && <OffersPanel concierge={concierge} pages={traffic?.pages ?? []} />}
 
         {tab === 'traffic' && (
           <TrafficPanel traffic={traffic} />
