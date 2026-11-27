@@ -171,7 +171,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
               </p>
             )}
             {site && (
-              <a href={site} target="_blank" rel="noopener" className="mt-3 inline-block text-sm font-semibold text-ink">
+              <a href={site} target="_blank" rel="noopener" className="mt-1.5 inline-block py-2 text-sm font-semibold text-ink">
                 {provider.website!.replace(/^https?:\/\//, '')} ↗
               </a>
             )}
