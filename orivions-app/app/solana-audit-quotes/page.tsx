@@ -13,7 +13,7 @@ import { SITE_URL, ogImageUrl } from '@/lib/blog';
 const PATH = '/solana-audit-quotes';
 const TITLE = 'Small Solana audit: 3 quotes in 72 hours, start within 2 weeks';
 const DESCRIPTION =
-  'Solana program under about 2,000 lines? Send your scope once and get up to 3 comparable quotes from verified audit firms in 72 hours, with a start within 2 weeks. Free for teams.';
+  'Solana program under 2,000 lines? Send your scope once and get up to 3 quotes from verified audit firms in 72 hours, start within 2 weeks. Free.';
 
 export const metadata: Metadata = {
   title: 'Small Solana Audit: 3 Quotes in 72h, Start in 2 Weeks',

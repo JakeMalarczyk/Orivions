@@ -4,7 +4,7 @@ import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 export const metadata: Metadata = {
   title: 'Solana Marketing Agency: How to Choose and Pricing',
   description:
-    'How to choose a Solana marketing agency: community, KOL and launch campaigns, red flags, typical pricing and metrics that matter. Browse vetted growth agencies, free to contact.',
+    'How to choose a Solana marketing agency: community, KOL and launch campaigns, red flags, pricing and metrics. Browse vetted agencies, free to contact.',
   alternates: { canonical: '/solana-marketing-growth-agencies' },
 };
 
@@ -14,7 +14,7 @@ const content: CategoryContent = {
   breadcrumbLabel: 'Solana Marketing & Growth Agencies',
   h1: 'Solana Marketing & Growth Agencies',
   lede: 'Verified marketing agencies for Solana projects, from community growth to full go-to-market campaigns. Compare providers, see indicative pricing, and contact them directly. Free to search.',
-  ctaPrimary: 'Describe your campaign needs (AI match)',
+  ctaPrimary: 'Get a hand-picked shortlist',
   sections: [
     {
       heading: 'Why work with a Solana-native marketing agency?',
@@ -97,7 +97,7 @@ const content: CategoryContent = {
     },
   ],
   ctaBoxTitle: 'Not sure which agency fits your project?',
-  ctaBoxText: 'Describe your project and goals, and AI matches you with the right verified marketing providers in seconds.',
+  ctaBoxText: 'Describe your project and goals. A person at Orivions picks verified marketing providers that fit and tells you why.',
 };
 
 export default function Page() {

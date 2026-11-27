@@ -9,7 +9,7 @@ import { ogImageUrl } from '@/lib/blog';
 const PATH = '/solana-audit-fixes';
 const TITLE = 'Fix your Solana audit findings before the fix review';
 const DESCRIPTION =
-  'Got your Solana audit report and no one free to fix it? Send the findings once and get matched with verified Solana developers for fixes, a multisig upgrade authority and a verifiable build. Free for teams.';
+  'Got your Solana audit report? Get matched with verified Solana developers for fixes, a multisig upgrade authority and a verifiable build. Free.';
 
 export const metadata: Metadata = {
   title: 'Fix Solana Audit Findings: Developers for Remediation',

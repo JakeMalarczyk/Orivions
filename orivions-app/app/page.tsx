@@ -14,7 +14,7 @@ const FAQS: [string, string][] = [
   ],
   [
     'Is Orivions free?',
-    'Yes, for clients. Searching, comparing, and contacting providers costs nothing. Providers pay a flat 10% success fee only when a real engagement is completed through the platform - no subscriptions, no placement fees.',
+    'Yes, for clients. Searching, comparing, and contacting providers costs nothing. Providers pay a flat 10% success fee only when a real engagement is completed through the platform. No subscriptions, no placement fees.',
   ],
   [
     'How does Smart Match work?',
@@ -109,7 +109,7 @@ export default function HomePage() {
               B2B marketplace for onchain teams.
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/70">
-              Describe what you need. We match you with top-tier auditors, developers and agencies, and tell you why. Free for clients.
+              Describe what you need. We match you with verified auditors, developers and agencies, and tell you why. Free for clients.
             </p>
             {/* Same buttons as plain links while HeroCtas loads, so the layout does not jump. */}
             <Suspense
@@ -130,7 +130,7 @@ export default function HomePage() {
                     </Link>
                   </div>
                   <p className="mt-4 text-sm text-white/60">
-                    Free for teams. We introduce you to top-tier providers that fit, and they contact you directly.
+                    Free for teams. We introduce you to verified providers that fit, and they contact you directly.
                   </p>
                 </div>
               }

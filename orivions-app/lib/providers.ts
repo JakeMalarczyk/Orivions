@@ -53,6 +53,16 @@ export function websiteUrl(website: string | null): string | null {
   return `https://${website.replace(/^https?:\/\//, '')}`;
 }
 
+/**
+ * House style for provider-written text shown on the site: no em or en dashes and no
+ * spaced hyphens used as dashes. " - ", " – " and " — " become ", "; a dash between
+ * two words without spaces (for example "2018–2024") is left alone.
+ */
+export function tidyText<T extends string | null | undefined>(text: T): T {
+  if (!text) return text;
+  return text.replace(/\s+[\u2014\u2013-]\s+/g, ', ').replace(/[\u2014]/g, ', ') as T;
+}
+
 /** All provider rows, verified first. Fails soft (empty list) if Supabase is unreachable. */
 export async function listProviders(): Promise<PublicProvider[]> {
   const supabase = client();
@@ -65,7 +75,7 @@ export async function listProviders(): Promise<PublicProvider[]> {
       .order('verified', { ascending: false })
       .order('created_at', { ascending: true });
     if (error || !data) return [];
-    return (data as unknown as PublicProvider[]).map((p) => ({ ...p, slug: p.slug || slugify(p.name) }));
+    return (data as unknown as PublicProvider[]).map((p) => ({ ...p, description: tidyText(p.description), slug: p.slug || slugify(p.name) }));
   } catch {
     return [];
   }
@@ -90,7 +100,7 @@ export async function getVerifiedProvider(slug: string): Promise<{
   ]);
   return {
     provider,
-    portfolio: (pf ?? []) as PortfolioItem[],
+    portfolio: ((pf ?? []) as PortfolioItem[]).map((i) => ({ ...i, title: tidyText(i.title), description: tidyText(i.description) })),
     services: (sv ?? []) as Service[],
   };
 }

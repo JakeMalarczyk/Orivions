@@ -11,7 +11,7 @@ import RfpGenerator from '../RfpGenerator';
 const PATH = '/tools/audit-rfp-generator';
 const TITLE = 'Smart contract audit RFP generator';
 const DESCRIPTION =
-  'Free generator: build a smart contract audit RFP in minutes. Scope and commit, dates, deliverables, fix review and the questions to ask every audit firm. Runs in your browser, no signup.';
+  'Free generator: build a smart contract audit RFP in minutes. Scope, commit, dates, deliverables, fix review and questions for every audit firm. No signup.';
 
 export const metadata: Metadata = {
   title: 'Audit RFP Generator (free)',

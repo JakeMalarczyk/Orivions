@@ -8,7 +8,7 @@ import { ogImageUrl } from '@/lib/blog';
 const PATH = '/solana-dapp-development-quotes';
 const TITLE = 'Get up to 3 quotes from Solana development companies';
 const DESCRIPTION =
-  'Building a Solana dApp or MVP? Send one brief and get up to three comparable quotes from verified Solana development companies: scope, team, timeline and price on the same terms. Free for teams.';
+  'Building a Solana dApp or MVP? Send one brief and get up to 3 comparable quotes from verified Solana development companies. Free for teams.';
 
 export const metadata: Metadata = {
   title: 'Solana dApp Development Quotes from Vetted Companies',

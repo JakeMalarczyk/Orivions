@@ -8,7 +8,7 @@ import { ogImageUrl } from '@/lib/blog';
 const PATH = '/crypto-market-maker-offers';
 const TITLE = 'Compare crypto market maker offers before you sign';
 const DESCRIPTION =
-  'Launching a token? Send your launch plan once and compare market maker offers on the same terms: deal model, spread, depth, uptime, reporting and the end of the loan. Free for teams.';
+  'Launching a token? Compare market maker offers on the same terms: deal model, spread, depth, uptime, reporting and end of loan. Free for teams.';
 
 export const metadata: Metadata = {
   title: 'Compare Crypto Market Maker Offers Before You Sign',

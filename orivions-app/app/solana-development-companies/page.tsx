@@ -138,7 +138,7 @@ const content: CategoryContent = {
     },
   ],
   ctaBoxTitle: 'Not sure which dev shop fits your project?',
-  ctaBoxText: 'Describe your project and requirements, and AI matches you with the right verified developers in seconds.',
+  ctaBoxText: 'Describe your project and requirements. A person at Orivions picks verified development companies that fit and tells you why.',
 };
 
 export default function Page() {

@@ -49,9 +49,9 @@ export default function PostPage() {
         <h2 className="mt-10 font-heading text-[22px] font-semibold">What Orivions does about it</h2>
         <ul className="mt-3 list-disc space-y-2.5 pl-5 leading-relaxed text-ink/90">
           <li>
-            <b>Describe what you need in plain English</b>: AI matches you with relevant
-            verified providers in about 30 seconds, with a reason for every match. No category
-            browsing, no RFQ forms, no waiting.
+            <b>Describe what you need in plain English</b>: a person at Orivions picks
+            verified providers that fit, with a reason for every match. No category
+            browsing, no RFQ forms.
           </li>
           <li>
             <b>Verification means a human checked</b>: real portfolio, real services,

@@ -4,7 +4,7 @@ import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 export const metadata: Metadata = {
   title: 'Solana RPC Providers: How to Choose and Compare',
   description:
-    'How to choose a Solana RPC and infrastructure provider: nodes, data and indexing, validators and DevOps. Reliability, limits, red flags and questions to ask. Browse providers, free to contact.',
+    'How to choose a Solana RPC and infrastructure provider: nodes, indexing, validators and DevOps. Reliability, limits, red flags and questions to ask.',
   alternates: { canonical: '/solana-infrastructure-providers' },
 };
 

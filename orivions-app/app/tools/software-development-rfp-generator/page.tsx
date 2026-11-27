@@ -11,7 +11,7 @@ import RfpGenerator from '../RfpGenerator';
 const PATH = '/tools/software-development-rfp-generator';
 const TITLE = 'Software development RFP generator';
 const DESCRIPTION =
-  'Free generator: build an RFP for a blockchain or software development project in minutes. Scope, deliverables, milestones, code ownership, timeline and the questions to ask every development firm. No signup.';
+  'Free generator: build an RFP for a blockchain or software project in minutes. Scope, milestones, code ownership, timeline and questions for every firm.';
 
 export const metadata: Metadata = {
   title: 'Software Development RFP Generator (free)',

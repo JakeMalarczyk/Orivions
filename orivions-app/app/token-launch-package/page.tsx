@@ -8,7 +8,7 @@ import { ogImageUrl } from '@/lib/blog';
 const PATH = '/token-launch-package';
 const TITLE = 'Launching a token on Solana? One brief for every provider you need';
 const DESCRIPTION =
-  'Audit, market maker, legal, tokenomics and launch marketing: send your token launch plan once and get matched with verified providers for each part, in the right order. Free for teams.';
+  'Audit, market maker, legal, tokenomics and launch marketing: send your token launch plan once and get verified providers in the right order. Free.';
 
 export const metadata: Metadata = {
   title: 'Solana Token Launch: Audit, Market Maker, Legal, Marketing',

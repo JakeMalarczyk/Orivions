@@ -9,10 +9,10 @@ import { ogImageUrl } from '@/lib/blog';
 const PATH = '/token-launch-legal-review';
 const TITLE = 'Token launch legal review: get matched with a crypto lawyer';
 const DESCRIPTION =
-  'Launching a token? Send your plan once and get matched with verified crypto lawyers for the token structure, terms, white paper and EU rules. Free for teams. Not legal advice.';
+  'Launching a token? Get matched with verified crypto lawyers for token structure, terms, white paper and EU rules. Free for teams. Not legal advice.';
 
 export const metadata: Metadata = {
-  title: 'Token Launch Legal Review: Find a Crypto Lawyer (Free Match)',
+  title: 'Token Launch Legal Review: Find a Crypto Lawyer',
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {

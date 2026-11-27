@@ -4,7 +4,7 @@ import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 export const metadata: Metadata = {
   title: 'Crypto Lawyer for Solana Projects: How to Choose',
   description:
-    'How to choose a crypto lawyer for a Solana project: token launch review, entity structure, contracts and terms, red flags and questions to ask. Browse firms, free to contact. General information, not legal advice.',
+    'How to choose a crypto lawyer for a Solana project: token launch review, entity, terms, red flags and questions to ask. Free to contact. Not legal advice.',
   alternates: { canonical: '/solana-legal-compliance-firms' },
 };
 

@@ -54,7 +54,7 @@ export default function HeroCtas() {
         </button>
       </div>
       <p className="mt-4 text-sm text-white/60">
-        Free for teams. We introduce you to top-tier providers that fit, and they contact you directly.
+        Free for teams. We introduce you to verified providers that fit, and they contact you directly.
       </p>
     </div>
   );

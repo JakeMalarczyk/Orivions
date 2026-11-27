@@ -8,7 +8,7 @@ import { ogImageUrl } from '@/lib/blog';
 const PATH = '/solana-rpc-provider-match';
 const TITLE = 'Find the right Solana RPC provider for your load';
 const DESCRIPTION =
-  'Choosing a Solana RPC provider? Send your expected load once and compare offers from verified infrastructure providers on the same terms: requests, streaming, transaction landing, failover and price. Free for teams.';
+  'Choosing a Solana RPC provider? Send your expected load once and compare offers on the same terms: limits, streaming, landing, failover and price.';
 
 export const metadata: Metadata = {
   title: 'Solana RPC Provider: Compare Offers for Your Load',

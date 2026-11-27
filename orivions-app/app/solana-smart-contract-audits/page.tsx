@@ -103,7 +103,7 @@ const content: CategoryContent = {
     },
   ],
   ctaBoxTitle: 'Not sure which auditor fits your project?',
-  ctaBoxText: 'Describe your protocol and timeline, and AI matches you with the right verified auditors in seconds.',
+  ctaBoxText: 'Describe your protocol and timeline. A person at Orivions picks verified audit firms that fit and tells you why.',
 };
 
 export default function Page() {
