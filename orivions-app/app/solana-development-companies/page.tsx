@@ -14,7 +14,8 @@ const content: CategoryContent = {
   breadcrumbLabel: 'Solana Development Companies',
   h1: 'Solana Development Companies',
   lede: 'Verified development shops for Solana, from smart contract engineering to full-stack dApp builds. Compare portfolios, see indicative pricing, and contact them directly. Free to search.',
-  ctaPrimary: 'Describe your project (AI match)',
+  ctaPrimary: 'Get up to 3 development quotes',
+  ctaHref: '/solana-dapp-development-quotes?ref=dev-category',
   sections: [
     {
       heading: 'Why hire a specialized Solana development company?',

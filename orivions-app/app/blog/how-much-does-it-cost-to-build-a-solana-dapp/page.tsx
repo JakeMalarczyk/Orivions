@@ -53,10 +53,10 @@ export default function PostPage() {
         'Teams most often forget the audit, infrastructure, monitoring and post-launch maintenance.',
       ]}
       cta={{
-        title: 'Get a quote from verified Solana teams',
-        text: 'Describe what you want to build and your budget. Smart Match suggests verified development companies with a reason for each match. Free for teams.',
-        href: '/smart-match',
-        label: 'Get matched →',
+        title: 'Get up to 3 quotes from Solana teams',
+        text: 'Send one brief and compare quotes from verified Solana development companies on the same scope. Free for teams.',
+        href: '/solana-dapp-development-quotes?ref=dapp-cost-guide',
+        label: 'Get quotes →',
       }}
     >
       <P>

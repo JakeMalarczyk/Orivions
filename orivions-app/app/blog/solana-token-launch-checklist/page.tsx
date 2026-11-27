@@ -32,10 +32,10 @@ export default function PostPage() {
         'Audit every custom program around the token, and get legal advice for your jurisdictions.',
       ]}
       cta={{
-        title: 'Need help with your launch?',
-        text: 'Describe your token and timeline. Smart Match suggests verified Solana developers, auditors and marketing agencies that fit. Free for teams.',
-        href: '/smart-match',
-        label: 'Get matched →',
+        title: 'One brief for your whole launch',
+        text: 'Audit, market maker, legal, tokenomics and marketing: send your plan once and we introduce verified providers in the right order. Free for teams.',
+        href: '/token-launch-package?ref=launch-checklist',
+        label: 'Send your plan →',
       }}
     >
       <P>

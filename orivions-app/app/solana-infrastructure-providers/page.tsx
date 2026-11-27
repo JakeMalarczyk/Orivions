@@ -14,7 +14,8 @@ const content: CategoryContent = {
   breadcrumbLabel: 'Solana Infrastructure Providers',
   h1: 'Solana Infrastructure Providers',
   lede: 'Companies that run the plumbing behind Solana apps: RPC and node services, data and indexing, validators and DevOps support. Compare providers, then contact them directly. Free to search.',
-  ctaPrimary: 'Describe your project (AI match)',
+  ctaPrimary: 'Compare RPC offers for your load',
+  ctaHref: '/solana-rpc-provider-match?ref=infra-category',
   sections: [
     {
       heading: 'What counts as Solana infrastructure?',

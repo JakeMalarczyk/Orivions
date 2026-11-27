@@ -186,10 +186,11 @@ export default function DappCalculator() {
             A planning range, not a quote. A short paid discovery phase turns it into a reliable one.
           </p>
           <Link
-            href={`/smart-match?need=${encodeURIComponent(matchNeed)}`}
+            href="/solana-dapp-development-quotes?ref=dapp-calculator#request"
+            data-cta="dapp-quotes-calculator"
             className="mt-5 block rounded-xl bg-white px-5 py-3 text-center text-sm font-semibold text-ink"
           >
-            Get quotes from verified teams →
+            Get up to 3 development quotes →
           </Link>
           <a
             href={shareOnX(

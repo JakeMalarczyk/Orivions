@@ -30,10 +30,10 @@ export default function PostPage() {
         'Use two providers, keep API keys out of the frontend, and test the failover.',
       ]}
       cta={{
-        title: 'Find a verified Solana infrastructure provider',
-        text: 'Describe your project and load. Smart Match suggests verified infrastructure providers with a reason for each match. Free for teams.',
-        href: '/smart-match',
-        label: 'Get matched →',
+        title: 'Compare RPC offers for your load',
+        text: 'Send your expected load once and compare offers from verified infrastructure providers on the same terms. Free for teams.',
+        href: '/solana-rpc-provider-match?ref=rpc-guide',
+        label: 'Compare offers →',
       }}
     >
       <P>

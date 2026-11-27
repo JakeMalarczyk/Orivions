@@ -70,10 +70,10 @@ export default function PostPage() {
         'Tie payments to accepted milestones, and plan for maintenance after launch.',
       ]}
       cta={{
-        title: 'Find a verified Solana development team',
-        text: 'Describe what you are building in plain English. Smart Match suggests verified development companies with a reason for each match. Free for teams.',
-        href: '/smart-match',
-        label: 'Get matched →',
+        title: 'Get up to 3 quotes from Solana teams',
+        text: 'Send one brief and compare quotes from verified Solana development companies on the same scope. Free for teams.',
+        href: '/solana-dapp-development-quotes?ref=hire-guide',
+        label: 'Get quotes →',
       }}
     >
       <P>
