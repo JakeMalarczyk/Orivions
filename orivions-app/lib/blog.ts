@@ -1067,6 +1067,41 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'solana-verifiable-builds-explained',
+    title: 'Solana verifiable builds explained: what they prove and how to set one up',
+    description:
+      'What a Solana verifiable build proves and what it does not, how to set one up with solana-verify and Docker, multisig upgrade authorities, hash mismatches and how to check a program.',
+    excerpt:
+      'A verifiable build links the program on-chain to one commit of public source code. What it proves, what it does not, and the five steps to set one up.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-27',
+    dateModified: '2026-11-27',
+    tags: ['Guides', 'Security', 'Audits', 'Launch'],
+    faqs: [
+      {
+        q: 'What is a verifiable build on Solana?',
+        a: 'A build made in a fixed Docker environment from a specific commit of a public repository, so anyone can rebuild it and get the same hash as the program on-chain. The repository, commit and build arguments are stored on-chain.',
+      },
+      {
+        q: 'Does a verified program mean it is safe?',
+        a: 'No. Verification only confirms that the deployed program matches the published source. It says nothing about bugs. Check the audit report for the same commit, and check who holds the upgrade authority.',
+      },
+      {
+        q: 'Why does my local build hash not match the on-chain hash?',
+        a: 'Usually a different Rust or Solana toolchain, changed dependencies, a build outside Docker or the wrong commit. Build with solana-verify build from the exact commit you deployed and compare again.',
+      },
+      {
+        q: 'Do I need to verify again after an upgrade?',
+        a: 'Yes. An upgrade removes the verified status. Update the on-chain verification data with the new commit, signed by the upgrade authority, and submit a new remote verification job.',
+      },
+      {
+        q: 'Can I verify a program from a private repository?',
+        a: 'No. Verification needs public source code, because anyone must be able to rebuild the commit and read what the program does.',
+      },
+    ],
+  },
+  {
     slug: 'why-we-are-building-orivions',
     title: "Why we're building Orivions, and why the Solana services market is broken",
     description:
