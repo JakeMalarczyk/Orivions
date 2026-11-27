@@ -81,7 +81,11 @@ export default function PostPage() {
       <Callout>
         <b>Check it from the outside.</b> After the transfer, look the program up in an explorer as
         a stranger would. If it still shows a normal wallet as the authority, the change did not
-        happen. Pair this with a verifiable build, as described in the{' '}
+        happen. Pair this with a{' '}
+        <Link href="/blog/solana-verifiable-builds-explained" className="text-blue-deep">
+          verifiable build
+        </Link>
+        , as described in the{' '}
         <Link href="/blog/solana-pre-launch-security-checklist" className="text-blue-deep">
           pre-launch security checklist
         </Link>
