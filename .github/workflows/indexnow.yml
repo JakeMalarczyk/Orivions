@@ -7,7 +7,8 @@ on: deployment_status
 
 jobs:
   indexnow:
-    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production – orivions-app'
+    # Vercel names the environment 'Production' (earlier 'Production – orivions-app').
+    if: github.event.deployment_status.state == 'success' && startsWith(github.event.deployment.environment, 'Production')
     runs-on: ubuntu-latest
     steps:
       - name: Ping IndexNow
