@@ -1,45 +1,13 @@
 import Link from 'next/link';
 import ChecklistGuide from '@/components/ChecklistGuide';
 import BlogPost, { BulletList, Callout, H2, P, postMetadata } from '@/components/BlogPost';
+import { READINESS_GROUPS } from '@/lib/auditReadiness';
 
 const SLUG = 'solana-audit-readiness-checklist';
 
 export const metadata = postMetadata(SLUG);
 
-const GROUPS: { title: string; items: [string, string][] }[] = [
-  {
-    title: 'Code',
-    items: [
-      ['Freeze a tagged commit.', 'Auditors review one exact commit. Keep new features on a separate branch until the report is final.'],
-      ['Finish the features in scope.', 'Code that is half built or marked as a placeholder gets reviewed twice or not at all. Cut unlaunched features from scope.'],
-      ['Clean the build.', 'The program should compile from a clean checkout with pinned Rust, Solana and Anchor versions, and no failing tests.'],
-    ],
-  },
-  {
-    title: 'Documentation',
-    items: [
-      ['Write a short spec.', 'For each instruction: what it does, who may call it, which accounts it touches and what it must never allow.'],
-      ['List your invariants.', 'Total supply equals the sum of balances, only the authority can move funds, debt never exceeds collateral. Auditors test what you state and find what you forgot.'],
-      ['Draw the trust model.', 'Which keys exist, who holds them, what the upgrade authority can do, and which off-chain services the program relies on.'],
-    ],
-  },
-  {
-    title: 'Tests',
-    items: [
-      ['Ship tests that run in one command.', 'Auditors who can run your suite in an hour find real issues on day one instead of fixing the setup.'],
-      ['Cover the failure paths.', 'Wrong signer, wrong owner, wrong account, zero and maximum amounts. Happy-path-only tests tell the auditor little.'],
-      ['Add fuzzing or property tests where money moves.', 'Even a small fuzz target on the core math raises the quality of the review.'],
-    ],
-  },
-  {
-    title: 'Process',
-    items: [
-      ['Agree scope and exclusions in writing.', 'Programs, commit, what is out of scope (frontend, keepers, oracles, key management) and whether the fix review is included.'],
-      ['Name a developer on call.', 'Answering questions within hours is the cheapest way to shorten the review.'],
-      ['Plan the fix window.', 'Reserve your engineers for the days after the first report, so fixes land quickly and the fix review can start.'],
-    ],
-  },
-];
+const GROUPS = READINESS_GROUPS;
 
 export default function PostPage() {
   return (
@@ -117,7 +85,7 @@ export default function PostPage() {
       <ChecklistGuide current={SLUG} />
 
       <P>
-        Related: see <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms</Link>.
+        Want a score? Run the free <Link href="/tools/solana-audit-readiness-check" className="text-blue-deep">audit readiness check</Link>: the same twelve items, two minutes, and a list of what to fix first. Related: see <Link href="/blog/how-to-compare-solana-audit-firms" className="text-blue-deep">how to compare audit firms</Link>.
       </P>
     </BlogPost>
   );

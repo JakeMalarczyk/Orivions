@@ -17,6 +17,11 @@ const TOOLS = [
     text: 'Price range, engineer-days and calendar time for auditing your Solana programs, from lines of code, complexity, framework and integrations.',
   },
   {
+    href: '/tools/solana-audit-readiness-check',
+    title: 'Solana audit readiness check',
+    text: 'Twelve questions about code, docs, tests and process. See how ready your program is for an audit and what to fix before the start date.',
+  },
+  {
     href: '/tools/solana-audit-timeline-planner',
     title: 'Solana audit timeline planner',
     text: 'Enter your mainnet launch date and code size and get the latest date to contact auditors, with the phases of an audit laid out.',
