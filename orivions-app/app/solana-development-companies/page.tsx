@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Development Company: Services and How to Choose',
+  title: 'Solana Development Companies: Compare Vetted Teams',
   description:
-    'How to choose a Solana development company: smart contract, DeFi and dApp development services, red flags, timeline, pricing and questions to ask. Compare vetted Anchor and full-stack teams.',
+    'Find a Solana development company for smart contracts, DeFi and dApps. Compare vetted Anchor and full-stack teams, pricing and red flags. Free shortlist.',
   alternates: { canonical: '/solana-development-companies' },
 };
 

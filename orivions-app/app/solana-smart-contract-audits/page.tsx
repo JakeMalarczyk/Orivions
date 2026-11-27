@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import CategoryPage, { type CategoryContent } from '@/components/CategoryPage';
 
 export const metadata: Metadata = {
-  title: 'Solana Smart Contract Audit: Cost, Process, Auditors',
+  title: 'Solana Smart Contract Audit: Cost, Auditors, Quotes',
   description:
-    'Solana smart contract audit guide: what an audit covers, how it works, typical cost and turnaround, and how to choose an auditor. Browse vetted security firms, free to contact.',
+    'Solana smart contract audit: what it covers, typical cost and timeline, and how to choose an auditor. Get up to 3 comparable quotes from vetted firms, free.',
   alternates: { canonical: '/solana-smart-contract-audits' },
 };
 
@@ -14,7 +14,8 @@ const content: CategoryContent = {
   breadcrumbLabel: 'Solana Smart Contract Audits',
   h1: 'Solana Smart Contract Audits',
   lede: 'Verified auditors for Solana programs, from small Anchor-based projects to large-scale DeFi protocols. Compare providers, see indicative pricing, and contact them directly. Free to search.',
-  ctaPrimary: 'Describe your audit needs (AI match)',
+  ctaPrimary: 'Get up to 3 audit quotes in 72 hours',
+  ctaHref: '/solana-audit-quotes?ref=audits-category',
   sections: [
     {
       heading: 'Why get a smart contract audit before launching on Solana?',

@@ -33,6 +33,8 @@ export interface CategoryContent {
   h1: string;
   lede: string;
   ctaPrimary: string;
+  /** Where the primary hero button goes; defaults to Smart Match. */
+  ctaHref?: string;
   sections: CategorySection[];
   providersHeading: string;
   /** Exact `category` value in the companies table this page lists. */
@@ -94,7 +96,7 @@ export function buildJsonLd(content: CategoryContent) {
 
 export default function CategoryPage({ content }: { content: CategoryContent }) {
   const {
-    breadcrumbLabel, h1, lede, ctaPrimary, sections,
+    breadcrumbLabel, h1, lede, ctaPrimary, ctaHref = '/smart-match', sections,
     providersHeading, category, faqs, ctaBoxTitle, ctaBoxText, guideTags,
   } = content;
   const guides = sortedPosts()
@@ -115,7 +117,7 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
         title={h1}
         lede={lede}
       >
-        <Link href="/smart-match" className={HERO_PRIMARY}>
+        <Link href={ctaHref} className={HERO_PRIMARY}>
           {ctaPrimary}
         </Link>
         <Link href="/founding-providers" className={HERO_SECONDARY}>
