@@ -25,9 +25,6 @@ const inter = Inter({
   weight: ['400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
-  // Not preloaded: the heading font draws the largest text first, and body text
-  // shows in the size-matched fallback until Inter arrives. Saves bandwidth on load.
-  preload: false,
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orivions.com';
