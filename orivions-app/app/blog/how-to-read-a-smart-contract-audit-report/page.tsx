@@ -81,7 +81,11 @@ export default function PostPage() {
       <H2>5. Does it match what is deployed?</H2>
       <P>
         The last step connects the report to reality. The deployed program should come from the
-        audited (and fix-reviewed) commit, ideally through a verifiable build that anyone can check.
+        audited (and fix-reviewed) commit, ideally through a{' '}
+        <Link href="/blog/solana-verifiable-builds-explained" className="text-blue-deep">
+          verifiable build
+        </Link>{' '}
+        that anyone can check.
         Changes after that commit, including upgrades, are not covered unless they were reviewed
         too. More on this in the{' '}
         <Link href="/blog/solana-pre-launch-security-checklist" className="text-blue-deep">
