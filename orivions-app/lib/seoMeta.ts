@@ -128,6 +128,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'How to choose a Web3 lawyer for a token launch',
     description: 'How to choose a crypto lawyer for a token launch: what to cover, questions to ask, jurisdiction, MiCA, fee structure and red flags. Not legal advice.',
   },
+  'solana-verifiable-builds-explained': {
+    title: 'Solana verifiable builds explained: setup and checks',
+    description: 'What a Solana verifiable build proves and what it does not, setup with solana-verify and Docker, multisig authorities, hash mismatches and upgrades.',
+  },
   'solana-incident-response-plan': {
     title: 'Solana incident response plan for protocol teams',
     description: 'Write a Solana incident response plan: roles, severity levels, what to pause, emergency fix path, contacts, user communication and a first-hour checklist.',
