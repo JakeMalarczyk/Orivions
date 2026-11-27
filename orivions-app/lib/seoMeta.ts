@@ -136,6 +136,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'Solana incident response plan for protocol teams',
     description: 'Write a Solana incident response plan: roles, severity levels, what to pause, emergency fix path, contacts, user communication and a first-hour checklist.',
   },
+  'solana-audit-subsidy-program': {
+    title: 'Solana audit subsidy program: how to apply',
+    description: 'How Solana audit subsidy programs work: who decides, how much they cover, cohorts and vouchers, and how to prepare a strong application with real quotes.',
+  },
   'why-we-are-building-orivions': {
     title: 'Why we are building Orivions',
     description: 'Why Orivions exists: finding a trustworthy Solana auditor, developer or agency is slow and risky, so we are building a verified marketplace for onchain teams.',

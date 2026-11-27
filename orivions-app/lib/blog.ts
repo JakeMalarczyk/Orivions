@@ -1102,6 +1102,41 @@ export const POSTS: Post[] = [
     ],
   },
   {
+    slug: 'solana-audit-subsidy-program',
+    title: 'Solana audit subsidy programs: how they work and how to apply',
+    description:
+      'How Solana audit subsidy programs work: who decides, what they usually pay, how cohorts and vouchers work, how to prepare a strong application and how to compare quotes before you apply.',
+    excerpt:
+      'An audit subsidy can cut the bill, but only on a quote you already have. How the programs work, what reviewers look for, and how to prepare so the subsidy and the audit both land on time.',
+    category: 'Guides',
+    readingMinutes: 6,
+    datePublished: '2026-11-27',
+    dateModified: '2026-11-27',
+    tags: ['Guides', 'Audits', 'Security', 'Launch'],
+    faqs: [
+      {
+        q: 'What is a Solana audit subsidy program?',
+        a: 'A program that pays part of a security audit for selected Solana projects. In the model used on Solana, participating audit firms fund a pool of discounts, a review board picks projects in cohorts, and approved teams redeem their award against a quote from one of the participating firms.',
+      },
+      {
+        q: 'How much does an audit subsidy cover?',
+        a: 'Usually a share of the quote, not the whole audit. Public descriptions of the best-known Solana program mention awards capped at around 30% of the quote, with past awards between about $5,000 and $50,000. Check the current terms before you plan your budget around it.',
+      },
+      {
+        q: 'Who is eligible for a Solana audit subsidy?',
+        a: 'Programs are generally open to Solana builders and choose projects by relevance to the ecosystem, team experience, technical readiness and expected impact. A frozen scope, tests and documentation make an application stronger.',
+      },
+      {
+        q: 'Should I get audit quotes before applying?',
+        a: 'Yes. The subsidy is applied to a quote, so you need to know your scope, price range and start date anyway. Comparable quotes on the same brief also show reviewers that your project is ready to be audited.',
+      },
+      {
+        q: 'What if my application is not accepted?',
+        a: 'Keep your audit date. Reduce cost with a tighter scope, better preparation and comparable quotes, apply to the next cohort if the program runs one, and check whether ecosystem grants you already hold can cover security work.',
+      },
+    ],
+  },
+  {
     slug: 'why-we-are-building-orivions',
     title: "Why we're building Orivions, and why the Solana services market is broken",
     description:
