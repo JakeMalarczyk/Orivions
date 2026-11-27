@@ -30,10 +30,10 @@ export default function PostPage() {
         'Budget for the fix review and for re-audits of later upgrades, not only for the first report.',
       ]}
       cta={{
-        title: 'Get quotes from verified Solana auditors',
-        text: 'Describe your program, timeline and budget. Smart Match suggests verified security firms that fit, with a reason for each match. Free for teams.',
-        href: '/smart-match',
-        label: 'Find an auditor →',
+        title: 'Turn the estimate into real quotes',
+        text: 'Send your scope once. Up to three verified audit firms quote the same brief, usually within 72 hours, with a start within 2 weeks for small programs. Free for teams.',
+        href: '/solana-audit-quotes?ref=cost-guide',
+        label: 'Get audit quotes →',
       }}
     >
       <P>

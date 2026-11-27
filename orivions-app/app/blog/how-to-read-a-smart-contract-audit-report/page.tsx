@@ -29,7 +29,12 @@ export default function PostPage() {
         &quot;Audited by a reputable firm&quot; appears on many landing pages. Whether that means
         much depends on what is inside the report. You do not need to be an auditor to read one
         well; you need to know where to look. This guide walks through a typical Solana audit
-        report from top to bottom.
+        report from top to bottom. To find a report in the first place and tie it to the program on
+        mainnet, see{' '}
+        <Link href="/blog/solana-audit-reports" className="text-blue-deep">
+          where to find Solana audit reports
+        </Link>
+        .
       </P>
 
       <H2>1. Scope and commit</H2>

@@ -91,9 +91,21 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-22',
-    dateModified: '2026-11-10',
+    dateModified: '2026-11-28',
     tags: ['Guides', 'Market making', 'Launch', 'Hiring'],
     faqs: [
+      {
+        q: 'How do I evaluate a crypto market maker?',
+        a: 'Check four things before you sign: the deal model (token loan with call options or a retainer), written spread, depth and uptime commitments per venue and pair, reporting you can verify against exchange or onchain data, and a named legal entity with references you contact yourself.',
+      },
+      {
+        q: 'What questions should I ask a market maker before signing a contract?',
+        a: 'Ask which venues and pairs are covered, the maximum spread and minimum depth per pair, the uptime they commit to and how it is measured, what happens to loaned tokens at the end of the deal in every price scenario, and whether you get raw reports and read-only access to the accounts.',
+      },
+      {
+        q: 'How do I audit what my market maker is actually doing?',
+        a: 'Ask for raw reports on a fixed schedule and read-only access to the accounts, then check spread, depth and uptime against exchange or onchain data yourself. Screenshots and charts only are a red flag.',
+      },
       {
         q: 'What does a crypto market maker do?',
         a: 'A market maker quotes buy and sell orders for your token continuously, so people can trade it without moving the price too much. Good market making shows up as a tighter spread and more depth near the mid price, not as price support or high volume.',
@@ -119,10 +131,6 @@ export const POSTS: Post[] = [
         a: 'Walk away from anyone who guarantees a price, a volume number or a listing, offers "volume support", will not name the legal entity that signs, or sends reports you cannot check against exchange or onchain data.',
       },
       {
-        q: 'How much does a crypto market maker cost?',
-        a: 'It depends on the model. In a retainer you pay a fee and usually provide the inventory. In a loan and option deal, most of the cost is the value of the options you grant. Compare the total value you transfer, options included, not only the monthly fee.',
-      },
-      {
         q: 'Is it legal to pay a market maker for trading volume?',
         a: 'Paying for artificial volume is wash trading, a form of market manipulation that is illegal in many jurisdictions. In October 2024 the US Department of Justice charged several crypto market makers with wash trading for clients, and MiCA includes market abuse rules for crypto-assets in the EU.',
       },
@@ -138,9 +146,13 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 6,
     datePublished: '2026-10-22',
-    dateModified: '2026-11-01',
+    dateModified: '2026-11-28',
     tags: ['Guides', 'Audits', 'Security'],
     faqs: [
+      {
+        q: 'How do I compare Solana audit firms?',
+        a: 'Check six things you can verify: recent public reports for Solana programs like yours, Anchor or native Rust experience, the methodology, the named engineers and engineer-days in the quote, whether the fix review is included, and a written start date. Ask every firm to quote the same frozen commit.',
+      },
       {
         q: 'What is the best Solana smart contract audit firm?',
         a: 'There is no single best firm for every project. The right auditor is one with recent public reports for Solana programs similar to yours, experience with your framework (Anchor or native Rust), named engineers and enough engineer-days in the quote, a fix review included, and a start date that fits your launch.',
@@ -537,9 +549,13 @@ export const POSTS: Post[] = [
     category: 'Guides',
     readingMinutes: 7,
     datePublished: '2026-10-17',
-    dateModified: '2026-11-11',
+    dateModified: '2026-11-28',
     tags: ['Guides', 'Security', 'Audits', 'Pricing'],
     faqs: [
+      {
+        q: 'How much does a smart contract audit cost in 2026?',
+        a: 'For Solana programs, about $5,500-10,000 for a small 500-line program, $12,000-21,000 for a 1,500-line staking program and $37,000-64,500 for a 3,000-line DeFi protocol by our calculator method. Large multi-program protocols can pass $90,000. The price follows engineer-days, so code size and complexity matter most.',
+      },
       {
         q: 'How much does a Solana smart contract audit cost?',
         a: 'It depends mostly on the size and complexity of the code in scope. Small, single-purpose programs start at around $5,000, while large DeFi protocols with several interacting programs can cost tens of thousands. Ask several verified auditors for a quote against the same frozen commit.',
@@ -1133,6 +1149,37 @@ export const POSTS: Post[] = [
       {
         q: 'What if my application is not accepted?',
         a: 'Keep your audit date. Reduce cost with a tighter scope, better preparation and comparable quotes, apply to the next cohort if the program runs one, and check whether ecosystem grants you already hold can cover security work.',
+      },
+    ],
+  },
+  {
+    slug: 'solana-audit-reports',
+    title: 'Solana audit reports: where to find them and how to check they match the live program',
+    description:
+      'Where to find Solana audit reports (project docs, repositories, auditor publications, the on-chain security.txt) and how to check that a report covers the code that is actually deployed.',
+    excerpt:
+      'An audit report only protects users if it covers the code that runs on mainnet. Where to find Solana audit reports and five checks that tie a report to the live program.',
+    category: 'Guides',
+    readingMinutes: 5,
+    datePublished: '2026-11-28',
+    dateModified: '2026-11-28',
+    tags: ['Guides', 'Audits', 'Security'],
+    faqs: [
+      {
+        q: 'Where can I find a Solana audit report?',
+        a: 'Start with the project: its docs, website security page or GitHub repository, often in an audits folder. Many audit firms also publish reports on their own site or repository. Some programs list their auditors in an on-chain security.txt that explorers can show.',
+      },
+      {
+        q: 'How do I know an audit report covers the deployed program?',
+        a: 'Find the commit the report reviewed, then check that the program on mainnet was built from that commit or a later one covered by a fix review. A verifiable build makes this checkable by anyone.',
+      },
+      {
+        q: 'Does an audit report mean a Solana program is safe?',
+        a: 'No. It means one team reviewed one commit for a limited time. Check which findings were fixed, whether a fix review was done, and who can upgrade the program today.',
+      },
+      {
+        q: 'What if a project has no public audit report?',
+        a: 'Ask the team for the report and the audited commit. If they cannot share either, treat the program as unaudited and size your exposure accordingly.',
       },
     ],
   },

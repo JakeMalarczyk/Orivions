@@ -140,6 +140,10 @@ export const POST_SEO: Record<string, { title: string; description: string }> = 
     title: 'Solana audit subsidy program: how to apply',
     description: 'How Solana audit subsidy programs work: who decides, how much they cover, cohorts and vouchers, and how to prepare a strong application with real quotes.',
   },
+  'solana-audit-reports': {
+    title: 'Solana audit reports: where to find and check them',
+    description: 'Where to find Solana audit reports and five checks that tie a report to the program on mainnet: commit, scope, findings, fix review and upgrade authority.',
+  },
   'why-we-are-building-orivions': {
     title: 'Why we are building Orivions',
     description: 'Why Orivions exists: finding a trustworthy Solana auditor, developer or agency is slow and risky, so we are building a verified marketplace for onchain teams.',

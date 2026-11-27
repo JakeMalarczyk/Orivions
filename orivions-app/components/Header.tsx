@@ -5,7 +5,7 @@ import MobileMenu from './MobileMenu';
 // Single source of truth for the main site navigation.
 // The site is English-only; all i18n machinery was removed deliberately.
 const NAV_LINKS = [
-  { href: '/insights', label: 'Insights' },
+  { href: '/tools', label: 'Tools' },
   { href: '/blog', label: 'Blog' },
   { href: '/login', label: 'Log in' },
 ] as const;
@@ -13,7 +13,6 @@ const NAV_LINKS = [
 const MOBILE_LINKS = [
   { href: '/solana-audit-quotes', label: 'Get audit quotes' },
   ...NAV_LINKS,
-  { href: '/tools', label: 'Free tools' },
   { href: '/founding-providers', label: 'Join as a provider' },
 ] as const;
 

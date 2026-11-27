@@ -17,7 +17,7 @@ export interface CategorySection {
   body?: string;
   /** Bulleted list items as [boldLead, rest] pairs. */
   bullets?: [string, string][];
-  /** Append a link to /insights at the end of the body paragraph. */
+  /** Append a link to the free calculators (/tools) at the end of the body paragraph. */
   linkToInsights?: boolean;
   /** Optional sentence ending in an internal link, e.g. to a free tool. */
   link?: { text: string; href: string; label: string };
@@ -134,8 +134,8 @@ export default function CategoryPage({ content }: { content: CategoryContent }) 
                   {s.body}
                   {s.linkToInsights && (
                     <>
-                      {' '}See live, aggregated indicative pricing on the{' '}
-                      <Link href="/insights" className="text-blue-deep">Orivions Market Insights</Link> page.
+                      {' '}Estimate a range for your own scope with the{' '}
+                      <Link href="/tools" className="text-blue-deep">free calculators</Link>.
                     </>
                   )}
                   {s.link && (

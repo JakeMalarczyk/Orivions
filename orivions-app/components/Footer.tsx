@@ -5,6 +5,18 @@ import Logo from './Logo';
 // best guides one click from every page.
 const GROUPS: { title: string; links: { href: string; label: string }[] }[] = [
   {
+    title: 'Services',
+    links: [
+      { href: '/solana-audit-quotes', label: 'Small audit quotes' },
+      { href: '/solana-audit-fixes', label: 'Audit fixes and multisig' },
+      { href: '/solana-dapp-development-quotes', label: 'dApp development quotes' },
+      { href: '/solana-rpc-provider-match', label: 'RPC provider match' },
+      { href: '/crypto-market-maker-offers', label: 'Market maker offers' },
+      { href: '/token-launch-legal-review', label: 'Token launch legal review' },
+      { href: '/token-launch-package', label: 'Token launch package' },
+    ],
+  },
+  {
     title: 'Find',
     links: [
       { href: '/smart-match', label: 'Smart Match' },
@@ -19,9 +31,10 @@ const GROUPS: { title: string; links: { href: string; label: string }[] }[] = [
     title: 'Tools',
     links: [
       { href: '/tools/solana-audit-cost-calculator', label: 'Audit cost calculator' },
+      { href: '/tools/solana-audit-readiness-check', label: 'Audit readiness check' },
+      { href: '/tools/solana-audit-timeline-planner', label: 'Audit timeline planner' },
       { href: '/tools/solana-dapp-cost-calculator', label: 'dApp cost calculator' },
-      { href: '/ai-proposal-generator', label: 'Proposal generator' },
-      { href: '/insights', label: 'Market insights' },
+      { href: '/tools/solana-program-check', label: 'Upgrade authority check' },
       { href: '/solana-glossary', label: 'Glossary' },
     ],
   },
@@ -53,7 +66,7 @@ export default function Footer() {
   return (
     <footer className="mt-8">
       <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-light/60 to-transparent" />
-      <div className="mx-auto flex max-w-5xl flex-col gap-10 px-8 py-12 lg:flex-row lg:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-8 py-12 lg:flex-row lg:justify-between">
         <div>
           <Link href="/" className="flex items-center gap-2.5">
             <Logo size={20} />
@@ -61,7 +74,7 @@ export default function Footer() {
           </Link>
           <p className="mt-3 text-xs text-gray-soft">© 2026 Orivions</p>
         </div>
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-12 gap-y-8 text-[13px] sm:grid-cols-4">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-10 gap-y-8 text-[13px] sm:grid-cols-3 lg:grid-cols-5">
           {GROUPS.map(({ title, links }) => (
             <div key={title}>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-soft">{title}</div>

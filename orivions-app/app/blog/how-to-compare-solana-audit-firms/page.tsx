@@ -41,10 +41,10 @@ export default function PostPage() {
         'Brand matters to investors and users, but fit with your code matters more for finding bugs.',
       ]}
       cta={{
-        title: 'Get a shortlist of verified Solana auditors',
-        text: 'Describe your program and launch date. We hand-pick auditors whose public work matches your stack. Free for teams.',
-        href: '/smart-match',
-        label: 'Start Smart Match →',
+        title: 'Compare real quotes on the same scope',
+        text: 'Send your scope once. Up to three verified audit firms quote the same brief, usually within 72 hours. Free for teams.',
+        href: '/solana-audit-quotes?ref=compare-guide',
+        label: 'Get audit quotes →',
       }}
     >
       <P>
