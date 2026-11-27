@@ -209,6 +209,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     id: 'verifiable-build',
     definition:
       'A reproducible build that lets anyone confirm the program deployed on-chain was compiled from a specific public commit of its source code.',
+    link: { href: '/blog/solana-verifiable-builds-explained', label: 'Solana verifiable builds explained' },
   },
   {
     term: 'Verified provider (Orivions)',
