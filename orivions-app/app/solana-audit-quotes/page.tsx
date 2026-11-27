@@ -11,21 +11,21 @@ import { SITE_URL, ogImageUrl } from '@/lib/blog';
 // in the admin inbox and the Telegram alert like every other request.
 
 const PATH = '/solana-audit-quotes';
-const TITLE = 'Get up to 3 Solana audit quotes in 72 hours';
+const TITLE = 'Small Solana audit: 3 quotes in 72 hours, start within 2 weeks';
 const DESCRIPTION =
-  'Send your scope once. We pass the same brief to up to three verified audit firms that fit your code and dates, and you get comparable quotes. Free for teams.';
+  'Solana program under about 2,000 lines? Send your scope once and get up to 3 comparable quotes from verified audit firms in 72 hours, with a start within 2 weeks. Free for teams.';
 
 export const metadata: Metadata = {
-  title: 'Solana audit quotes: up to 3 in 72 hours (free)',
+  title: 'Small Solana Audit: 3 Quotes in 72h, Start in 2 Weeks',
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     url: PATH,
-    images: [{ url: ogImageUrl('Up to 3 Solana audit quotes in 72 hours', 'For teams'), width: 1200, height: 630 }],
+    images: [{ url: ogImageUrl('Small Solana audit, start within 2 weeks', 'For teams'), width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: [ogImageUrl('Up to 3 Solana audit quotes in 72 hours', 'For teams')] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: [ogImageUrl('Small Solana audit, start within 2 weeks', 'For teams')] },
 };
 
 const STEPS = [
@@ -67,6 +67,14 @@ const EXAMPLES = [
 ];
 
 const FAQS = [
+  {
+    q: 'What counts as a small program?',
+    a: 'Roughly up to 2,000 lines of Rust in scope, usually one or two programs: a token vesting, staking, escrow, launchpad or game program. Larger codebases go through the same process, but the start date depends on the scope.',
+  },
+  {
+    q: 'Can you promise a start within 2 weeks?',
+    a: 'For small programs with a frozen commit we work with firms that can usually start within 2 weeks. If none of them can start in your window, we tell you within 72 hours, so you can plan around it.',
+  },
   {
     q: 'Is it really free?',
     a: 'Yes, for your team. You never pay Orivions. You agree price and terms directly with the audit firm you choose.',
@@ -122,7 +130,7 @@ export default function AuditQuotesPage() {
       <PageHero
         eyebrow="For Solana teams"
         title={TITLE}
-        lede="Send your scope once. We pass the same brief to up to three verified audit firms that fit your code and your dates, and you get quotes you can actually compare. Free for teams, no obligation."
+        lede="Launching a Solana program under about 2,000 lines of Rust? Large audit firms often quote a start date months away. Send your scope once: we brief up to three verified audit firms that take small programs, and you get comparable quotes in 72 hours with a start within 2 weeks. Free for teams, no obligation."
       />
       <div className="mx-auto max-w-5xl px-5 pb-20 pt-10 md:px-8">
         <div className="grid gap-4 md:grid-cols-3">

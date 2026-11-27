@@ -42,7 +42,7 @@ Key facts:
 ## Tools
 
 - [Solana smart contract audit cost calculator](${SITE_URL}/tools/solana-audit-cost-calculator): free estimate of audit cost and duration from lines of code, complexity, framework and integrations, with the full method and worked examples.
-- [Solana audit quotes](${SITE_URL}/solana-audit-quotes): free for teams. Send a scope once and Orivions passes the same brief to up to three verified audit firms that fit the code and dates; comparable quotes usually within 72 hours on business days.
+- [Small Solana audit quotes](${SITE_URL}/solana-audit-quotes): free for teams. For Solana programs under about 2,000 lines, send a scope once and Orivions passes the same brief to up to three verified audit firms; comparable quotes usually within 72 hours on business days and a start usually within 2 weeks.
 - [Solana audit readiness check](${SITE_URL}/tools/solana-audit-readiness-check): free tool with twelve questions on code, documentation, tests and process; shows a readiness score and the items to fix before a Solana audit starts.
 - [Solana audit timeline planner](${SITE_URL}/tools/solana-audit-timeline-planner): free tool that works backwards from a mainnet launch date and code size to the latest date to contact Solana auditors, with each phase of the audit laid out.
 - [Solana dApp development cost calculator](${SITE_URL}/tools/solana-dapp-cost-calculator): free estimate of build cost, timeline and yearly maintenance from programs, frontend, backend, extras and team type (freelancer or agency), with the full method and worked examples.
