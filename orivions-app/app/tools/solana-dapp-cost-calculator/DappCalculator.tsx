@@ -201,7 +201,7 @@ export default function DappCalculator() {
             rel="noopener"
             data-cta="dapp-share-x"
             onClick={() => window.plausible?.('Calculator Shared', { props: { tool: 'dapp' } })}
-            className="mt-3 block text-center text-xs font-semibold text-white/70 hover:text-white"
+            className="mt-1 block py-2.5 text-center text-xs font-semibold text-white/70 hover:text-white"
           >
             Share this estimate on X ↗
           </a>

@@ -32,7 +32,7 @@ export function FoundingProviderCard({ compact = false }: { compact?: boolean })
         >
           Apply as a provider →
         </Link>
-        <Link href="/founding-providers" className="text-sm font-semibold text-blue-deep">
+        <Link href="/founding-providers" className="inline-block py-2 text-sm font-semibold text-blue-deep">
           About Founding Providers
         </Link>
       </div>

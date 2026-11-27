@@ -181,7 +181,7 @@ function ProviderCard({
         <Link
           href={`/providers/${provider.slug}`}
           onClick={(e: MouseEvent<HTMLAnchorElement>) => e.stopPropagation()}
-          className="mt-3 inline-block text-xs font-semibold text-blue-deep"
+          className="mt-1 inline-block py-2 text-xs font-semibold text-blue-deep"
         >
           {t.viewProfile}
         </Link>

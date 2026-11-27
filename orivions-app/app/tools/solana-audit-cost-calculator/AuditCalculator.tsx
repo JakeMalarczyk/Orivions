@@ -169,7 +169,7 @@ export default function AuditCalculator() {
             rel="noopener"
             data-cta="audit-share-x"
             onClick={() => window.plausible?.('Calculator Shared', { props: { tool: 'audit' } })}
-            className="mt-3 block text-center text-xs font-semibold text-white/70 hover:text-white"
+            className="mt-1 block py-2.5 text-center text-xs font-semibold text-white/70 hover:text-white"
           >
             Share this estimate on X ↗
           </a>

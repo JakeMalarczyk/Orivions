@@ -231,7 +231,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
               {profiles.length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-3 border-t border-line pt-4 text-sm">
                   {profiles.map((u) => (
-                    <a key={u} href={u} target="_blank" rel="noopener" className="text-ink underline underline-offset-2">
+                    <a key={u} href={u} target="_blank" rel="noopener" className="inline-block py-1.5 text-ink underline underline-offset-2">
                       {new URL(u).hostname.replace(/^www\./, '')} ↗
                     </a>
                   ))}
@@ -245,9 +245,9 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
             <div className="rounded-2xl border border-line p-5 text-sm">
               <div className="font-semibold">Comparing options?</div>
               <p className="mt-1 text-gray">Describe your project and get up to three verified providers that fit.</p>
-              <Link href="/smart-match" className="mt-3 inline-block font-semibold text-ink">Start Smart Match →</Link>
+              <Link href="/smart-match" className="mt-1.5 inline-block py-2 font-semibold text-ink">Start Smart Match →</Link>
               {hub && (
-                <Link href={hub.href} className="mt-2 block text-ink">More {hub.label.toLowerCase()} →</Link>
+                <Link href={hub.href} className="block py-2 text-ink">More {hub.label.toLowerCase()} →</Link>
               )}
             </div>
           </aside>
