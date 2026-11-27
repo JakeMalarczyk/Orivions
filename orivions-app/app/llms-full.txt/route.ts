@@ -53,7 +53,6 @@ Teams describe what they need in plain English and Smart Match (AI) suggests the
 - About (verification process, business model): ${SITE_URL}/about
 - How we verify providers: ${SITE_URL}/how-we-verify
 - Smart Match: ${SITE_URL}/smart-match
-- Find providers: ${SITE_URL}/providers
 - Solana smart contract audits: ${SITE_URL}/solana-smart-contract-audits
 - Solana development companies: ${SITE_URL}/solana-development-companies
 - Solana marketing and growth agencies: ${SITE_URL}/solana-marketing-growth-agencies

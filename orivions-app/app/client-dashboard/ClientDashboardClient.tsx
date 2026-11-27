@@ -74,8 +74,8 @@ export default function ClientDashboardClient() {
             <span className="ml-1 border-l border-white/25 pl-2.5 text-xs text-white/60">Client Dashboard</span>
           </Link>
           <div className="flex items-center gap-5 text-sm">
-            <Link href="/providers" className="text-white/70 hover:text-white">
-              Browse providers
+            <Link href="/smart-match" className="text-white/70 hover:text-white">
+              Find providers
             </Link>
             <Link href="/login" className="text-white/70 hover:text-white">
               Log out
@@ -90,8 +90,8 @@ export default function ClientDashboardClient() {
             <h1 className="font-heading text-2xl font-semibold">Your inquiries</h1>
             <p className="mt-1 text-sm text-gray">Every message you&apos;ve sent to a provider through Orivions.</p>
           </div>
-          <Link href="/providers" className="rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white">
-            Browse providers
+          <Link href="/smart-match" className="rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white">
+            Find providers
           </Link>
         </div>
 
@@ -110,8 +110,8 @@ export default function ClientDashboardClient() {
             <div className="p-10 text-center text-sm text-gray-soft">
               You haven&apos;t contacted any providers yet.
               <div className="mt-2">
-                <Link href="/providers" className="text-blue-deep">
-                  Browse the directory →
+                <Link href="/smart-match" className="text-blue-deep">
+                  Get a shortlist →
                 </Link>
               </div>
             </div>

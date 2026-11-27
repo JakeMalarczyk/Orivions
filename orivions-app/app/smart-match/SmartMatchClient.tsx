@@ -202,7 +202,7 @@ export default function SmartMatchClient({ autoMatch }: { autoMatch: boolean }) 
                 <b className="text-ink">Why this match:</b> {m.reason}
               </div>
               <Link
-                href={`/providers?open=${m.provider.id}`}
+                href={m.provider.slug ? `/providers/${m.provider.slug}` : '/smart-match'}
                 className="mt-3 inline-block rounded-lg border border-line px-4 py-2 text-xs font-semibold hover:border-blue-light"
               >
                 View full profile →

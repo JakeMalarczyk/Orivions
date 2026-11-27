@@ -33,7 +33,6 @@ Key facts:
 
 - [About Orivions](${SITE_URL}/about): who builds Orivions, how provider verification works and how Orivions makes money.
 - [Smart Match](${SITE_URL}/smart-match): describe your project and get matched with verified providers, no account needed. During early access, the Orivions team hand-picks every shortlist.
-- [Find providers](${SITE_URL}/providers): browse verified companies by category. Each verified provider has a profile page at ${SITE_URL}/providers/<slug>.
 - [How we verify providers](${SITE_URL}/how-we-verify): the four checks every provider must pass before it is marked Verified, and the red flags that lead to a rejection.
 - [Founding Providers](${SITE_URL}/founding-providers): how onchain service companies join the first 20 verified providers on Orivions, what verification checks and what it costs (free profile, 10% success fee on completed work).
 - [Insights](${SITE_URL}/insights): live provider counts and indicative pricing by category.

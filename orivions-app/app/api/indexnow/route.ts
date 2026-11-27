@@ -24,7 +24,7 @@ import { allowRequest } from '@/lib/rateLimit';
 
 export const dynamic = 'force-dynamic';
 
-const ALWAYS = ['/', '/providers', '/blog', '/sitemap.xml', '/llms.txt', '/llms-full.txt'];
+const ALWAYS = ['/', '/blog', '/sitemap.xml', '/llms.txt', '/llms-full.txt'];
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -46,7 +46,7 @@ export async function GET(request: Request) {
     if (!/^[a-z0-9-]{1,80}$/.test(slug)) return NextResponse.json({ ok: false }, { status: 400 });
     const provider = (await listVerifiedProviders()).find((p) => p.slug === slug);
     if (!provider) return NextResponse.json({ ok: false, error: 'not_verified' }, { status: 404 });
-    const urls = [`${SITE_URL}/providers/${slug}`, `${SITE_URL}/providers`, `${SITE_URL}/sitemap.xml`, `${SITE_URL}/llms.txt`];
+    const urls = [`${SITE_URL}/providers/${slug}`, `${SITE_URL}/sitemap.xml`, `${SITE_URL}/llms.txt`];
     const result = await submitToIndexNow(urls);
     return NextResponse.json({ ok: result.status < 300, ...result, urls });
   }

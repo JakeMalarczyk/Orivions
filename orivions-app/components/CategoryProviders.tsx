@@ -8,7 +8,7 @@ import { FoundingProviderCard } from '@/components/EarlyAccess';
 import { isDirectoryOpen } from '@/lib/directory';
 
 function providerHref(p: Company): string {
-  return p.slug ? `/providers/${p.slug}` : `/providers?open=${p.id}`;
+  return p.slug ? `/providers/${p.slug}` : '/smart-match';
 }
 
 export default function CategoryProviders({ category }: { category: string }) {

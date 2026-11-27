@@ -130,8 +130,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Orivions', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Providers', item: `${SITE_URL}/providers` },
-          { '@type': 'ListItem', position: 3, name: provider.name, item: url },
+          { '@type': 'ListItem', position: 2, name: provider.name, item: url },
         ],
       },
     ],
@@ -144,7 +143,7 @@ export default async function ProviderProfilePage({ params }: { params: Promise<
         width="max-w-4xl"
         eyebrow={
           <>
-            <Link href="/providers" className="hover:text-white">Providers</Link> / {provider.category}
+            Providers / {provider.category}
           </>
         }
         title={provider.name}

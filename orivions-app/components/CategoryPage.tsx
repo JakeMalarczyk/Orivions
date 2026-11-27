@@ -69,8 +69,7 @@ export function buildJsonLd(content: CategoryContent) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Orivions', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Providers', item: `${SITE_URL}/providers` },
-          { '@type': 'ListItem', position: 3, name: content.breadcrumbLabel, item: url },
+          { '@type': 'ListItem', position: 2, name: content.breadcrumbLabel, item: url },
         ],
       },
       {

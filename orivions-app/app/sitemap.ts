@@ -20,7 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const pages = [
     { path: '/', updated: '2026-10-23', priority: 1.0, changeFrequency: 'weekly' as const },
-    { path: '/providers', updated: '2026-11-02', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/smart-match', updated: '2026-11-02', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/solana-smart-contract-audits', updated: '2026-11-06', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/solana-development-companies', updated: '2026-11-10', priority: 0.85, changeFrequency: 'weekly' as const },

@@ -54,6 +54,13 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // Provider catalog hidden on Kuba's request (28.11.2026); the page code stays.
+      // Delete this entry to show /providers again (also restore its links, sitemap and llms entries).
+      { source: '/providers', destination: '/', permanent: false },
+    ];
+  },
   async rewrites() {
     // Conventional paths that crawlers, browsers and feed readers request. Next.js serves
     // the same content from its own file-convention routes.
